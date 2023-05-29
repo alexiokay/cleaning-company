@@ -5,11 +5,12 @@ div(class="flex flex-col")
     AboutUs(class="mt-[5rem]")
     WhyUs(class="mt-[9rem]")
     Services(class="mt-[5rem]")
+    Blog(class="mt-[6rem]")
     Request(class="mt-[9rem] ")
     Rates(class="mt-[4rem]")
     Testimonials(class="mt-[6rem]")
     Locations(class="mt-[6rem]")
-    Blog(class="mt-[6rem]")
+    
     Schedule(class="mt-[8rem]")
 </template>
 

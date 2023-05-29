@@ -29,6 +29,9 @@ div(class="w-full  flex text-center gap-y-12 gap-x-[9rem] bg-[#Fcf2ec] pt-[4rem]
 
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const menu = ref([0, 1, 2]);
+const activeMenu = ref(0);
+</script>
 
 <style lang="scss"></style>
