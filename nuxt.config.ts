@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     "@pinia-plugin-persistedstate/nuxt",
     "@intlify/nuxt3",
     "@nuxt/image-edge",
+    "unplugin-icons/nuxt",
   ],
 
   build: {

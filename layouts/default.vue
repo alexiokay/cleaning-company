@@ -2,6 +2,13 @@ script
 <template lang="pug">
 div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font    ")
     div#overlay(class="absolute overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-10 hidden-overlay")
+    
+    div#localization(class="fixed top-[3.5rem] left-[2rem] px-5 py-2 z-50 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
+      IconLocation(class="mr-2")
+      p Venlo
+
+    Chat(class="fixed bottom-[1rem] right-[1rem] z-50")
+    
   
     .navigation(class=" top-0 z-30 w-full  ")
       div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
@@ -21,6 +28,7 @@ div(class="cursor cursor--small")
 import IconFb from "~icons/ic/baseline-facebook";
 import IconPhone from "~icons/ic/baseline-phone";
 import IconEmail from "~icons/material-symbols/alternate-email";
+import IconLocation from "~icons/mingcute/location-2-line";
 
 import { useUserStore } from "@/stores/User";
 

@@ -18,6 +18,8 @@ div(class="flex w-full h-[10rem] bg-[#Fcf2ec] items-center px-[14%]")
 
     
 
+    
+
 
 
 

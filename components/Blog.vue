@@ -5,12 +5,18 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-10 py-4  pt-
     
     div(class="flex flex-col lg:flex-row w-full lg:justify-around h-auto items-center justify-center gap-y-12 gap-x-[2.5rem] px-[4rem] md:px-[19rem] mt-[4rem]  ")
         
-        div(class="flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
+        div(class="relative flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
             nuxt-img(src="images/news/news_1.png" width="300" h="200" class="w-full h-[25rem] object-cover rounded-xl ")
+            div(class="absolute top-0 left-[2rem] p-4 bg-[#Ffffff] font-medium text-xl text-[#7f7d7e]")
+                p 02 Dec 2021
             div(class="flex w-full text-2xl font-medium text-[#939393]   ")
                 p(class="w-3/5") Office Cleaning 
-                div.blog-comments(class="flex w-1/5 font-normal justify-end") s s
-                div.blog-views(class="flex w-1/5 font-normal justify-end") s s
+                div.blog-comments(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    CommentsIcon(class="w-6 h-6 ml-3  ")
+                    p 25
+                div.blog-views(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    ViewsIcon(class="w-7 h-7 ml-3  ")
+                    p 32 k
             hr(class="w-full")
             div(class=" gap-y-4 w-full flex flex-col ")
                 h5(class="font-bold text-3xl w-full truncate") What is the difference between  dsa dsa dsa
@@ -21,12 +27,18 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-10 py-4  pt-
                 
             button(class='text-[#214e49] text-2xl font-bold flex mt-4') Read More
                 ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
-        div(class="flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
+        div(class="relative flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
             nuxt-img(src="images/news/news_1.png" width="300" h="200" class="w-full h-[25rem] object-cover rounded-xl ")
+            div(class="absolute top-0 left-[2rem] p-4 bg-[#Ffffff] font-medium text-xl text-[#7f7d7e]")
+                p 02 Dec 2021
             div(class="flex w-full text-2xl font-medium text-[#939393]   ")
                 p(class="w-3/5") Office Cleaning 
-                div.blog-comments(class="flex w-1/5 font-normal justify-end") s s
-                div.blog-views(class="flex w-1/5 font-normal justify-end") s s
+                div.blog-comments(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    CommentsIcon(class="w-6 h-6 ml-3  ")
+                    p 25
+                div.blog-views(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    ViewsIcon(class="w-7 h-7 ml-3  ")
+                    p 32 k
             hr(class="w-full")
             div(class=" gap-y-4 w-full flex flex-col ")
                 h5(class="font-bold text-3xl w-full truncate") What is the difference between  dsa dsa dsa
@@ -37,12 +49,18 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-10 py-4  pt-
                 
             button(class='text-[#214e49] text-2xl font-bold flex mt-4') Read More
                 ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
-        div(class="flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
+        div(class="relative flex flex-col lg:w-1/3 w-full space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl ")
             nuxt-img(src="images/news/news_1.png" width="300" h="200" class="w-full h-[25rem] object-cover rounded-xl ")
+            div(class="absolute top-0 left-[2rem] p-4 bg-[#Ffffff] font-medium text-xl text-[#7f7d7e]")
+                p 02 Dec 2021
             div(class="flex w-full text-2xl font-medium text-[#939393]   ")
                 p(class="w-3/5") Office Cleaning 
-                div.blog-comments(class="flex w-1/5 font-normal justify-end") s s
-                div.blog-views(class="flex w-1/5 font-normal justify-end") s s
+                div.blog-comments(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    CommentsIcon(class="w-6 h-6 ml-3  ")
+                    p 25
+                div.blog-views(class="flex w-1/5 font-normal justify-end items-center space-x-3") 
+                    ViewsIcon(class="w-7 h-7 ml-3  ")
+                    p 32 k
             hr(class="w-full")
             div(class=" gap-y-4 w-full flex flex-col ")
                 h5(class="font-bold text-3xl w-full truncate") What is the difference between  dsa dsa dsa
@@ -61,6 +79,8 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-10 py-4  pt-
 
 <script setup lang="ts">
 import ArrowIcon from "~icons/ph/arrow-right";
+import CommentsIcon from "~icons/octicon/comment-24";
+import ViewsIcon from "~icons/carbon/view";
 </script>
 
 <style lang="scss"></style>
