@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex items-center justify-center space-x-4")
+div(class="flex items-center justify-center space-x-4 ")
     button(class="aspect-square w-auto h-full rounded-full border-8 border-white bg-[#124944] p-4 flex items-center justify-center")
         PlayIcon(class="w-full h-full text-white mx-auto flex ")
     p(class="text-[#5e595a] text-2xl font-semibold") {{ text }}

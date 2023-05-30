@@ -1,15 +1,15 @@
 <template lang="pug">
-div(class="flex flex-col space-y-4 ")
+div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
     Transition(name="jump")
         div(v-show="!isChatOpen" class="flex flex-col space-y-4 " :class="isChatOpen ? 'hidden' : ''")
-            p(@click="isChatOpen = true" class="shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-3 w-[16rem] text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
+            p(@click="isChatOpen = true" class="hidden md:flex shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-3 md:w-[16rem] text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
             div(@click="isChatOpen = true" class="ml-auto p-3 w-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                 
                 IconChat(class=" w-[2rem] h-[2rem] text-[#Ff5100]  ")
 
     Transition(name="jump")
-        div(v-show="isChatOpen" :class="!isChatOpen ? 'hidden' : ''" class="w-[20rem] h-[38.5rem] rounded-lg bg-[#F6f6f7]        shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]")
-            div(class="bg-white h-[8rem]")
+        div(v-show="isChatOpen" :class="!isChatOpen ? 'hidden' : ''" class="md:w-[20rem] h-[38.5rem] rounded-lg bg-[#F6f6f7]        shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]")
+            div(class="bg-white h-[8rem] rounded-t- lg")
                 div(class="flex w-full p-3 justify-between items-center")
                     IconDots(class="w-[1.6rem] h-[1.6rem] text-black hover:cursor-pointer")
                     p(class="text-gray-700 font-semibold") Chat With Us!
@@ -33,9 +33,9 @@ div(class="flex flex-col space-y-4 ")
                 div.message(class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 ")
                     div(@click="isChatOpen = true" class=" p-1 w-min h-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                         IconChat2(class=" w-[0.8rem] h-[0.8rem] text-[#Ff5100]  ")
-                    div(class="w-full flex flex-col gap-y-1 ")
+                    div(class="w-full flex flex-col gap-y-1  ")
                         p(class="text-xs text-gray-500") ChatBot 20:25
-                        p(@click="isChatOpen = true" class="shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
+                        p(@click="isChatOpen = true" class=" shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
 
                 button(@click="isChatOpen = false" class="w-[calc(100%-2rem)]  h-[3rem] bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer") Chat Now
 

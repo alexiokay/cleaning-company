@@ -1,9 +1,9 @@
 script
 <template lang="pug">
-div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font    ")
-    div#overlay(class="absolute overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-10 hidden-overlay")
+div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
+    div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
     
-    div#localization(class="fixed top-[3.5rem] left-[2rem] px-5 py-2 z-50 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
+    div#localization(class="fixed top-2 left-2 md:top-[3.5rem] md:left-[2rem] px-5 py-2 z-30 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
       IconLocation(class="mr-2")
       p Venlo
 
@@ -17,9 +17,9 @@ div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cent
       
           
     
-    div(class=" w-full h-auto min-h-screen  lg:mt-0 z-30 mb-12")
+    div(class=" w-full h-auto min-h-screen  lg:mt-0 z-10  ")
       <slot class="" />
-      Footer(class="mt-[10rem]")
+      Footer(class="md:mt-[10rem]")
 div(class="cursor cursor--small")
 
 </template>
