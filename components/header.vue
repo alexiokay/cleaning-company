@@ -6,14 +6,17 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 3xl:pl-[19rem] lg:pl
             p.text-black service for your home
         p(class="text-[#5d5552] text-xl md:text-2xl font-medium mt-4 md:mt-0") With, Reliable, Friendly and Trustfull being our company values, we are present ourselves with the most complete and up to date cleaning services.
         nuxt-img(src="images/pani_12.png" class="md:hidden h-full max-h-[75vh] mt-auto w-auto object-contain sticky" format="webp" height="2060" width="1940")
-        div(class='flex  flex-col md:flex-row flex-wrap gap-x-10 items-start gap-y-4 md:items-center mt-[1.5rem] md:mt-[3rem] mb-8 md:mb-[7rem]')
-            Button(text="I'am looking for a cleaner" class="bg-[#fad613] order-0 md:order-0 md:first-letter:h-auto h-[4rem] md:h-[4.4rem] text-xl md:text-2xl")
-                template(v-slot:icon)
-                    ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-[#02374b] rotate-90")
-            buttonWatch(@click="isVideoOpen = true" class="md:h-[5rem] mr-auto order-1 md:order-0 text-xl md:text-5xl hover:cursor-pointer" text=" Watch our Service") 
-            Button(text="I'am looking for job" class="order-0 bg-[#124944] text-white md:order-0 md:first-letter:h-auto h-[4rem] md:h-[4.4rem] text-xl md:text-2xl")
-                template(v-slot:icon)
-                    ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-white rotate-90")
+        div(class="flex flex-col mt-[1.5rem] md:mt-[3rem] mb-8 md:mb-[7rem] gap-y-4")
+            div(class='flex  flex-col md:flex-row flex-wrap gap-x-10 items-start  md:items-center gap-y-4  ')
+                Button(text="I'am looking for a cleaner" class="bg-[#fad613] order-0 md:order-0 md:first-letter:h-auto h-[4rem] md:h-[4.4rem] text-xl md:text-2xl")
+                    template(v-slot:icon)
+                        ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-[#02374b] rotate-90")
+                
+                
+                Button(text="I'am looking for job" class="order-0 bg-[#124944] order-1 text-white md:order-0 md:first-letter:h-auto h-[4rem] md:h-[4.4rem] text-xl md:text-2xl")
+                    template(v-slot:icon)
+                        ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-white rotate-90")
+            buttonWatch(@click="isVideoOpen = true" class="md:h-[5rem] mr-auto order-2 md:order-0 text-xl md:text-5xl hover:cursor-pointer" text=" Watch our Service") 
             
         div(class=" w-full lg:text-3xl 3xl:text-5xl text-lg h-auto gap-x-4 md:gap-x-8 mb-2 md:mb-[6rem] lg:mb-[10rem] hidden md:flex")
             div(class="flex flex-col space-y-4 items-center text-center")

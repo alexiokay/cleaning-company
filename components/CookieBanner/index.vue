@@ -7,22 +7,22 @@ div
         div(v-show="isOpen && !customize" class="fixed group  bottom-0 pointer-event-none flex items-center  justify-center left-0 z-50  mx-auto w-auto p-4  h-auto ")
             <!-- Modal content -->
             div.glow(class="absolute z-10 inset-4 bg-gradient-to-r from-red-600 to-[#3ed35a] rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200")
-            div(class=" text-black z-20 rounded-lg shadow dark:bg-gray-700 h-auto w-full sm:w-[25rem] px-6 py-4 flex flex-col bg-white gap-y-3 drop-shadow-glow")
+            div(class=" text-black z-20 rounded-lg shadow dark:bg-gray-700 h-auto w-full sm:w-[25rem] md:w-[33rem] px-6 py-4 flex flex-col bg-white gap-y-3 drop-shadow-glow")
 
-                p(class=" text-xl font-extrabold") WE VALUE YOUR PRIVACY
-                p(class="text-xs sm:text-[0.6rem] text-[#B1b0b4] font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
-                div(class="flex flex-col-reverse sm:flex-row w-full gap-y-2 gap-x-2 justify-between text-xs font-bold")
+                p(class=" text-xl md:text-2xl xl:text-3xl font-extrabold") WE VALUE YOUR PRIVACY
+                p(class="text-xs sm:text-[0.6rem] md:text-sm  xl:text-base text-[#B1b0b4] font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
+                div(class="flex flex-col-reverse sm:flex-row w-full gap-y-2 gap-x-2 justify-between text-xs md:text-sm xl:text-base font-bold")
                     button(@click="customize= true" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") CUSTOMIZE 
                     button(@click="rejectAllCookies(necessaryStore)" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") REJECT ALL
                     button(@click="rejectAllCookies(necessaryStore)" class=" px-5 w-full py-2 border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c]  hover:border-[#35b14c]  ") ACCEPT ALL   
     </Transition>
     Transition(name="jump-straight")
-        <div v-if="isOpen && customize" @close="customize=false"   @click.stop="$emit('null')" class="fixed top-0 pointer-event-none flex items-center  justify-center left-0 right-0 z-50  mx-auto sm:w-[30rem] sm:p-4  sm:inset-0 h-screen lg:h-[78vh] my-auto ">
+        <div v-if="isOpen && customize" @close="customize=false"   @click.stop="$emit('null')" class="fixed top-0 pointer-event-none flex items-center  justify-center left-0 right-0 z-50  mx-auto sm:w-[30rem] sm:p-4  sm:inset-0 h-screen lg:h-[73vh] my-auto ">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-xl shadow dark:bg-gray-700 h-full flex flex-col ">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between px-5 py-3 border-b bg-slate-50 rounded-t dark:border-gray-600">
-                        <h3 class=" text-sm sm:text-xl font-extrabold text-gray-900 dark:text-white ">
+                        <h3 class=" text-sm sm:text-xl md:text-3xl font-extrabold text-gray-900 dark:text-white ">
                             p CUSTOMIZE CONSENT PREFERENCES
                         </h3>
                         <button @click="customize = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="medium-modal">
@@ -31,17 +31,17 @@ div
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-6 gap-y-3 flex flex-col overflow-y-scroll h-full sm:h-full w-[100vw] sm:w-[39rem] md:w-[43rem]  tracking-tight leading-4">
-                        div(class="flex flex-col")
-                            p(class="text-[0.6rem] text-black font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
+                    <div class="p-6 gap-y-3 flex flex-col overflow-y-scroll h-full sm:h-full w-[100vw] sm:w-[39rem] md:w-[53rem]  tracking-tight leading-4">
+                        div(class="flex flex-col text-[0.6rem] md:text-xs")
+                            p(class=" text-black font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
                             <!-- body description -->
-                            p(class="text-[0.6rem] text-black font-roboto font-bold") THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
+                            p(class=" text-black font-roboto font-bold") THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
                                 p(v-show="isShowMore") WE ALSO USE THIRD-PARTY COOKIES THAT HELP US ANALYZE HOW YOU USE THIS WEBSITE, STORE YOUR PREFERENCES, AND PROVIDE THE CONTENT AND ADVERTISEMENTS THAT ARE RELEVANT TO YOU. THESE COOKIES WILL ONLY BE STORED IN YOUR BROWSER WITH YOUR PRIOR CONSENT. YOU CAN CHOOSE TO ENABLE OR DISABLE SOME OR ALL OF THESE COOKIES BUT DISABLING SOME OF THEM MAY AFFECT YOUR BROWSING EXPERIENCE.
 
-                                p(v-if="!isShowMore" class="text-xs font-bold") ... 
-                                    button( @click="isShowMore = true" class="text-[0.59rem] text-blue-800 hover:cursor-pointer")  SHOW MORE
-                                p(v-else @click="isShowMore = false" )
-                                    button(class="text-[0.6rem] font-bold text-blue-800")  Show less
+                                p(v-if="!isShowMore" class="text-xs font-bold my-2") ... 
+                                    button( @click="isShowMore = true" class=" text-blue-800 hover:cursor-pointer")  SHOW MORE
+                                p(v-else @click="isShowMore = false" class="text-xs font-bold my-2" )
+                                    button(class=" font-bold text-blue-800")  Show less
                             hr(class="border-[#B1b0b4] border-opacity-50 my-2")
                             div(class="flex flex-col gap-y-3")
                                 CookieBannerItem(title="Necessary" :isActive="true" type="Always Active" description="NECESSARY COOKIES ARE REQUIRED TO ENABLE THE BASIC FEATURES OF THIS SITE, SUCH AS PROVIDING SECURE LOG-IN OR ADJUSTING YOUR CONSENT PREFERENCES. THESE COOKIES DO NOT STORE ANY PERSONALLY IDENTIFIABLE DATA.")
@@ -89,7 +89,7 @@ div
                                        
                     </div>
                     <!-- Modal footer -->
-                    div(class=" px-5 py-3 flex flex-col-reverse sm:flex-row w-full gap-x-2 gap-y-1 justify-between text-[0.6rem] sm:text-xs font-bold ")
+                    div(class=" px-5 py-3 flex flex-col-reverse sm:flex-row w-full gap-x-2 gap-y-1 justify-between text-[0.6rem] sm:text-base font-bold ")
                         button(@click="rejectAllCookies(necessaryStore), enableScroll();" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") REJECT ALL
                         button(@click="saveCookiesSettings(necessaryStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") SAVE MY PREFERENCES
                         button(@click="acceptAllCookies(necessaryStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c] hover:border-[#35b14c]  ") ACCEPT ALL   
