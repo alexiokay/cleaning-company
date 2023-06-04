@@ -1,26 +1,26 @@
 <template lang="pug">
-div(class="flex w-full h-[4rem] md:h-[10rem] bg-[#Fcf2ec] items-center md:px-[14%] px-2")
+div(class="flex w-full h-[4rem] md:h-[10rem] bg-[#Fcf2ec] items-center 2xl:px-[19rem]  md:px-2 px-2")
     
     div(class="nav hidden md:flex w-full h-[6rem]   justify-between ")
         
-        div(class="flex w-1/4 items-center justify-start md:min-w-[14rem]")
-            nuxt-img(alt="logo2"  src="/images/logo2.png" class="w-auto h-full" format="webp" )
-            nuxt-img(src="/images/text-removebg-preview.png" alt="logo-tekst" class="w-auto h-full" format="webp")
-        div#navigation(class="flex w-full font-semibold justify-center items-center space-x-4 md:space-x-12  text-xl md:text-3xl ")
+        div(class="flex w-1/5 items-center justify-start min-w-[15rem]")
+            nuxt-img(alt="logo2"  src="/images/logo2.png" class="w-[4.5rem] h-auto aspect-square" format="webp" )
+            nuxt-img(src="/images/text-removebg-preview.png" alt="logo-tekst" class="w-[9rem] h-auto " format="webp")
+        div#navigation(class="flex w-full font-semibold justify-center items-center space-x-4 md:space-x-12  text-lg xl:text-xl text-gray-600 ")
             div(class="flex flex-col")
-                NuxtLink(:class="route.name==='index'? 'text-[#124944]': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
+                NuxtLink(:class="route.name==='index'? 'text-[#124944]': 'text-[#7e7b74]'" class="nav-link" to="/"  ) Home
                 hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
             NuxtLink(class="nav-link" to="/about") About Us
-            NuxtLink(class="nav-link" to="/contact") Services
-            NuxtLink(class="nav-link" to="/contact") Pricing
+            NuxtLink(class="nav-link" to="/services") Services
+            NuxtLink(class="nav-link" to="/pricing") Pricing
             NuxtLink(class="nav-link" to="/contact") Blog
             NuxtLink(class="nav-link" to="/contact") Contact
             NuxtLink(class="nav-link" to="/contact") Careers
-        button(class=" min-w-[20rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.2rem] font-semibold text-2xl text-[#7e7b74]") Free Consultation
+        button(class=" min-w-[18rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.1rem] font-semibold text-xl text-[#7e7b74] ml-12 hover:bg-[#Fef2e8] shadow-lg") Free Consultation
 
         
     
-div#mobileNav(v-show="!isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-screen w-full justify-start z-50 text-5xl items-center text-white space-y-3")
+div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-screen w-full justify-start text-5xl items-center text-white space-y-3 z-50")
     div(class="flex flex-col")
             NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
             hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")

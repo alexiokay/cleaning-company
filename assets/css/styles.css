@@ -108,3 +108,9 @@
   font-family: "ROBOTOLIGHT";
   src: url("/fonts/Roboto-Light.ttf");
 }
+
+html.noscroll {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}

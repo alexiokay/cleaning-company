@@ -2,12 +2,12 @@ script
 <template lang="pug">
 div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
     div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
-    
-    div#localization(class="fixed top-2 left-2 md:top-[3.5rem] md:left-[2rem] px-5 py-2 z-30 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
+    CookieBanner(v-if="!necessaryStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
+    div#localization(class="fixed top-2 left-2 md:top-[3.5rem] md:left-[2rem] px-5 py-2 z-40 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
       IconLocation(class="mr-2")
       p Venlo
 
-    Chat(class="fixed bottom-[1rem] right-[1rem] z-50")
+    Chat(class="fixed bottom-[1rem] right-[1rem] z-40")
     
   
     .navigation(class=" top-0 z-30 w-full  ")
@@ -17,7 +17,7 @@ div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cent
       
           
     
-    div(class=" w-full h-auto min-h-screen  lg:mt-0 z-10  ")
+    div(class=" w-full h-auto min-h-screen  lg:mt-0   ")
       <slot class="" />
       Footer(class="md:mt-[10rem]")
 div(class="cursor cursor--small")
@@ -30,7 +30,12 @@ import IconPhone from "~icons/ic/baseline-phone";
 import IconEmail from "~icons/material-symbols/alternate-email";
 import IconLocation from "~icons/mingcute/location-2-line";
 
+const isPageRendered = ref(false);
+
+import { useNecessaryStore } from "~/stores/Necessary";
 import { useUserStore } from "@/stores/User";
+
+const necessaryStore = useNecessaryStore();
 
 const userStore = useUserStore();
 const router = useRouter();
