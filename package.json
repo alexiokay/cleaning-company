@@ -1,5 +1,5 @@
 {
-  "name": "plumber-chelm",
+  "name": "freshandtidy",
   "private": true,
   "scripts": {
     "build": "nuxt build",

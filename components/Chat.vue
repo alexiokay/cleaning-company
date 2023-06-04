@@ -35,7 +35,7 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
                         IconChat2(class=" w-[0.8rem] h-[0.8rem] text-[#Ff5100]  ")
                     div(class="w-full flex flex-col gap-y-1  ")
                         p(class="text-xs text-gray-500") ChatBot 20:25
-                        p(@click="isChatOpen = true" class=" shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
+                        p(@click="isChatOpen = true" class=" shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") Hey, tell me where you are from?
 
                 button(@click="isChatOpen = false" class="w-[calc(100%-2rem)]  h-[3rem] bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer") Chat Now
 
