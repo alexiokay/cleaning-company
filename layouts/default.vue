@@ -3,17 +3,17 @@ script
 div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
     div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
     CookieBanner(v-if="!necessaryStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
-    div#localization(class="fixed top-2 left-2 md:top-[3.5rem] md:left-[2rem] px-5 py-2 z-40 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
+    div#localization(class="fixed top-2 right-2 md:top-[3.5rem] w-[9rem] md:left-[2rem] px-5 py-2 z-50 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
       IconLocation(class="mr-2")
       p Venlo
 
-    Chat(class="fixed bottom-[1rem] right-[1rem] z-40")
+    Chat(class="fixed bottom-[1rem] right-[1rem] z-40")      
     
   
-    .navigation(class=" top-0 z-30 w-full  ")
+    .navigation(class=" top-0 z-40 w-full  ")
       div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
       Sidebar(class="z-50 ")
-      Navbar
+      Navbar(class="")
       
           
     
