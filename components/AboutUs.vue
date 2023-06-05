@@ -48,7 +48,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
         
         
         
-        Button(text="Call Us" class="w-[16rem] mt-6 md:mt-[3rem] h-[4rem] md:h-[4.4rem] text-xl md:text-2xl mx-auto md:mx-0 bg-[#fad613]")
+        Button(@click="callUs" text="Call Us" class="w-[16rem] mt-6 md:mt-[3rem] h-[4rem] md:h-[4.4rem] text-xl md:text-2xl mx-auto md:mx-0 bg-[#fad613]")
             template(v-slot:icon)
                 PhoneIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
 </template>
@@ -58,6 +58,10 @@ import PhoneIcon from "~icons/carbon/phone-voice-filled";
 
 const menu = ref([0, 1, 2, 3]);
 const activeMenu = ref(2);
+
+const callUs = () => {
+  window.location.href = "tel:+3197010253339";
+};
 </script>
 
 <style lang="scss"></style>

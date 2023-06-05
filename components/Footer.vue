@@ -42,12 +42,11 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
            
         div(class='flex flex-col w-[45%] lg:w-1/4 text-xl md:text-2xl space-y-2 text-[#7f7d7e] ')
             p(class="text-[#Fafafa] text-2xl md:text-3xl font-bold mb-4") Contact info.
-            p 008 009 0100
-            p 008 009 0100
-            p sara.cruz@example.com
+            p(@click="callUs") +3197010253339
+            p !example@example.com
             div
-                p 35178 W. Gray St.Utica,
-                p Pensylvania 57888
+                p !35178 W. Gray St.Utica,
+                p !Pensylvania 57888
          
     div(class="px-2 md:px-[2rem] flex-col w-full py-[1rem] md:py-[2rem] bg-[#181818] flex justify-between text-start md:items-center text-base md:text-lg  text-[#a1a1a1] font-medium")
         p(class="w-5/6") 2022 CreativePeoples . All Right reserved
@@ -62,6 +61,10 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
 import FacebookIcon from "~icons/ri/facebook-fill";
 import InstagramIcon from "~icons/ri/instagram-fill";
 import TwitterIcon from "~icons/ri/twitter-fill";
+
+const callUs = () => {
+  window.location.href = "tel:+3197010253339";
+};
 </script>
 
 <style lang="scss"></style>

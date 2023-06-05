@@ -86,6 +86,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+    TWILIO_SHORT_NAME: process.env.TWILIO_SHORT_NAME,
+
     public: {
       cwd: process.cwd(),
       BASE_URL: process.env.BASE_URL,
