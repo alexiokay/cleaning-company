@@ -1,3 +1,4 @@
+<template lang="pug">
 div#privacy-policy(class="flex flex-col h-1/5 w-full justify-center items-center ")
 
     div#header(class="flex w-full h-64 justify-around mb-4 bg-[#Fcf2ec] items-center text-black")
@@ -13,7 +14,7 @@ div#privacy-policy(class="flex flex-col h-1/5 w-full justify-center items-center
 
     div#privacy-policy-content(class='mt-28 w-3/4 flex flex-col space-y-8')
         div#last-updated(class='flex flex-col ')
-            h3.privacy-title Last updated: August 29, 2022
+            h3.privacy-title Last updated: June 22, 2023
             div.privacy-content
                 p This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collected in FreshAndTidy.
 
@@ -141,7 +142,7 @@ div#privacy-policy(class="flex flex-col h-1/5 w-full justify-center items-center
         div#contact(class='privacy-container mb-24')
             h3.privacy-title Contact
             div.privacy-content
-                p If you have any questions about our Privacy Policy, please contact us via axios.programming@.gmail.com
+                p If you have any questions about our Privacy Policy, please contact us via alexispace@freshandtidy.nl
 
 </template>
 
