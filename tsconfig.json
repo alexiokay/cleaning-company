@@ -16,6 +16,7 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "types": [
       "unplugin-icons/types/vue",
@@ -24,6 +25,7 @@
       "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
+      "twilio"
 
     ],
   },
