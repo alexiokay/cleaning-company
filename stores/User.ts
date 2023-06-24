@@ -17,6 +17,7 @@ export const useUserStore = defineStore("User", {
       activated_by: null,
       accountType: "arrow-employee", //arrow_employee, carrier
       messages: [],
+      userWantsSendMessage: false,
     };
   },
   getters: {
@@ -51,6 +52,9 @@ export const useUserStore = defineStore("User", {
     },
   },
   actions: {
+    setuserWantsSendMessage(bool: boolean) {
+      this.userWantsSendMessage = bool;
+    },
     addMessage(message: Object) {
       this.messages = [...this.messages, message];
     },

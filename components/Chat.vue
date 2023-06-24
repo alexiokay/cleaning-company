@@ -45,7 +45,7 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
               div.new-message(v-if="userWantsSendMessage" class="w-[90%] flex min-h-[4rem] h-auto overflow-hidden border rounded-md px-1 py-1 border-slate-300   items-center justify-center bg-white")
                
               
-                textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target.value)" class="w-[calc(100%-2rem)] max-h-[8rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
+                textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target.value)" class="w-[calc(100%-2rem)] max-h-[6rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
                 IconSendMessage(@click="sendMessage()"  class="w-6 h-6 text-blue-600 font-bold text-base rounded-md hover:cursor-pointer")
 </template>
 
@@ -67,7 +67,7 @@ const autoResize = (textarea) => {
   textarea.style.height = textarea.scrollHeight + "px";
 };
 const showTextArea = () => {
-  userWantsSendMessage.value = true;
+  userStore.setuserWantsSendMessage;
   const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
   textarea.addEventListener("input", autoResize(textarea), false);
 };
@@ -75,7 +75,7 @@ const showTextArea = () => {
 const userId = ref("example"); // TODO: to cookies
 const chatId = ref(0); // TODO: to cookies
 
-const userWantsSendMessage = ref(false);
+const userWantsSendMessage = ref(userStore.userWantsSendMessage);
 const timeNow = () => {
   const date = new Date();
   const hours = date.getHours();
@@ -103,8 +103,10 @@ const scrollToBottom = () => {
 const sendMessage = async () => {
   const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
   const message = textarea.value;
+  if (!message) return;
   let data = { sender: "test_user", message: message };
 
+  console.log();
   const userMessage = {
     sender: "test_user",
     message: message,
