@@ -30,8 +30,8 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
 
 
             div(class="w-full relative h-[27rem] flex  flex-col items-center justify-between ")
-              div.messages(class="w-full h-[20rem] overflow-y-scroll no-scrollbar flex flex-col gap-y-2 "  )
-                div.message(:class="message.type === 'chatbot'? 'flex': 'flex-reveese'" class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 " v-for="message in userStore.messages" )
+              div.messages(class="w-full h-[20rem] overflow-y-scroll  flex flex-col gap-y-2 "  )
+                div.message(:class="message.type === 'chatbot'? 'flex': 'flex-reveese'" class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 " v-for="message in sessionStore.messages" )
                     div(v-if="message.type ==='chatbot'" @click="isChatOpen = true" class=" p-1 w-min h-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                         IconChat2(class=" w-[0.8rem] h-[0.8rem] text-[#Ff5100]  ")
                     div(class="w-full flex flex-col gap-y-1  ")
@@ -45,7 +45,7 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
               div.new-message(v-if="userWantsSendMessage" class="w-[90%] flex min-h-[4rem] h-auto overflow-hidden border rounded-md px-1 py-1 border-slate-300   items-center justify-center bg-white")
                
               
-                textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target.value)" class="w-[calc(100%-2rem)] max-h-[6rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
+                textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target)" class="w-[calc(100%-2rem)] max-h-[6rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
                 IconSendMessage(@click="sendMessage()"  class="w-6 h-6 text-blue-600 font-bold text-base rounded-md hover:cursor-pointer")
 </template>
 
@@ -57,25 +57,30 @@ import IconDislike from "~icons/iconamoon/dislike-light";
 import IconDots from "~icons/mi/options-horizontal";
 import IconMinimize from "~icons/fluent/minimize-24-filled";
 import IconSendMessage from "~icons/bi/send-fill";
-import { useUserStore } from "~/stores/User";
+import { useSessionStore } from "~/stores/Session";
 
 const isChatOpen = ref(false);
-const userStore = useUserStore();
+const sessionStore = useSessionStore();
 
 const autoResize = (textarea) => {
   textarea.style.height = "auto";
   textarea.style.height = textarea.scrollHeight + "px";
 };
 const showTextArea = () => {
-  userStore.setuserWantsSendMessage;
+  sessionStore.setuserWantsSendMessage(true);
+
   const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
-  textarea.addEventListener("input", autoResize(textarea), false);
+  if (textarea) {
+    // focus on textarea
+    textarea.focus();
+    textarea.addEventListener("input", autoResize(textarea), false);
+  }
 };
 
 const userId = ref("example"); // TODO: to cookies
 const chatId = ref(0); // TODO: to cookies
 
-const userWantsSendMessage = ref(userStore.userWantsSendMessage);
+const userWantsSendMessage = computed(() => sessionStore.userWantsSendMessage);
 const timeNow = () => {
   const date = new Date();
   const hours = date.getHours();
@@ -85,8 +90,8 @@ const timeNow = () => {
 
 const timeEntered = ref(timeNow());
 
-if (!userStore.messages.length) {
-  userStore.addMessage({
+if (!sessionStore.messages.length) {
+  sessionStore.addMessage({
     sender: "chatbot",
     message: "Hello, how can I help you?",
     time: timeEntered.value,
@@ -100,9 +105,10 @@ const scrollToBottom = () => {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 };
 
-const sendMessage = async () => {
+const sendMessage = async (target) => {
   const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
   const message = textarea.value;
+  target.value = "";
   if (!message) return;
   let data = { sender: "test_user", message: message };
 
@@ -113,7 +119,7 @@ const sendMessage = async () => {
     time: timeNow(),
     type: "user",
   };
-  userStore.addMessage(userMessage);
+  sessionStore.addMessage(userMessage);
   console.log("userMessage", userMessage);
 
   const response = await fetch(
@@ -136,7 +142,7 @@ const sendMessage = async () => {
         time: timeNow(),
         type: "chatbot",
       };
-      userStore.addMessage(newMessage);
+      sessionStore.addMessage(newMessage);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -144,7 +150,7 @@ const sendMessage = async () => {
 };
 
 watch(
-  () => userStore.messages.length,
+  () => sessionStore.messages.length,
   async (newVal, oldVal) => {
     await nextTick();
     scrollToBottom();
