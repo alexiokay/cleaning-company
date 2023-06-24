@@ -29,17 +29,24 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
 
 
 
-            div(class="w-full relative h-[27rem] flex  flex-col items-center justify-between")
-                div.message(class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 ")
-                    div(@click="isChatOpen = true" class=" p-1 w-min h-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
+            div(class="w-full relative h-[27rem] flex  flex-col items-center justify-between ")
+              div.messages(class="w-full h-[20rem] overflow-y-scroll no-scrollbar flex flex-col gap-y-2 "  )
+                div.message(:class="message.type === 'chatbot'? 'flex': 'flex-reveese'" class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 " v-for="message in userStore.messages" )
+                    div(v-if="message.type ==='chatbot'" @click="isChatOpen = true" class=" p-1 w-min h-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                         IconChat2(class=" w-[0.8rem] h-[0.8rem] text-[#Ff5100]  ")
                     div(class="w-full flex flex-col gap-y-1  ")
-                        p(class="text-xs text-gray-500") ChatBot 20:25
-                        p(@click="isChatOpen = true" class=" shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") Hey, tell me where you are from?
+                        p(class="text-xs text-gray-500") ChatBot {{timeEntered}}
+                        p(@click="isChatOpen = true" class=" shadow-lg p-3 w-full text-base bg-white rounded-md hover:cursor-pointer") {{ message.message }}
 
-                button(@click="isChatOpen = false" class="w-[calc(100%-2rem)]  h-[3rem] bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer") Chat Now
+             
 
 
+              button(@click="showTextArea" v-if="!userWantsSendMessage" class="w-[calc(100%-2rem)]  h-[3rem] bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer") Chat Now
+              div.new-message(v-if="userWantsSendMessage" class="w-[90%] flex min-h-[4rem] h-auto overflow-hidden border rounded-md px-1 py-1 border-slate-300   items-center justify-center bg-white")
+               
+              
+                textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target.value)" class="w-[calc(100%-2rem)] max-h-[8rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
+                IconSendMessage(@click="sendMessage()"  class="w-6 h-6 text-blue-600 font-bold text-base rounded-md hover:cursor-pointer")
 </template>
 
 <script setup lang="ts">
@@ -49,11 +56,118 @@ import IconLike from "~icons/iconamoon/like-light";
 import IconDislike from "~icons/iconamoon/dislike-light";
 import IconDots from "~icons/mi/options-horizontal";
 import IconMinimize from "~icons/fluent/minimize-24-filled";
+import IconSendMessage from "~icons/bi/send-fill";
+import { useUserStore } from "~/stores/User";
 
 const isChatOpen = ref(false);
+const userStore = useUserStore();
+
+const autoResize = (textarea) => {
+  textarea.style.height = "auto";
+  textarea.style.height = textarea.scrollHeight + "px";
+};
+const showTextArea = () => {
+  userWantsSendMessage.value = true;
+  const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
+  textarea.addEventListener("input", autoResize(textarea), false);
+};
+
+const userId = ref("example"); // TODO: to cookies
+const chatId = ref(0); // TODO: to cookies
+
+const userWantsSendMessage = ref(false);
+const timeNow = () => {
+  const date = new Date();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours}:${minutes}`;
+};
+
+const timeEntered = ref(timeNow());
+
+if (!userStore.messages.length) {
+  userStore.addMessage({
+    sender: "chatbot",
+    message: "Hello, how can I help you?",
+    time: timeEntered.value,
+    type: "chatbot",
+  });
+}
+
+const scrollToBottom = () => {
+  const messagesDiv = document.querySelector(".messages") as HTMLDivElement;
+
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+};
+
+const sendMessage = async () => {
+  const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
+  const message = textarea.value;
+  let data = { sender: "test_user", message: message };
+
+  const userMessage = {
+    sender: "test_user",
+    message: message,
+    time: timeNow(),
+    type: "user",
+  };
+  userStore.addMessage(userMessage);
+  console.log("userMessage", userMessage);
+
+  const response = await fetch(
+    "http://84.29.2.193:5005/webhooks/rest/webhook",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: JSON.stringify(data),
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+
+      const newMessage = {
+        sender: "chatbot",
+        message: data[0].text,
+        time: timeNow(),
+        type: "chatbot",
+      };
+      userStore.addMessage(newMessage);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+watch(
+  () => userStore.messages.length,
+  async (newVal, oldVal) => {
+    await nextTick();
+    scrollToBottom();
+  }
+);
+
+watch(
+  () => isChatOpen.value,
+  async (newVal, oldVal) => {
+    await nextTick();
+    scrollToBottom();
+  }
+);
 </script>
 
 <style lang="scss">
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .jump-enter {
 }
 .jump-enter-active {

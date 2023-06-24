@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@iconify-json/akar-icons": "^1.1.17",
+    "@iconify-json/bi": "^1.1.17",
     "@iconify-json/carbon": "^1.1.16",
     "@iconify-json/clarity": "^1.1.8",
     "@iconify-json/ep": "^1.1.10",

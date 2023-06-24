@@ -16,9 +16,14 @@ export const useUserStore = defineStore("User", {
       is_activated: false,
       activated_by: null,
       accountType: "arrow-employee", //arrow_employee, carrier
+      messages: [],
     };
   },
   getters: {
+    getMessages(state) {
+      return state.messages;
+    },
+
     getUser(state) {
       return {
         username: state.username,
@@ -28,6 +33,7 @@ export const useUserStore = defineStore("User", {
         accountType: state.accountType,
       };
     },
+
     getUsername(state) {
       return state.username;
     },
@@ -45,6 +51,10 @@ export const useUserStore = defineStore("User", {
     },
   },
   actions: {
+    addMessage(message: Object) {
+      this.messages = [...this.messages, message];
+    },
+
     setUsername(username: string) {
       this.username = username;
     },
