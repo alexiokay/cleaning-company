@@ -123,7 +123,7 @@ const sendMessage = async (target) => {
   console.log("userMessage", userMessage);
 
   const response = await fetch(
-    "http://84.29.2.193:5005/webhooks/rest/webhook",
+    "https://84.29.2.193:5005/webhooks/rest/webhook",
     {
       method: "POST",
       headers: {
