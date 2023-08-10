@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex w-full h-[5rem] md:h-[10rem] bg-[#Fcf2ec] items-center 2xl:px-[19rem]  md:px-2 px-2 ")
+div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5rem] md:h-[10rem]  items-center 2xl:px-[19rem]  md:px-2 px-2 " )
     div(class="flex h-auto w-[3rem]  md:w-1/6 items-center justify-start min-w-[8rem] md:min-w-[15rem] ")
             nuxt-img(alt="logo2"  src="/images/logo.png" class="w-full h-auto aspect-square" format="webp" )
     
@@ -15,7 +15,7 @@ div(class="flex w-full h-[5rem] md:h-[10rem] bg-[#Fcf2ec] items-center 2xl:px-[1
             NuxtLink(class="nav-link" to="/about") About Us
             NuxtLink(class="nav-link" to="/services") Services
             NuxtLink(class="nav-link" to="/pricing") Pricing
-            NuxtLink(class="nav-link" to="/contact") Blog
+            NuxtLink(class="nav-link" to="/blog") Blog
             NuxtLink(class="nav-link" to="/contact") Contact
             NuxtLink(class="nav-link" to="/contact") Careers
         button(class=" min-w-[18rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.1rem] font-semibold text-xl text-[#7e7b74] ml-12 hover:bg-[#Fef2e8] shadow-lg") Free Consultation
@@ -25,8 +25,8 @@ div(class="flex w-full h-[5rem] md:h-[10rem] bg-[#Fcf2ec] items-center 2xl:px-[1
 div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-screen w-full justify-start text-5xl items-center text-white space-y-3 z-50 ")
     
     div(class="flex flex-col")
-            NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
-            hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+        NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
+        hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
     NuxtLink(class="nav-link text-white" to="/about") About Us
     NuxtLink(class="nav-link text-white" to="/contact") Services
     NuxtLink(class="nav-link text-white" to="/contact") Pricing
@@ -55,6 +55,8 @@ import MenuIcon2 from "~icons/jam/menu";
 const route = useRoute();
 
 const isMobileMenu = ref(false);
+
+const isMainPage = computed(() => route.name === "index");
 </script>
 
 <style lang="scss"></style>

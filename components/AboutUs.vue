@@ -60,7 +60,7 @@ const menu = ref([0, 1, 2, 3]);
 const activeMenu = ref(2);
 
 const callUs = () => {
-  window.location.href = "tel:+3197010253339";
+  window.location.href = "tel:+31857603963";
 };
 </script>
 

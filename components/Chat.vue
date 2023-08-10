@@ -2,7 +2,7 @@
 div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
     Transition(name="jump")
         div(v-show="!isChatOpen" class="flex flex-col space-y-4 " :class="isChatOpen ? 'hidden' : ''")
-            p(@click="isChatOpen = true" class="hidden md:flex shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-3 md:w-[23rem] text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about LiveChat on your website!
+            p(@click="isChatOpen = true" class="hidden md:flex shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-3 md:w-[23rem] text-base bg-white rounded-md hover:cursor-pointer") Hey, let’s talk about details!
             div(@click="isChatOpen = true" class="ml-auto p-3 w-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                 
                 IconChat(class=" w-[2rem] h-[2rem] md:w-[2.5rem]  md:h-[2.5rem] text-[#Ff5100]  ")
@@ -46,7 +46,7 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
                
               
                 textarea( @input="autoResize($event.target)" @keyup.enter="sendMessage($event.target)" class="w-[calc(100%-2rem)] max-h-[6rem] overflow-scroll h-full focus:outline-none text-black  text-base rounded-md no-scrollbar hover:cursor-text  px-2 py-4")
-                IconSendMessage(@click="sendMessage()"  class="w-6 h-6 text-blue-600 font-bold text-base rounded-md hover:cursor-pointer")
+                IconSendMessage(@click="sendMessage"  class="w-6 h-6 text-blue-600 font-bold text-base rounded-md hover:cursor-pointer")
 </template>
 
 <script setup lang="ts">
@@ -122,16 +122,13 @@ const sendMessage = async (target) => {
   sessionStore.addMessage(userMessage);
   console.log("userMessage", userMessage);
 
-  const response = await fetch(
-    "https://84.29.2.193:5005/webhooks/rest/webhook",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain",
-      },
-      body: JSON.stringify(data),
-    }
-  )
+  const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain",
+    },
+    body: JSON.stringify(data),
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
