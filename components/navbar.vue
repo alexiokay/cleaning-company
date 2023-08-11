@@ -17,7 +17,7 @@ div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5r
             NuxtLink(class="nav-link" to="/pricing") Pricing
             NuxtLink(class="nav-link" to="/blog") Blog
             NuxtLink(class="nav-link" to="/contact") Contact
-            NuxtLink(class="nav-link" to="/contact") Careers
+            NuxtLink(class="nav-link" to="/careers") Careers
         button(class=" min-w-[18rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.1rem] font-semibold text-xl text-[#7e7b74] ml-12 hover:bg-[#Fef2e8] shadow-lg") Free Consultation
 
         
@@ -28,11 +28,11 @@ div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-s
         NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
         hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
     NuxtLink(class="nav-link text-white" to="/about") About Us
-    NuxtLink(class="nav-link text-white" to="/contact") Services
-    NuxtLink(class="nav-link text-white" to="/contact") Pricing
-    NuxtLink(class="nav-link text-white" to="/contact") Blog
+    NuxtLink(class="nav-link text-white" to="/services") Services
+    NuxtLink(class="nav-link text-white" to="/pricing") Pricing
+    NuxtLink(class="nav-link text-white" to="/blog") Blog
     NuxtLink(class="nav-link text-white" to="/contact") Contact
-    NuxtLink(class="nav-link text-white " to="/contact") Careers
+    NuxtLink(class="nav-link text-white " to="/careers") Careers
     
 div#overlay(:class="isMobileMenu ? '' : 'hidden-overlay'" class="fixed  items-center   overlaying top-0 left-0 w-full h-screen bg-black opacity-100 z-40 " )
 div(class="fixed left-[1rem]  bottom-[1rem] rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white flex items-center justify-center z-50 md:hidden")

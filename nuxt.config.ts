@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     "@intlify/nuxt3",
     "@nuxt/image-edge",
     "unplugin-icons/nuxt",
+    "nuxt-simple-sitemap",
   ],
 
   build: {
@@ -61,13 +62,15 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-      title: "",
+      title:
+        "Top Cleaning Services in Netherlands | Expert House, Office, and Floor Cleaning",
       meta: [
         // <meta name="description" content="My amazing site">
         {
           hid: `description`,
           name: "description",
-          content: " ",
+          content:
+            "Discover professional cleaning services for homes, offices, cars, and commercial spaces. Our experts provide comprehensive solutions, including house cleaning, office maintenance, and floor care. Enhance your surroundings with our trusted cleaning solutions. Contact us for a sparkling clean space!",
         },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/images/icon.ico" }],
