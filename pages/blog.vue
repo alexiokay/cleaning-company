@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-full min-h-screen flex flex-col items-center justify-start py-8  lg:px-[10%] bg-white gap-y-12")
 
-    div#blog__header(class="w-full flex flex-col h-auto py-12 px-24 text-5xl font-semibold   rounded-lg bg-[#F5f5f5] items-center justify-center")
+    div#blog__header(class="w-full flex flex-col h-auto py-12 px-24 text-5xl font-semibold   rounded-3xl bg-[#F5f5f5] items-center justify-center")
         p(class="tracking-[0.4rem] text-[#55585f] text-xl font-bold ") WELCOME TO OUR BLOG
         p(class="flex gap-x-2 mt-6") Craft narratives
             PaintEmoji
@@ -32,7 +32,7 @@ div(class="w-full min-h-screen flex flex-col items-center justify-start py-8  lg
                 p .
                 p  5 min read
 
-    div.blog__latest(class="flex flex-col  w-full gap-y-12 mt-12")
+    div.blog__latest(class="flex flex-col  w-full gap-y-12 mt-9")
         .flex.justify-between.items-center.w-full
             h2(class="gray-600 text-7xl  text-start font-semibold text-[#22252f]") Latest News
             button(class="text-red-600 text-2xl font-semibold") See all ->

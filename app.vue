@@ -11,4 +11,6 @@
 AppSetup();
 const locale = useState<string>("locale.setting");
 const app = useAppConfig();
+
+const $gtm = useGtm();
 </script>

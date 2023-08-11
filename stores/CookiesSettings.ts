@@ -6,7 +6,7 @@ import { useStorage } from "@vueuse/core";
 
 const pinia = createPinia();
 import { useUserStore } from "./User";
-export const useNecessaryStore = defineStore("necessaryStore", {
+export const useCookiesStore = defineStore("cookiesStore", {
   state: () => {
     return {
       // cookies settings
@@ -21,7 +21,17 @@ export const useNecessaryStore = defineStore("necessaryStore", {
       } as Record<string, boolean>,
     };
   },
-  getters: {},
+  getters: {
+    getAnalitycs: (state) => {
+      return state.acceptedCookies.analytics;
+    },
+    getPerformance: (state) => {
+      return state.acceptedCookies.performance;
+    },
+    getAdvertisement: (state) => {
+      return state.acceptedCookies.advertisement;
+    },
+  },
   actions: {},
   persist: {
     storage: persistedState.cookies,

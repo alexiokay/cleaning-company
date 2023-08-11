@@ -13,8 +13,8 @@ div
                 p(class="text-xs sm:text-[0.6rem] md:text-sm  xl:text-base text-[#B1b0b4] font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
                 div(class="flex flex-col-reverse sm:flex-row w-full gap-y-2 gap-x-2 justify-between text-xs md:text-sm xl:text-base font-bold")
                     button(@click="customize= true" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") CUSTOMIZE 
-                    button(@click="rejectAllCookies(necessaryStore)" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") REJECT ALL
-                    button(@click="rejectAllCookies(necessaryStore)" class=" px-5 w-full py-2 border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c]  hover:border-[#35b14c]  ") ACCEPT ALL   
+                    button(@click="rejectAllCookies(cookiesStore)" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") REJECT ALL
+                    button(@click="rejectAllCookies(cookiesStore)" class=" px-5 w-full py-2 border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c]  hover:border-[#35b14c]  ") ACCEPT ALL   
     </Transition>
     Transition(name="jump-straight")
         <div v-if="isOpen && customize" @close="customize=false"   @click.stop="$emit('null')" class="fixed top-0 pointer-event-none flex items-center  justify-center left-0 right-0 z-50  mx-auto sm:w-[30rem] sm:p-4  sm:inset-0 h-screen lg:h-[73vh] my-auto ">
@@ -68,38 +68,38 @@ div
                                         
 
                                 hr(class="border-[#B1b0b4] border-opacity-50")
-                                CookieBannerItem(title="Functional" :isActive="necessaryStore.acceptedCookies.functional" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
+                                CookieBannerItem(title="Functional" :isActive="cookiesStore.acceptedCookies.functional" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
                                     template(v-slot:sub-items)
                                         
                                 hr(class="border-[#B1b0b4] border-opacity-50")
-                                CookieBannerItem(title="Analytics"  :isActive="necessaryStore.acceptedCookies.analytics" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
+                                CookieBannerItem(title="Analytics"  :isActive="cookiesStore.acceptedCookies.analytics" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
                                     template(v-slot:sub-items)
                                         
                                 hr(class="border-[#B1b0b4] border-opacity-50")
-                                CookieBannerItem(title="Performance" :isActive="necessaryStore.acceptedCookies.performance" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
+                                CookieBannerItem(title="Performance" :isActive="cookiesStore.acceptedCookies.performance" description="ANALYTICAL COOKIES ARE USED TO UNDERSTAND HOW VISITORS INTERACT WITH THE WEBSITE. THESE COOKIES HELP PROVIDE INFORMATION ON METRICS SUCH AS THE NUMBER OF VISITORS, BOUNCE RATE, TRAFFIC SOURCE, ETC.")
                                     template(v-slot:sub-items)
                                        
                                 hr(class="border-[#B1b0b4] border-opacity-50")
-                                CookieBannerItem(title="Advertisement" :isActive="necessaryStore.acceptedCookies.advertisement" description="ADVERTISEMENT COOKIES ARE USED TO PROVIDE VISITORS WITH CUSTOMIZED ADVERTISEMENTS BASED ON THE PAGES YOU VISITED PREVIOUSLY AND TO ANALYZE THE EFFECTIVENESS OF THE AD CAMPAIGNS.")
+                                CookieBannerItem(title="Advertisement" :isActive="cookiesStore.acceptedCookies.advertisement" description="ADVERTISEMENT COOKIES ARE USED TO PROVIDE VISITORS WITH CUSTOMIZED ADVERTISEMENTS BASED ON THE PAGES YOU VISITED PREVIOUSLY AND TO ANALYZE THE EFFECTIVENESS OF THE AD CAMPAIGNS.")
                                     template(v-slot:sub-items)
                                         
                                 hr(class="border-[#B1b0b4] border-opacity-50")
-                                CookieBannerItem(title="Others" :isActive="necessaryStore.acceptedCookies.others" description="OTHER UNCATEGORIZED COOKIES ARE THOSE THAT ARE BEING ANALYZED AND HAVE NOT BEEN CLASSIFIED INTO A CATEGORY AS YET.")
+                                CookieBannerItem(title="Others" :isActive="cookiesStore.acceptedCookies.others" description="OTHER UNCATEGORIZED COOKIES ARE THOSE THAT ARE BEING ANALYZED AND HAVE NOT BEEN CLASSIFIED INTO A CATEGORY AS YET.")
                                     template(v-slot:sub-items)
                                        
                     </div>
                     <!-- Modal footer -->
                     div(class=" px-5 py-3 flex flex-col-reverse sm:flex-row w-full gap-x-2 gap-y-1 justify-between text-[0.6rem] sm:text-base font-bold ")
-                        button(@click="rejectAllCookies(necessaryStore), enableScroll();" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") REJECT ALL
-                        button(@click="saveCookiesSettings(necessaryStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") SAVE MY PREFERENCES
-                        button(@click="acceptAllCookies(necessaryStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c] hover:border-[#35b14c]  ") ACCEPT ALL   
+                        button(@click="rejectAllCookies(cookiesStore), enableScroll();" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") REJECT ALL
+                        button(@click="saveCookiesSettings(cookiesStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") SAVE MY PREFERENCES
+                        button(@click="acceptAllCookies(cookiesStore), enableScroll();" class=" px-5 py-2 w-full border-[#3ed35a] bg-[#3ed35a] border-2      text-black  hover:bg-[#35b14c] hover:border-[#35b14c]  ") ACCEPT ALL   
                 </div>
         </div>
 </template>
 
 <script setup lang="ts">
 import { useUserStore } from "@/stores/User";
-import { useNecessaryStore } from "~/stores/Necessary";
+import { useCookiesStore } from "~/stores/CookiesSettings";
 import {
   saveCookiesSettings,
   acceptAllCookies,
@@ -107,7 +107,7 @@ import {
 } from "~/funcionalities/cookiesBanner";
 import { disableScroll, enableScroll } from "~/funcionalities/scroll";
 
-const necessaryStore = useNecessaryStore();
+const cookiesStore = useCookiesStore();
 
 const userStore = useUserStore();
 const customize = ref(false);

@@ -2,7 +2,7 @@ script
 <template lang="pug">
 div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
     div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
-    CookieBanner(v-if="!necessaryStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
+    CookieBanner(v-if="!cookiesStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
     div#localization(class="fixed top-2 right-2 md:top-[3.5rem] w-[9rem] md:left-[2rem] px-5 py-2 z-50 rounded-full bg-[#Fcf2ec] text-[#124944]  text-2xl items-center justify-center flex font-semibold hover:cursor-pointer") 
       IconLocation(class="mr-2")
       p Venlo
@@ -32,10 +32,10 @@ import IconLocation from "~icons/mingcute/location-2-line";
 
 const isPageRendered = ref(false);
 
-import { useNecessaryStore } from "~/stores/Necessary";
+import { useCookiesStore } from "~/stores/CookiesSettings";
 import { useUserStore } from "@/stores/User";
 
-const necessaryStore = useNecessaryStore();
+const cookiesStore = useCookiesStore();
 
 const userStore = useUserStore();
 const router = useRouter();
