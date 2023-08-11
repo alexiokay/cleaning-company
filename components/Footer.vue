@@ -12,8 +12,8 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
     div(class="flex w-full flex-row flex-wrap lg:flex-nowrap gap-y-8 lg:gap-y-0 justify-between lg:justify-normal")
         div(class='flex flex-col w-full lg:w-2/5 md:mr-[7rem] gap-y-4 ')
             div(class="flex w-full items-center justify-start  ")
-                nuxt-img(class="" alt="logo2"  src="/images/logo2.png" class="w-1/5 h-auto" format="webp")
-                nuxt-img(src="/images/text-removebg-preview.png" alt="logo-tekst" class="w-2/5 h-full" format="webp")
+                nuxt-img(class="" alt="logo"  src="/images/logo.png" class="w-1/5 h-auto" format="webp")
+                <!-- nuxt-img(src="/images/text-removebg-preview.png" alt="logo-tekst" class="w-2/5 h-full" format="webp") -->
             p(class='text-[#7f7d7e] text-xl md:text-2xl mt-2 md:leading-[2.6rem] font-medium') Business consultants provide management consulting to help businessses and organizations improove performance.
             div(class="w-full h-auto flex justify-start items-center gap-x-6 mt-[3rem]")    
                 div(class="rounded-full p-4 border-[0.1rem] border-gray-400")
