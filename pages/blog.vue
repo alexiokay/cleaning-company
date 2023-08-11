@@ -45,7 +45,7 @@ div(class="w-full min-h-screen flex flex-col items-center justify-start py-8  lg
                     p .
                     p 12 minutes ago
                 p.blog_latest__content__title(class="text-4xl font-semibold text-[#22252f]") tsast
-    StoryblokComponent(v-if="story" :blok="story.content")
+
 </template>
 
 <script setup lang="ts">
@@ -53,10 +53,6 @@ import PaintEmoji from "~icons/noto/paintbrush";
 import BookEmoji from "~icons/noto/orange-book";
 import CinoEmoji from "~icons/noto/cinema";
 import BulbEmoji from "~icons/noto/light-bulb";
-
-const story = await useAsyncStoryblok("blog", {
-  version: "draft",
-});
 </script>
 
 <style lang="scss"></style>
