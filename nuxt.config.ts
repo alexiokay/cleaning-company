@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "unplugin-icons/nuxt",
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
+    ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
   ],
 
   build: {
