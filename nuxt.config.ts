@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     "unplugin-icons/nuxt",
     "nuxt-simple-sitemap",
+    "nuxt-simple-robots",
   ],
 
   build: {
