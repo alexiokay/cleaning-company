@@ -24,7 +24,9 @@ div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5r
                 NuxtLink(class="nav-link" to="/pricing") Pricing
                     hr(:class="route.name==='pricing'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
 
-            
+            div(class="flex flex-col")
+                NuxtLink(class="nav-link" to="/shopping") Shopping
+                    hr(:class="route.name==='shopping'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
             
             div(class="flex flex-col")
                 NuxtLink(class="nav-link" to="/blog") Blog
