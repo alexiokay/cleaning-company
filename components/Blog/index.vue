@@ -7,7 +7,8 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-4 md:gap-y-1
         
         BlogItem(v-for="article in articles" :key="article.uuid" :article="article" )
             template(v-slot:image)
-                nuxt-img(:src="'https:' + article.content.image" width="300" h="200" class="w-full xl:h-[20rem]  xs:h-[13rem] h-[13rem] object-cover rounded-xl ")
+              
+                nuxt-img(:src="'https:' + article.content.image" width="300" h="200" class=" xs:h-[13rem] h-[13rem] object-cover rounded-xl hover:cursor-pointer ")
 
                     
                 

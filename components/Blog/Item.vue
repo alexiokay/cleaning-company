@@ -1,6 +1,7 @@
 <template lang="pug">
 div(class="relative flex flex-col lg:w-1/3 w-full space-y-4 md:space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl mt-6 md:mt-0")
-    slot(name="image")
+    NuxtLink( :to="'/blog/' + article.slug" class="w-full xl:h-[20rem] ") 
+        slot(name="image")
     
     div(class="absolute top-0 left-[2rem] p-4 bg-[#Ffffff] font-medium text-xl text-[#7f7d7e]")
         p {{ article.date? article.date: article.published_at.split('T')[0] }}
@@ -13,17 +14,21 @@ div(class="relative flex flex-col lg:w-1/3 w-full space-y-4 md:space-y-8  lg:tex
             ViewsIcon(class="w-5 h-5 md:w-7 md:h-7 ml-3  ")
             p.text-sm 32 k
     hr(class="w-full")
-    div(class=" gap-y-4 w-full flex flex-col ")
-        h5(class="font-bold text-xl md:text-3xl w-full truncate ") {{ article.content.title }}
+    div(class=" gap-y-4 w-full flex flex-col  ")
+        NuxtLink(class="font-bold text-xl md:text-3xl w-full truncate hover:cursor-pointer" :to="/blog/ + article.slug") 
+            h5 {{ article.content.title }}
+
         p(class='text-xl md:text-2xl  text-[#7f7d7e] text-start line-clamp-5') {{ article.content.description }}
 
-    button(class='text-[#214e49] text-xl md:text-2xl font-bold flex mt-4 mr-auto md:mr-0') Read More
+    NuxtLink(:to="'/blog/' + article.slug" class='text-[#214e49] text-xl md:text-2xl font-bold flex mt-4 mr-auto md:mr-0') Read More
         ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
 </template>
 
 <script setup lang="ts">
 import CommentsIcon from "~icons/octicon/comment-24";
 import ViewsIcon from "~icons/carbon/view";
+
+const router = useRouter();
 
 defineProps({
   article: {

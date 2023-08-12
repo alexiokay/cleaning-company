@@ -1,14 +1,14 @@
 <template lang="pug">
 div#cart-process(class="flex h-auto w-full items-center justify-center sm:justify-between md:justify-center md:gap-x-16")
    
-    div( class="flex h-full justify-center sm:w-auto w-auto relative")
-        div(v-for="(val, index, key) in props.steps" class="w-[5rem] sm:w-[8rem] relative md:w-[9.5rem] h-[4rem]  flex flex-col justify-between items-center")
-            button(@click="goToStep(index)" class="w-10 h-10 rounded-full items-center justify-center flex " :class="{ 'bg-gray-500 text-white': index < currentStep, 'bg-white border-[1px] border-gray-400': index > currentStep, 'bg-black text-white': index === currentStep }")
-                p(v-if="index >=currentStep") {{ index+1 }}
-                IconDone(v-if="index < currentStep")
-            p(class="text-xs text-gray-500 text-center") {{val}}
+    div(class="flex h-full justify-center sm:w-auto w-auto relative")
+        div(v-for="(val, index, key) in steps" class="w-[5rem] sm:w-[8rem] relative md:w-[9.5rem] h-[5rem]  flex flex-col justify-between items-center ")
+            button(@click="goToStep(index)" class="w-10 h-10 rounded-full items-center justify-center flex border-[1px]" :class="{ 'bg-white  border-gray-400': val.done === true && val.active === false, 'bg-black text-white': val.active === true, 'border-gray-400': val.active === true && val.done === true }" )
+                p(v-if="!val.done") {{ index+1 }}
+                IconDone(v-if="val.done === true")
+            p(@click="goToStep(index)" :class="index === currentStep? 'font-semibold text-black': 'text-gray-600 '" class="text-xl text-center hover:cursor-pointer") {{val.name}}
        
-            hr(v-if="index !== props.steps.length -1" class="absolute top-[0.95rem] left-[3.7rem] sm:left-[5.6rem] md:left-[6.2rem] w-[2.7rem] sm:w-[5rem] md:w-[6.5rem] h-[1.5px] bg-gray-800")
+            hr(v-if="index !== props.steps.length -1" class="absolute top-[1.2rem] left-[3.7rem] sm:left-[5.6rem] md:left-[6.5rem] w-[2.7rem] sm:w-[5rem] md:w-[6rem] h-[1.5px] bg-gray-800")
  
             
            
@@ -19,20 +19,41 @@ import IconDone from "~icons/material-symbols/done-rounded";
 
 const route = useRoute();
 const props = defineProps<{ steps: string[] }>();
+
+const steps = ref([
+  {
+    name: "general",
+    active: false,
+    done: true,
+  },
+  {
+    name: "location",
+    active: false,
+    done: false,
+  },
+  {
+    name: "timing",
+    active: false,
+    done: false,
+  },
+  {
+    name: "category",
+    active: true,
+    done: false,
+  },
+]);
+
 const currentStep = computed(() => {
-  if (route.name === "services") return 0;
-  if (route.path === "/cart/order") return 1;
-  if (route.path === "/cart/payment") return 2;
-  if (route.path === "/cart/ready") return 3;
+  // find current step and return its index from steps array
+  return steps.value.findIndex((step) => step.active === true);
 });
 const router = useRouter();
 const goToStep = (index: number) => {
-  if (index === 0) {
-    router.push("/cart");
-  }
-  if (index === 1) {
-    router.push("/cart/order");
-  }
+  // set active step inactivated
+  steps.value[currentStep.value].active = false;
+
+  // set step active based on index
+  steps.value[index].active = true;
 };
 </script>
 
