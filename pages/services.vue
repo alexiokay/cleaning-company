@@ -1,7 +1,6 @@
 <template lang="pug">
 div(class="w-full h-screen flex flex-col items-center gap-y-4  ")
     div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12")
-        button(class="absolute left-4 bg-white px-4 py-2 rounded-xl shadow-md ") Personalize
         Searchbar(class="w-3/5 h-[5rem]")
     h1 Find best service provider
     Process(:steps='["Category", "2", "3", "4"]' )
