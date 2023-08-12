@@ -32,6 +32,11 @@ div(class="w-full min-h-screen flex flex-col items-center justify-start py-8  lg
                 p .
                 p  5 min read
 
+    h2(class="gray-600 text-7xl  text-start font-semibold text-[#22252f] w-full mt-9") Articles
+    div.blog__articles(class="flex flex-col lg:flex-row w-full lg:justify-start h-auto items-start justify-center gap-y-12 gap-x-[2.5rem]   ") 
+        BlogItem(v-for="article in articles" :key="article.uuid" :article="article" )
+            template(v-slot:image)
+                nuxt-img(:src="'https:' + article.content.image" width="300" h="200" class="w-full xl:h-[20rem]  xs:h-[13rem] h-[13rem] object-cover rounded-xl ")
     div.blog__latest(class="flex flex-col  w-full gap-y-12 mt-9")
         .flex.justify-between.items-center.w-full
             h2(class="gray-600 text-7xl  text-start font-semibold text-[#22252f]") Latest News
@@ -45,7 +50,7 @@ div(class="w-full min-h-screen flex flex-col items-center justify-start py-8  lg
                     p .
                     p 12 minutes ago
                 p.blog_latest__content__title(class="text-4xl font-semibold text-[#22252f]") tsast
-
+    
 </template>
 
 <script setup lang="ts">
@@ -53,6 +58,22 @@ import PaintEmoji from "~icons/noto/paintbrush";
 import BookEmoji from "~icons/noto/orange-book";
 import CinoEmoji from "~icons/noto/cinema";
 import BulbEmoji from "~icons/noto/light-bulb";
+
+defineProps({
+  blok: {
+    type: Object,
+    required: true,
+  },
+});
+const articles = ref(null);
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories", {
+  version: useRoute().query._storyblok ? "draft" : "published",
+  starts_with: "blog",
+  is_startpage: false,
+});
+articles.value = data.stories;
 </script>
 
 <style lang="scss"></style>

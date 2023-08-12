@@ -1,13 +1,13 @@
 <template lang="pug">
 div(class="relative w-full md:px-12 flex flex-col text-center gap-y-4 md:gap-y-10 py-4  pt-[2rem] ")
-    p(class="w-[10rem]  h-[3rem] rounded-full bg-[#Fcf2ec] text-[#F9782b] text-2xl items-center justify-center flex font-bold mx-auto") Our Blog
+    NuxtLink( to="/blog" class="w-[10rem]  h-[3rem] rounded-full bg-[#Fcf2ec] text-[#F9782b] text-2xl items-center justify-center flex font-bold mx-auto hover:cursor-pointer") Our Blog
     h2(class="text-black md:text-[4rem]  text-xl font-bold") Latest News & Articles
     
-    div(class="flex flex-col lg:flex-row w-full lg:justify-around h-auto items-start justify-center gap-y-12 gap-x-[2.5rem] 3xl:px-[19rem]  md:px-[4rem] px-[1rem] md:mt-[4rem] mt-[1rem]  ")
+    div(class="flex flex-col lg:flex-row w-full justify-start h-auto items-start  gap-y-12 gap-x-[2.5rem] 3xl:px-[19rem]  md:px-[4rem] px-[1rem] md:mt-[4rem] mt-[1rem]  ")
         
-        BlogItem(v-for="item in blogs"  :article="item" )
+        BlogItem(v-for="article in articles" :key="article.uuid" :article="article" )
             template(v-slot:image)
-                nuxt-img(:src="item.image" width="300" h="200" class="w-full xl:h-[20rem]  xs:h-[13rem] h-[13rem] object-cover rounded-xl ")
+                nuxt-img(:src="'https:' + article.content.image" width="300" h="200" class="w-full xl:h-[20rem]  xs:h-[13rem] h-[13rem] object-cover rounded-xl ")
 
                     
                 
@@ -21,42 +21,21 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-4 md:gap-y-1
 <script setup lang="ts">
 import ArrowIcon from "~icons/ph/arrow-right";
 
-const blogs = [
-  {
-    title:
-      "Complete tutorial to clean floors and carpets in your house or office",
-    description:
-      "Cleaning floors can be a tedious task, but it is necessary if you want to keep your home or office clean. There are many different types of flooring",
-    category: "home, office",
-    date: "02 Dec 2021",
-    image:
-      "https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg",
-    views: 32,
-    comments: 25,
+defineProps({
+  blok: {
+    type: Object,
+    required: true,
   },
-  {
-    title: "Let us clean your car inside ",
-    description:
-      "Cars are a big investment, and they need to be taken care of. we offer a variety of services to keep your car looking its best.  ",
-    category: "Car Cleaning",
-    date: "02 Dec 2021",
-    image:
-      "https://www.eurocarparts.com/blog/ecp-wp-content/uploads/2016/10/upholstery.jpg",
-    views: 32,
-    comments: 25,
-  },
-  {
-    title: "Best way to clean tour windows ",
-    description:
-      "Cleaning windows can be a tedious task, but it is necessary if you want to keep your home or office clean. There are many different types of flooring",
-    category: "home",
-    date: "02 Dec 2021",
-    image:
-      "https://www.everydaycheapskate.com/wp-content/uploads/45743850_s.jpg",
-    views: 32,
-    comments: 25,
-  },
-];
+});
+const articles = ref(null);
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories", {
+  version: useRoute().query._storyblok ? "draft" : "published",
+  starts_with: "blog",
+  is_startpage: false,
+});
+articles.value = data.stories.slice(0, 3);
 </script>
 
 <style lang="scss"></style>

@@ -12,10 +12,16 @@ div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5r
             div(class="flex flex-col")
                 NuxtLink(:class="route.name==='index'? 'text-[#124944]': 'text-[#7e7b74]'" class="nav-link" to="/"  ) Home
                 hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
-            NuxtLink(class="nav-link" to="/about") About Us
+            div(class="flex flex-col")
+                NuxtLink(class="nav-link" to="/about") About Us
+                hr(:class="route.name==='about'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
+
             NuxtLink(class="nav-link" to="/services") Services
             NuxtLink(class="nav-link" to="/pricing") Pricing
-            NuxtLink(class="nav-link" to="/blog") Blog
+            
+            div(class="flex flex-col")
+                NuxtLink(class="nav-link" to="/blog") Blog
+                    hr(:class="route.name==='blog'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
             NuxtLink(class="nav-link" to="/contact") Contact
             NuxtLink(class="nav-link" to="/careers") Careers
         button(class=" min-w-[18rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.1rem] font-semibold text-xl text-[#7e7b74] ml-12 hover:bg-[#Fef2e8] shadow-lg") Free Consultation
