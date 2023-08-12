@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-full h-screen flex flex-col items-center  ")
     div(class="w-full h-auto flex items-center justify-center bg-slate-100 py-12")
-       
+        Searchbar(class="w-3/5 h-[5rem]")
     h2(class="text-5xl mt-12") Categories
     div(class="w-3/5  h-auto py-12 flex ")
         

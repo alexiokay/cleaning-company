@@ -4,6 +4,7 @@ div.searchbar(class="shadow-md ")
         SearchIcon(class="w-12 h-12")
         input.searchbar__container__input__input(type="text" placeholder="Search" class="px-6 py-4 w-full h-full focus:outline-none")
         div(class="flex border-l-[1px] border-r-[1px] w-[25%] px-2 h-full items-center")
+            
             LocationsIcon(class="w-8 h-8")
             v-select(
                     v-model="vModel"
@@ -24,7 +25,7 @@ div.searchbar(class="shadow-md ")
 import SearchIcon from "~icons/tabler/search";
 import LocationsIcon from "~icons/carbon/location";
 
-import vSelect from "vue-select";
+import { VueSelect as vSelect } from "vue-select";
 import "vue-select/dist/vue-select.css";
 
 const vModel = ref("all country");
