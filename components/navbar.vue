@@ -44,15 +44,27 @@ div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5r
 
 div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-screen w-full justify-start text-5xl items-center text-white space-y-3 z-50 ")
     
-    div(class="flex flex-col")
-        NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-[#7e7b74]'" class="nav-link" to="/services"  ) Home
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='index'? 'text-yellow-400': 'text-white'" class="nav-link" to="/"  ) Home
         hr(:class="route.name==='index'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
-    NuxtLink(class="nav-link text-white" to="/about") About Us
-    NuxtLink(class="nav-link text-white" to="/services") Services
-    NuxtLink(class="nav-link text-white" to="/pricing") Pricing
-    NuxtLink(class="nav-link text-white" to="/blog") Blog
-    NuxtLink(class="nav-link text-white" to="/contact") Contact
-    NuxtLink(class="nav-link text-white " to="/careers") Careers
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='about'? 'text-yellow-400': 'text-white'" class="nav-link" to="/about"  ) About Us
+        hr(:class="route.name==='about'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='services'? 'text-yellow-400': 'text-white'" class="nav-link" to="/services"  ) Services
+        hr(:class="route.name==='services'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='pricing'? 'text-yellow-400': 'text-white'" class="nav-link" to="/pricing"  ) Pricing
+        hr(:class="route.name==='pricing'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='blog'? 'text-yellow-400': 'text-white'" class="nav-link" to="/blog"  ) Blog
+        hr(:class="route.name==='blog'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='contact'? 'text-yellow-400': 'text-white'" class="nav-link" to="/contact"  ) Contact
+        hr(:class="route.name==='contact'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='careers'? 'text-yellow-400': 'text-white'" class="nav-link" to="/careers"  ) Careers
+        hr(:class="route.name==='careers'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
     
 div#overlay(:class="isMobileMenu ? '' : 'hidden-overlay'" class="fixed  items-center   overlaying top-0 left-0 w-full h-screen bg-black opacity-100 z-40 " )
 div(class="fixed left-[1rem]  bottom-[1rem] rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white flex items-center justify-center z-50 md:hidden")
