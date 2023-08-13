@@ -25,7 +25,16 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
     ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
+    "nuxt-swiper",
   ],
+
+  swiper: {
+    // Swiper options
+    //----------------------
+    // prefix: 'Swiper',
+    // styleLang: 'css',
+    // modules: ['navigation', 'pagination'], // all modules are imported by default
+  },
 
   build: {
     transpile: ["@headlessui/vue"],
