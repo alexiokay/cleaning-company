@@ -48,8 +48,8 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                 ClientOnly
                     Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
                     p {{ contractor.rating }}
-                div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
-                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-full h-full aspect-square object-scale-down")
+                    div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
+                        nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-full h-full aspect-square object-scale-down")
 
             div(class="w-4/5 h-full flex flex-col gap-y-3")
                 p(class="text-3xl") {{contractor.title}}
@@ -116,17 +116,6 @@ const onStepClick = (index) => {
   swiper.slideTo(index);
 };
 
-const foundContractors = ref([
-  {
-    name: "carcleaningdokter",
-    rating: 5,
-    logo: "https://www.carcleaningdokter.nl/wp-content/uploads/2020/12/CCDr.-logo-wit-transparant-1.png",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    website: "https://www.carcleaningdokter.nl/",
-  },
-]);
-
 const steps = ref([
   {
     name: "general",
@@ -161,7 +150,6 @@ const total = ref(data.value.count);
 
 const pages = ref(Math.ceil(total.value / 10));
 
-console.log(contractors.value);
 console.log(total.value);
 
 // watch page and fetch new data
