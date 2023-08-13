@@ -48,7 +48,7 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
                 p !35178 W. Gray St.Utica,
                 p !Pensylvania 57888
          
-    div(class="px-2 md:px-[2rem] flex-col w-full py-[1rem] md:py-[2rem] bg-[#181818] flex justify-between text-start md:items-center text-base md:text-lg  text-[#a1a1a1] font-medium")
+    div(class="px-2 md:px-[2rem] flex-col md:flex-row w-full py-[1rem] md:py-[2rem] bg-[#181818] flex justify-between text-start md:items-center text-base md:text-lg  text-[#a1a1a1] font-medium")
         p(class="w-5/6") 2022 CreativePeoples . All Right reserved
         NuxtLink(to="/privacy" class="w-auto flex md:justify-end") Privacy policy 
         p(class="w-auto flex md:justify-end")  Cookie Policy

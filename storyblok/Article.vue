@@ -6,7 +6,7 @@ div(class="w-full h-auto flex flex-col items-center justify-center ")
         div(class="container mx-auto mb-12 text-6xl") {{ blok.title }}
         div(class="container mx-auto mb-12 text-3xl text-start leading-[2.9rem] w-4/5") {{ blok.description }}
         
-        div(v-html="resolvedRichText")
+        div(v-html="resolvedRichText" class="mb-12 text-3xl text-start leading-[2.9rem] w-4/5")
         div(class="container mx-auto mb-12") {{ blok.author }}
     
     hr(class="w-4/5 h-[2px] bg-slate-200 my-12")
