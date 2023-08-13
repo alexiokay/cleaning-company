@@ -42,8 +42,8 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
     div(class="w-full xl:px-[25%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full") We found 12 service providers for you
         Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
-        div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="contractor in contractors")
-            div(class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
+        div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in contractors")
+            div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-auto h-full gap-y-4 text-center")
                 ClientOnly
                     Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
