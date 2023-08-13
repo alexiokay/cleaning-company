@@ -25,6 +25,8 @@ div(class="relative flex flex-col lg:w-1/3 w-full space-y-4 md:space-y-8  lg:tex
 </template>
 
 <script setup lang="ts">
+import ArrowIcon from "~icons/ph/arrow-right";
+
 import CommentsIcon from "~icons/octicon/comment-24";
 import ViewsIcon from "~icons/carbon/view";
 

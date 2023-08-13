@@ -7,7 +7,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
     div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12")
         Searchbar(class="w-3/5 h-[5rem]")
     h1 Find best service provider
-    Process(:steps="steps" @slideTo="onStepClick")
+    LazyProcess(:steps="steps" @slideTo="onStepClick")
     
     Swiper(
         @slideChange="onSlideChange"
@@ -56,7 +56,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
                 button(class="w-full h-[3rem] bg-slate-100 rounded-xl text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
-            divc(class="w-1/5 flex flex-col gap-y-3")
+            div(class="w-1/5 flex flex-col gap-y-3")
                 div(class="w-full flex gap-x-6")
                     TimeslotIcon(class="w-8 h-8")
                     p :

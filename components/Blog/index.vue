@@ -13,9 +13,8 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-4 md:gap-y-1
                     
                 
     
-    buttonsButton(text="View All Posts" class="h-[5rem] w-[17rem] text-xl mx-auto mt-2 text-white")
-                template(v-slot:icon)
-                    ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
+    NuxtLink(to="/blog" class="h-[5rem] w-[17rem] text-xl mx-auto mt-2 text-black flex items-center bg-white border-[1px] px-4 rounded-xl shadow-sm justify-center ") View All Posts
+      ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
         
 </template>
 
@@ -25,7 +24,7 @@ import ArrowIcon from "~icons/ph/arrow-right";
 defineProps({
   blok: {
     type: Object,
-    required: true,
+    required: false,
   },
 });
 const articles = ref(null);

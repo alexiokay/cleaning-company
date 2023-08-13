@@ -6,7 +6,7 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
             p(class="text-[#7f7d7e] text-xl md:text-2xl") Enter your details to get business inspiration, trending solutions, and consulting tips delivered to your inbox
         div(class="flex  w-full first-letter:md:w-2/5 gap-y-6")
             input(class="w-full h-[4rem] md:h-[5rem]   border-[#7f7d7e] px-4 text-[#7f7d7e] placeholder-[#7f7d7e] text-xl focus:outline-none")
-            buton(class="w-2/6 items-center justify-center flex h-[4rem] md:h-[5rem]  px-2 bg-[#fad613] text-[#1e2424] text-xl md:text-2xl font-bold") Subscribe
+            button(class="w-2/6 items-center justify-center flex h-[4rem] md:h-[5rem]  px-2 bg-[#fad613] text-[#1e2424] text-xl md:text-2xl font-bold") Subscribe
         
     hr(class="w-full h-[2px] border-zinc-700")
     div(class="flex w-full flex-row flex-wrap lg:flex-nowrap gap-y-8 lg:gap-y-0 justify-between lg:justify-normal")
