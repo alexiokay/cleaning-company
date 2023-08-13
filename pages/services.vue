@@ -44,7 +44,8 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
         div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="contractor in foundContractors")
             div(class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-auto h-full gap-y-4 text-center")
-                Rating(class="w-full h-auto" :rated="contractor.rating")
+                ClientOnly
+                    Rating(class="w-full h-auto" :rated="contractor.rating")
                 div(class="bg-black w-[10rem] h-[10rem] px-4 rounded-full")
                     nuxt-img(:src="contractor.logo" format='webp' class="  w-full h-full aspect-square object-scale-down")
 

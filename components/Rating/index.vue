@@ -1,13 +1,12 @@
 <template lang="pug">
 div(class="flex flex-row w-auto h-auto gap-x-4 text-2xl items-center justify-center ")
-    ClientOnly
-      div(ref="root" class="w-full flex flex-row justify-center items-center")
-          RatingStar(type="empty" id=0   @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
-          RatingStar(type="empty" id=2  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
-          RatingStar(type="empty" id=4  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
-          RatingStar(type="empty" id=6  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
-          RatingStar(type="empty" id=8  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
-      
+    div(ref="root" class="w-full flex flex-row justify-center items-center")
+        RatingStar(type="empty" id=0   @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=2  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=4  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=6  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=8  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+    
     
     
     </template>
