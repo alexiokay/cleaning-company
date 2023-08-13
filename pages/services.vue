@@ -1,11 +1,11 @@
 <template lang="pug">
-div(class="w-full h-full flex flex-col items-center gap-y-4  ")
+div(class="w-full h-full flex flex-col items-center gap-y-4 ")
     div(v-show="isHintOpen" class="text-start px-6 py-4 bg-[#Fff6d9] w-full -mb-4 flex items-center gap-x-4")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
         CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer") 
-    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12")
-        Searchbar(class="w-3/5 h-[5rem]")
+    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12 px-4 md:px-0")
+        Searchbar(class="w-full  md:w-3/5 h-[5rem]")
     h1 Find best service provider
     LazyProcess(:steps="steps" @slideTo="onStepClick")
     
@@ -16,7 +16,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
         :loop="false"
         :effect="'creative'"
         :initialSlide="selectedSlide"
-        :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-3/5 swiper-container" v-if="isSwiperLoaded")
+        :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full md:w-3/5 swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
         SwiperSlide(v-for="step in steps" :key="step" class="w-full")
@@ -41,17 +41,22 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
         LoadingIcon(class="w-24 h-24 text-yellow-500 mb-[7rem]")
     div(class="w-full xl:px-[25%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full") We found 12 service providers for you
-        div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="contractor in foundContractors")
+        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
+        div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="contractor in contractors")
             div(class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-auto h-full gap-y-4 text-center")
                 ClientOnly
-                    Rating(class="w-full h-auto" :rated="contractor.rating")
-                div(class="bg-black w-[10rem] h-[10rem] px-4 rounded-full")
-                    nuxt-img(:src="contractor.logo" format='webp' class="  w-full h-full aspect-square object-scale-down")
+                    Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
+                    p {{ contractor.rating }}
+                div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
+                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-full h-full aspect-square object-scale-down")
 
             div(class="w-4/5 h-full flex flex-col gap-y-3")
-                p(class="text-3xl") {{contractor.name}}
+                p(class="text-3xl") {{contractor.title}}
                 p(class="text-lg") {{contractor.description}}
+                p(class="text-lg") {{contractor.phoneNumber}}
+                p(class="text-lg") {{contractor.email}}
+                p(class="text-lg") {{contractor.palceUrl}}
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
@@ -69,7 +74,11 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
                     LocationsIcon(class="w-8 h-8 ")
                     p :
                     CorrectIcon(class="w-8 h-8 text-green-600")
-  
+
+        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
+
+
+        
                 
 </template>
 
@@ -83,7 +92,14 @@ import NotFoundIcon from "~icons/zondicons/close-outline";
 import LocationsIcon from "~icons/carbon/location";
 import LoadingIcon from "~icons/eos-icons/loading";
 import WebsiteIcon from "~icons/feather/external-link";
+
 const isHintOpen = ref(true);
+const isSwiperLoaded = ref(false);
+
+function convertRatingToNormalizedScale(rating) {
+  const normalizedRating = parseFloat(rating.replace(",", ".")) * 2;
+  return Math.min(9, Math.floor(normalizedRating));
+}
 
 const onSlideChange = (swiper) => {
   steps.value.forEach((step, index) => {
@@ -138,7 +154,23 @@ const selectedSlide = computed(() => {
   return steps.value.findIndex((step) => step.active);
 });
 
-const isSwiperLoaded = ref(false);
+const page = ref(1);
+const data = ref(await getScrappedContractors(page.value));
+const contractors = ref(data.value.results);
+const total = ref(data.value.count);
+
+const pages = ref(Math.ceil(total.value / 10));
+
+console.log(contractors.value);
+console.log(total.value);
+
+// watch page and fetch new data
+watch(page, async (newPage) => {
+  data.value = await getScrappedContractors(newPage);
+  contractors.value = data.value.results;
+  total.value = data.value.count;
+  pages.value = Math.ceil(total.value / 10);
+});
 
 onMounted(() => {
   isSwiperLoaded.value = true;
