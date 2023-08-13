@@ -75,7 +75,9 @@ export default defineNuxtConfig({
             "Discover professional cleaning services for homes, offices, cars, and commercial spaces. Our experts provide comprehensive solutions, including house cleaning, office maintenance, and floor care. Enhance your surroundings with our trusted cleaning solutions. Contact us for a sparkling clean space!",
         },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/images/icon.ico" }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/images/favicon.ico" },
+      ],
     },
   },
 
