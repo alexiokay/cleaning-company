@@ -7,26 +7,38 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
     div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12")
         Searchbar(class="w-3/5 h-[5rem]")
     h1 Find best service provider
-    Process(:steps='["General", "Location", "Timing", "category"]' )
+    Process(:steps="steps" @slideTo="onStepClick")
+    
     Swiper(
-        :modules="[SwiperAutoplay]"
+        @slideChange="onSlideChange"
+        :modules="[]"
         :slides-per-view="1"
         :loop="false"
         :effect="'creative'"
-        :autoplay="{delay: 8000, disableOnInteraction: true,}"  class="w-3/5")
+        :initialSlide="selectedSlide"
+        :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-3/5 swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
-        
       
-        SwiperSlide(v-for="slide in 2" :key="slide" class="w-full")
-            strong {{ slide }}
-                div(class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
-                    
-                    div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2" v-for="i in 12")
-                        nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                        p(class="text-xl") Kitchen
-                    div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2")
-                        nuxt-img(src="icons/icon_33.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                        p(class="text-xl") Bathroom
+        SwiperSlide(v-for="step in steps" :key="step" class="w-full")
+            div(v-show="step.name === 'category'" class=" w-full h-[40rem] py-12 flex flex-wrap gap-y-4  mt-2")
+                
+                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2" v-for="i in 12")
+                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-xl") Kitchen
+                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2")
+                    nuxt-img(src="icons/icon_33.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-xl") Bathroom
+            div(v-show="step.name === 'timing'" class=" w-full h-[40rem] py-12 flex flex-wrap gap-y-4  mt-2")
+                
+                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2" v-for="i in 12")
+                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-xl") Kitchen
+                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2")
+                    nuxt-img(src="icons/icon_33.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-xl") Bathroom
+
+    div(v-else class=" w-3/5  flex h-[40rem]  gap-y-4 items-center justify-center")
+        LoadingIcon(class="w-24 h-24 text-yellow-500 mb-[7rem]")
     div(class="w-full xl:px-[25%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full") We found 12 service providers for you
         div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="contractor in foundContractors")
@@ -56,6 +68,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  ")
                     LocationsIcon(class="w-8 h-8 ")
                     p :
                     CorrectIcon(class="w-8 h-8 text-green-600")
+  
                 
 </template>
 
@@ -67,9 +80,24 @@ import ServiceIcon from "~icons/fluent-mdl2/repair";
 import CorrectIcon from "~icons/icon-park-twotone/correct";
 import NotFoundIcon from "~icons/zondicons/close-outline";
 import LocationsIcon from "~icons/carbon/location";
-
+import LoadingIcon from "~icons/eos-icons/loading";
 import WebsiteIcon from "~icons/feather/external-link";
 const isHintOpen = ref(true);
+
+const onSlideChange = (swiper) => {
+  steps.value.forEach((step, index) => {
+    if (index === swiper.activeIndex) {
+      step.active = true;
+    } else {
+      step.active = false;
+    }
+  });
+};
+
+const onStepClick = (index) => {
+  const swiper = document.querySelector(".swiper-container").swiper;
+  swiper.slideTo(index);
+};
 
 const foundContractors = ref([
   {
@@ -81,6 +109,39 @@ const foundContractors = ref([
     website: "https://www.carcleaningdokter.nl/",
   },
 ]);
+
+const steps = ref([
+  {
+    name: "general",
+    active: false,
+    done: true,
+  },
+  {
+    name: "location",
+    active: false,
+    done: false,
+  },
+  {
+    name: "timing",
+    active: false,
+    done: false,
+  },
+  {
+    name: "category",
+    active: true,
+    done: false,
+  },
+]);
+
+const selectedSlide = computed(() => {
+  return steps.value.findIndex((step) => step.active);
+});
+
+const isSwiperLoaded = ref(false);
+
+onMounted(() => {
+  isSwiperLoaded.value = true;
+});
 </script>
 
 <style lang="scss"></style>

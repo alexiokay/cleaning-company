@@ -2,7 +2,7 @@
 div#cart-process(class="flex h-auto w-full items-center justify-center sm:justify-between md:justify-center md:gap-x-16")
    
     div(class="flex h-full justify-center sm:w-auto w-auto relative")
-        div(v-for="(val, index, key) in steps" class="w-[5rem] sm:w-[8rem] relative md:w-[9.5rem] h-[5rem]  flex flex-col justify-between items-center ")
+        div(v-for="(val, index, key) in steps" class="select-none w-[5rem] sm:w-[8rem] relative md:w-[9.5rem] h-[5rem]  flex flex-col justify-between items-center ")
             button(@click="goToStep(index)" class="w-10 h-10 rounded-full items-center justify-center flex border-[1px]" :class="{ 'bg-white  border-gray-400': val.done === true && val.active === false, 'bg-black text-white': val.active === true, 'border-gray-400': val.active === true && val.done === true }" )
                 p(v-if="!val.done") {{ index+1 }}
                 IconDone(v-if="val.done === true")
@@ -18,42 +18,22 @@ div#cart-process(class="flex h-auto w-full items-center justify-center sm:justif
 import IconDone from "~icons/material-symbols/done-rounded";
 
 const route = useRoute();
-const props = defineProps<{ steps: string[] }>();
-
-const steps = ref([
-  {
-    name: "general",
-    active: false,
-    done: true,
-  },
-  {
-    name: "location",
-    active: false,
-    done: false,
-  },
-  {
-    name: "timing",
-    active: false,
-    done: false,
-  },
-  {
-    name: "category",
-    active: true,
-    done: false,
-  },
-]);
+const props = defineProps<{ steps: Object[] }>();
 
 const currentStep = computed(() => {
   // find current step and return its index from steps array
-  return steps.value.findIndex((step) => step.active === true);
+  return props.steps.findIndex((step) => step.active === true);
 });
-const router = useRouter();
+
+const emit = defineEmits(["slideTo"]);
+
 const goToStep = (index: number) => {
   // set active step inactivated
-  steps.value[currentStep.value].active = false;
+  props.steps[currentStep.value].active = false;
 
   // set step active based on index
-  steps.value[index].active = true;
+  props.steps[index].active = true;
+  emit("slideTo", index);
 };
 </script>
 
