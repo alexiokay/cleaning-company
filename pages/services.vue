@@ -75,7 +75,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                     p :
                     CorrectIcon(class="w-8 h-8 text-green-600")
         
-        Pagination2(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
+        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
         p {{ page }}
 
 
