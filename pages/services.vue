@@ -173,8 +173,31 @@ const getScrappedContractors2 = async (page = 1, pageSize = 10) => {
   return await contractors;
 };
 
+const getScrappedContractorsFetch = async (page = 1, pageSize = 10) => {
+  const config = useRuntimeConfig();
+
+  console.log;
+  const options = {
+    method: "GET",
+    headers: {
+      Host: `${config.public.FETCH_HOST}`,
+    },
+  } as any;
+
+  const contractors = await fetch(
+    `${config.public.API_URL}api/v1/contractors-scrapped/?page=${page}&page_size=${pageSize}`,
+    options
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    });
+
+  return await contractors;
+};
+
 const page = ref(1);
-const data = ref(await getScrappedContractors2(page.value));
+const data = ref(await getScrappedContractorsFetch(page.value));
 const contractors = ref(data.value.results);
 const total = ref(data.value.count);
 
@@ -184,7 +207,7 @@ console.log(total.value);
 
 // watch page and fetch new data
 watch(page, async (newPage) => {
-  data.value = await getScrappedContractors2(newPage);
+  data.value = await getScrappedContractorsFetch(newPage);
   contractors.value = data.value.results;
   total.value = data.value.count;
   pages.value = Math.ceil(total.value / 10);
