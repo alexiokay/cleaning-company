@@ -143,8 +143,38 @@ const selectedSlide = computed(() => {
   return steps.value.findIndex((step) => step.active);
 });
 
+const getScrappedContractors2 = async (page = 1, pageSize = 10) => {
+  const config = useRuntimeConfig();
+
+  console.log;
+  const options = {
+    method: "GET",
+    headers: {
+      Host: `${config.public.FETCH_HOST}`,
+    },
+  } as any;
+
+  const contractors = await useFetch(
+    `${config.public.API_URL}api/v1/contractors-scrapped/?page=${page}&page_size=${pageSize}`,
+    options
+  ).then((res) => {
+    const data: any = res.data.value;
+    const error = res.error.value;
+
+    if (error) {
+      // Handle error
+      console.log(error);
+      return [];
+    } else {
+      return data;
+    }
+  });
+
+  return await contractors;
+};
+
 const page = ref(1);
-const data = ref(await getScrappedContractors(page.value));
+const data = ref(await getScrappedContractors2(page.value));
 const contractors = ref(data.value.results);
 const total = ref(data.value.count);
 
