@@ -75,7 +75,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                     p :
                     CorrectIcon(class="w-8 h-8 text-green-600")
         
-        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4") s
+        Pagination2(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
         p {{ page }}
 
 
@@ -198,7 +198,7 @@ const getScrappedContractorsFetch = async (page = 1, pageSize = 10) => {
 };
 
 const page = ref(1);
-const data = ref(await getScrappedContractorsFetch(page.value));
+const data = ref(await getScrappedContractorsTest(page.value));
 const contractors = ref(data.value.results);
 const total = ref(data.value.count);
 
@@ -208,7 +208,7 @@ console.log(total.value);
 
 // watch page and fetch new data
 watch(page, async (newPage) => {
-  data.value = await getScrappedContractorsFetch(newPage);
+  data.value = await getScrappedContractorsTest(newPage);
   contractors.value = data.value.results;
   total.value = data.value.count;
   pages.value = Math.ceil(total.value / 10);
