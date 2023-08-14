@@ -93,16 +93,16 @@ import NotFoundIcon from "~icons/zondicons/close-outline";
 import LocationsIcon from "~icons/carbon/location";
 import LoadingIcon from "~icons/eos-icons/loading";
 import WebsiteIcon from "~icons/feather/external-link";
-
+import type { Swiper } from "swiper";
 const isHintOpen = ref(true);
 const isSwiperLoaded = ref(false);
 
-function convertRatingToNormalizedScale(rating) {
+function convertRatingToNormalizedScale(rating: string) {
   const normalizedRating = parseFloat(rating.replace(",", ".")) * 2;
   return Math.min(9, Math.floor(normalizedRating));
 }
 
-const onSlideChange = (swiper) => {
+const onSlideChange = (swiper: Swiper) => {
   steps.value.forEach((step, index) => {
     if (index === swiper.activeIndex) {
       step.active = true;
@@ -198,7 +198,21 @@ const getScrappedContractorsFetch = async (page = 1, pageSize = 10) => {
 };
 
 const page = ref(1);
-const data = ref(await getScrappedContractors(page.value));
+const data = ref(await getScrappedContractorsFetch(page.value));
+const contractors = ref(data.value.results);
+const total = ref(data.value.count);
+
+const pages = ref(Math.ceil(total.value / 10));
+
+console.log(total.value);
+
+// watch page and fetch new data
+watch(page, async (newPage) => {
+  data.value = await getScrappedContractorsFetch(newPage);
+  contractors.value = data.value.results;
+  total.value = data.value.count;
+  pages.value = Math.ceil(total.value / 10);
+});
 
 onMounted(() => {
   isSwiperLoaded.value = true;
