@@ -198,21 +198,7 @@ const getScrappedContractorsFetch = async (page = 1, pageSize = 10) => {
 };
 
 const page = ref(1);
-const data = ref(await getScrappedContractorsFetch(page.value));
-const contractors = ref(data.value.results);
-const total = ref(data.value.count);
-
-const pages = ref(Math.ceil(total.value / 10));
-
-console.log(total.value);
-
-// watch page and fetch new data
-watch(page, async (newPage) => {
-  data.value = await getScrappedContractorsFetch(newPage);
-  contractors.value = data.value.results;
-  total.value = data.value.count;
-  pages.value = Math.ceil(total.value / 10);
-});
+const data = ref(await getScrappedContractors(page.value));
 
 onMounted(() => {
   isSwiperLoaded.value = true;
