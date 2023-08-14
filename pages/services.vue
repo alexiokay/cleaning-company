@@ -74,9 +74,9 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                     LocationsIcon(class="w-8 h-8 ")
                     p :
                     CorrectIcon(class="w-8 h-8 text-green-600")
-
-        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
-        p {{ page }}
+        ClientOnly
+            Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
+ 
 
 
         
