@@ -184,7 +184,7 @@ console.log(total.value);
 
 // watch page and fetch new data
 watch(page, async (newPage) => {
-  data.value = await getScrappedContractors(newPage);
+  data.value = await getScrappedContractors2(newPage);
   contractors.value = data.value.results;
   total.value = data.value.count;
   pages.value = Math.ceil(total.value / 10);
