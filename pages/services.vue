@@ -22,7 +22,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         SwiperSlide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
             div(v-show="step.name === 'category'" class=" w-full h-auto  py-4 md:py-12 flex flex-wrap gap-y-4  mt-2")
                 
-                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
+                div.services__category(class=" flex flex-col items-center w-1/3 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
                     nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover   aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
                     p(class="text-lg md:text-xl") Kitchen
                 
