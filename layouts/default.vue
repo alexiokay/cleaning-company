@@ -3,8 +3,7 @@ script
 div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
     div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
     CookieBanner(v-if="!cookiesStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
-    div#feedback(class="fixed rotate-90 -left-8 top-[44vh] px-4  z-50 text-white  w-auto h-8 bg-red-500 rounded-t-md  text-sm items-center justify-center flex  hover:cursor-pointer") 
-      p(class="rotate-[180deg]") Feedback
+
 
     Chat(class="fixed bottom-[1rem] right-[1rem] z-40")      
     
