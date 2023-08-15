@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-8  lg:px-[10%] bg-white  gap-y-8 md:gap-y-12")
 
-    div#blog__header(class="w-full flex flex-col h-auto py-12 lg:px-24  text-xl lg:text-3xl xl:text-4xl font-semibold   rounded-3xl bg-[#F5f5f5] items-center justify-center")
+    div#blog__header(class="w-full flex flex-col h-auto py-4 md:py-12 lg:px-24  text-xl lg:text-3xl xl:text-4xl font-semibold   rounded-3xl bg-[#F5f5f5] items-center justify-center")
         p(class="tracking-[0.4rem] text-[#55585f] text-lg 2xl:text-xl font-bold ") WELCOME TO OUR BLOG
         p(class="flex gap-x-2 mt-6 flex-wrap") Craft narratives
             PaintEmoji
