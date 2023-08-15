@@ -4,9 +4,8 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
         CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer") 
-    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0")
-        Searchbar(class="w-full  md:w-3/5 h-[5rem]")
-    h1 Find best service provider
+    
+    h1(class="mt-4") Find best service provider
     LazyProcess(:steps="steps" @slideTo="onStepClick")
     
     Swiper(
@@ -35,10 +34,12 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
 
     div(v-else class=" w-3/5  flex h-[40rem]  gap-y-4 items-center justify-center")
         LoadingIcon(class="w-24 h-24 text-yellow-500 mb-[7rem]")
+    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0 -mb-4")
+        Searchbar(class="w-full  md:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear")
     div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full text-center") We found {{ total }} service providers for you
         Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
-        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex flex-wrap md:flex-nowrap bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in contractors")
+        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex flex-wrap md:flex-nowrap bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in filteredContractors")
             div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-[calc(36%-1.5rem)] md:w-auto h-full gap-y-4 text-center")
                 ClientOnly
@@ -50,10 +51,14 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
             div(class="w-[calc(64%-1.5rem)] md:w-full h-full flex flex-col gap-y-3")
                 p(class="text-xl lg:text-3xl") {{contractor.title}}
                 p(class="text-lg") {{contractor.description}}
-                div(class="flex gap-x-4")
-                    p(class="text-lg blur-sm") {{contractor.phoneNumber}}
-                    button(class=" px-2 py-1 border-[1px] drop-shadow-md rounded-full") show phone number
-                p(class="text-lg") {{contractor.email}}
+                div(class="flex gap-x-4 items-center")
+                    PhoneIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
+                    p(:class="{'blur-sm': contractor.isPhoneNumberHidden }" class="text-lg ") {{contractor.phoneNumber}}
+                    
+                    button(@click="contractor.isPhoneNumberHidden = !contractor.isPhoneNumberHidden" class=" px-2 py-1 border-[1px] drop-shadow-md rounded-full") show phone number
+                div(class="flex gap-x-4 items-center")
+                    EmailIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
+                    p(class="text-lg") {{contractor.email}}
                 p(class="text-lg") {{contractor.palceUrl}}
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
@@ -91,6 +96,9 @@ import NotFoundIcon from "~icons/zondicons/close-outline";
 import LocationsIcon from "~icons/carbon/location";
 import LoadingIcon from "~icons/eos-icons/loading";
 import WebsiteIcon from "~icons/feather/external-link";
+import PhoneIcon from "~icons/carbon/phone-voice";
+import EmailIcon from "~icons/entypo/email";
+
 import type { Swiper } from "swiper";
 const isHintOpen = ref(true);
 const isSwiperLoaded = ref(false);
@@ -99,6 +107,27 @@ function convertRatingToNormalizedScale(rating: string) {
   const normalizedRating = parseFloat(rating.replace(",", ".")) * 2;
   return Math.min(9, Math.floor(normalizedRating));
 }
+
+const searchQuery = ref("");
+
+const onSearch = (value) => {
+  console.log("searching: " + value);
+  searchQuery.value = value;
+};
+
+const filteredContractors = computed(() => {
+  console.log(searchQuery.value);
+  if (searchQuery.value === "") {
+    return contractors.value;
+  }
+  return contractors.value.filter((contractor) =>
+    contractor.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
+
+const onClear = () => {
+  searchQuery.value = "";
+};
 
 const onSlideChange = (swiper: Swiper) => {
   steps.value.forEach((step, index) => {
