@@ -3,19 +3,18 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
 
     div#blog__header(class="w-full flex flex-col h-auto py-4 md:py-12 lg:px-24  text-xl lg:text-3xl xl:text-4xl font-semibold   rounded-3xl bg-[#F5f5f5] items-center justify-center")
         p(class="tracking-[0.4rem] text-[#55585f] text-lg 2xl:text-xl font-bold ") WELCOME TO OUR BLOG
-        p(class="flex gap-x-2 mt-6 flex-wrap") Craft narratives
+        p(class="flex gap-x-2 mt-6 flex-wrap items-center justify-center") Craft narratives
             PaintEmoji
             | that ignite 
             span(class="text-red-600") inspiration 
             BulbEmoji
             |,
-
-        p.flex.gap-x-2.flex-wrap
-            span(class="text-red-600 ") knowledge
+            span(class="text-red-600 items-center justify-center ") knowledge
             BookEmoji
-            |  , and 
-            spam(class="text-red-600") entertainment
+            span(class="text-red-600") entertainment
             CinoEmoji
+
+        
 
     div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[4rem] h-auto text-[#51535b]")
         nuxt-img(format="webp" class="rounded-xl w-full md:w-2/5" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
