@@ -4,7 +4,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
         CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer") 
-    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-12 px-4 md:px-0")
+    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0")
         Searchbar(class="w-full  md:w-3/5 h-[5rem]")
     h1 Find best service provider
     LazyProcess(:steps="steps" @slideTo="onStepClick")
@@ -19,40 +19,36 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full md:w-3/5 swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="step in steps" :key="step" class="w-full")
-            div(v-show="step.name === 'category'" class=" w-full h-[40rem] py-12 flex flex-wrap gap-y-4  mt-2")
+        SwiperSlide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
+            div(v-show="step.name === 'category'" class=" w-full h-auto  py-4 md:py-12 flex flex-wrap gap-y-4  mt-2")
                 
-                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2" v-for="i in 12")
-                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-xl") Kitchen
-                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2")
-                    nuxt-img(src="icons/icon_33.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-xl") Bathroom
-            div(v-show="step.name === 'timing'" class=" w-full h-[40rem] py-12 flex flex-wrap gap-y-4  mt-2")
+                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
+                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover   aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-lg md:text-xl") Kitchen
                 
-                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2" v-for="i in 12")
-                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-xl") Kitchen
-                div.services__category(class=" flex flex-col items-center w-1/6 font-semibold gap-y-2")
-                    nuxt-img(src="icons/icon_33.png" width="500" height="500" class="object-cover  aspect-square w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-xl") Bathroom
+            div(v-show="step.name === 'timing'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
+                
+                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
+                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-lg md:text-xl") Kitchen
+                
 
     div(v-else class=" w-3/5  flex h-[40rem]  gap-y-4 items-center justify-center")
         LoadingIcon(class="w-24 h-24 text-yellow-500 mb-[7rem]")
-    div(class="w-full xl:px-[25%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
-        p(class="text-4xl font-flamabook w-full") We found 12 service providers for you
-        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
-        div(class="w-full relative h-[20rem] flex bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in contractors")
+    div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
+        p(class="text-4xl font-flamabook w-full text-center") We found {{ total }} service providers for you
+        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
+        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex flex-wrap md:flex-nowrap bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in contractors")
             div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
-            div(class="flex flex-col w-auto h-full gap-y-4 text-center")
+            div(class="flex flex-col w-[calc(36%-1.5rem)] md:w-auto h-full gap-y-4 text-center")
                 ClientOnly
                     Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
                     p {{ contractor.rating }}
                 div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
-                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-full h-full aspect-square object-scale-down")
+                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-[6rem] md:w-full md:h-full aspect-square object-scale-down")
 
-            div(class="w-4/5 h-full flex flex-col gap-y-3")
-                p(class="text-3xl") {{contractor.title}}
+            div(class="w-[calc(64%-1.5rem)] md:w-full h-full flex flex-col gap-y-3")
+                p(class="text-xl lg:text-3xl") {{contractor.title}}
                 p(class="text-lg") {{contractor.description}}
                 p(class="text-lg") {{contractor.phoneNumber}}
                 p(class="text-lg") {{contractor.email}}
@@ -60,20 +56,20 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
-                button(class="w-full h-[3rem] bg-slate-100 rounded-xl text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
-            div(class="w-1/5 flex flex-col gap-y-3")
-                div(class="w-full flex gap-x-6")
-                    TimeslotIcon(class="w-8 h-8")
+                button(class="w-full h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
+            div(class="w-full md:w-1/5 flex md:flex-col gap-y-3 gap-x-8 md:gap-x-0")
+                div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
+                    TimeslotIcon(class="w-6 md:w-8 h-8")
                     p :
-                    CorrectIcon(class="w-8 h-8 text-green-600")
-                div(class="w-full flex gap-x-6")
-                    ServiceIcon(class="w-8 h-8 ")
+                    CorrectIcon(class="w-6 md:w-8 h-8 text-green-600")
+                div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
+                    ServiceIcon(class="w-6 md:w-8 h-8 ")
                     p :
-                    NotFoundIcon(class="w-8 h-8 text-red-600")
-                div(class="w-full flex gap-x-6")
-                    LocationsIcon(class="w-8 h-8 ")
+                    NotFoundIcon(class="w-6 md:w-8 h-8 text-red-600")
+                div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
+                    LocationsIcon(class="w-6 md:w-8 h-8 ")
                     p :
-                    CorrectIcon(class="w-8 h-8 text-green-600")
+                    CorrectIcon(class="w-6 md:w-8 h-8 text-green-600")
         
         Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
        
@@ -112,8 +108,9 @@ const onSlideChange = (swiper: Swiper) => {
   });
 };
 
-const onStepClick = (index) => {
-  const swiper = document.querySelector(".swiper-container").swiper;
+const onStepClick = (index: any) => {
+  const swiperContainer = document.querySelector(".swiper-container");
+  const swiper = swiperContainer.swiper as Swiper;
   swiper.slideTo(index);
 };
 
