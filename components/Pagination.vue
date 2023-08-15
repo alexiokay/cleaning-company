@@ -4,10 +4,10 @@ nav.pagination(aria-label="")
         li.mr-4(@click="$emit('change', 1)")
             a(class="relative block rounded bg-white shadow-sm  px-3 py-1.5 text-lg text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#!")
                 | First
-        li(@click="$emit('change', page |+ 2)" v-if="page -1 <pages && page -1 > pages-2")
+        li(@click="$emit('change', page |+ 2)" v-if="page -1 <pages && page -1 == pages-2")
             a(class="relative block rounded bg-transparent px-3 py-1.5 text-lg text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white", href="#!")
                 | {{page-2}}
-        li(v-if="page -1 === 0 === false" @click="$emit('change', page - 1)" rel="prev")
+        li(v-if="page -1 === 0 === false " @click="$emit('change', page - 1)" rel="prev")
             a(class="relative block rounded bg-transparent px-3 py-1.5 text-lg text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white", href="#!")
                 | {{page-1}}
         li(aria-current="page")

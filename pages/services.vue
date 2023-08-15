@@ -37,8 +37,8 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
     div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0 -mb-4")
         Searchbar(class="w-full  md:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear")
     div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
-        p(class="text-4xl font-flamabook w-full text-center") We found {{ total }} service providers for you
-        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
+        p(class="text-4xl font-flamabook w-full text-center") We found {{ found }} service providers for you
+        Pagination(:pages="searchQuery !== ''? 1: pages"  :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
         div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex flex-wrap md:flex-nowrap bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in filteredContractors")
             div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-[calc(36%-1.5rem)] md:w-auto h-full gap-y-4 text-center")
@@ -59,6 +59,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                 div(class="flex gap-x-4 items-center")
                     EmailIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
                     p(class="text-lg") {{contractor.email}}
+                
                 p(class="text-lg") {{contractor.palceUrl}}
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
@@ -78,7 +79,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                     p :
                     CorrectIcon(class="w-6 md:w-8 h-8 text-green-600")
         
-        Pagination(:pages="pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
+        Pagination(:pages="searchQuery !== ''? 1: pages" :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4")
        
 
 
@@ -110,19 +111,34 @@ function convertRatingToNormalizedScale(rating: string) {
 
 const searchQuery = ref("");
 
-const onSearch = (value) => {
+const onSearch = async (value) => {
   console.log("searching: " + value);
   searchQuery.value = value;
-};
 
+  if (searchQuery.value === "") {
+    data.value = await getScrappedContractorsFetch(page.value);
+  } else {
+    data.value = await getScrappedContractorsFetch(page.value, total.value);
+  }
+
+  contractors.value = data.value.results;
+  total.value = data.value.count;
+  pages.value = Math.ceil(total.value / 10);
+};
 const filteredContractors = computed(() => {
   console.log(searchQuery.value);
   if (searchQuery.value === "") {
     return contractors.value;
   }
-  return contractors.value.filter((contractor) =>
-    contractor.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+
+  const _filteredContractors = contractors.value.filter((contractor) =>
+    contractor.title.toLowerCase().startsWith(searchQuery.value.toLowerCase())
   );
+
+  found.value =
+    searchQuery.value !== "" ? _filteredContractors.length : total.value;
+
+  return _filteredContractors;
 });
 
 const onClear = () => {
@@ -229,7 +245,9 @@ const page = ref(1);
 const data = ref(await getScrappedContractorsFetch(page.value));
 const contractors = ref(data.value.results);
 const total = ref(data.value.count);
-
+const found = ref(
+  searchQuery.value !== "" ? filteredContractors.value.length : total.value
+);
 const pages = ref(Math.ceil(total.value / 10));
 
 console.log(total.value);
@@ -239,6 +257,7 @@ watch(page, async (newPage) => {
   data.value = await getScrappedContractorsFetch(newPage);
   contractors.value = data.value.results;
   total.value = data.value.count;
+
   pages.value = Math.ceil(total.value / 10);
 });
 
