@@ -118,6 +118,7 @@ const onSearch = async (value) => {
   if (searchQuery.value === "") {
     data.value = await getScrappedContractorsFetch(page.value);
   } else {
+    page.value = 1;
     data.value = await getScrappedContractorsFetch(page.value, total.value);
   }
 
