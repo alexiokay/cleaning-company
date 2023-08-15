@@ -25,7 +25,7 @@ div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5r
                     hr(:class="route.name==='pricing'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
 
             div(class="flex flex-col")
-                NuxtLink(class="nav-link" to="/") Shopping
+                NuxtLink(class="nav-link" to="https://123schoon.nl") Shopping
                     hr(:class="route.name==='shopping'? 'visible': 'hidden'" class="w-3/4 border-[#124944] border-[0.1rem] mt-1")
             
             div(class="flex flex-col")
@@ -56,6 +56,10 @@ div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-s
     div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
         NuxtLink(:class="route.name==='pricing'? 'text-yellow-400': 'text-white'" class="nav-link" to="/pricing"  ) Pricing
         hr(:class="route.name==='pricing'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+    div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
+        NuxtLink(:class="route.name==='/shopping'? 'text-yellow-400': 'text-white'" class="nav-link" to="https://123schoon.nl"  ) Shopping
+        hr(:class="route.name==='shopping'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
+            
     div(@click="isMobileMenu = !isMobileMenu" class="flex flex-col")
         NuxtLink(:class="route.name==='blog'? 'text-yellow-400': 'text-white'" class="nav-link" to="/blog"  ) Blog
         hr(:class="route.name==='blog'? 'visible': 'hidden'" class="w-3/4 border-yellow-400 border-1 md:border-[0.1rem] mt-1")
