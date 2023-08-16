@@ -8,9 +8,9 @@ div
             <!-- Modal content -->
             div.glow(class="absolute z-10 inset-4 bg-gradient-to-r from-red-600 to-[#3ed35a] rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200")
             div(class=" text-black z-20 rounded-lg shadow dark:bg-gray-700 h-auto w-full sm:w-[25rem] md:w-[33rem] px-6 py-4 flex flex-col bg-white gap-y-3 drop-shadow-glow")
-
+ 
                 p(class=" text-xl md:text-2xl xl:text-3xl font-extrabold") WE VALUE YOUR PRIVACY
-                p(class="text-xs sm:text-[0.6rem] md:text-sm  xl:text-base text-[#B1b0b4] font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
+                p(class="text-xs sm:text-[0.6rem] md:text-sm  xl:text-base text-[#B1b0b4] font-roboto  font-bold" font-display: swap) WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
                 div(class="flex flex-col-reverse sm:flex-row w-full gap-y-2 gap-x-2 justify-between text-xs md:text-sm xl:text-base font-bold")
                     button(@click="customize= true" class=" px-5 py-2 w-full border-[#3ed35a] border-2 hover:border-[#35b14c]  hover:bg-[rgba(0,0,0,0.1)]  ") CUSTOMIZE 
                     button(@click="rejectAllCookies(cookiesStore)" class=" px-5 w-full py-2 border-[#3ed35a] border-2 hover:border-[#35b14c] hover:bg-[rgba(0,0,0,0.1)] ") REJECT ALL
@@ -33,9 +33,9 @@ div
                     <!-- Modal body -->
                     <div class="p-6 gap-y-3 flex flex-col overflow-y-scroll h-full sm:h-full w-[100vw] sm:w-[39rem] md:w-[53rem]  tracking-tight leading-4">
                         div(class="flex flex-col text-[0.6rem] md:text-xs")
-                            p(class=" text-black font-roboto font-bold") WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
+                            p(class=" text-black font-roboto font-bold" font-display: swap) WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
                             <!-- body description -->
-                            p(class=" text-black font-roboto font-bold") THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
+                            p(class=" text-black font-roboto font-bold" font-display: swap) THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
                                 p(v-show="isShowMore") WE ALSO USE THIRD-PARTY COOKIES THAT HELP US ANALYZE HOW YOU USE THIS WEBSITE, STORE YOUR PREFERENCES, AND PROVIDE THE CONTENT AND ADVERTISEMENTS THAT ARE RELEVANT TO YOU. THESE COOKIES WILL ONLY BE STORED IN YOUR BROWSER WITH YOUR PRIOR CONSENT. YOU CAN CHOOSE TO ENABLE OR DISABLE SOME OR ALL OF THESE COOKIES BUT DISABLING SOME OF THEM MAY AFFECT YOUR BROWSING EXPERIENCE.
 
                                 p(v-if="!isShowMore" class="text-xs font-bold my-2") ... 
