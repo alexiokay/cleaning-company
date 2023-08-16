@@ -35,7 +35,7 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
     div.blog__articles(class="flex flex-col lg:flex-row w-full lg:justify-start h-auto items-start justify-center gap-y-12 gap-x-[2.5rem]   ") 
         BlogItem(v-for="article in articles" :key="article.uuid" :article="article" )
             template(v-slot:image)
-                nuxt-img(:src="'https:' + article.content.image" width="300" h="200" class="w-full h-full object-cover rounded-xl ")
+                nuxt-img(:src="'https:' + article.content.image" format="webp" width="300" h="200" class="w-full h-full object-cover rounded-xl ")
     div.blog__latest(class="flex flex-col  w-full gap-y-12 mt-9")
         .flex.justify-between.items-center.w-full
             h2(class="gray-600 text-4xl md:text-7xl  text-start font-semibold text-[#22252f]") Latest News

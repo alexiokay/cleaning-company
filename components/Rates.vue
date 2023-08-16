@@ -4,7 +4,7 @@ div(class="relative w-full md:px-12 flex flex-col text-center space-y-12 py-4 ")
     div(class="flex flex-col lg:flex-row w-full lg:justify-around h-auto items-center justify-center gap-y-12 gap-x-[6%] px-10 lg:px-[8rem] ")
         
         div(class="flex flex-col lg:w-1/3 w-3/4 space-y-10 text-[#02374b] lg:text-start items-center lg:items-start bg-white shadow-md rounded-xl p-[4rem]")
-            nuxt-img(src="icons/car_services.png" width="100" h="30")
+            nuxt-img(src="icons/car_services.png" width="100" h="30" format="webp")
             h3(class="font-bold text-4xl") Automotive Rates
             table.table-auto(class="w-full")
                 thread
@@ -34,7 +34,7 @@ div(class="relative w-full md:px-12 flex flex-col text-center space-y-12 py-4 ")
                 template(v-slot:icon)
                     PhoneIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
         div(class="flex flex-col lg:w-1/3 w-3/4 space-y-10 text-[#02374b]  lg:text-start items-center lg:items-start bg-white shadow-md rounded-xl p-[4rem]")
-            nuxt-img(src="icons/commercial_services.png" width="100" h="30")
+            nuxt-img(src="icons/commercial_services.png" width="100" h="30" format="webp")
             h3(class="font-bold text-4xl") Commercial Rates
             table.table-auto(class="w-full")
                 thread
@@ -62,7 +62,7 @@ div(class="relative w-full md:px-12 flex flex-col text-center space-y-12 py-4 ")
                 template(v-slot:icon)
                     PhoneIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
         div(class="flex flex-col lg:w-1/3 w-3/4 space-y-10 text-[#02374b]  lg:text-start items-center lg:items-start bg-white shadow-md rounded-xl p-[4rem]")
-            nuxt-img(src="icons/residental_services.png" width="100" h="30")
+            nuxt-img(src="icons/residental_services.png" width="100" h="30" format="webp")
             h3(class="font-bold text-4xl") Residential Rates
             table.table-auto(class="w-full")
                 thread
