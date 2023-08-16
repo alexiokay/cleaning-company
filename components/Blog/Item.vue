@@ -1,5 +1,6 @@
 <template lang="pug">
 div(class="relative flex flex-col lg:w-1/3 w-full space-y-4 md:space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-xl mt-6 md:mt-0")
+    
     NuxtLink( :to="'/blog/' + article.slug" class="w-full xl:h-[20rem]  xs:h-[13rem] h-[18rem] ") 
         slot(name="image")
     
@@ -17,11 +18,12 @@ div(class="relative flex flex-col lg:w-1/3 w-full space-y-4 md:space-y-8  lg:tex
     div(class=" gap-y-4 w-full flex flex-col  ")
         NuxtLink(class="font-bold text-xl md:text-3xl w-full  hover:cursor-pointer" :to="/blog/ + article.slug") 
             h5 {{ article.content.title }}
-
+    
         p(class='text-xl md:text-2xl  text-[#7f7d7e] text-start line-clamp-5') {{ article.content.description }}
 
     NuxtLink(:to="'/blog/' + article.slug" class='text-[#214e49] text-xl md:text-2xl font-bold flex mt-4 mr-auto md:mr-0') Read More
         ArrowIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
+    
 </template>
 
 <script setup lang="ts">

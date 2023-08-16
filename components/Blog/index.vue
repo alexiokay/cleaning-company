@@ -8,9 +8,9 @@ div(class="relative w-full md:px-12 flex flex-col text-center gap-y-4 md:gap-y-1
         BlogItem(v-for="article in articles" :key="article.uuid" :article="article" )
             template(v-slot:image)
               
-                nuxt-img(:src="'https:' + article.content.image" format="webp" width="400" height="300" class="w-full h-full xs:h-[13rem]  object-cover rounded-xl hover:cursor-pointer ")
+                nuxt-img(:src="'https:' + article.content.image"  provider="storyblok"  format="webp" width="400" height="300" class="w-full h-full xs:h-[13rem]  object-cover rounded-xl hover:cursor-pointer ")
 
-                    
+                  
                 
     
     NuxtLink(to="/blog" class="h-[5rem] w-[17rem] text-xl mx-auto mt-2 text-black flex items-center bg-white border-[1px] px-4 rounded-xl shadow-sm justify-center ") View All Posts

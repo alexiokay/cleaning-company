@@ -20,13 +20,20 @@ export default defineNuxtConfig({
     ],
     "@pinia-plugin-persistedstate/nuxt",
     "@intlify/nuxt3",
-    "@nuxt/image-edge",
+    "@nuxt/image",
     "unplugin-icons/nuxt",
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
     ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
     "nuxt-swiper",
   ],
+
+  image: {
+    format: ["webp"],
+    storyblok: {
+      baseURL: "https://a.storyblok.com",
+    },
+  },
 
   swiper: {
     // Swiper options
