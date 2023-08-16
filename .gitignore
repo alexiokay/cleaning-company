@@ -9,3 +9,4 @@ dist
 .DS_Store
 localhost-key.pem
 localhost.pem
+.output
