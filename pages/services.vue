@@ -1,5 +1,6 @@
 <template lang="pug">
 div(class="w-full h-full flex flex-col items-center gap-y-4 ")
+    ModalApproved(:isOpen="isBooking" @confirm="isBooking = false" @close="isBooking = false" class="w-full h-full")
     div(v-show="isHintOpen" class="text-start px-6 py-4 bg-[#Fff6d9] w-full -mb-4 flex items-center gap-x-4")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
@@ -19,17 +20,32 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
         SwiperSlide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
+            // category  
             div(v-show="step.name === 'category'" class=" w-full h-auto  py-4 md:py-12 flex flex-wrap gap-y-4  mt-2")
-                
+              
                 div.services__category(class=" flex flex-col items-center w-1/3 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
                     nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover   aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
                     p(class="text-lg md:text-xl") Kitchen
-                
+            // timing      
             div(v-show="step.name === 'timing'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
                 
                 div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
                     nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
                     p(class="text-lg md:text-xl") Kitchen
+            // general
+            div(v-show="step.name === 'general'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2 justify-between")
+                div()
+                div(@click="setServiceActive(service); onStepClick(1)" :class="{'bg-blue-500 text-white': service.active === true}" class="flex w-[calc(50%-1rem)] items-center border-[1px] py-1 px-3 rounded-md drop-shadow-md gap-x-3 hover:cursor-pointer" v-for="service in customization.general")
+                    component(:is="service.icon" class="w-12 h-12")
+                    p(class="w-full text-lg md:text-xl") {{service.title}}
+                    input(type="checkbox" class="ml-auto w-6 h-6" v-model="service.active")
+            // location        
+            div(v-show="step.name === 'location'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
+                
+                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
+                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
+                    p(class="text-lg md:text-xl") Kitchen
+        
                 
 
     div(v-else class=" w-3/5  flex h-[40rem]  gap-y-4 items-center justify-center")
@@ -64,7 +80,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
-                button(class="w-full h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
+                button(@click="isBooking = true" class="w-full h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
             div(class="w-full md:w-1/5 flex md:flex-col gap-y-3 gap-x-8 md:gap-x-0")
                 div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
                     TimeslotIcon(class="w-6 md:w-8 h-8")
@@ -100,16 +116,38 @@ import WebsiteIcon from "~icons/feather/external-link";
 import PhoneIcon from "~icons/carbon/phone-voice";
 import EmailIcon from "~icons/entypo/email";
 
+import CarIcon from "~icons/raphael/car";
+import HouseIcon from "~icons/bi/house";
+
 import type { Swiper } from "swiper";
 const isHintOpen = ref(true);
 const isSwiperLoaded = ref(false);
+const isBooking = ref(false);
+const searchQuery = ref("");
 
+const customization = ref({
+  general: [
+    {
+      title: "car cleaning",
+      icon: CarIcon,
+      active: false,
+    },
+    {
+      title: "house cleaning",
+      icon: HouseIcon,
+      active: false,
+    },
+  ],
+});
+
+const setServiceActive = (service) => {
+  customization.value.general.forEach((service) => (service.active = false));
+  service.active = true;
+};
 function convertRatingToNormalizedScale(rating: string) {
   const normalizedRating = parseFloat(rating.replace(",", ".")) * 2;
   return Math.min(9, Math.floor(normalizedRating));
 }
-
-const searchQuery = ref("");
 
 const onSearch = async (value) => {
   console.log("searching: " + value);
@@ -165,8 +203,13 @@ const onStepClick = (index: any) => {
 const steps = ref([
   {
     name: "general",
-    active: false,
+    active: true,
     done: true,
+  },
+  {
+    name: "category",
+    active: false,
+    done: false,
   },
   {
     name: "location",
@@ -176,11 +219,6 @@ const steps = ref([
   {
     name: "timing",
     active: false,
-    done: false,
-  },
-  {
-    name: "category",
-    active: true,
     done: false,
   },
 ]);
