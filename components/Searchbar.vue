@@ -26,7 +26,7 @@ div.searchbar(class="shadow-md ")
 import SearchIcon from "~icons/tabler/search";
 import LocationsIcon from "~icons/carbon/location";
 
-import { VueSelect as vSelect } from "vue-select";
+import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 
 const vModel = ref("all country");
