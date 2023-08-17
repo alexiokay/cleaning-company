@@ -9,7 +9,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
                 span(class="text-[#F9782b]") Cleaning 
                 span Services
         div(class="h-1/3")    
-            nuxt-img(src="images/pani_3.png" format="webp" class="w-full  object-contain" )
+            nuxt-img(src="images/pani_3.webp" format="webp" class="w-full  object-contain" )
     div(class="w-full md:w-1/2 flex flex-col 3xl:pr-[19rem] md:pr-[2rem] gap-x-[8rem] md:mt-[6rem] gap-y-[1.5rem]")
         div(class="flex flex-col w-full text-start text-xl md:text-3xl md:font-semibold text-[#5d5552] ")
             p(class="leading-[2.6rem]") For over 15 years, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
