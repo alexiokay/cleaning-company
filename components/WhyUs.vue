@@ -10,13 +10,13 @@ div(class="w-full flex-col md:flex-row  flex text-center gap-y-12 gap-x-[9rem] b
 
                 span environments through our services
             div(class=' md:hidden rounded-xl overflow-hidden w-auto order-0 md:order-0')
-                nuxt-img(src="images/pani_6.webp" format="webp" class="h-full w-full max-h-[45vh]  object-cover " ) <!-- 51 / 6 -->
+                nuxt-img(src="images/pani_6.png" format="webp" class="h-full w-full max-h-[45vh]  object-cover " ) <!-- 51 / 6 -->
             div(class="flex flex-col w-full text-start text-xl md:text-2xl 2xl:text-3xl text-[#5d5552] font -mt-1 md:my-4 md:mt-[1rem] ")
                 p(class="") Our environment has a large impact on our health an well-bein, an important part of living well is doing our part to take care of the environment.
         div(class='flex h-full w-full md:pl-[19rem] ')
             Button(text="Contact Us" class="w-[16rem]  h-[4rem] md:h-[5rem] order-1 md:order-0 bg-[#fad613] mx-auto md:mx-0")
             div(class="hidden md:flex h-full ml-auto order-0 md:order-1")    
-                nuxt-img(src="images/pani43.webp" format="webp" class=" h-full max-h-[45vh] mt-auto w-auto object-contain ml-auto " )
+                nuxt-img(src="images/pani43.png" format="webp" class=" h-full max-h-[45vh] mt-auto w-auto object-contain ml-auto " )
     div(class="md:w-1/2 w-full flex flex-col 3xl:pr-[19rem] md:pr-[2rem] gap-x-[8rem] gap-y-[1.5rem] md:mt-[3rem] mb:pb-8 ")
         div(class=' hidden md:flex rounded-xl overflow-hidden w-auto order-1 md:order-0')
             nuxt-img(src="images/pani_6.png" format="webp" class="h-full w-full max-h-[45vh]  object-cover " ) <!-- 51 / 6 -->
