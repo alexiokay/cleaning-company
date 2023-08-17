@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   image: {
     domains: [process.env.FRONTEND_URL as string],
     format: ["webp"],
+    provider: "twicpics",
     storyblok: {
       baseURL: "https://a.storyblok.com",
     },
