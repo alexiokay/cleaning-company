@@ -1,16 +1,10 @@
 {
   // hyttps://v3.nuxtjs.org/concepts/typescript
-  
+
   "extends": "./.nuxt/tsconfig.json",
-  "include": [
-    "env.d.ts",
-    ".nuxt/nuxt.d.ts",
-    "**/*"
-  ],
+  "include": ["env.d.ts", ".nuxt/nuxt.d.ts", "**/*"],
   "vueCompilerOptions": {
-    "plugins": [
-      "@volar/vue-language-plugin-pug"
-    ]
+    "plugins": ["@volar/vue-language-plugin-pug"]
   },
   "compilerOptions": {
     "strict": true,
@@ -25,9 +19,9 @@
       "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
-      "twilio"
-
-    ],
+      "twilio",
+      "@nuxt/image"
+    ]
   },
-  "exclude": ["node_modules",]
+  "exclude": ["node_modules"]
 }
