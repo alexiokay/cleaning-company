@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   ],
 
   image: {
+    domains: [process.env.FRONTEND_URL as string],
     provider: "",
     format: ["webp"],
     storyblok: {
