@@ -30,7 +30,6 @@ export default defineNuxtConfig({
 
   image: {
     domains: [process.env.FRONTEND_URL as string],
-    provider: "",
     format: ["webp"],
     storyblok: {
       baseURL: "https://a.storyblok.com",
@@ -56,7 +55,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/sitemap.xml"],
+      routes: ["/sitemap.xml"],
     },
   },
 
