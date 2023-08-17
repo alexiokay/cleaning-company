@@ -19,7 +19,6 @@
       "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
-      "twilio",
       "@nuxt/image"
     ]
   },
