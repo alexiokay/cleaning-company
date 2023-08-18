@@ -9,7 +9,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
                 span(class="text-[#F9782b]") Cleaning 
                 span Services
         div(class="h-1/3")    
-            nuxt-img(src="images/pani_3.png" format="webp" class="w-full  object-contain" )
+            nuxt-img(src="images/pani_3.png" format="webp" class="w-full  object-contain" alt="a person" )
     div(class="w-full md:w-1/2 flex flex-col 3xl:pr-[19rem] md:pr-[2rem] gap-x-[8rem] md:mt-[6rem] gap-y-[1.5rem]")
         div(class="flex flex-col w-full text-start text-xl md:text-3xl md:font-semibold text-[#5d5552] ")
             p(class="leading-[2.6rem]") For over 15 years, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
@@ -48,7 +48,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
         
         
         
-        Button(@click="callUs" text="Call Us" class="w-[16rem] mt-6 md:mt-[3rem] h-[4rem] md:h-[4.4rem] text-xl md:text-2xl mx-auto md:mx-0 bg-[#fad613]")
+        Button(@click="callUs" tabindex="-1" text="Call Us" class="w-[16rem] mt-6 md:mt-[3rem] h-[4rem] md:h-[4.4rem] text-xl md:text-2xl mx-auto md:mx-0 bg-[#fad613]")
             template(v-slot:icon)
                 PhoneIcon(class="w-8 h-8 ml-3 group-hover:text-[#2da9db] ")
 </template>

@@ -32,6 +32,9 @@ export default defineNuxtConfig({
     domains: [process.env.FRONTEND_URL as string],
     format: ["webp"],
     provider: "twicpics",
+    ipx: {
+      dir: "public",
+    },
     storyblok: {
       baseURL: "https://a.storyblok.com",
     },

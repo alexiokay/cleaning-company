@@ -62,7 +62,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
                     Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
                     p {{ contractor.rating }}
                 div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
-                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' class="  w-[6rem] md:w-full md:h-full aspect-square object-scale-down")
+                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' provider="ipx" class="  w-[6rem] md:w-full md:h-full aspect-square object-scale-down")
 
             div(class="w-[calc(64%-1.5rem)] md:w-full h-full flex flex-col gap-y-3")
                 p(class="text-xl lg:text-3xl") {{contractor.title}}
@@ -135,6 +135,32 @@ const customization = ref({
     {
       title: "house cleaning",
       icon: HouseIcon,
+      active: false,
+    },
+  ],
+
+  house_categories: [
+    {
+      title: "Kitchen",
+      icon: "icons/icon_23.png",
+      active: false,
+    },
+    {
+      // full house cleaning
+      title: "Whole house",
+      icon: "icons/icon_23.png",
+      active: false,
+    },
+  ],
+  car_categories: [
+    {
+      title: "Interior",
+      icon: "icons/icon_23.png",
+      active: false,
+    },
+    {
+      title: "Exterior",
+      icon: "icons/icon_23.png",
       active: false,
     },
   ],

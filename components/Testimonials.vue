@@ -8,13 +8,13 @@ div(class="relative flex w-full h-auto py-12 items-center justify-center gap-x-[
         h3(class="text-[#02374b] md:text-[4rem]  text-xl font-bold w-full text-center") What Our Clients Say
         Rating(:editable="false" size="big" :rated="9")
         div(class="relative text-center")
-            nuxt-img(src="icons/quote.png" format="webp" width="100" h="30" class="absolute -top-[3rem] -left-[7rem]")
-            nuxt-img(src="icons/quote.png" format="webp"  width="100" h="30" class="rotate-180 absolute -bottom-[3rem] -right-[7rem]")
+            nuxt-img(src="icons/quote.png" alt="starting quote" format="webp" width="100" h="30" class="absolute -top-[3rem] -left-[7rem]")
+            nuxt-img(src="icons/quote.png" alt="ending quote" format="webp"  width="100" h="30" class="rotate-180 absolute -bottom-[3rem] -right-[7rem]")
             p(class="text-2xl text-[#7c8e98] text-center") Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
         
         p(class="text-[#02374b] font-semibold text-3xl w-full text-center") Alexi Space
             span(class="font-thin ") , CEO of Company
-        nuxt-img(class="flex w-[5rem] h-[5rem] space-y-16 rounded-full object-cover object-top" src="avatars/example.png" format="webp" width="100" h="30")
+        nuxt-img(class="flex w-[5rem] h-[5rem] space-y-16 rounded-full object-cover object-top" src="avatars/example.png" alt="our CEO's avatar" format="webp" width="100" h="30")
 
 </template>
 
