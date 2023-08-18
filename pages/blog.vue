@@ -17,10 +17,10 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
         
 
     div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[4rem] h-auto text-[#51535b]")
-        nuxt-img(format="webp" provider='ipx' class="rounded-xl w-full md:w-2/5" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
+        nuxt-img(format="webp" provider='ipx' alt="wood floot cleaner header" class="rounded-xl w-full md:w-2/5" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
         div(class="flex flex-col w-full gap-y-6 text-2xl my-4")
             div.article__info(class="flex w-full gap-x-2 items-center")
-                nuxt-img(format="webp"  provider='ipx' class="rounded-full" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="40px" height="40px")
+                nuxt-img(format="webp" alt="netflix"  provider='ipx' class="rounded-full" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="40px" height="40px")
                 p Netflix
                 p .
                 p 12 minutes ago
@@ -33,9 +33,9 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
 
     h2(class="gray-600 text-4xl md:text-7xl  text-start font-semibold text-[#22252f] w-full md:mt-9") Articles
     div.blog__articles(class="flex flex-col lg:flex-row w-full lg:justify-start h-auto items-start justify-center gap-y-12 gap-x-[2.5rem]   ") 
-        BlogItem(v-for="article in articles"  :key="article.uuid" :article="article" )
+        BlogItem(v-for="article in articles"   :key="article.uuid" :article="article" )
             template(v-slot:image)
-                nuxt-img(:src="'https:' + article.content.image" provider="storyblok" format="webp" width="300" h="200" class="w-full h-full object-cover rounded-xl ")
+                nuxt-img(:src="'https:' + article.content.image" :alt="article.content.title" provider="storyblok" format="webp" width="300" h="200" class="w-full h-full object-cover rounded-xl ")
     div.blog__latest(class="flex flex-col  w-full gap-y-12 mt-9")
         .flex.justify-between.items-center.w-full
             h2(class="gray-600 text-4xl md:text-7xl  text-start font-semibold text-[#22252f]") Latest News
@@ -44,7 +44,7 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
             .news(class="flex flex-col w-1/5 gap-y-6")
                 nuxt-img(class="aspect-square object-cover rounded-3xl" provider="ipx" src="https://www.eurocarparts.com/blog/ecp-wp-content/uploads/2016/10/upholstery.jpg" format="webp")
                 p.blog__latest__content__info(class="flex w-full gap-x-2 items-center")
-                    nuxt-img(format="webp" provider="ipx"     class="rounded-full" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="30px" height="30px")
+                    nuxt-img(format="webp" provider="ipx" alt="netlix logo"     class="rounded-full" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="30px" height="30px")
                     p Netflix
                     p .
                     p 12 minutes ago
