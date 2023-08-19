@@ -1,6 +1,5 @@
 <template lang="pug">
 div(class=" h-auto  py-4 flex flex-col")
-    p(class="hidden md:flex") Filters
     
     div(class="w-full flex gap-x-4 overflow-x-auto ")
         div(class="flex flex-col :w-auto h-[4rem] md:h-[5rem]")

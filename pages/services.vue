@@ -81,7 +81,27 @@ import EmailIcon from "~icons/entypo/email";
 import CarIcon from "~icons/raphael/car";
 import HouseIcon from "~icons/bi/house";
 
-const regions = ref(await getLocalizations());
+const getLocalizationsFetch = async () => {
+  const config = useRuntimeConfig();
+  const options = {
+    method: "GET",
+    headers: {
+      Host: `${config.public.FETCH_HOST}`,
+    },
+  } as any;
+  let provinces = await fetch(
+    `${config.public.API_URL}api/v1/localizations-province/get-all`,
+    options
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    });
+
+  return provinces;
+};
+
+const regions = ref(await getLocalizationsFetch());
 
 const isHintOpen = ref(true);
 const isBooking = ref(false);
