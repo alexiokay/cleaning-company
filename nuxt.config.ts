@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
     "nuxt-swiper",
-    '@samk-dev/nuxt-vcalendar',
+    "@samk-dev/nuxt-vcalendar",
   ],
 
   image: {
@@ -66,6 +66,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ["/", "/sitemap.xml", "/robots.txt"],
+      failOnError: false,
     },
   },
 
