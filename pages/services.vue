@@ -89,6 +89,7 @@ const getLocalizationsFetch = async () => {
       Host: `${config.public.FETCH_HOST}`,
     },
   } as any;
+
   let provinces = await fetch(
     `${config.public.API_URL}api/v1/localizations-province/get-all`,
     options
@@ -98,7 +99,7 @@ const getLocalizationsFetch = async () => {
       return data;
     });
 
-  return provinces;
+  return await provinces;
 };
 
 const regions = ref(await getLocalizationsFetch());
