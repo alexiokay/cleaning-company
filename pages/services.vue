@@ -9,9 +9,10 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
     h1(class="mt-4") Find best service provider
     // ServiceCustomizerBeta(:customization="customization" :steps="steps" class="w-full " )
     
-    div(class="w-full relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0 -mb-4")
-        Searchbar(class="w-full  md:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
-        ServiceSearchFilters(class="w-[calc(64%-1.5rem)] mx-auto" :customization="customization")
+    div(class="w-full relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 md:py-12 px-4 xl:px-0 -mb-4")
+        Searchbar(class="w-full  lg:w-4/5 2xl:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
+          
+        ServiceSearchFilters(class=" mx-auto w-full lg:w-4/5 2xl:w-3/5" :customization="customization")
     div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full text-center") We found {{ found }} service providers for you
         Pagination(:pages="searchQuery !== ''? 1: pages"  :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
