@@ -12,7 +12,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
             nuxt-img(src="images/pani_3.png" format="webp" class="w-full  object-contain" alt="a person" )
     div(class="w-full md:w-1/2 flex flex-col 3xl:pr-[19rem] md:pr-[2rem] gap-x-[8rem] md:mt-[6rem] gap-y-[1.5rem]")
         div(class="flex flex-col w-full text-start text-xl md:text-3xl md:font-semibold text-[#5d5552] ")
-            p(class="leading-[2.6rem]") For over 15 years, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
+            p(class="leading-[2.6rem]") For over 1 year, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
 
         div(@click="activeMenu = 1" v-if="activeMenu !== 1" class=" p-2 min-h-[5rem]  md:min-h-0 md:p-[1.6rem] border-2 border-[#c9c9c9] rounded-lg flex items-center justify-between text-lg md:text-3xl font-bold text-[#838495] mt-2 md:mt-[4rem] hover:cursor-pointer")
             p(class="")  Free lifetime Support

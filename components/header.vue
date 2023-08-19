@@ -13,7 +13,7 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 px-4 md:px-0 3xl:pl-
                         ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-[#02374b] rotate-90")
                 
                 
-                Button(text="I'am looking for job" class="order-0 bg-[#124944] order-1 text-white md:order-0 md:first-letter  h-[4rem] w-full md:w-auto  md:h-[4.4rem] text-xl md:text-2xl")
+                Button(text="I'am looking for job" to="/careers" class="order-0 bg-[#124944] order-1 text-white md:order-0 md:first-letter  h-[4rem] w-full md:w-auto  md:h-[4.4rem] text-xl md:text-2xl")
                     template(v-slot:icon)
                         ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-white rotate-90")
                 Button(@click="callUs" text="Call Us" class="w-full md:w-[16rem] h-[4rem] md:h-[4.4rem] text-xl md:text-2xl  md:mx-0 bg-[#fad613] order-2")
