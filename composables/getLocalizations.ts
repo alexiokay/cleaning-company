@@ -3,7 +3,7 @@ export const getLocalizations = async () => {
   const options = {
     method: "GET",
     headers: {
-      
+
     },
   } as any;
   let provinces = await useFetch(

@@ -30,7 +30,8 @@
       "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
-      "@nuxt/image"
+      "@nuxt/image",
+      "vue-select"
     ]
   },
   "exclude": ["node_modules"]
