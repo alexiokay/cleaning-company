@@ -8,7 +8,7 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
                 IconChat(class=" w-[2rem] h-[2rem] md:w-[2.5rem]  md:h-[2.5rem] text-[#Ff5100]  ")
 
     Transition(name="jump")
-        div(v-show="isChatOpen" :class="!isChatOpen ? 'hidden' : ''" class="md:w-[20rem] h-[38.5rem] rounded-lg bg-[#F6f6f7]        shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]")
+        div(v-show="isChatOpen" :class="!isChatOpen ? 'hidden' : ''" class="w-[100vw] fixed sm:relative -top-4 left-0 sm:w-[20rem] h-screen sm:h-[38.5rem] rounded-lg bg-[#F6f6f7]        shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]")
             div(class="bg-white h-[8rem] rounded-t- lg")
                 div(class="flex w-full p-3 justify-between items-center")
                     IconDots(class="w-[1.6rem] h-[1.6rem] text-black hover:cursor-pointer")
@@ -29,8 +29,8 @@ div(class="flex flex-col space-y-4 pl-4 md md:pl-0")
 
 
 
-            div(class="w-full relative h-[27rem] flex  flex-col items-center justify-between ")
-              div.messages(class="w-full h-[20rem] overflow-y-scroll  flex flex-col gap-y-2 "  )
+            div(class="w-full relative h-[80vh] sm:h-[27rem] flex  flex-col items-center justify-between ")
+              div.messages(class="w-full h-full sm:h-[20rem] overflow-y-scroll  flex flex-col gap-y-2 "  )
                 div.message(:class="message.type === 'chatbot'? 'flex': 'flex-reveese'" class="h-auto flex pl-2 pr-[0.6rem] py-2 gap-x-2 " v-for="message in sessionStore.messages" )
                     div(v-if="message.type ==='chatbot'" @click="isChatOpen = true" class=" p-1 w-min h-min rounded-full shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white font-bold hover:cursor-pointer ")
                         IconChat2(class=" w-[0.8rem] h-[0.8rem] text-[#Ff5100]  ")
@@ -76,6 +76,24 @@ const showTextArea = () => {
     textarea.addEventListener("input", autoResize(textarea), false);
   }
 };
+
+// watch if chat is open and screen is mobile and delete scrollbar from website
+
+const isMobile = () => {
+  if (window.innerWidth < 768) {
+    document.body.classList.add("no-scrollbar");
+  } else {
+    document.body.classList.remove("no-scrollbar");
+  }
+};
+
+watch(
+  () => isChatOpen.value,
+  async (newVal, oldVal) => {
+    await nextTick();
+    isMobile();
+  }
+);
 
 const userId = ref("example"); // TODO: to cookies
 const chatId = ref(0); // TODO: to cookies

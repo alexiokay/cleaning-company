@@ -43,7 +43,7 @@ div(class=" h-auto flex  flex-col items-center  justify-around gap-y-8 md:gap-y-
         div(class='flex flex-col w-[45%] lg:w-1/4 text-xl md:text-2xl space-y-2 text-[#7f7d7e] ')
             p(class="text-[#Fafafa] text-2xl md:text-3xl font-bold mb-4") Contact info.
             p(@click="callUs") +3197010253339
-            p !example@example.com
+            p alexispace@freshandtidy.nl
             div
                 p !35178 W. Gray St.Utica,
                 p !Pensylvania 57888

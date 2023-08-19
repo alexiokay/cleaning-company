@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="w-full h-[15rem] bg-white py-4 px-6 flex gap-x-6")
+div(class="w-full h-auto md:h-[15rem] bg-white py-4 px-6 flex flex-col md:flex-row gap-x-6")
     nuxt-img(src="https://cdn-icons-png.flaticon.com/512/4329/4329449.png" provider="ipx" alt="person's avatar" format="webp" class=" aspect-square h-full w-auto bg-slate-100 px-2 pt-4")
     div(class="flex flex-col w-full py-6 justify-between h-full")
         p(class="text-xl font-semibold") Cleaning Job - 
