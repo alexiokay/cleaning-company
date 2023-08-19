@@ -31,7 +31,8 @@ div(class="w-full h-full flex flex-col items-center md:gap-y-4 ")
                 p(class="text-lg") {{contractor.description}}
                 div(class="flex gap-x-4 items-center")
                     PhoneIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
-                    p(:class="{'blur-sm': contractor.isPhoneNumberHidden }" class="text-base md:text-lg ") {{contractor.phoneNumber}}
+                    p(v-if="!contractor.isPhoneNumberHidden" class="text-base md:text-lg ") {{contractor.phoneNumber}}
+                    p(class="text-base md:text-lg hover:cursor-pointer" @click="contractor.isPhoneNumberHidden = false"  v-else)  Hidden (click to show)
                     
                     button(@click="contractor.isPhoneNumberHidden = !contractor.isPhoneNumberHidden" class=" hidden px-2 py-1 border-[1px] drop-shadow-md rounded-full") show phone number
                 div(class="flex gap-x-4 items-center")
