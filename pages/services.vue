@@ -102,7 +102,7 @@ const getLocalizationsFetch = async () => {
   return await provinces;
 };
 
-const regions = ref(await getLocalizations);
+const regions = ref(await getLocalizations());
 
 const isHintOpen = ref(true);
 const isBooking = ref(false);
