@@ -1,25 +1,31 @@
 <template lang="pug">
 div(class=" h-auto  py-4 flex flex-col")
-    p Filters
-    div(class="w-full flex gap-x-4 flex-wrap ")
-        div(class="flex flex-col w-[calc(50%-1rem)] md:w-auto h-[5rem]")
-            p Type 
-            select(type="select" @change="(e) => setServiceActive(e.target.value)" placeholder="Select service type" class="w-auto h-[3rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
-                option(v-for="option in customization.general" :value="option.title" :selected="option.active" )  {{ option.title }}
-        div(class="flex flex-col w-[calc(50%-1rem)] md:w-auto h-[5rem]")
-            p Category 
-            select(type="select" placeholder="Select service type" class="w-auto h-[3rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
-                option(v-for="category in activeService" :value="category.title" ) {{ category.title }}
-     
-        div(class="flex flex-col w-[calc(50%-1rem)] md:w-auto h-[5rem]")
-            p date 
-            input(type="date" placeholder="Select service type" class="w-auto h-[3rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
-        div.instant-booking(class="flex w-[calc(50%-1rem)] md:w-auto gap-x-4 px-8 items-center lg:ml-auto")
-            p(class="text-xl") Instant booking
+    p(class="hidden md:flex") Filters
+    
+    div(class="w-full flex gap-x-4 overflow-x-auto ")
+        div(class="flex flex-col :w-auto h-[4rem] md:h-[5rem]")
+            p(class="hidden md:flex") Type 
+            select(type="select" @change="(e) => setServiceActive(e.target.value)" placeholder="Select service type" class="w-auto  h-auto border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+                option(disabled selected value="") select a service
+                option(v-for="option in customization.general" :value="option.title" )  {{ option.title }}
+        div(class="flex flex-col w-auto  h-[4rem] md:h-[5rem]")
+            p(class="hidden md:flex") Category 
+            select(type="select" placeholder="Select service type" class="w-auto  auto border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+                option(disabled selected value="") select category
+                option(v-for="category in activeService" :value="category.title" :selected="category.active" ) {{ category.title }}
+        div(class=" md:hidden flex flex-col w-auto  h-[4rem] md:h-[5rem]") 
+            select(type="select" class="w-auto  auto border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+                option(disabled selected value="") select localization
+                option(v-for="region in regions" :value="region.name"  ) {{ region.name }}
+        div(class="flex flex-col :w-auto h-[4rem] md:h-[5rem]")
+            p(class="hidden md:flex") date 
+            input(type="date" placeholder="Select date" class="w-auto h-auto border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+        div.instant-booking(class="flex w-auto gap-x-4 px-3 h-[4rem] md:h-auto items-center lg:ml-auto")
+            p(class="text-sm md:text-xl w-auto ") Instant booking
             Switch(
                 v-model="instantBooking"
                 :class="instantBooking ? 'bg-blue-600' : 'bg-gray-200'" 
-                class="relative inline-flex h-8 w-20 items-center rounded-full")
+                class="relative inline-flex h-auto w-20 items-center rounded-full")
                 p(:class="instantBooking ? 'text-white left-3' : 'right-3'" class=" absolute text-lg  ") {{ instantBooking ? 'On' : 'Off' }}
                 span(class="sr-only") Enable notifications
                 span(
@@ -33,6 +39,10 @@ import { Switch } from "@headlessui/vue";
 const props = defineProps({
   customization: {
     type: Object,
+    required: true,
+  },
+  regions: {
+    type: Array,
     required: true,
   },
 });

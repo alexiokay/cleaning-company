@@ -1,48 +1,49 @@
 <template lang="pug">
-div(class="w-full h-full flex flex-col items-center gap-y-4 ")
+div(class="w-full h-full flex flex-col items-center md:gap-y-4 ")
     ModalApproved(:isOpen="isBooking" @confirm="isBooking = false" @close="isBooking = false" class="w-full h-full")
-    div(v-show="isHintOpen" class="text-start px-6 py-4 bg-[#Fff6d9] w-full -mb-4 flex items-center gap-x-4")
+    div(v-show="isHintOpen" class="text-start h-auto px-6 py-1 md:py-4 bg-[#Fff6d9] w-full  flex items-center gap-x-4")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
-        CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer") 
+        CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer w-12 md:w-auto h-12 md:h-auto") 
     
-    h1(class="mt-4") Find best service provider
+    
     // ServiceCustomizerBeta(:customization="customization" :steps="steps" class="w-full " )
     
-    div(class="w-full relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 md:py-12 px-4 xl:px-0 -mb-4")
-        Searchbar(class="w-full  lg:w-4/5 2xl:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
+    div(class="w-full relative h-auto flex flex-col items-center justify-center bg-slate-100 py-2 md:py-4 px-4 xl:px-0 -mb-4")
+        h1(class=" mb-4 text-xl") Find best service provider
+        Searchbar(class="w-full  lg:w-4/5 2xl:w-3/5 h-[4rem] md:h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
           
-        ServiceSearchFilters(class=" mx-auto w-full lg:w-4/5 2xl:w-3/5" :customization="customization")
-    div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
-        p(class="text-4xl font-flamabook w-full text-center") We found {{ found }} service providers for you
+        ServiceSearchFilters(class=" mx-auto w-full lg:w-4/5 2xl:w-3/5" :customization="customization" :regions="regions")
+    div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 md:py-8 gap-y-4 md:gap-y-8")
+        p(class="text-2xl md:text-4xl font-flamabook w-full md:text-center") We found {{ found }} service providers for you
         Pagination(:pages="searchQuery !== ''? 1: pages"  :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
-        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex flex-wrap md:flex-nowrap bg-white px-10 py-8 rounded-2xl gap-x-12" v-for="(contractor, index) in filteredContractors")
+        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex    md:flex-nowrap bg-white px-4 md:px-10 py-8 rounded-2xl justify-between gap-x-4 md:gap-x-12" v-for="(contractor, index) in filteredContractors")
             div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
-            div(class="flex flex-col w-[calc(36%-1.5rem)] md:w-auto h-full gap-y-4 text-center")
-                ClientOnly
+            div(class="flex flex-col w-1/3 md:w-auto h-full gap-y-4 text-center")
+                ClientOnly 
                     Rating(class="w-full h-auto" :rated="convertRatingToNormalizedScale(contractor.rating)")
                     p {{ contractor.rating }}
-                div(class="bg-white w-[10rem] h-[10rem] px-4 rounded-full")
-                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' provider="ipx" class="  w-[6rem] md:w-full md:h-full aspect-square object-scale-down")
+                div(class="bg-white w-auto h-[10rem] px-4 rounded-full")
+                    nuxt-img(:src="contractor.logoUrl? contractor.logoUrl: 'https://cdn-icons-png.flaticon.com/512/5345/5345937.png'" format='webp' provider="ipx" class="  w-full md:h-full aspect-square object-scale-down")
 
-            div(class="w-[calc(64%-1.5rem)] md:w-full h-full flex flex-col gap-y-3")
+            div(class="w-full md:w-full h-full flex flex-col gap-y-3")
                 p(class="text-xl lg:text-3xl") {{contractor.title}}
                 p(class="text-lg") {{contractor.description}}
                 div(class="flex gap-x-4 items-center")
                     PhoneIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
-                    p(:class="{'blur-sm': contractor.isPhoneNumberHidden }" class="text-lg ") {{contractor.phoneNumber}}
+                    p(:class="{'blur-sm': contractor.isPhoneNumberHidden }" class="text-base md:text-lg ") {{contractor.phoneNumber}}
                     
-                    button(@click="contractor.isPhoneNumberHidden = !contractor.isPhoneNumberHidden" class=" px-2 py-1 border-[1px] drop-shadow-md rounded-full") show phone number
+                    button(@click="contractor.isPhoneNumberHidden = !contractor.isPhoneNumberHidden" class=" hidden px-2 py-1 border-[1px] drop-shadow-md rounded-full") show phone number
                 div(class="flex gap-x-4 items-center")
                     EmailIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500")
-                    p(class="text-lg") {{contractor.email}}
+                    p(class="text-base md:text-lg") {{contractor.email}}
                 
                 p(class="text-lg") {{contractor.palceUrl}}
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
-                button(@click="isBooking = true" class="w-full h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
-            div(class="w-full md:w-1/5 flex md:flex-col gap-y-3 gap-x-8 md:gap-x-0")
+                button(@click="isBooking = true" class="-ml-[8.2rem] w-[calc(100vw-4rem)] md:w-auto h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
+            div(class="w-full md:w-1/5 hidden md:flex md:flex-col gap-y-3 gap-x-8 md:gap-x-0 ")
                 div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
                     TimeslotIcon(class="w-6 md:w-8 h-8")
                     p :
@@ -110,7 +111,7 @@ const customization = ref({
       // full house cleaning
       title: "Whole house",
       icon: "icons/icon_23.png",
-      active: false,
+      active: true,
     },
     {
       title: "Bathroom",

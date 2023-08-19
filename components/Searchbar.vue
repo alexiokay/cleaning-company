@@ -2,8 +2,8 @@
 div.searchbar(class="shadow-md ")
     div.searchbar__container__input(class="w-full flex bg-white items-center pl-6 h-full")
         SearchIcon(class="w-12 h-12")
-        input.searchbar__container__input__input(type="text" placeholder="Search" class="px-6 py-4 w-full h-full focus:outline-none" @input="$emit('search', $event.target.value)"  v-model="search")
-        div(class="flex border-l-[1px] border-r-[1px]  w-[30rem] md:w-[400px] px-2 h-full items-center")
+        input.searchbar__container__input__input(type="text" placeholder="Search" class=" px-6 py-4 w-full h-full focus:outline-none" @input="$emit('search', $event.target.value)"  v-model="search")
+        div(class="hidden md:flex border-l-[1px] border-r-[1px]  w-[30rem] md:w-[400px] px-2 h-full items-center")
             
             LocationsIcon(class="w-8 h-8")
             v-select(

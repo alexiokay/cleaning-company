@@ -1,5 +1,5 @@
 <template lang="pug">
-div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'"  class="flex w-full h-[5rem] md:h-[10rem]  items-center 2xl:px-[19rem]  md:px-2 px-2 " )
+div(:class="isMainPage? 'bg-[#Fcf2ec]': 'bg-[#Ffffff]'" class="flex w-full h-[5rem] md:h-[10rem]  items-center 2xl:px-[19rem]  md:px-2 px-2 " )
     div(class="flex h-auto w-[3rem]  md:w-1/6 items-center justify-start min-w-[8rem] md:min-w-[15rem] ")
             nuxt-img(alt="logo"   src="/images/logo.png" class="w-full h-auto aspect-square" format="webp" )
     
