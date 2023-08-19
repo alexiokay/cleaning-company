@@ -3,7 +3,7 @@ div(class="flex flex-col")
     Header(class="")
     
     AboutUs(class="mt-[3rem] md:mt-[5rem]")
-    LandingCallAssistant
+    LandingCallAssistant(class="mt-[2rem] md:mt-0")
     LazyWhyUs(class="")
     LazyServices(class="mt-[5rem] md:mt-[5rem]")
     LazyBlog(class="mt-[2rem] md:mt-[6rem]")

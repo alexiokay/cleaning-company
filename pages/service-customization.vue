@@ -1,6 +1,7 @@
 <template lang="pug">
 div(class="w-full h-full flex flex-col items-center gap-y-4  min-h-screen font-robotolight")
     div(class="flex flex-col w-full gap-y-10 justify-center items-center bg-blue-600 pb-[9.7rem] text-white")
+        
         h1.text-center.text-4xl.font-semibold.text-white Hi I'am fresh and tidy.
             p Your cleaning service customization helper
         

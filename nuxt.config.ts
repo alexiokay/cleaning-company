@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
     "nuxt-swiper",
+    '@samk-dev/nuxt-vcalendar',
   ],
 
   image: {

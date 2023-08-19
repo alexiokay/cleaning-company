@@ -8,7 +8,7 @@ div.searchbar(class="shadow-md ")
             LocationsIcon(class="w-8 h-8")
             v-select(
                     v-model="vModel"
-                    :options="options"
+                    :options="props.regions"
                     
                     
                     class=" w-full h-full outline-none border-none "
@@ -18,13 +18,24 @@ div.searchbar(class="shadow-md ")
         button( class="w-auto border-l-[1px] flex px-2 xl:px-6 items-center gap-x-4  font-bold hover:bg-green-800 h-full hover:text-white") 
             p(class="md:block hidden") Search 
             SearchIcon(class="w-8 h-8")
-    div.searchbar__container__button
+
+    div.searchbar__filters(class="w-full flex items-center pl-6 h-full")
+        
         
 </template>
 
 <script setup lang="ts">
 import SearchIcon from "~icons/tabler/search";
 import LocationsIcon from "~icons/carbon/location";
+
+const props = defineProps({
+  regions: {
+    type: Array,
+    required: true,
+  },
+});
+
+console.log(props.regions);
 
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";

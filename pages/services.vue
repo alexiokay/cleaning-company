@@ -7,51 +7,11 @@ div(class="w-full h-full flex flex-col items-center gap-y-4 ")
         CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer") 
     
     h1(class="mt-4") Find best service provider
-    LazyProcess(:steps="steps" @slideTo="onStepClick")
+    // ServiceCustomizerBeta(:customization="customization" :steps="steps" class="w-full " )
     
-    Swiper(
-        @slideChange="onSlideChange"
-        :modules="[]"
-        :slides-per-view="1"
-        :loop="false"
-        :effect="'creative'"
-        :initialSlide="selectedSlide"
-        :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full md:w-3/5 swiper-container" v-if="isSwiperLoaded")
-        <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
-      
-        SwiperSlide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
-            // category  
-            div(v-show="step.name === 'category'" class=" w-full h-auto  py-4 md:py-12 flex flex-wrap gap-y-4  mt-2")
-              
-                div.services__category(class=" flex flex-col items-center w-1/3 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
-                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover   aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-lg md:text-xl") Kitchen
-            // timing      
-            div(v-show="step.name === 'timing'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
-                
-                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
-                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-lg md:text-xl") Kitchen
-            // general
-            div(v-show="step.name === 'general'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2 justify-between")
-                div()
-                div(@click="setServiceActive(service); onStepClick(1)" :class="{'bg-blue-500 text-white': service.active === true}" class="flex w-[calc(50%-1rem)] items-center border-[1px] py-1 px-3 rounded-md drop-shadow-md gap-x-3 hover:cursor-pointer" v-for="service in customization.general")
-                    component(:is="service.icon" class="w-12 h-12")
-                    p(class="w-full text-lg md:text-xl") {{service.title}}
-                    input(type="checkbox" class="ml-auto w-6 h-6" v-model="service.active")
-            // location        
-            div(v-show="step.name === 'location'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")
-                
-                div.services__category(class=" flex flex-col items-center w-1/4 md:w-1/6 md:font-semibold gap-y-2" v-for="i in 12")
-                    nuxt-img(src="icons/icon_23.png" width="500" height="500" class="object-cover  aspect-square w-[5rem] md:w-[6rem]" alt="icon" title="icon" format="webp")
-                    p(class="text-lg md:text-xl") Kitchen
-        
-                
-
-    div(v-else class=" w-3/5  flex h-[40rem]  gap-y-4 items-center justify-center")
-        LoadingIcon(class="w-24 h-24 text-yellow-500 mb-[7rem]")
-    div(class="w-full relative h-auto flex items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0 -mb-4")
-        Searchbar(class="w-full  md:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear")
+    div(class="w-full relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 md:py-12 px-4 md:px-0 -mb-4")
+        Searchbar(class="w-full  md:w-3/5 h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
+        ServiceSearchFilters(class="w-[calc(64%-1.5rem)] mx-auto" :customization="customization")
     div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 py-8 gap-y-8")
         p(class="text-4xl font-flamabook w-full text-center") We found {{ found }} service providers for you
         Pagination(:pages="searchQuery !== ''? 1: pages"  :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
@@ -119,9 +79,9 @@ import EmailIcon from "~icons/entypo/email";
 import CarIcon from "~icons/raphael/car";
 import HouseIcon from "~icons/bi/house";
 
-import type { Swiper } from "swiper";
+const regions = ref(await getLocalizations());
+
 const isHintOpen = ref(true);
-const isSwiperLoaded = ref(false);
 const isBooking = ref(false);
 const searchQuery = ref("");
 
@@ -135,20 +95,35 @@ const customization = ref({
     {
       title: "house cleaning",
       icon: HouseIcon,
-      active: false,
+      active: true,
     },
   ],
 
   house_categories: [
     {
       title: "Kitchen",
-      icon: "icons/icon_23.png",
+      icon: "icons/icon_13.png",
       active: false,
     },
     {
       // full house cleaning
       title: "Whole house",
       icon: "icons/icon_23.png",
+      active: false,
+    },
+    {
+      title: "Bathroom",
+      icon: "icons/icon_33.png",
+      active: false,
+    },
+    {
+      title: "Bedroom",
+      icon: "icons/icon_43.png",
+      active: false,
+    },
+    {
+      title: "Living room",
+      icon: "icons/icon_53.png",
       active: false,
     },
   ],
@@ -166,10 +141,6 @@ const customization = ref({
   ],
 });
 
-const setServiceActive = (service) => {
-  customization.value.general.forEach((service) => (service.active = false));
-  service.active = true;
-};
 function convertRatingToNormalizedScale(rating: string) {
   const normalizedRating = parseFloat(rating.replace(",", ".")) * 2;
   return Math.min(9, Math.floor(normalizedRating));
@@ -210,22 +181,6 @@ const onClear = () => {
   searchQuery.value = "";
 };
 
-const onSlideChange = (swiper: Swiper) => {
-  steps.value.forEach((step, index) => {
-    if (index === swiper.activeIndex) {
-      step.active = true;
-    } else {
-      step.active = false;
-    }
-  });
-};
-
-const onStepClick = (index: any) => {
-  const swiperContainer = document.querySelector(".swiper-container");
-  const swiper = swiperContainer.swiper as Swiper;
-  swiper.slideTo(index);
-};
-
 const steps = ref([
   {
     name: "general",
@@ -248,10 +203,6 @@ const steps = ref([
     done: false,
   },
 ]);
-
-const selectedSlide = computed(() => {
-  return steps.value.findIndex((step) => step.active);
-});
 
 const getScrappedContractors2 = async (page = 1, pageSize = 10) => {
   const config = useRuntimeConfig();
@@ -324,10 +275,6 @@ watch(page, async (newPage) => {
   total.value = data.value.count;
 
   pages.value = Math.ceil(total.value / 10);
-});
-
-onMounted(() => {
-  isSwiperLoaded.value = true;
 });
 </script>
 
