@@ -14,10 +14,10 @@ div(class="w-full h-full flex flex-col items-center md:gap-y-4 ")
         Searchbar(class="w-full  lg:w-4/5 2xl:w-3/5 h-[4rem] md:h-[5rem]" @search="onSearch" @clear="onClear" :regions="regions")
           
         ServiceSearchFilters(class=" mx-auto w-full lg:w-4/5 2xl:w-3/5" :customization="customization" :regions="regions")
-    div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 md:py-8 gap-y-4 md:gap-y-8")
+    div(class="w-full md px-4 xl:px-[17%] 3xl:px-[0%] relative h-auto flex flex-col items-center justify-center bg-slate-100 pb-4 md:pb-0 md:py-8 gap-y-4 md:gap-y-8")
         p(class="text-2xl md:text-4xl font-flamabook w-full md:text-center") We found {{ found }} service providers for you
         Pagination(:pages="searchQuery !== ''? 1: pages"  :page="page" @change="page = $event" class="w-full flex items-center justify-center gap-x-4 mt-6")
-        div(class="3xl:w-[80rem] w-full relative gap-y-6 h-auto md:h-[20rem] flex    md:flex-nowrap bg-white px-4 md:px-10 py-8 rounded-2xl justify-between gap-x-4 md:gap-x-12" v-for="(contractor, index) in filteredContractors")
+        div(class="3xl:w-[80rem] overflow-x-clip w-full relative gap-y-6 h-auto md:h-[20rem] flex    md:flex-nowrap bg-white px-4 md:px-10 py-8 rounded-2xl justify-between gap-x-4 md:gap-x-12" v-for="(contractor, index) in filteredContractors")
             div(v-if="index===0" class="aspect-square w-[8rem] rounded-full absolute -left-[12rem] text-xl bg-yellow-200 font-bold flex items-center justify-center border-[1px] drop-shadow-md") BEST!
             div(class="flex flex-col w-1/3 md:w-auto h-full gap-y-4 text-center")
                 ClientOnly 
@@ -43,7 +43,7 @@ div(class="w-full h-full flex flex-col items-center md:gap-y-4 ")
                 div(class="flex gap-x-3 items-center mt-auto")
                     WebsiteIcon(class="w-6 h-6 hover:cursor-pointer hover:text-yellow-500 ")
                     NuxtLink(:to="contractor.website") {{ contractor.website }}
-                button(@click="isBooking = true" class="-ml-[8.2rem] w-[calc(100vw-4rem)] md:w-auto h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
+                button(@click="router.push(`/services/${contractor.id}-book`)" class=" w-full md:w-auto h-[3rem] bg-slate-100 rounded-xl text-xl md:text-2xl font-flamabold mt-auto hover:bg-slate-200 ") Book now
             div(class="w-full md:w-1/5 hidden md:flex md:flex-col gap-y-3 gap-x-8 md:gap-x-0 ")
                 div(class="w-auto md:w-full flex gap-x-2 md:gap-x-6")
                     TimeslotIcon(class="w-6 md:w-8 h-8")
@@ -82,6 +82,7 @@ import EmailIcon from "~icons/entypo/email";
 import CarIcon from "~icons/raphael/car";
 import HouseIcon from "~icons/bi/house";
 
+const router = useRouter();
 const getLocalizationsFetch = async () => {
   const config = useRuntimeConfig();
   const options = {
