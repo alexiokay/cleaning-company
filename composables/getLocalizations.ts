@@ -3,7 +3,7 @@ export const getLocalizations = async () => {
   const options = {
     method: "GET",
     headers: {
-      Host: `${config.public.FETCH_HOST}`,
+
     },
   } as any;
   let provinces = await useFetch(
