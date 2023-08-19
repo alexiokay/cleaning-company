@@ -7,7 +7,7 @@ export const getLocalizations = async () => {
     },
   } as any;
   let provinces = await useFetch(
-    `${config.public.API_URL}api/v1/localizations-province/get-all`,
+    `${config.public.API_URL}api/v1/localizations-province/get-all?format=json`,
     options
   ).then((res) => {
     const data: any = res.data.value;
