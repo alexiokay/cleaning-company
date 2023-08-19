@@ -4,7 +4,7 @@ div(class="w-full h-[40rem] pt-12 flex flex-col ")
         p Hi I'am fresh and tidy.
             span Your cleaning service customization helper
         
-        img(src="images/call-assistant.png")
+        
       
 </template>
 
