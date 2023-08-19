@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    domains: [process.env.FRONTEND_URL as string],
+    domains: [process.env.FRONTEND_URL as string, "localhost:3000"],
     format: ["webp"],
     provider: "twicpics",
     ipx: {
