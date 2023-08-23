@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-full h-full flex flex-col items-center md:gap-y-4 ")
     ModalApproved(:isOpen="isBooking" @confirm="isBooking = false" @close="isBooking = false" class="w-full h-full")
-    div(v-show="isHintOpen" class="text-start h-auto px-6 py-1 md:py-4 bg-[#Fff6d9] w-full  flex items-center gap-x-4")
+    div(v-show="isHintOpen" class="text-start h-auto px-6 py-1 md:py-4 bg-[#Fff6d9] w-full  flex items-center gap-x-4 md:-mb-4")
         BulbIcon(class="w-8 h-8")
         p We use AI to find the best fitting service provider for you from our huge database
         CloseIcon(@click="isHintOpen = false" class="ml-auto text-2xl hover:cursor-pointer w-12 md:w-auto h-12 md:h-auto") 
