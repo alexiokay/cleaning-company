@@ -4,18 +4,18 @@ div(class="font-robotolight")
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
     
     // heading 1
-    div(class="flex flex-col w-full h-[34rem] justify-center items-center gap-y-3 px-[26%]  ")
+    div(class="flex flex-col w-full h-auto py-9 justify-center items-center gap-y-3 px-[26%]  ")
         h3(class="md:text-3xl font-bold") Whole house cleaning
         h4(class="text-lg ") Need to clean whole house or just some signle rooms? It’s more affordable than you think.
-        div(class="flex w-full  justify-between items-center gap-x-6 mt-3")
-            div(class="w-1/5 h-full py-8 flex flex-col items-start justify-start")
-                div(class="flex items-center gap-x-4 text-lg font-bold")
+        div(class="flex w-full  justify-between items-start gap-x-6 mt-3")
+            div(class="w-auto h-full  py-8 flex flex-col items-start justify-start")
+                div(class="flex w-full items-center gap-x-4 text-lg font-bold")
                     CheckIcon
                     p 100% satisfaction guaranteed
                 div(class="flex items-center gap-x-4")
                     CheckIcon
                     p Competitive local pricing
-            nuxt-img(src="https://www.homebuddy.com/static/roofing/main-pic-desktop.webp" provider="ipx" class="rounded-xl")
+            nuxt-img(src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyamin-mellish-106399.jpg&fm=jpg" height="1000" width="600" format="webp" provider="ipx" class="rounded-xl w-[60%] h-[25rem] object-cover")
     // heading 2
     div(class="flex flex-col w-full justify-start items-center gap-y-3 py-8  bg-[#f5f6feff] px-[26%] ")
         h3(class="md:text-3xl font-bold font-flamabook") Whole house cleaning

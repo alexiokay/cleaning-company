@@ -1,12 +1,12 @@
 <template lang="pug">
 
-div(class="flex gap-y-4 relative flex-col justif-center items-center py-4 text-black")
-    nuxt-img(src="images/cleaning_zip-code_bg.png"  class="absolute top-0 left-0 w-full h-full object-cover")
-    p.text-3xl.text-center What is Your ZIP Code?
-    div(class="flex gap-x-4 ")
-        input(type="text" placeholder="Enter your ZIP code" v-model="zipCode" class="w-[20rem] h-[3rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+div(:class="{'relative': isBg === true}" class="flex gap-y-4  flex-col justify-center items-center py-4 text-black")
+    nuxt-img(src="images/cleaning_zip-code_bg.png"  class="absolute top-0 left-0 w-full h-full object-cover object-center ")
+    p.text-3xl.text-center.z-50 What is Your ZIP Code?
+    div(class="flex gap-x-4 z-50")
+        input(type="text" placeholder="Enter your ZIP code" v-model="zipCode" class="z-50 w-[20rem] h-[3rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
         button(@click="nextStep" class="w-[10rem] h-[3rem]  bg-white border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50") Let's find out
-    p.text-gray-300 free, no obligation estimates.
+    p.text-gray-300.z-50 free, no obligation estimates.
 
 
 </template>
@@ -16,6 +16,10 @@ defineProps({
   service: {
     type: Object,
     required: true,
+  },
+  isBg: {
+    type: Boolean,
+    default: true,
   },
 });
 
