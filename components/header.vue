@@ -3,8 +3,8 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 px-4 md:px-0 3xl:pl-
     div(class="w-full md:gap-y-[2rem]  flex flex-col md:mt-[6rem]") 
         h1(class="text-3xl md:text-7xl  lg:w-full font-bold text-[#124944]") Professional 
             span.text-black Cleaning
-            p.text-black service for your home
-        p(class="text-[#5d5552] text-xl md:text-2xl font-medium mt-4 md:mt-0") With, Reliable, Friendly and Trustful being our company values, we are present ourselves with the most complete and up to date cleaning services.
+            p.text-black services for your home
+        p(class="text-[#5d5552] text-xl md:text-2xl font-medium mt-4 md:mt-0") At Fresh & Tidy our core values of Reliability, Friendliness, and Trustworthiness drive us to provide you with the most comprehensive and current cleaning services available. 
         nuxt-img(format="webp" src="images/pani_12.png" alt="an image of person" class="md:hidden h-full max-h-[75vh] mt-auto w-auto object-contain sticky"  height="2060" width="1940")
         div(class="flex flex-col mt-[1.5rem] md:mt-[3rem] mb-8 md:mb-[7rem] gap-y-4")
             div(class='flex  flex-col md:flex-row flex-wrap gap-x-10 items-start  md:items-center gap-y-4  ')
