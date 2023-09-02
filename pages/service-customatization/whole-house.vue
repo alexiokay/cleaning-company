@@ -1,10 +1,47 @@
 <template lang="pug">
-div
+div(class="font-robotolight")
     ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active")
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
+    
+    // heading 1
+    div(class="flex flex-col w-full h-[34rem] justify-center items-center gap-y-3 px-[26%]  ")
+        h3(class="md:text-3xl font-bold") Whole house cleaning
+        h4(class="text-lg ") Need to clean whole house or just some signle rooms? It’s more affordable than you think.
+        div(class="flex w-full  justify-between items-center gap-x-6 mt-3")
+            div(class="w-1/5 h-full py-8 flex flex-col items-start justify-start")
+                div(class="flex items-center gap-x-4 text-lg font-bold")
+                    CheckIcon
+                    p 100% satisfaction guaranteed
+                div(class="flex items-center gap-x-4")
+                    CheckIcon
+                    p Competitive local pricing
+            nuxt-img(src="https://www.homebuddy.com/static/roofing/main-pic-desktop.webp" provider="ipx" class="rounded-xl")
+    // heading 2
+    div(class="flex flex-col w-full justify-start items-center gap-y-3 py-8  bg-[#f5f6feff] px-[26%] ")
+        h3(class="md:text-3xl font-bold font-flamabook") Whole house cleaning
+        h4(class="text-lg ") Need to clean whole house or just some signle rooms? It’s more affordable than you think.
+        div(class="flex w-full  justify-center items-start gap-x-[6rem] mt-3")
+            div(class="flex flex-col h-auto gap-y-6 text-lg")
+                nuxt-img(src="https://www.homebuddy.com/static/roofing/roofing-services/roofing-replacement-desktop.webp" format="webp" provider="ipx" class="rounded-xl")
+                h5.text-xl Replacement
+                p When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
+            div(class="flex flex-col h-full gap-y-6  text-lg")
+                nuxt-img(src="https://www.homebuddy.com/static/roofing/roofing-services/roofing-repair-desktop.webp" provider="ipx" class="rounded-xl")
+                h5.text-xl Replacement
+                p When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
+    ServiceCustomatizationZipCodeForm(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active" class="")
+    // heading 3
+    div(class="flex flex-col w-full justify-start items-center gap-y-3 py-8   px-[26%] ")
+        h3(class="md:text-3xl font-bold font-flamabook") Whole house cleaning
+        h4(class="text-lg ") Need to clean whole house or just some signle rooms? It’s more affordable than you think.
+        nuxt-img(src="https://www.homebuddy.com/static/roofing/extreme-weather-desktop.webp" provider="ipx" class="rounded-xl")
+
+
 </template>
 
 <script setup lang="ts">
+import CheckIcon from "~/assets/icons/check.svg";
+
 const steps = ref({
   zipCode: {
     active: true,

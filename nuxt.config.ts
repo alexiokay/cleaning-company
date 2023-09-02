@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 import Icons from "unplugin-icons/vite";
 import { IntlifyModuleOptions } from "@intlify/nuxt3";
+import svgLoader from "vite-svg-loader";
 
 declare module "@nuxt/schema" {
   interface NuxtConfig {
@@ -27,7 +28,6 @@ export default defineNuxtConfig({
     ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }],
     "nuxt-swiper",
     "@samk-dev/nuxt-vcalendar",
-    
   ],
 
   image: {
@@ -113,6 +113,7 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
+      svgLoader(),
       Icons({
         // the feature below is experimental ⬇️
         autoInstall: true,
