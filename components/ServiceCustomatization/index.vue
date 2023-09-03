@@ -36,7 +36,7 @@ const services = [
     title: "Whole house",
     icon: "icons/icon_23.png",
     active: true,
-    link: "/service-customatization/whole-house",
+    link: "/whole-house",
   },
   {
     title: "Bathroom",

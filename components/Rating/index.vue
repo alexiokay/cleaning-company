@@ -87,13 +87,7 @@ type Size = "small" | "medium" | "big" | "huge";
 </script>
 <style lang="scss">
 .filter-blue {
-  filter: invert(0%) sepia(96%) saturate(1208%) hue-rotate(359deg)
-    brightness(101%) contrast(107%);
-}
-
-.filter-blue {
-  filter: invert(56%) sepia(96%) saturate(1208%) hue-rotate(195deg)
-    brightness(101%) contrast(107%)
-    drop-shadow(0px 0px 5px rgba(39, 173, 229, 0.5));
+  filter: invert(100%) sepia(100%) saturate(7500%) hue-rotate(359deg)
+    brightness(102%) contrast(102%);
 }
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
-div(class="w-full h-auto flex flex-col  gap-y-4 items-center justify-center py-8 px:8 lg:px-[20rem] 2xl:px-[40rem]")    
-    div( class="w-full h-[20rem] flex flex-col px-6 py-4 shadow-lg  items-center justify-between rounded-xl bg-white overflow-clip")
+div(class="w-full h-auto flex flex-col  gap-y-4 items-center justify-center py-8 px:8 lg:px-[20rem] 2xl:px-[40rem] ")    
+    div( class="w-full h-[20rem] flex flex-col px-6 py-4 shadow-lg  items-center justify-between rounded-xl bg-white overflow-clip border-[1px]" )
         
         div.progress-bar(class="w-[calc(100%+3rem)] h-[0.25rem] bg-white -mt-4 "  )
                 div.progress-bar__bar(:style="{ width: progressBarLength }" class=" h-full bg-green-500")
@@ -41,7 +41,7 @@ const nextStep = () => {
     console.log(activeStep);
   } else {
     router.push({
-      path: "/service-customatization/thank-you",
+      path: "/thank-you",
       params: { title: "whole-house" },
     });
   }
