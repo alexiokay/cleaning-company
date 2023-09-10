@@ -31,7 +31,13 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    domains: [process.env.FRONTEND_URL as string, "localhost:3000"],
+    domains: [
+      process.env.FRONTEND_URL as string,
+      "localhost:3000",
+      "127.0.0.1:8001",
+      "backend.freshandtidy.nl",
+      "freshandtidy.s3.amazonaws.com",
+    ],
     format: ["webp"],
     provider: "twicpics",
     ipx: {

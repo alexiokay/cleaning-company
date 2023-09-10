@@ -29,7 +29,7 @@ div(class="flex flex-col ")
                 div()
                 div(@click="setServiceActive(service); onStepClick(1)" :class="{'bg-blue-500 text-white': service.active === true}" class="flex w-full md:w-[calc(50%-1rem)] items-center border-[1px] py-1 px-3 rounded-md drop-shadow-md gap-x-3 hover:cursor-pointer" v-for="service in props.customization.general")
                     component(:is="service.icon" class="w-12 h-12")
-                    p(class="w-full text-lg md:text-xl") {{service.title}}
+                    p(class="w-full text-lg md:text-xl") {{service.name}}
                   
             // location        
             div(v-show="step.name === 'location'" class=" w-full h-auto py-12 flex flex-wrap gap-y-4  mt-2")

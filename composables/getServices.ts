@@ -1,7 +1,23 @@
-import Services from "@/utils/services.json";
-
 export const getServices = async () => {
-  const services = Object.values(Services);
-  console.log(services);
-  return services;
+  const config = useRuntimeConfig();
+  const options = {
+    method: "GET",
+    headers: {},
+  } as any;
+  let serviceTypes = await useFetch(
+    `${config.public.API_URL}api/v1/service_types`,
+    options
+  ).then((res) => {
+    const data: any = res.data.value;
+
+    const error = res.error.value;
+    if (error) {
+      // dealing error
+      console.log(error);
+    } else {
+      return data;
+    }
+  });
+
+  return serviceTypes;
 };
