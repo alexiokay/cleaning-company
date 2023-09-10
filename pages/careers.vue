@@ -13,6 +13,10 @@ div(class="w-full min-h-screen flex flex-col items-center px-4 justify-start py-
         div(class="flex w-full")
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  NavbarColor: "#ffffff",
+});
+</script>
 
 <style lang="scss"></style>

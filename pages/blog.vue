@@ -57,6 +57,11 @@ import PaintEmoji from "~icons/noto/paintbrush";
 import BookEmoji from "~icons/noto/orange-book";
 import CinoEmoji from "~icons/noto/cinema";
 import BulbEmoji from "~icons/noto/light-bulb";
+
+definePageMeta({
+  NavbarColor: "#ffffff",
+});
+
 defineProps({
   blok: {
     type: Object,

@@ -34,10 +34,10 @@ onMounted(() => {
 });
 
 const images = [
-  "https://www.homebuddy.com/static/roofing/gallery/9-desktop.webp",
-  "https://www.homebuddy.com/static/roofing/gallery/10-desktop.webp",
-  "https://www.homebuddy.com/static/roofing/gallery/8-desktop.webp",
-  "https://www.homebuddy.com/static/roofing/gallery/8-desktop.webp",
+  "https://images.pexels.com/photos/9507284/pexels-photo-9507284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1358900/pexels-photo-1358900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/5998138/pexels-photo-5998138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ];
 
 const selectedImage = ref(images[1]);

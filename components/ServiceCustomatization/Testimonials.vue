@@ -6,15 +6,17 @@ div(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14 
     Swiper(
             @slideChange=""
             :modules="[SwiperAutoplay, SwiperPagination, SwiperNavigation]"
-            :slides-per-view="3"
+     
             :loop="true"
             :effect="'creative'"
-            :centeredSlides="true"
-            :spaceBetween="30"
+            
+           
             :initialSlide="1"
             :pagination="{ clickable: true }"
             :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }"
-            :autoplay="{delay: 8000, disableOnInteraction: true }" class="w-full xl:w-2/4   " v-show="isSwiperLoaded")
+            :breakpoints="{'640': {slidesPerView: 1, spaceBetween: 0,}, '768': {slidesPerView: 2, spaceBetween: 0,}, '1024': {slidesPerView: 3, spaceBetween: 30, centeredSlides: true},}"
+            :autoplay="{delay: 8000, disableOnInteraction: true }" class="w-full xl:w-3/4 3xl:w-2/4   " v-show="isSwiperLoaded")
+            
             <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
         
             SwiperSlide(v-for="step in images" :key="step" class="px-4 md:w-full  py-2")

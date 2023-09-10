@@ -8,6 +8,10 @@ div(class="w-full flex py-8  bg-[#Fcf2ec]  3xl:px-[8rem] lg:px-[8rem]  md:px-6 p
         div(class="w-full h-[25rem]  rounded-[4rem] shadow-xl bg-white")
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  NavbarColor: "#ffffff",
+});
+</script>
 
 <style lang="scss"></style>

@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       "localhost:3000",
       "127.0.0.1:8001",
       "backend.freshandtidy.nl",
-      "freshandtidy.s3.amazonaws.com",
+      "amazonaws.com",
     ],
     format: ["webp"],
     provider: "twicpics",

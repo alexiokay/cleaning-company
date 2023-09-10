@@ -24,6 +24,10 @@ div(class="w-full min-h-screen flex flex-col bg-fixed bg-top-0   bg-no-repeat bg
     
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  NavbarColor: "#ffffff",
+});
+</script>
 
 <style lang="scss"></style>
