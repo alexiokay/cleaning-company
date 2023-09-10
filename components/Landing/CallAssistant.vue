@@ -21,7 +21,7 @@ div(class="w-full md:h-[50rem] pt-[2rem] md:pt-[8rem] flex flex-col  md:px-0 3xl
                     p Web Tool Assistant
                 
                 
-        nuxt-img(:src="'images/call-assistant.png'"   alt="call assistant"  format="webp"  class="w-full md:w-1/2 h-auto object-contain")
+        nuxt-img(:src="'images/call-assistant.png'"   alt="call assistant"  format="webp"  class="w-3/4 mx-auto md:w-1/2 h-auto object-contain")
         
   
       

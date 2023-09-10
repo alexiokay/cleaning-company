@@ -1,14 +1,14 @@
 <template lang="pug">
 div(class="w-full h-auto flex flex-col  gap-y-4 items-center justify-center py-8 px:8 lg:px-[20rem] 2xl:px-[40rem] ")    
-    div( class="w-full h-[20rem] flex flex-col px-6 py-4 shadow-lg  items-center justify-between rounded-xl bg-white overflow-clip border-[1px]" )
+    div( class="w-full md:h-[20rem] gap-y-4 flex flex-col px-6 py-4 shadow-lg  items-center justify-between rounded-xl bg-white overflow-clip border-[1px]" )
         
         div.progress-bar(class="w-[calc(100%+3rem)] h-[0.25rem] bg-white -mt-4 "  )
                 div.progress-bar__bar(:style="{ width: progressBarLength }" class=" h-full bg-green-500")
        
         p(class="text-2xl text-gray-700 font-semibold tracking-wider") {{activeStep.question}}
     
-        div(class="flex w-full justify-center items-center gap-x-6")
-            div.item(@click="makeAnswer(answer)" v-for="answer in activeStep.answers" :key="answer" :class="answer.answered === true? 'border-orange-500': 'border-slate-100  hover:border-orange-500'" class="rounded-lg w-1/5 h-full py-14 border-[2px] flex flex-col items-center justify-center hover:cursor-pointer ")
+        div(class="flex flex-col gap-y-4 md:flex-row w-full justify-center items-center gap-x-6")
+            div.item(@click="makeAnswer(answer)" v-for="answer in activeStep.answers" :key="answer" :class="answer.answered === true? 'border-orange-500': 'border-slate-100  hover:border-orange-500'" class="rounded-lg w-full md:w-1/5 h-full py-14 border-[2px] flex flex-col items-center justify-center hover:cursor-pointer ")
                 p.w-full.text-center {{answer.title}}
         button(@click="nextStep" class="w-auto h-[3rem]  bg-orange-300 rounded-md px-6 py-2 text-lg font-bold text-white hover:bg-orange-500") Next
    

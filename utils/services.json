@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Office cleaning",
+    "icon": "icons/icon_13.png",
+    "active": false,
+    "link": "/service-customatization/kitchen"
+  },
+  {
+    "title": "House ",
+    "icon": "icons/icon_23.png",
+    "active": true,
+    "link": "/whole-house"
+  },
+  {
+    "title": "Industrial ",
+    "icon": "icons/icon_33.png",
+    "active": false,
+    "link": "/service-customatization/bathroom"
+  },
+  {
+    "title": "Car ",
+    "icon": "icons/icon_43.png",
+    "active": false,
+    "link": "/service-customatization/bedroom"
+  },
+  {
+    "title": "Carpet ",
+    "icon": "icons/icon_53.png",
+    "active": false,
+    "link": "/service-customatization/office"
+  },
+  {
+    "title": "Construction ",
+    "icon": "icons/icon_53.png",
+    "active": false,
+    "link": "/service-customatization/warehouse"
+  },
+  {
+    "title": "Event ",
+    "icon": "icons/icon_53.png",
+    "active": false,
+    "link": "/service-customatization/warehouse"
+  },
+  {
+    "title": "Pool ",
+    "icon": "icons/icon_53.png",
+    "active": false,
+    "link": "/service-customatization/warehouse"
+  },
+  {
+    "title": "Garden ",
+    "icon": "icons/icon_53.png",
+    "active": false,
+    "link": "/service-customatization/warehouse"
+  }
+]
