@@ -2,7 +2,9 @@ export const getServices = async () => {
   const config = useRuntimeConfig();
   const options = {
     method: "GET",
-    headers: {},
+    headers: {
+      Host: `${config.public.FETCH_HOST}`,
+    },
   } as any;
   let serviceTypes = await useFetch(
     `${config.public.API_URL}api/v1/service_types`,
