@@ -17,7 +17,7 @@ div(class="w-full h-full flex flex-col items-center gap-y-4  font-robotolight pt
 const router = useRouter();
 const selectedServiceLink = ref("");
 
-const services = await getServices();
+const services = ref(await getServices());
 </script>
 
 <style lang="scss"></style>
