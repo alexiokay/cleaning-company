@@ -23,7 +23,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
                 p(@click="activeMenu = 0" class="hover:cursor-pointer") x
             div(class="bg-bg-white shadow-[0_1px_60px_-15px_rgba(0,0,0,0.4)] text-[#838495] text-lg md:text-2xl px-[2rem] text-center md:text-start leading-[2.5rem] font-medium py-[1.5rem]")
                 p Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing To Help More Than 1000 Global Companies.
-
+        
         div(@click="activeMenu = 2" v-if="activeMenu !== 2" class=" p-2 min-h-[5rem] md:min-h-0 md:p-[1.6rem] border-2 border-[#c9c9c9] rounded-lg flex items-center justify-between text-lg md:text-3xl font-bold text-[#838495] hover:cursor-pointer")
             p(class="")  100% Satisfaction Guarantee
             p +
@@ -43,7 +43,7 @@ div(class="relative w-full  flex flex-col md:flex-row text-center gap-y-6 first-
                 p(@click="activeMenu = 0" class="hover:cursor-pointer") x
             div(class="bg-bg-white shadow-[0_1px_60px_-15px_rgba(0,0,0,0.4)] text-[#838495] text-lg md:text-2xl px-[2rem] text-center md:text-start leading-[2.5rem] font-medium py-[1.5rem]")
                 p Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing To Help More Than 1000 Global Companies.
-
+        
 
         
         

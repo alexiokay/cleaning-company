@@ -1,12 +1,12 @@
 <template lang="pug">
-div(class="font-robotolight")
+div(class="font-montserrat")
     ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active" class="bg-[#f5f6feff]")
     
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
     
     // heading 1
     div(v-show="steps.zipCode.active")
-        ServiceCustomatizationWhyUs(:points="WhyUsPoints" :image="'https://images.pexels.com/photos/372810/pexels-photo-372810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
+        ServiceCustomatizationWhyUs(title="Car cleaning" :points="WhyUsPoints" :image="'https://images.pexels.com/photos/372810/pexels-photo-372810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
           
         ServiceCustomatizationHeading2(:service="service" :image1="'https://images.pexels.com/photos/6003/man-hand-car-black.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'" :image2="'https://images.pexels.com/photos/6872566/pexels-photo-6872566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
             template(v-slot:subtitle) Need to clean your car? It’s more affordable than you think.

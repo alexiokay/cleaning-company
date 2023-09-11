@@ -1,13 +1,15 @@
 <template lang="pug">
-div(class="w-full h-auto relative flex flex-col items-center    ")
+div(class="w-full h-auto relative flex flex-col items-center font-montserrat   ")
  
-    div(class="flex flex-col w-full gap-y-4 md:gap-y-10 justify-center items-center  pb-[3.7rem] text-black  py-8")
+    div(class="flex flex-col w-full gap-y-4 md:gap-y-10 justify-center items-center  pb-[3.7rem] text-black")
         
-        h1.text-center.font-semibold.z-10.px-4.py-2.rounded-xl(class="text-black text-2xl lg:text-4xl") How Much Do {{ service.name }} Cleaning Cost
-            p  In The Panningen, LI Area?
+
+        h1.text-center.font-bold.z-10.px-4.py-2.rounded-xl(class="text-black text-2xl lg:text-4xl") How Much Do {{ service.name }} Cleaning Cost
+            span(class="md:hidden")  In The Panningen, LI Area?
+            p(class="hidden md:block") In The Panningen, LI Area?
        
-        
-        ServiceCustomatizationZipCodeForm(:service="service" class="w-full" :isBg="false" :isRelative="false" @next="$emit('next')")
+        nuxt-img(format="webp" src="images/pani_12.png" alt="an image of person" class="md:hidden h-full max-h-[75vh] mt-auto w-auto object-contain sticky"  height="2060" width="1940")
+        ServiceCustomatizationSelect(:service="service" class="w-full" :isBg="false" :isRelative="false" @next="$emit('next')")
 
     hr.w-full
 </template>

@@ -21,7 +21,7 @@ div(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14"
             SwiperSlide(v-for="step in images" :key="step" class="px-4  md:w-full ")
 
                     
-                nuxt-img(:src="step" provider="ipx" class="")
+                nuxt-img(:src="step" provider="ipx" class="rounded-lg")
         
 </template>
 
@@ -49,4 +49,13 @@ const update = () => {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+@media screen and (max-width: 768px) {
+  .swiper-button-prev {
+    display: none;
+  }
+  .swiper-button-next {
+    display: none;
+  }
+}
+</style>
