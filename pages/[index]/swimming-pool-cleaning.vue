@@ -1,26 +1,29 @@
 <template lang="pug">
 div(class="font-robotolight")
     ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active" class="bg-[#f5f6feff]")
+    
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
     
     // heading 1
     div(v-show="steps.zipCode.active")
-        ServiceCustomatizationWhyUs(:points="WhyUsPoints"  :image="'https://images.pexels.com/photos/4108676/pexels-photo-4108676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
+        ServiceCustomatizationWhyUs(:points="WhyUsPoints" :image="'https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&w=1600'")
           
-        ServiceCustomatizationHeading2(:service="service" :image1="'https://images.pexels.com/photos/4107286/pexels-photo-4107286.jpeg?auto=compress&cs=tinysrgb&w=1600'" :image2="'https://images.pexels.com/photos/4239146/pexels-photo-4239146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
-          template(v-slot:subtitle) Need to clean your house? It’s more affordable than you think.
-          template(v-slot:title1) Tidy floors and carpets
-          template(v-slot:content1) When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
-          template(v-slot:title2) Shining Windows!
-          template(v-slot:content2) When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
-        ServiceCustomatizationHeading3(:service="service" :image="'https://images.pexels.com/photos/6197121/pexels-photo-6197121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
-          template(v-slot:subtitle) Need to clean whole house or just some signle rooms? It’s more affordable than you think.
+        ServiceCustomatizationHeading2(:service="service" :image1="'https://images.pexels.com/photos/5746250/pexels-photo-5746250.jpeg?auto=compress&cs=tinysrgb&w=1600'" :image2="'https://images.pexels.com/photos/6775404/pexels-photo-6775404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
+            template(v-slot:subtitle) Need to clean your swimming pool? It’s more affordable than you think.
+            template(v-slot:title1) Tidy floors and carpets
+            template(v-slot:content1) When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
+            template(v-slot:title2) Shining Windows!
+            template(v-slot:content2) When the elements have damaged your roof and repairs no longer solve the problem, replacement is needed.
+        ServiceCustomatizationHeading3(:service="service" :image="'https://images.pexels.com/photos/1506996/pexels-photo-1506996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'")
+            template(slot:subtitle) Need to clean your house? It’s more affordable than you think.
+
         ServiceCustomatizationWhy(class="")
-        ServiceCustomatizationGallery(class="xl:px-[26%] p-8 " :images="gallery")
+        ServiceCustomatizationGallery(class="xl:px-[22%] p-8 " :images="gallery")
         ServiceCustomatizationBenefits(:title="'Benefits Of Non-water car cleaning'" :image2="'https://images.squarespace-cdn.com/content/v1/5a7fb700d74cffd8f02428bf/1562963990030-6BEHR6KLRW1TFCZK3FMB/how-to-remove-waterspots.jpg'" :image1="'https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'" )
             template(v-slot:subtitle) Waterless car cleaning significantly reduces water usage. Traditional car washing can use hundreds of gallons of water per wash, whereas waterless methods use a minimal amount or no water at all.
             template(v-slot:benefit1) Environmental Friendliness
-            template(v-slot:benefit2) No Water Spots        ServiceCustomatizationZipCodeForm(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" :isBg="false" class="")
+            template(v-slot:benefit2) No Water Spots
+        ServiceCustomatizationZipCodeForm(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" :isBg="false" class="")
         ServiceCustomatizationSubServices()
         ServiceCustomatizationHow
         ServiceCustomatizationTrust
@@ -35,6 +38,38 @@ definePageMeta({
   NavbarColor: "#f5f6feff",
 });
 
+const WhyUsPoints = ref([
+  {
+    title: "100% satisfaction guaranteed",
+  },
+  {
+    title: "Competitive local pricing",
+  },
+  {
+    title: "Skimming and Surface Cleaning",
+  },
+  {
+    title: "Vacuuming",
+  },
+  {
+    title: "Chemical Testing and Balancing",
+  },
+  {
+    title: "Filter Cleaning and Maintenance",
+  },
+  {
+    title: "Tile and Grout Cleaning",
+  },
+  {
+    title: "Algae Removal",
+  },
+  {
+    title: "Tile Line Scrubbing",
+  },
+  {
+    title: "Regular Maintenance Plans",
+  },
+]);
 const steps = ref({
   zipCode: {
     active: true,
@@ -177,29 +212,11 @@ const steps = ref({
   },
 });
 
-const WhyUsPoints = ref([
-  {
-    title: "100% satisfaction guaranteed",
-  },
-  {
-    title: "Competitive local pricing",
-  },
-  {
-    title: "Dishes cleaning",
-  },
-  {
-    title: "Carpet cleaning",
-  },
-  {
-    title: "Plants watering",
-  },
-]);
-
 const gallery = ref([
-  "https://images.pexels.com/photos/9507284/pexels-photo-9507284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/1358900/pexels-photo-1358900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/5998138/pexels-photo-5998138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/6460876/pexels-photo-6460876.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "https://images.pexels.com/photos/6957108/pexels-photo-6957108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1540297/pexels-photo-1540297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/3775158/pexels-photo-3775158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ]);
 
 const isFirstStep = computed(() => {
@@ -207,9 +224,9 @@ const isFirstStep = computed(() => {
 });
 
 const service = {
-  name: "House",
+  name: "Swimming pool",
   icon: "icons/icon_23.png",
-  link: "/whole-house",
+  link: "/swimming-pool-cleaning",
 };
 </script>
 
