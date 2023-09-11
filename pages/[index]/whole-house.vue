@@ -20,7 +20,7 @@ div(class="font-robotolight")
         ServiceCustomatizationBenefits(:title="'Benefits Of Non-water car cleaning'" :image2="'https://images.squarespace-cdn.com/content/v1/5a7fb700d74cffd8f02428bf/1562963990030-6BEHR6KLRW1TFCZK3FMB/how-to-remove-waterspots.jpg'" :image1="'https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'" )
             template(v-slot:subtitle) Waterless car cleaning significantly reduces water usage. Traditional car washing can use hundreds of gallons of water per wash, whereas waterless methods use a minimal amount or no water at all.
             template(v-slot:benefit1) Environmental Friendliness
-            template(v-slot:benefit2) No Water Spots        ServiceCustomatizationZipCodeForm(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" :isBg="false" class="")
+            template(v-slot:benefit2) No Water Spots
         ServiceCustomatizationSubServices()
         ServiceCustomatizationHow
         ServiceCustomatizationTrust

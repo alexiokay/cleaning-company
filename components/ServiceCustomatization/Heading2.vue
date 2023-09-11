@@ -4,7 +4,7 @@ div(class="flex flex-col w-full justify-start items-center gap-y-3 py-8  bg-[#f5
     h3(class="md:text-3xl font-bold font-flamabook") {{service.name}} cleaning
     h4(class="text-lg ") 
         slot(name="subtitle")
-    div(class="flex w-full  justify-center items-start gap-x-6 md:gap-x-[6rem] mt-3")
+    div(class="flex md:flex-row flex-col w-full gap-y-6  justify-center items-start gap-x-6 md:gap-x-[6rem] mt-3")
         div(class="flex flex-col h-auto gap-y-6 text-lg")
             nuxt-img(:src="image1" format="webp" provider="ipx" class="rounded-xl object-cover h-[20.5vh]")
             h5.text-xl 

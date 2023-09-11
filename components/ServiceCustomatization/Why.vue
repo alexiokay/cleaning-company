@@ -2,7 +2,7 @@
 div(class="flex flex-col w-full justify-start items-center gap-y-3 py-8  bg-[#f5f6feff] xl:px-[26%] px-8 ")
     h3(class="md:text-3xl font-bold font-flamabook") Why Trust Us?
     ul(class="flex w-full  justify-between items-start mt-8 flex-wrap gap-y-8 ")
-        li(class="flex flex-col w-[calc(50%-3rem)] lg:w-[calc(30%-2rem)]  gap-y-3" v-for="point in points")
+        li(class="flex flex-col w-[calc(50%-1rem)] lg:w-[calc(30%-2rem)]  gap-y-3" v-for="point in points")
             nuxt-img(:src="point.icon" class="w-12 h-12 aspect-square object-cover")
             p(class="font-bold text-lg") {{ point.title }}
             p(class="") {{ point.description }}

@@ -1,9 +1,9 @@
 <template lang="pug">
 div(class="w-full h-auto relative flex flex-col items-center    ")
  
-    div(class="flex flex-col w-full gap-y-10 justify-center items-center  pb-[3.7rem] text-black  py-8")
+    div(class="flex flex-col w-full gap-y-4 md:gap-y-10 justify-center items-center  pb-[3.7rem] text-black  py-8")
         
-        h1.text-center.text-4xl.font-semibold.z-10.px-4.py-2.rounded-xl(class="text-black") How Much Do {{ service.name }} Cleaning Cost
+        h1.text-center.font-semibold.z-10.px-4.py-2.rounded-xl(class="text-black text-2xl lg:text-4xl") How Much Do {{ service.name }} Cleaning Cost
             p  In The Panningen, LI Area?
        
         
