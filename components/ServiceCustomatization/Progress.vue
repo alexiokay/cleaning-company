@@ -6,7 +6,7 @@ div(class="w-full h-auto  flex flex-col  gap-y-4 items-center justify-center py-
         div.progress-bar(class="w-[calc(100%+3rem)] h-[0.25rem] bg-white -mt-4 "  )
                 div.progress-bar__bar(:style="{ width: progressBarLength }" class=" h-full bg-green-500")
        
-        p(class="text-2xl text-gray-700 font-semibold tracking-wider") {{activeStep.question}}
+        p(class="text-center text-lg md:text-2xl text-black font-semibold tracking-wider") {{activeStep.question}}
     
         div(class="flex flex-col gap-y-2 md:flex-row w-full justify-center items-center gap-x-6")
             div.item(@click="makeAnswer(answer)" v-for="answer in activeStep.answers" :key="answer" :class="answer.answered === true? 'border-orange-500': 'border-slate-100  hover:border-orange-500'" class="rounded-lg w-full md:w-1/5 h-full py-6 md:py-14 border-[2px] flex flex-col items-center justify-center hover:cursor-pointer ")
@@ -61,7 +61,8 @@ const makeAnswer = (answer) => {
 const progressBarLength = computed(() => {
   const activeStep = Object.values(props.steps).find((step) => step.active);
   const activeStepIndex = Object.values(props.steps).indexOf(activeStep);
-  const progress = (activeStepIndex / Object.values(props.steps).length) * 125;
+  const progress =
+    (activeStepIndex / Object.values(props.steps).length) * 112.5;
   return `${progress}%`;
 });
 </script>

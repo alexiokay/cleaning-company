@@ -39,10 +39,6 @@ div(class="font-robotolight")
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  NavbarColor: "#f5f6feff",
-});
-
 const WhyUsPoints = ref([
   {
     title: "100% satisfaction guaranteed",
