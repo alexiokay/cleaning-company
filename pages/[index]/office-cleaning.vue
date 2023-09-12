@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="font-robotolight")
-    ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active" class="bg-[#f5f6feff]")
+    ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true"  v-if="steps.zipCode.active" class="bg-[#f5f6feff]")
     
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
     
