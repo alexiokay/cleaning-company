@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="font-robotolight")
+div(class="")
     ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true" v-show="steps.zipCode.active" class="bg-[#f5f6feff]")
     ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
     
@@ -31,10 +31,6 @@ div(class="font-robotolight")
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  NavbarColor: "#f5f6feff",
-});
-
 const steps = ref({
   zipCode: {
     active: true,

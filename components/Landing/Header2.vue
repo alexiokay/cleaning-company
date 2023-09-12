@@ -5,7 +5,12 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 px-4 md:px-0 3xl:pl-
             span.text-black Cleaning
             p.text-black services for your home
         nuxt-img(format="webp" src="images/pani_12.png" alt="an image of person" class="md:hidden h-full max-h-[75vh] mt-2 w-auto object-contain sticky"  height="2060" width="1940")
-        div(class="flex flex-col mt-[1.5rem] md:mt-[3rem] gap-y-4")
+        
+            
+        div(class=" w-full lg:text-3xl 3xl:text-5xl text-lg h-auto gap-x-4 md:gap-x-8 mt-[2rem] md:my-auto flex")
+            ServiceCustomatizationSelect(class=" mx-auto md:w-auto w-full" :isBg="false")
+
+        div(class="flex flex-col mt-[1.5rem] md:mt-[3rem] gap-y-4 mb-[2rem]")
             div(class='flex  flex-col md:flex-row flex-wrap gap-x-10 items-start  md:items-center gap-y-4  ')
                 Button(to="/services" text="I'm looking for a cleaner" class="bg-[#fad613] order-0 md:order-0 md:first-letter:h-auto h-[4rem] w-full md:w-auto md:h-[4.4rem] text-xl md:text-2xl")
                     template(v-slot:icon)
@@ -15,12 +20,7 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 px-4 md:px-0 3xl:pl-
                 Button(text="I'am looking for job" to="/careers" class="order-0 bg-[#124944] order-1 text-white md:order-0 md:first-letter  h-[4rem] w-full md:w-auto  md:h-[4.4rem] text-xl md:text-2xl")
                     template(v-slot:icon)
                         ArrowLeftIcon(class="ml-2 w-[1.5rem] h-[1.5rem] text-white rotate-90")
-               
-            
-        div(class=" w-full lg:text-3xl 3xl:text-5xl text-lg h-auto gap-x-4 md:gap-x-8 mt-[2rem] md:my-auto flex")
-            ServiceCustomatizationSelect(class=" mx-auto md:w-auto w-full" :isBg="false")
-
-                
+                        
     nuxt-img(src="images/pani_12.webp" class="hidden md:flex max-h-[55vh] mb-auto w-auto object-contain" format="webp" height="2060" width="1940")
 
     Watch(:isOpen="isVideoOpen" class=" " @close="isVideoOpen = false" )
