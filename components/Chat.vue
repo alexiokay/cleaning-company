@@ -59,6 +59,7 @@ import IconMinimize from "~icons/fluent/minimize-24-filled";
 import IconSendMessage from "~icons/bi/send-fill";
 import { useSessionStore } from "~/stores/Session";
 
+const config = useRuntimeConfig();
 const isChatOpen = ref(false);
 const sessionStore = useSessionStore();
 
@@ -126,6 +127,8 @@ const scrollToBottom = () => {
 const sendMessage = async (target) => {
   const textarea = document.querySelector("textarea") as HTMLTextAreaElement;
   const message = textarea.value;
+  const chatbotUrl = config.public.CHATBOT_URL as string;
+
   target.value = "";
   if (!message) return;
   let data = { sender: "test_user", message: message };
@@ -140,7 +143,7 @@ const sendMessage = async (target) => {
   sessionStore.addMessage(userMessage);
   console.log("userMessage", userMessage);
 
-  const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+  const response = await fetch(chatbotUrl, {
     method: "POST",
     headers: {
       "Content-Type": "text/plain",

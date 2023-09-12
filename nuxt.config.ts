@@ -140,6 +140,7 @@ export default defineNuxtConfig({
       API_URL: process.env.API_URL,
       HOST: process.env.HOST,
       FETCH_HOST: process.env.FETCH_HOST,
+      CHATBOT_URL: process.env.CHATBOT_URL,
 
       gtm_id: process.env.GOOGLE_TAG_MANAGER_ID,
       gtm_enabled: process.env.GOOGLE_TAG_MANAGER_ENABLED,
