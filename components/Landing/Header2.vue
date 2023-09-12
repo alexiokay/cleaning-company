@@ -7,7 +7,7 @@ div(class=" w-full h-auto flex flex-col md:flex-row gap-y-6 px-4 md:px-0 3xl:pl-
         nuxt-img(format="webp" src="images/pani_12.png" alt="an image of person" class="md:hidden h-full max-h-[75vh] mt-2 w-auto object-contain sticky"  height="2060" width="1940")
         
             
-        div(class=" w-full lg:text-3xl 3xl:text-5xl text-lg h-auto gap-x-4 md:gap-x-8 mt-[2rem] md:my-auto flex")
+        div(class=" w-full lg:text-3xl 3xl:text-5xl text-lg h-auto gap-x-4 md:gap-x-8 mt-4 md:mt-[2rem] md:my-auto flex")
             ServiceCustomatizationSelect(class=" mx-auto md:w-auto w-full" :isBg="false")
 
         div(class="flex flex-col mt-[1.5rem] md:mt-[3rem] gap-y-4 mb-[2rem]")

@@ -17,7 +17,7 @@ div(id="default" style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cent
     
     div(class=" w-full h-auto min-h-screen  lg:mt-0   ")
       <slot class="" />
-      Footer(class="md:mt-[10rem]")
+      Footer(class="")
 div(class="cursor cursor--small")
 
 </template>
