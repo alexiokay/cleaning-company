@@ -143,7 +143,7 @@ const sendMessage = async (target) => {
   sessionStore.addMessage(userMessage);
   console.log("userMessage", userMessage);
 
-  const response = await fetch(chatbotUrl, {
+  const response = await fetch(chatbotUrl + "/webhooks/rest/webhook", {
     method: "POST",
     headers: {
       "Content-Type": "text/plain",
