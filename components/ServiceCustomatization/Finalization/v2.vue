@@ -17,7 +17,7 @@ div(class="relative w-full bg-[rgba(255,255,255,0.9)] shadow-[0_1px_30px_-15px_r
             p You're in control!
         p There is no obligation at this point, it's up to you if you want to move forward.
     div(class="w-full flex gap-x-[1.5rem] md:gap-x-[4rem] text-start")
-        button(@click="$emit('next')" class="mt-8 w-full h-[4rem]  bg-[#fa8c16] border-[1px] border-gray-300 rounded-md px-4 py-2 text-base md:text-lg font-medium text-white hover:bg-[#f16e00]") Create account and Book it!
+        NuxtLink(to="/login" class="mt-8 w-full h-[4rem]  bg-[#fa8c16] border-[1px] text-center flex items-center justify-center border-gray-300 rounded-md px-4 py-2 text-base md:text-lg font-medium text-white hover:bg-[#f16e00]") Create account and Book it!
 </template>
 
 <script setup lang="ts">

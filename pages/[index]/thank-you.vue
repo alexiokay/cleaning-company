@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex flex-col justify-center bg-[#Fcf2ec] h-full w-full px-2 xl:px-[20%] py-[6rem] md:py-[10rem] ")
+div(class="flex flex-col justify-center bg-[#Fcf2ec] h-full w-full px-2 xl:px-[20%] py-[6rem] md:py-[6rem] ")
   ServiceCustomatizationFinalizationV2(:partner="partner" :title="title" )
     
 </template>
