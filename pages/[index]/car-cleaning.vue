@@ -2,7 +2,7 @@
 div(class="font-montserrat")
     ServiceCustomatizationZipCode(:service="service" @next="steps.zipCode.active = false, steps.property.active=true"  v-if="steps.zipCode.active" class="bg-[#f5f6feff]")
     
-    ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps")
+    ServiceCustomatizationProgress(class="" v-show="!steps.zipCode.active"  :steps="steps" @closeProgress="steps.zipCode.active = true")
     
     // heading 1
     div(v-show="steps.zipCode.active")

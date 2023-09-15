@@ -48,6 +48,9 @@ const nextStep = () => {
       params: { title: "whole-house" },
     });
   }
+
+  // scroll to top
+  window.scrollTo(0, 0);
 };
 
 const makeAnswer = (answer) => {
