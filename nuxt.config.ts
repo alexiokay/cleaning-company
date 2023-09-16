@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       },
     ],
     "@pinia-plugin-persistedstate/nuxt",
-    "@intlify/nuxt3",
+
     "@nuxt/image",
     "unplugin-icons/nuxt",
     "nuxt-simple-sitemap",
