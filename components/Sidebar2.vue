@@ -3,8 +3,8 @@ div
   Transition(name="fade")
       <div v-show="is_sidebar_open" @click="$emit('toogleSidebar')" tabindex="-1" class="fixed  lg:hidden top-0 pointer-event-none flex items-center bg-[rgba(0,0,0,0.55)] justify-center left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen md:h-full"></div>
 
-  div#sidebar(:class="!is_sidebar_clicked? 'hidden  ': '', is_sidebar_open && is_sidebar_clicked? 'show-right': 'hide-left'" class=" fixed  w-[20rem] lg:w-[23rem] bottom-0 left-0 z-50  h-screen  md:max-h-[calc(100vh-5rem)] bg-[#Fbfafa] px-2 pb-4 shadow-lg rounded-br-xl text-black items-center flex flex-col" )
-      div#sidebar-header(class="relative w-full px-3 flex flex-col h-auto justify-between items-center gap-y-2  my-6  md:my-12")
+  div#sidebar(:class="!is_sidebar_open? 'hide-left  ': 'show-right'" class=" fixed  w-[20rem] lg:w-[23rem] bottom-0 left-0 z-50  h-screen  md:max-h-[calc(100vh-5rem)] bg-[#Fbfafa] px-2 pb-4 shadow-lg rounded-br-xl text-black items-center flex flex-col" )
+      div#sidebar-header(v-if="userStore.isLogged === true" class="relative w-full px-3 flex flex-col h-auto justify-between items-center gap-y-2  my-6  md:my-12")
           nuxt-img(src="images/girl.webp"  width="100" height="100"   format="webp" class=" rounded-full aspect-square object-cover h-[15vh] w-auto lg:h-auto")
           p(class="text-lg md:text-2xl font-medium  w-full text-center flex flex-col ") {{ userStore.firstName }}
             span {{ userStore.lastName }}
@@ -104,11 +104,11 @@ div
 
                       p Notifications
           div(v-if="userStore.isLogged" class="flex flex-col h-full w-full justify-end")
-            button( @click="userStore.logout" class="w-full h-12 bg-[#f16e00] text-white font-bold text-base rounded-md hover:cursor-pointer") Logout
+            button( @click="userStore.logout" class="w-full h-12 bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer") Logout
               
           div(v-else class="flex flex-col w-full h-full justify-end items-center gap-y-4")
-            NuxtLink(@click="$emit('toogleSidebar')" class="w-full h-12 bg-[#124944] text-white font-bold text-base rounded-md hover:cursor-pointer flex items-center justify-center" to="/login" ) Login
-            NuxtLink(@click="$emit('toogleSidebar')" class="w-full h-12 bg-[#f16e00] text-white font-bold text-base rounded-md hover:cursor-pointer flex items-center justify-center"  to="/registration") Register
+            NuxtLink(@click="$emit('toogleSidebar')" class="w-full h-12 bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer flex items-center justify-center" to="/login" ) Login
+            NuxtLink(@click="$emit('toogleSidebar')" class="w-full h-12 bg-[#2000f0] text-white font-bold text-base rounded-md hover:cursor-pointer flex items-center justify-center"  to="/registration") Register
           
             
 </template>
@@ -143,10 +143,6 @@ const userStore = useUserStore();
 
 defineProps({
   is_sidebar_open: {
-    type: Boolean,
-    required: true,
-  },
-  is_sidebar_clicked: {
     type: Boolean,
     required: true,
   },

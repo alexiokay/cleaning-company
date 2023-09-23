@@ -12,9 +12,9 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cen
     .navigation(class=" top-0 z-40 w-full  ")
       div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
 
-      Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
+      Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
 
-      Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
+      Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
       
           
     
@@ -32,6 +32,7 @@ import IconEmail from "~icons/material-symbols/alternate-email";
 import IconLocation from "~icons/mingcute/location-2-line";
 
 const is_sidebar_open = ref(false);
+const is_sidebar_clicked = ref(false);
 const isPageRendered = ref(false);
 
 import { useCookiesStore } from "~/stores/CookiesSettings";

@@ -80,6 +80,10 @@ export const useUserStore = defineStore("User", {
       this.token = "";
       this.isLogged = false;
       this.accountType = "";
+      this.firstName = "";
+      this.lastName = "";
+      this.is_activated = false;
+      this.activated_by = null;
     },
 
     setUser(data: any, token: string) {

@@ -5,8 +5,9 @@ div(id="accounts" style="" class=" h-auto flex flex-row bg-[#Fbfafa] justify-cen
     .navigation(v-if="userStore.isLogged" class="  top-0 z-40")
      
       
-        Sidebar(class=" " :is_sidebar_open="true")
-    
+    //Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
+    Sidebar2(class=" " :is_sidebar_open="true")
+
     div( :class="isNavbarOff === true? '': 'mt-[3rem] lg:mt-[4rem]', route.path!=='/login'  && route.path!=='/signup/carrier' && route.path!=='/signup/arrow' ? 'lg:px-8 py-7 lg:ml-[23rem]' : ''" class=" w-full  h-auto min-h-[calc(100vh-4rem)]  " )
       <slot class="" />
       <!-- Footer(v-if="route.path!=='/login' && route.path!=='/signup'" class="mt-12") -->
@@ -24,6 +25,9 @@ import { useUserStore } from "@/stores/User";
 const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
+
+const is_sidebar_open = ref(false);
+const is_sidebar_clicked = ref(false);
 
 const isNavbarOff = computed(() => {
   return route.meta.isNavbarOff;

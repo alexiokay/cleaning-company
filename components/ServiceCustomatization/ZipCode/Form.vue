@@ -5,8 +5,8 @@ div(:class="{'relative': isRelative === true}" class="flex gap-y-4 w-auto  flex-
     div(class="w-full md:w-auto text-start flex flex-col items-center  gap-y-4")
         p.text-center(class="text-lg md:text-2xl") What is Your ZIP Code?
         div(class="flex flex-col sm:flex-row gap-y-2 gap-x-4 w-full")
-            input(type="text" placeholder="Enter your ZIP code" v-model="zipCode" class=" w-full md:w-[20rem] h-[4rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
-            button(@click="$emit('next')" class="w-auto md:w-[10rem] h-[4rem]  bg-[#fa8c16] border-[1px] border-gray-300 rounded-md px-4 py-2 text-base md:text-lg font-medium text-white hover:bg-[#f16e00]") Book
+            input(type="text" placeholder="Enter your ZIP code (6 letters)" v-model="zipCode" class=" w-full md:w-[20rem] h-[4rem] border-[1px] border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50")
+            button(@click="$emit('next') " class="w-auto md:w-[10rem] h-[4rem]  bg-[#fa8c16] border-[1px] border-gray-300 rounded-md px-4 py-2 text-base md:text-lg font-medium text-white hover:bg-[#f16e00]") Book
         p.text-gray-300 free, no obligation estimates.
 
 
@@ -33,6 +33,8 @@ const emit = defineEmits(["next"]);
 const nextStep = () => {
   if (zipCode.value.length === 6) {
     emit("next");
+    // scroll to top
+    window.scrollTo(0, 0);
   } else {
     alert("Please enter a valid ZIP code");
   }
