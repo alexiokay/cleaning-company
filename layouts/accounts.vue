@@ -1,26 +1,15 @@
-script
 <template lang="pug">
-  
-div(id="default"  style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-center items-start w-full  font   overflow-clip ")
-    //div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
-    CookieBanner(v-if="!cookiesStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
-
-
-    Chat(class="fixed bottom-[1rem] right-[1rem] z-50")      
-    
-  
-    .navigation(class=" top-0 z-40 w-full  ")
-      div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
-
-      Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
-
-      Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
+div(id="accounts" style="" class=" h-auto flex flex-row bg-[#Fbfafa] justify-center items-start w-full  ")
+    div#overlay(class="absolute overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-10 hidden-overlay")
+    Topbar.topbar( class="hidden lg:flex w-full fixed top-0 left-0 h-[--topbar-height] bg-white z-50")
+    .navigation(v-if="userStore.isLogged" class="  top-0 z-40")
+     
       
-          
+        Sidebar(class=" " :is_sidebar_open="true")
     
-    div(class=" w-full h-auto min-h-screen  lg:mt-0   ")
+    div( :class="isNavbarOff === true? '': 'mt-[3rem] lg:mt-[4rem]', route.path!=='/login'  && route.path!=='/signup/carrier' && route.path!=='/signup/arrow' ? 'lg:px-8 py-7 lg:ml-[23rem]' : ''" class=" w-full  h-auto min-h-[calc(100vh-4rem)]  " )
       <slot class="" />
-      Footer(class="")
+      <!-- Footer(v-if="route.path!=='/login' && route.path!=='/signup'" class="mt-12") -->
 div(class="cursor cursor--small")
 
 </template>
@@ -29,24 +18,24 @@ div(class="cursor cursor--small")
 import IconFb from "~icons/ic/baseline-facebook";
 import IconPhone from "~icons/ic/baseline-phone";
 import IconEmail from "~icons/material-symbols/alternate-email";
-import IconLocation from "~icons/mingcute/location-2-line";
-
-const is_sidebar_open = ref(false);
-const isPageRendered = ref(false);
-
-import { useCookiesStore } from "~/stores/CookiesSettings";
+import { onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/User";
-
-const cookiesStore = useCookiesStore();
 
 const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
 
+const isNavbarOff = computed(() => {
+  return route.meta.isNavbarOff;
+});
+const sendEmail = () => {
+  document.location = "mailto:graphicdesigner@gmail.com";
+};
+
 onMounted(() => {});
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 *
     scroll-snap-type: y mandatory

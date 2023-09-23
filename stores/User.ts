@@ -1,7 +1,10 @@
+import { CookieOption } from "./../node_modules/next-auth/core/types.d";
 import { defineStore } from "pinia";
 import { createPinia } from "pinia";
 
 const pinia = createPinia();
+
+type AccountType = "customer" | "partner" | null | "";
 
 // @ts-ignore: Unreachable code error
 export const useUserStore = defineStore("User", {
@@ -15,7 +18,7 @@ export const useUserStore = defineStore("User", {
       isLogged: false,
       is_activated: false,
       activated_by: null,
-      accountType: "arrow-employee", //arrow_employee, carrier
+      accountType: "" as AccountType, //customer, partner
       messages: [],
       userWantsSendMessage: false,
     };
@@ -79,32 +82,33 @@ export const useUserStore = defineStore("User", {
       this.accountType = "";
     },
 
-    setUser(data: any) {
-      const user = data.user;
-      const account_type =
-        user.is_ArrowEmployee === false && user.is_carrier === true
-          ? "carrier"
-          : "arrow-employee";
+    setUser(data: any, token: string) {
+      this.firstName = data.first_name;
+      this.lastName = data.last_name;
 
-      if (account_type === "carrier") {
-        const carrier = data.member.carrier_family;
-      }
-      this.firstName = user.first_name;
-      this.lastName = user.last_name;
-
-      this.accountType = account_type;
-      this.username = user.username;
-      this.email = user.email;
-      this.token = data.key ? data.key : data.token;
+      this.accountType = data.type;
+      this.username = data.username;
+      this.email = data.email;
+      //this.token = data.key ? data.key : data.token;
+      this.token = token;
       this.isLogged = true;
-      this.is_activated = user.is_activated;
-      this.activated_by = user.activated_by;
+      this.is_activated = data.is_activated;
+      this.activated_by = data.activated_by;
     },
   },
 
-  persist: {
-    storage: persistedState.cookies,
-  },
+  persist: [
+    {
+      storage: persistedState.cookies,
+      CookieOptions: {
+        expires: 7,
+      },
+    },
+    // {
+    //   storage: persistedState.sessionStorage,
+    //   paths: ["token"],
+    // },
+  ],
 });
 
 export default pinia;

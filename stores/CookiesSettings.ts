@@ -4,6 +4,7 @@ import { createPinia } from "pinia";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 
+type Layout = "default" | "accounts";
 const pinia = createPinia();
 import { useUserStore } from "./User";
 export const useCookiesStore = defineStore("cookiesStore", {
@@ -11,6 +12,9 @@ export const useCookiesStore = defineStore("cookiesStore", {
     return {
       // cookies settings
       isCookiesSet: false,
+      isUserMobileDropdown: false,
+      isUserDropdown: false,
+      layout: "default" as Layout,
       acceptedCookies: {
         necessary: true,
         functional: false,
@@ -31,8 +35,18 @@ export const useCookiesStore = defineStore("cookiesStore", {
     getAdvertisement: (state) => {
       return state.acceptedCookies.advertisement;
     },
+    getLayout(state) {
+      return state.layout;
+    },
   },
-  actions: {},
+  actions: {
+    setUserDropdown(is) {
+      this.isUserDropdown = is;
+    },
+    setLayout(layout: Layout) {
+      this.layout = layout;
+    },
+  },
   persist: {
     storage: persistedState.cookies,
     // only save isCookiesSet as cookie
