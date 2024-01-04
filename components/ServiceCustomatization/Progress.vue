@@ -64,8 +64,7 @@ const makeAnswer = (answer) => {
 const progressBarLength = computed(() => {
   const activeStep = Object.values(props.steps).find((step) => step.active);
   const activeStepIndex = Object.values(props.steps).indexOf(activeStep);
-  const progress =
-    (activeStepIndex / Object.values(props.steps).length) * 112.5;
+  const progress = (activeStepIndex / Object.values(props.steps).length) * 112.5;
   return `${progress}%`;
 });
 </script>

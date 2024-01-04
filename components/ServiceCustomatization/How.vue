@@ -1,8 +1,8 @@
 <template lang="pug">
 div.howItWorks(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14 xl:px-[26%] p-8 bg-[#f5f6feff]")
     p(class="font-bold text-3xl") How It Works
-    div(class="flex justify-center items-start gap-x-4")
-        div.howItWorks__item(class="flex flex-col relative justify-center gap-y-4 items-center  w-1/3" v-for="(instruction, index) in instructions")
+    div(class="flex flex-col  md:flex-row justify-center items-start gap-x-4 gap-y-4")
+        div.howItWorks__item(class="flex flex-col relative justify-center gap-y-4 items-center  w-full md:w-1/3" v-for="(instruction, index) in instructions")
             nuxt-img(:src="instruction.icon" provider="ipx" class="w-24 h-24 aspect-square object-cover ")
             div.flex.items-center.gap-x-2
                 div.rounded-full.p-2.text-white.bg-orange-500.w-6.h-6.items-center.justify-center.flex 1

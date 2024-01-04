@@ -45,7 +45,7 @@ export default defineNuxtConfig({
       "amazonaws.com",
     ],
     format: ["webp"],
-    provider: "twicpics",
+    provider: "ipx", //twicpics
     ipx: {
       dir: "public",
     },

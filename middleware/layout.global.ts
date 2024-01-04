@@ -7,6 +7,8 @@ export default defineNuxtRouteMiddleware((to) => {
   if (to.path.startsWith("/account")) {
     setPageLayout("accounts");
     console.log("set layout to accounts");
+  } else if (to.path.startsWith("/v2")) {
+    setPageLayout("default2");
   } else {
     setPageLayout("default");
     console.log("set layout to default");
