@@ -15,9 +15,9 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
             //-     span for your Home
            
           
-            V2HeaderFormV2(@next="step = step+1" v-if="step === 1")
-            V2HeaderFormV2-step2(@next="step = step+1" @goBack="step = step-1" v-if="step === 2")
-            V2HeaderFormV2-step3(@goBack="step = step-1" v-if="step === 3")
+            V2HeaderFormV2(@next="step = step+1" v-show="step === 1")
+            V2HeaderFormV2-step2(@next="step = step+1" @goBack="step = step-1" v-show="step === 2")
+            V2HeaderFormV2-step3(@goBack="step = step-1" v-show="step === 3")
     <!-- Person, details -->
     div(class="flex w-[95%] relative h-40 z-50")
     
