@@ -1,7 +1,7 @@
 <template lang="pug">
 nav(class="flex w-full px-[10%] py-4  justify-between items-center h-[6rem] ")
     div(class="w-3/4 flex gap-x-8 items-center font-semibold")
-        p logo
+        nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
         
         div(class="flex gap-x-2 items-center ml-6")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
