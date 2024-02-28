@@ -42,7 +42,7 @@ div(class="main-component w-full h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[
       rgba(36, 25, 105, 0.4) 0%,
       rgba(36, 25, 105, 0.4) 100%
     ),
-    url("images/index-header-3.jpg"),
+    url("/images/index-header-3.jpg"),
     lightgray 50% / cover no-repeat;
 
   -webkit-background-size: cover;
