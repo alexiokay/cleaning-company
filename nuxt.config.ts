@@ -11,6 +11,8 @@ declare module "@nuxt/schema" {
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
+    "nuxt-mail",
+
     "@nuxtjs/tailwindcss",
     "@nuxt/content",
     [
@@ -30,6 +32,16 @@ export default defineNuxtConfig({
     "@samk-dev/nuxt-vcalendar",
     "nuxt-vue3-google-signin",
   ],
+
+  mail: {
+    message: {
+      to: "foo@bar.de",
+    },
+    smtp: {
+      host: "smtp.example.com",
+      port: 587,
+    },
+  },
 
   googleSignIn: {
     clientId:

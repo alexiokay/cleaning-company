@@ -96,6 +96,8 @@ const SendQuoteToApi = async () => {
     start_day: bookFormStore.startDay,
     // termsAgreed: termsAgreed.value,
     approx_sqm: bookFormStore.approxSqM,
+    zip_code: bookFormStore.zipCode,
+    house_number: bookFormStore.houseNumber,
   };
   try {
     const response = await fetch(config.public.API_URL + "api/v1/quotes/", {

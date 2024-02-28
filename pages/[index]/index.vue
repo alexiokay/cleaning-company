@@ -84,36 +84,39 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
                     p  Learn More
 
 
-    <!-- header 2 -->
-    div(class="flex w-[65%] relative py-[5rem] pb-[11rem] z-40 items-center justify-center ")
-        div(class=" flex flex-col gap-y-3 w-[42%]")
-            h2(class="text-[3rem] font-bold tracking-[150%] text-[#464451]") Commercial Cleaning
-            p(class="w-2/3 tracking-wide") Your premier destination for top-notch commercial cleaning services. We specialize in maintaining pristine office spaces, retail establishments, medical facilities, and more.
-            button(class="mt-[2.5rem] rounded-xl w-[11rem] bg-[#4E37E3] py-[1rem] px-[1.5rem] gap-x-2 flex items-center justify-center text-white")
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_197_5)">
-                    <path d="M5.99984 2.66675L7.6665 6.33341L11.3332 8.00008L7.6665 9.66675L5.99984 13.3334L4.33317 9.66675L0.666504 8.00008L4.33317 6.33341L5.99984 2.66675ZM5.99984 5.88675L5.33317 7.33341L3.8865 8.00008L5.33317 8.66675L5.99984 10.1134L6.6665 8.66675L8.11317 8.00008L6.6665 7.33341L5.99984 5.88675ZM12.6665 6.00008L11.8265 4.17341L9.99984 3.33341L11.8265 2.50008L12.6665 0.666748L13.4998 2.50008L15.3332 3.33341L13.4998 4.17341L12.6665 6.00008ZM12.6665 15.3334L11.8265 13.5067L9.99984 12.6667L11.8265 11.8334L12.6665 10.0001L13.4998 11.8334L15.3332 12.6667L13.4998 13.5067L12.6665 15.3334Z" fill="#E8E8E9"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_197_5">
-                            <rect width="16" height="16" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+    //- <!-- header 2 -->
+    //- div(class="flex w-[65%] relative py-[5rem] pb-[11rem] z-40 items-center justify-center ")
+    //-     div(class=" flex flex-col gap-y-3 w-[42%]")
+    //-         h2(class="text-[3rem] font-bold tracking-[150%] text-[#464451]") Commercial Cleaning
+    //-         p(class="w-2/3 tracking-wide") Your premier destination for top-notch commercial cleaning services. We specialize in maintaining pristine office spaces, retail establishments, medical facilities, and more.
+    //-         button(class="mt-[2.5rem] rounded-xl w-[11rem] bg-[#4E37E3] py-[1rem] px-[1.5rem] gap-x-2 flex items-center justify-center text-white")
+    //-             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //-                 <g clip-path="url(#clip0_197_5)">
+    //-                 <path d="M5.99984 2.66675L7.6665 6.33341L11.3332 8.00008L7.6665 9.66675L5.99984 13.3334L4.33317 9.66675L0.666504 8.00008L4.33317 6.33341L5.99984 2.66675ZM5.99984 5.88675L5.33317 7.33341L3.8865 8.00008L5.33317 8.66675L5.99984 10.1134L6.6665 8.66675L8.11317 8.00008L6.6665 7.33341L5.99984 5.88675ZM12.6665 6.00008L11.8265 4.17341L9.99984 3.33341L11.8265 2.50008L12.6665 0.666748L13.4998 2.50008L15.3332 3.33341L13.4998 4.17341L12.6665 6.00008ZM12.6665 15.3334L11.8265 13.5067L9.99984 12.6667L11.8265 11.8334L12.6665 10.0001L13.4998 11.8334L15.3332 12.6667L13.4998 13.5067L12.6665 15.3334Z" fill="#E8E8E9"/>
+    //-                 </g>
+    //-                 <defs>
+    //-                     <clipPath id="clip0_197_5">
+    //-                         <rect width="16" height="16" fill="white"/>
+    //-                     </clipPath>
+    //-                 </defs>
+    //-             </svg>
                 
-                p(class="tracking-[150%] font-[0.8125rem] ") Book Now!
-        div(class=" w-1/2 relative ")
-            div(class="absolute -bottom-[22rem] right-[10rem] ")
-                nuxt-img(src="images/v2/header2 ft.png" width="650px" )
-                div(class="absolute bottom-[5rem] -left-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#EEECFE] text-[#3D2BB1]")
-                    p.w-auto.flex(class=" font-bold  text-lg") Over 1500
-                    p.w-auto.flex Online offers
-                div(class="absolute -bottom-[3rem] -right-[5rem] rounded-3xl py-[1.5rem] px-[1rem] text-[1rem] flex flex-col bg-[#E1FF01] ")
-                    p.w-auto.flex(class="text-[#3D2BB1]") Interested in
-                    p.w-auto.flex(class="text-[1.4375rem] font-bold tracking-wide text-[#3D2BB1]") Commercial Cleaning?
-                div(class="absolute top-[5rem] -right-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#FAFAFA] text-[#3D2BB1] font-bold text-[1.1875rem] tracking-wide")
-                    p.w-auto Find offers today
+    //-             p(class="tracking-[150%] font-[0.8125rem] ") Book Now!
+    //-     div(class=" w-1/2 relative ")
+    //-         div(class="absolute -bottom-[22rem] right-[10rem] ")
+    //-             nuxt-img(src="images/v2/header2 ft.png" width="650px" )
+    //-             div(class="absolute bottom-[5rem] -left-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#EEECFE] text-[#3D2BB1]")
+    //-                 p.w-auto.flex(class=" font-bold  text-lg") Over 1500
+    //-                 p.w-auto.flex Online offers
+    //-             div(class="absolute -bottom-[3rem] -right-[5rem] rounded-3xl py-[1.5rem] px-[1rem] text-[1rem] flex flex-col bg-[#E1FF01] ")
+    //-                 p.w-auto.flex(class="text-[#3D2BB1]") Interested in
+    //-                 p.w-auto.flex(class="text-[1.4375rem] font-bold tracking-wide text-[#3D2BB1]") Commercial Cleaning?
+    //-             div(class="absolute top-[5rem] -right-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#FAFAFA] text-[#3D2BB1] font-bold text-[1.1875rem] tracking-wide")
+    //-                 p.w-auto Find offers today
                   
+    V2Header3
+    V2Header4
+    V2Header5
                 
 
    

@@ -18,7 +18,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cen
       
           
     
-    div(class=" w-full h-auto min-h-screen  lg:mt-0   ")
+    div(class=" w-full h-auto min-h-full  lg:mt-0   ")
       <slot class="" />
       V2Footer(class="")
 div(class="cursor cursor--small")
