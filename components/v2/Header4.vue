@@ -36,7 +36,7 @@ div(class="w-full flex flex-col gap-y-4 px-[5%] pt-[4.75rem] text-[#181526] ")
 <style lang="scss">
 .image-1 {
   background:
-    url("images/how-it-works/img1.jpg"),
+    url("~/images/how-it-works/img1.jpg"),
     lightgray 50% / cover no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,7 +44,7 @@ div(class="w-full flex flex-col gap-y-4 px-[5%] pt-[4.75rem] text-[#181526] ")
 }
 .image-2 {
   background:
-    url("images/how-it-works/img2.jpg"),
+    url("~/images/how-it-works/img2.jpg"),
     lightgray 50% / cover no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
