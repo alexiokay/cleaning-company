@@ -117,6 +117,7 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
     V2Header3
     V2Header4
     V2Header5
+    V2Header6
                 
 
    
