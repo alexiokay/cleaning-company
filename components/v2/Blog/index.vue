@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex flex-col items-center justify-center w-full 3xl:px-[10%]  md:px-[10%] px-[1rem]")
+div(class="flex flex-col items-center justify-center w-full 3xl:px-[10%]  2xl:px-[10%] xl:px-[5%] px-[1rem]")
  
   div(class="relative flex w-[7.5rem] h-[5.5rem] ")
       nuxt-img(src="images/star1.png" width="70px" height="70px" class="absolute top-0 left-0 rotate-[210deg]")
@@ -13,8 +13,8 @@ div(class="flex flex-col items-center justify-center w-full 3xl:px-[10%]  md:px-
         :loop="false"
         :effect="'creative'"
         :space-between="2"
-        :breakpoints="{ 1920: {slidesPerView: 3.9}, 1024: { slidesPerView: 3.9, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 640: { slidesPerView: 1.5, spaceBetween: 2, }, }"
-        :initialSlide="1"
+        :breakpoints="{ 1920: {slidesPerView: 4.5}, 1024: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 640: { slidesPerView: 1.5, spaceBetween: 2, }, }"
+        :initialSlide="0"
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
@@ -51,7 +51,7 @@ const { data } = await storyblokApi.get("cdn/stories", {
   starts_with: "blog",
   is_startpage: false,
 });
-articles.value = data.stories.slice(0, 3);
+articles.value = data.stories.slice(0, 6);
 
 const activeService = computed(() => {
   return steps[0];
@@ -85,6 +85,7 @@ const selectedSlide = computed(() => {
 onMounted(() => {
   isSwiperLoaded.value = true;
   console.log("swiper loaded");
+  console.log(articles.value);
 });
 </script>
 
