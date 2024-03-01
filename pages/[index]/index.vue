@@ -116,14 +116,16 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
                   
     V2Header3
     V2Header4
-    V2Header5
+    V2Header5.my-12
     V2Header6
+    V2Header7
+    V2Blog.my-16
+ 
                 
 
    
 
-    <!-- header 4 -->
-    div(class="flex flex-col w-full  h-[60rem] items-center  py-[20rem]")
+    
 
        
         
