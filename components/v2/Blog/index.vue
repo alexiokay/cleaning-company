@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex flex-col items-center justify-center w-full 3xl:px-[10%]  2xl:px-[10%] xl:px-[5%] px-[1rem]")
+div(class="flex flex-col items-center justify-center w-full 3xl:pl-[10%]  2xl:pl-[10%] xl:pl-[5%] md:px-0 px-[1rem]")
  
   div(class="relative flex w-[7.5rem] h-[5.5rem] ")
       nuxt-img(src="images/star1.png" width="70px" height="70px" class="absolute top-0 left-0 rotate-[210deg]")
@@ -24,7 +24,7 @@ div(class="flex flex-col items-center justify-center w-full 3xl:px-[10%]  2xl:px
             V2BlogItem(:article="article")
                 template(v-slot:image)
                   
-                    nuxt-img(:src="'https:' + article.content.image"  :alt="article.content.title" provider="storyblok"  format="webp" width="400" height="300" class="w-full h-full xs:h-[13rem]  object-cover  hover:cursor-pointer ")
+                    nuxt-img(:src="'https:' + article.content.image"  :alt="article.content.title" provider="storyblok"  format="webp" width="500" height="400" class="w-full h-full  object-cover  hover:cursor-pointer ")
       
 
                   

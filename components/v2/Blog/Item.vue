@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="relative flex flex-col space-y-4 md:space-y-8  lg:text-start items-center lg:items-start bg-white  rounded-[20px] mt-6 md:mt-0 overflow-hidden border-[6px] border-white")
     
-    NuxtLink( :to="'/blog/' + article.slug" class="w-full xl:h-[25rem]  xs:h-[13rem] h-[18rem] ") 
+    NuxtLink( :to="'/blog/' + article.slug" class="w-full xl:h-[23.5rem]  xs:h-[13rem] h-[18rem] ") 
         slot(name="image")
     
     div(class="absolute top-0 left-[2rem] p-4 bg-[#Ffffff] font-medium text-lg text-[#64626E]")

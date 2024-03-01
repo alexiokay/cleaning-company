@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-full h-full flex flex-col justify-center items-center font-intern ")
     div(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[10rem]   ")
-        nuxt-img.header-img(src="images/v2/headerV2.jpeg" provider="ipx"  format="webp" class="w-full h-full object-cover absolute top-0 left-0 z-10  img-filters  ")
+        nuxt-img.header-img(src="images/v2/headerV2.jpeg" provider="ipx" width="1000" height="500"  format="webp" class="w-full h-full object-cover absolute top-0 left-0 z-10  img-filters  ")
         div(class="w-full h-full z-20 absolute top-0 header-background ")
         div(class="w-[130rem] h-[42.75rem]  flex flex-col items-center  z-20 gap-y-6 py-[3rem]  ")
             //- div(class="flex border-white border-[1px] rounded-full w-auto h-10 text-white items-center justify-center gap-x-4 px-6 py-4")
