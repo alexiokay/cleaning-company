@@ -1,10 +1,10 @@
 <template lang="pug">
-div(class="w-full flex flex-col")
+div(class="w-full flex flex-col pb-12")
     div(class="w-full h-[20rem] md:h-[33rem] relative ")
         nuxt-img(src="images/my-profile-header.jpeg" alt="my-profile-header" format="webp" class="  start-0 top-0 w-full h-full object-cover object-center" tabindex="-1")
         div(class="absolute top-0 left-0 griadent w-full h-full bg-black bg-opacity-50 flex items-center justify-center")
             h1(class="text-white text-5xl font-bold") My Profile
-    div(class="w-full flex flex-col px-[15%]")
+    div(class="w-full flex flex-col px-[15%] ")
         div(class="w-full z-50 h-auto flex justify-center items-start gap-x-[6rem] py-[5rem]")
             V2MyProfileMenuItem(title1="Booking" title2="Schedules")
                 template(v-slot:icon)
@@ -59,6 +59,8 @@ div(class="w-full flex flex-col")
                 p Send
         
         V2MyProfileBookingSchedules
+        V2MyProfileFavouriuteServices(class="mt-[12rem]")
+        V2MyProfileTransactionsHistory(class="mt-[8rem]")
 
        
 

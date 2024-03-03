@@ -1,7 +1,7 @@
 script
 <template lang="pug">
   
-div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-center items-start w-full  font   overflow-clip ")
+div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-center items-start w-full  font   overflow-clip font-intern ")
     //div#overlay(class="fixed overlaying top-0 left-0 w-full h-full bg-black opacity-40 z-10 hidden-overlay")
     CookieBanner(v-if="!cookiesStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
 

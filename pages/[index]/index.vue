@@ -35,8 +35,9 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
                 //- nuxt-img(src="images/v2/star.png" width="60px" class=" absolute -top-[2rem] -right-[2rem]")
                 //- nuxt-img(src="images/v2/star1.png" width="50px" class=" absolute top-[0rem] -right-[6rem]")
                 //- nuxt-img(src="images/v2/star.png" width="40px" class=" absolute top-[2rem] -left-[3rem]")
-                p(class="w-auto flex gap-x-3") Live Life Doing What  
-                    span(class="text-[#7863FA]") You Enjoy, 
+                p(class="w-auto flex") Live Life Doing What  
+                    span(class="text-[#7863FA]") You Enjoy
+                    span(class="") ,
 
                 p(class=" w-auto flex ") Not Cleaning
 
