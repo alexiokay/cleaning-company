@@ -1,6 +1,6 @@
 <template lang="pug">
-nav(class="flex w-full px-[10%] py-4  justify-between items-center h-[6rem] ")
-    div(class="w-3/4 flex gap-x-8 items-center font-semibold")
+nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between items-center h-[4.5rem] lg:h-[6rem]  shadow-md lg:shadow-none")
+    div(class="hidden lg:flex w-3/4  gap-x-8 items-center font-semibold")
         nuxtLink(to="/")
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
         
@@ -27,22 +27,48 @@ nav(class="flex w-full px-[10%] py-4  justify-between items-center h-[6rem] ")
                 <path d="M18 15H16V17H18M18 11H16V13H18M20 19H12V17H14V15H12V13H14V11H12V9H20M10 7H8V5H10M10 11H8V9H10M10 15H8V13H10M10 19H8V17H10M6 7H4V5H6M6 11H4V9H6M6 15H4V13H6M6 19H4V17H6M12 7V3H2V21H22V7H12Z" fill="#181526"/>
             </svg>
             p Commercial Cleaning
-    div(class="w-1/4 flex gap-x-8 items-center justify-end" )
+    div(class="w-1/4 hidden lg:flex  gap-x-8 items-center justify-end" )
+
         
-        button(class="flex gap-x-1 " @click="login")
+        button(class="flex gap-x-1 " @click="login" v-if="!userStore.getIsLogged")
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.5 3.5H5.5C4.39 3.5 3.5 4.39 3.5 5.5V9.5H5.5V5.5H19.5V19.5H5.5V15.5H3.5V19.5C3.5 20.0304 3.71071 20.5391 4.08579 20.9142C4.46086 21.2893 4.96957 21.5 5.5 21.5H19.5C20.0304 21.5 20.5391 21.2893 20.9142 20.9142C21.2893 20.5391 21.5 20.0304 21.5 19.5V5.5C21.5 4.39 20.6 3.5 19.5 3.5ZM10.58 16.08L12 17.5L17 12.5L12 7.5L10.58 8.91L13.17 11.5H3.5V13.5H13.17L10.58 16.08Z" fill="#161323"/>
             </svg>
             p.font-semibold Log in
 
-        button(class="flex px-5 py-2  border-[#4E37E3] border-[1px] text-[#4E37E3] rounded-md font-semibold text-lg" @click="getStarted") Get Started
+        button(class="flex gap-x-1 " v-if="userStore.getIsLogged" @click="logOut")
+            SolarLogoutOutline(class="w-6 h-6")
+            p.font-semibold Logout
+
+        button(class="flex px-5 py-2  border-[#4E37E3] border-[1px] text-[#4E37E3] rounded-md font-semibold text-lg" @click="getStarted" v-if="!userStore.getIsLogged") Get Started
+        nuxtLink(to="/my-profile"  class="flex px-5 py-2 items-center gap-x-2  border-[#4E37E3] border-[1px] text-[#4E37E3] rounded-md font-semibold text-lg" v-if="userStore.getIsLogged" ) 
+            GgProfile(class="w-6 h-6")
+            p My Profile
+
+    div(class="flex  items-center w-full lg:hidden ")
+        nuxtLink(to="/")
+            nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="70" height="60")
+        PepiconsPrintMenuCircle(class="w-10 h-10 ml-auto")
 </template>
 
 <script setup lang="ts">
+import GgProfile from "~icons/gg/profile";
+import SolarLogoutOutline from "~icons/solar/logout-outline";
+import PepiconsPrintMenuCircle from "~icons/pepicons-print/menu-circle";
+
+import { useUserStore } from "~/stores/User";
+
+const userStore = useUserStore();
+
 const router = useRouter();
 
 const login = () => {
   router.push("/login");
+};
+
+const logOut = async () => {
+  await userStore.logout();
+  router.push("/");
 };
 
 const getStarted = () => {

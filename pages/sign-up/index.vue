@@ -31,10 +31,65 @@ LoginBase
 
 <script setup lang="ts">
 import MingcuteGoogleLine from "~icons/mingcute/google-line";
+import { useUserStore } from "@/stores/User";
+
+definePageMeta({
+  middleware: "redirect-if-logged",
+});
+const userStore = useUserStore();
+
 const router = useRouter();
+const config = useRuntimeConfig();
+
+const name = ref();
+const email = ref();
+const password1 = ref();
+const password2 = ref();
+const lastName = ref();
+const firstName = ref();
+const userPhone = ref();
+const employeeId = ref();
 
 const moveToLogin = () => {
   router.push("/login");
+};
+
+const signUp = async () => {
+  await fetch(`${config.API_URL}auth/registration/`, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+      Host: `${config.FETCH_HOST}`,
+    },
+    body: JSON.stringify({
+      email: `${email.value}`,
+      password1: `${password1.value}`,
+      password2: `${password2.value}`,
+      Last_Name: `${lastName.value}`,
+      First_Name: `${firstName.value}`,
+      User_Phone: `${userPhone.value}`,
+      Employee_Id: `${employeeId.value}`,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.non_field_errors) {
+        alert(data.non_field_errors[0]);
+        return;
+      }
+      if (data.email) {
+        alert(data.email[0]);
+        return;
+      }
+      console.log(data);
+      userStore.setUser(data);
+
+      router.push("/dashboard");
+      //console.log("saved: ", userStore.getUser);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 </script>
 

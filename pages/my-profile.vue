@@ -70,7 +70,11 @@ div(class="w-full flex flex-col pb-12")
 
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  middleware: "redirect-if-not-logged",
+});
+</script>
 
 <style lang="scss" scoped>
 .griadent {

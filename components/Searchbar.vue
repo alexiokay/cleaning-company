@@ -52,7 +52,6 @@ const options = [
 .vs--searchable .vs__dropdown-toggle {
   height: 100%;
   border: none;
-  
 }
 
 .vs__dropdown-menu {

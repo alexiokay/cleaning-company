@@ -21,6 +21,7 @@ export const useUserStore = defineStore("User", {
       accountType: "" as AccountType, //customer, partner
       messages: [],
       userWantsSendMessage: false,
+      avatar: "",
     };
   },
   getters: {
@@ -86,18 +87,20 @@ export const useUserStore = defineStore("User", {
       this.activated_by = null;
     },
 
-    setUser(data: any, token: string) {
-      this.firstName = data.first_name;
-      this.lastName = data.last_name;
+    setUser(data: any) {
+      const user = data.user;
 
-      this.accountType = data.type;
-      this.username = data.username;
-      this.email = data.email;
-      //this.token = data.key ? data.key : data.token;
-      this.token = token;
+      this.firstName = user.first_name;
+      this.lastName = user.last_name;
+      //this.role = data.member.role;
+      this.accountType = user.type;
+      this.username = user.username;
+      this.email = user.email;
+      this.token = data.key ? data.key : data.token;
       this.isLogged = true;
-      this.is_activated = data.is_activated;
-      this.activated_by = data.activated_by;
+      this.is_activated = user.is_activated;
+      this.activated_by = user.activated_by;
+      this.avatar = user.avatar;
     },
   },
 

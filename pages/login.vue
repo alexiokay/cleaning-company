@@ -3,7 +3,7 @@ LoginBase
     template(v-slot:all)
      
         h1(class="text-[3rem] text-[#181526] font-bold text-center -mt-4") Log in
-        form(class="flex flex-col gap-y-4 mt-10")
+        div(class="flex flex-col gap-y-4 mt-10")
             div(clas="flex flex-col  w-full h-full")
                 p(class="mb-2 font-bold text-base") Email od Phone Number
                 input(v-model="email" type="email" placeholder="Email" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
@@ -31,6 +31,55 @@ LoginBase
 
 <script setup lang="ts">
 import MingcuteGoogleLine from "~icons/mingcute/google-line";
+import { useUserStore } from "@/stores/User";
+
+// set middleware
+definePageMeta({
+  middleware: "redirect-if-logged",
+});
+
+const config = useRuntimeConfig();
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const email = ref();
+const password = ref();
+const rememberMe = ref(false);
+
+const login = async () => {
+  const body = {
+    username: "",
+    email: `${email.value}`,
+    password: `${password.value}`,
+  };
+
+  const url = `${config.public.API_URL}auth/login/`;
+  console.log(url);
+
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+      Host: `${config.FETCH_HOST}`,
+    },
+    body: JSON.stringify(body),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.non_field_errors) {
+        alert(data.non_field_errors[0]);
+        return;
+      }
+      userStore.setUser(data);
+      //console.log("saved: ", userStore.getUser);
+      router.push("/my-profile");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 </script>
 
 <style lang="scss"></style>
