@@ -14,10 +14,10 @@ div(class="w-full lg:pl-[10%]")
         SwiperSlide(v-for="step in steps" :key="step" class="px-4 w-full md:w-3/4 py-[4rem] ")
             div(class="w-[100%] aspect-[13/16]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                 //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
-                nuxt-img(:src="step.image" format="webp" alt="logo" class=" w-full h-full object-cover")
+                nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
                 div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-8 py-6 gap-y-4 justify-end" :style="{'background': step.griadent}")
                     
-                    h4.text-xl.font-bold Home Cleaning
+                    h4.text-xl.font-bold {{ step.title }}
                     p We know every home is different, so we allow you to give us special requests for those hard to reach places.
                     button(class="bg-white rounded-[8px] py-[16px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
     div(class="gap-y-1 text-2xl font-bold flex flex-col")
