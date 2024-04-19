@@ -1,9 +1,9 @@
 <template lang="pug">
-div(class="w-full h-full flex flex-col justify-center items-center font-intern ")
-    div(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[10rem]   ")
+div(class="w-full h-full  flex flex-col justify-center items-center font-intern ")
+    div(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[3rem] lg:py-[10rem]   ")
         nuxt-img.header-img(src="images/v2/headerV2.jpeg" provider="ipx" width="1000" height="500"  format="webp" class="w-full h-full object-cover absolute top-0 left-0 z-10  img-filters  ")
         div(class="w-full h-full z-20 absolute top-0 header-background ")
-        div(class="w-[130rem] h-[42.75rem]  flex flex-col items-center  z-20 gap-y-6 py-[3rem]  ")
+        div(class="px-2 lg:px-0 2xl:w-[130rem] lg:h-[42.75rem]  flex flex-col items-center  z-20 gap-y-6 pb-[3rem] lg:pb-0 lg:py-[3rem]  ")
             //- div(class="flex border-white border-[1px] rounded-full w-auto h-10 text-white items-center justify-center gap-x-4 px-6 py-4")
             //-     p Search 
             //-     ArrowIcon(class="rotate-[180deg]")
@@ -22,35 +22,36 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
     <!-- Person, details -->
     div(class="flex w-[95%] relative h-10 z-50")
     
-        div(class="absolute -top-32 right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-50") 
+        div(class="absolute  -top-16 right-[5rem] lg:-top-32 lg:right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-50") 
             p Hey, Let's talk about details!
-        div(class="absolute right-72 -top-24 w-auto")
+        div(class="absolute right-4 -top-12  md:right-72 md:-top-24 w-auto")
             
-            nuxt-img(src="images/v2/hero.png" width="150px")
+            nuxt-img(src="images/v2/hero.png" width="150px" class="w-[4rem] md:w-auto")
 
 
     <!-- header 3 -->
-    div(class="flex flex-col w-full   items-center  pt-[1rem] pb-[12rem]")
-            div(class="flex  w-auto relative flex-col text-[3rem] items-center font-bold")
+    div(class="flex flex-col w-full   items-center px-4 lg:px-0 pt-[1rem] pb-6 lg:pb-[12rem]")
+            div(class="flex  w-auto relative flex-col  text-[1.7rem]  lg:text-[3rem] items-center font-bold")
                 //- nuxt-img(src="images/v2/star.png" width="60px" class=" absolute -top-[2rem] -right-[2rem]")
                 //- nuxt-img(src="images/v2/star1.png" width="50px" class=" absolute top-[0rem] -right-[6rem]")
                 //- nuxt-img(src="images/v2/star.png" width="40px" class=" absolute top-[2rem] -left-[3rem]")
-                p(class="w-auto flex") Live Life Doing What  
+                p(class="w-auto flex flex-wrap gap-x-2") Live Life Doing What  
                     span(class="text-[#7863FA]") You Enjoy
                     span(class="") ,
 
-                p(class=" w-auto flex ") Not Cleaning
+                    span(class=" w-auto flex ") Not Cleaning
 
-            p(class="mt-8 w-[38rem] font-[0.8125rem] text-center leading-[150%]") For over 1 year, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
+            p(class="mt-8 lg:w-[38rem] font-[0.8125rem] md:text-center leading-[150%]") For over 1 year, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
 
-            div(class="flex mt-28 gap-x-[8.5rem] w-3/5")
-                div(class="flex flex-col items-center w-1/3 text-center ")
-                    <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M32.5002 46.6667C38.7135 46.6667 43.9668 42.7734 46.1268 37.3334H18.8735C21.0068 42.7734 26.2868 46.6667 32.5002 46.6667ZM23.1668 29.3334C24.2277 29.3334 25.2451 28.9119 25.9953 28.1618C26.7454 27.4117 27.1668 26.3942 27.1668 25.3334C27.1668 24.2725 26.7454 23.2551 25.9953 22.5049C25.2451 21.7548 24.2277 21.3334 23.1668 21.3334C22.106 21.3334 21.0885 21.7548 20.3384 22.5049C19.5883 23.2551 19.1668 24.2725 19.1668 25.3334C19.1668 26.3942 19.5883 27.4117 20.3384 28.1618C21.0885 28.9119 22.106 29.3334 23.1668 29.3334ZM41.8335 29.3334C42.8944 29.3334 43.9118 28.9119 44.6619 28.1618C45.4121 27.4117 45.8335 26.3942 45.8335 25.3334C45.8335 24.2725 45.4121 23.2551 44.6619 22.5049C43.9118 21.7548 42.8944 21.3334 41.8335 21.3334C40.7726 21.3334 39.7552 21.7548 39.0051 22.5049C38.2549 23.2551 37.8335 24.2725 37.8335 25.3334C37.8335 26.3942 38.2549 27.4117 39.0051 28.1618C39.7552 28.9119 40.7726 29.3334 41.8335 29.3334ZM32.5002 53.3334C26.8422 53.3334 21.416 51.0858 17.4152 47.085C13.4144 43.0842 11.1668 37.658 11.1668 32C11.1668 26.3421 13.4144 20.9159 17.4152 16.9151C21.416 12.9143 26.8422 10.6667 32.5002 10.6667C38.1581 10.6667 43.5843 12.9143 47.5851 16.9151C51.5859 20.9159 53.8335 26.3421 53.8335 32C53.8335 37.658 51.5859 43.0842 47.5851 47.085C43.5843 51.0858 38.1581 53.3334 32.5002 53.3334ZM32.5002 5.33337C17.7535 5.33337 5.8335 17.3334 5.8335 32C5.8335 39.0725 8.64301 45.8553 13.644 50.8562C16.1202 53.3325 19.0599 55.2967 22.2953 56.6368C25.5306 57.977 28.9982 58.6667 32.5002 58.6667C39.5726 58.6667 46.3554 55.8572 51.3563 50.8562C56.3573 45.8553 59.1668 39.0725 59.1668 32C59.1668 28.4981 58.4771 25.0305 57.137 21.7951C55.7968 18.5598 53.8326 15.6201 51.3563 13.1439C48.8801 10.6676 45.9404 8.70338 42.7051 7.36325C39.4697 6.02313 36.0021 5.33337 32.5002 5.33337Z" fill="#181526"/>
-                    </svg>
+            div(class="flex flex-col lg:flex-row gap-y-6 mt-12 lg:mt-28 gap-x-[8.5rem] lg:w-3/5")
+                V2Header2Item
+                    template(v-slot:icon)
+                        <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32.5002 46.6667C38.7135 46.6667 43.9668 42.7734 46.1268 37.3334H18.8735C21.0068 42.7734 26.2868 46.6667 32.5002 46.6667ZM23.1668 29.3334C24.2277 29.3334 25.2451 28.9119 25.9953 28.1618C26.7454 27.4117 27.1668 26.3942 27.1668 25.3334C27.1668 24.2725 26.7454 23.2551 25.9953 22.5049C25.2451 21.7548 24.2277 21.3334 23.1668 21.3334C22.106 21.3334 21.0885 21.7548 20.3384 22.5049C19.5883 23.2551 19.1668 24.2725 19.1668 25.3334C19.1668 26.3942 19.5883 27.4117 20.3384 28.1618C21.0885 28.9119 22.106 29.3334 23.1668 29.3334ZM41.8335 29.3334C42.8944 29.3334 43.9118 28.9119 44.6619 28.1618C45.4121 27.4117 45.8335 26.3942 45.8335 25.3334C45.8335 24.2725 45.4121 23.2551 44.6619 22.5049C43.9118 21.7548 42.8944 21.3334 41.8335 21.3334C40.7726 21.3334 39.7552 21.7548 39.0051 22.5049C38.2549 23.2551 37.8335 24.2725 37.8335 25.3334C37.8335 26.3942 38.2549 27.4117 39.0051 28.1618C39.7552 28.9119 40.7726 29.3334 41.8335 29.3334ZM32.5002 53.3334C26.8422 53.3334 21.416 51.0858 17.4152 47.085C13.4144 43.0842 11.1668 37.658 11.1668 32C11.1668 26.3421 13.4144 20.9159 17.4152 16.9151C21.416 12.9143 26.8422 10.6667 32.5002 10.6667C38.1581 10.6667 43.5843 12.9143 47.5851 16.9151C51.5859 20.9159 53.8335 26.3421 53.8335 32C53.8335 37.658 51.5859 43.0842 47.5851 47.085C43.5843 51.0858 38.1581 53.3334 32.5002 53.3334ZM32.5002 5.33337C17.7535 5.33337 5.8335 17.3334 5.8335 32C5.8335 39.0725 8.64301 45.8553 13.644 50.8562C16.1202 53.3325 19.0599 55.2967 22.2953 56.6368C25.5306 57.977 28.9982 58.6667 32.5002 58.6667C39.5726 58.6667 46.3554 55.8572 51.3563 50.8562C56.3573 45.8553 59.1668 39.0725 59.1668 32C59.1668 28.4981 58.4771 25.0305 57.137 21.7951C55.7968 18.5598 53.8326 15.6201 51.3563 13.1439C48.8801 10.6676 45.9404 8.70338 42.7051 7.36325C39.4697 6.02313 36.0021 5.33337 32.5002 5.33337Z" fill="#181526"/>
+                        </svg>
 
-                    p(class="text-[2.0625rem] font-bold mt-[1.56rem]") 100% Satisfaction Guarantee
-                    p(class="mt-[1rem] px-[5.1rem]") Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing 
+                    template(v-slot:title) 100% Satisfaction Guarantee
+                    template(v-slot:subtitle) Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing 
                 V2Header2Item
                     template(v-slot:icon)
                         <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,8 +71,8 @@ div(class="w-full h-full flex flex-col justify-center items-center font-intern "
 
 
                     template(v-slot:title) 
-                        p Free lifetime
-                        p Support
+                        p(class="flex flex-row lg:flex-col gap-x-2") Free lifetime
+                            p Support
                     template(v-slot:subtitle) Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing 
                 
            

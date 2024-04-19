@@ -1,7 +1,7 @@
 <template lang="pug">
-div(class="flex items-start justify-center w-[70%] py-[8.88rem] gap-x-[3.06rem] relative")
-    div(class="flex flex-col justify-start items-start h-full w-2/5 gap-y-2 ")
-        h3(class="text-[2.5rem] font-bold flex flex-col") Meet our 
+div(class="flex flex-col lg:flex-row gap-y-4 items-start justify-center w-full px-4 lg:px-0 lg:w-[70%] lg:py-[8.88rem] gap-x-[3.06rem] relative")
+    div(class="flex flex-col justify-start items-start h-full w-full lg:w-2/5 gap-y-2 ")
+        h3(class="text-[1.8rem] lg:text-[2.5rem] font-bold flex flex-col") Meet our 
            span(class="text-[#7863FA]") Inteligent Assistants
         p.flex.flex-col We use AI to help you find perfect suited
             span Cleaning Service providers.
@@ -35,7 +35,7 @@ div(class="flex items-start justify-center w-[70%] py-[8.88rem] gap-x-[3.06rem] 
                 </svg>
 
                 p Web Tool Assistant
-    div(class="w-3/5 relative overflow-clip rounded-[3rem] " )
+    div(class="w-full lg:w-3/5 relative overflow-clip rounded-2 lg:rounded-[3rem] " )
         nuxt-img(src="images/header5-img.png" format="webp" alt="logo" class=" w-full border-[6px] border-white relative ")
         div(class="w-full h-full griadent absolute top-0 left-0 flex")
             p(class="w-[15.5rem] h-auto ml-[60%] mt-[24%] font-bold") How does AI work? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nam libero justo laoreet sit amet. Vivamus arcu felis bibendum.

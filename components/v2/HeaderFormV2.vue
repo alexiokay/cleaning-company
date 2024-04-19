@@ -1,18 +1,18 @@
 <template lang="pug">
-div(class="w-auto h-full bg-[#FAFAFA] rounded-[3rem] flex px-[4rem] py-[7.5rem] gap-y-3 gap-x-[3.25rem] ")
+div(class="w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[7.5rem] gap-y-3 gap-x-[3.25rem] ")
     
     div(class="flex w-auto flex-col gap-y-3")
-        div(class="flex border-black  border-[1px] rounded-full w-[22rem] h-10 font-bold text-black items-center justify-center gap-x-4 py-4")
+        div(class="flex border-black  border-[1px] rounded-full w-[1/3] lg:w-[22rem] h-10 font-bold text-black items-center justify-center gap-x-4 py-4")
                 p Search 
                 ArrowIcon(class="rotate-[180deg]")
                 p Book & Pay
                 ArrowIcon(class="rotate-[180deg]")
                 p Relax
-        h1(class="mt-[3.94rem] text-[3rem] font-bold") Find a cleaning service
+        h1(class="mt-[1rem] lg:mt-[3.94rem]  text-[1.7rem] lg:text-[3rem] font-bold") Find a cleaning service
             p(class="text-[#7863FA]") in your area
 
-    div(class="flex w-[39rem] flex-col gap-y-3")
-        div(class="flex w-full h-full gap-x-4 p-[2.5rem] bg-white rounded-[1.5rem]")
+    div(class="flex lg:w-[39rem] flex-col gap-y-3")
+        div(class="flex w-full h-full gap-x-4  md:p-2 lg:p-[2.5rem] md:bg-white rounded-[1.5rem]")
             div(class="w-full h-full flex flex-col gap-y-3")
                 p(class="text[#181526] font-bold") Select the service you are interested in
                 div(class="flex flex-wrap gap-x-2 gap-y-2 ")

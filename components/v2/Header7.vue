@@ -1,17 +1,17 @@
 <template lang="pug">
-div(class="w-full lg:pl-[10%]")
+div(class="w-full lg:pl-[10%] px-4 lg:px-0")
     Swiper(
         @slideChange="onSlideChange"
         :modules="[]"
         :loop="false"
         :effect="'creative'"
         :space-between="2"
-        :breakpoints="{ 1920: {slidesPerView: 4.5}, 1024: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 640: { slidesPerView: 1.5, spaceBetween: 2, }, }"
+        :breakpoints="{ 1920: {slidesPerView: 4.5}, 1024: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
         :initialSlide="selectedSlide"
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="step in steps" :key="step" class="px-4 w-full md:w-3/4 py-[4rem] ")
+        SwiperSlide(v-for="step in steps" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 py-[4rem] ")
             div(class="w-[100%] aspect-[13/16]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                 //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                 nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
@@ -20,19 +20,19 @@ div(class="w-full lg:pl-[10%]")
                     h4.text-xl.font-bold {{ step.title }}
                     p We know every home is different, so we allow you to give us special requests for those hard to reach places.
                     button(class="bg-white rounded-[8px] py-[16px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
-    div(class="gap-y-1 text-2xl font-bold flex flex-col")
+    div(class="gap-y-1 text-[1.4rem] lg:text-2xl md:font-bold flex flex-col")
         p Explore and see our services.
         p Choose the offer most suitable for your home.
 
-    div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white")
-        div(class="w-1/2 px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
-            p.flex.flex-col.text-4xl.font-bold.gap-y-3 How can we
+    div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white flex-col lg:flex-row gap-y-6")
+        div(class="w-full lg:w-1/2 px-4 py-6 lg:py-0 lg:px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
+            p.flex.flex-col.font-bold(class="text-[1.8rem] lg:text-4xl lg:gap-y-3") How can we
                 span take care of you?
             p.flex.flex-col(class="text-[#FFF]") Get a personalized list of the best market prices
                 span available without the need for an on-site
                 span consultation—tailored specifically for you.
-        div(class="w-1/2 px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-center flex flex-col  bg-[#B1A5FC] gap-y-[1.5rem]")
-            p.flex.flex-col.text-4xl.font-bold.text-center.gap-y-3 Get in touch
+        div(class="w-full lg:w-1/2 px-4 py-6 lg:px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-center flex flex-col  bg-[#B1A5FC] gap-y-[1.5rem]")
+            p.flex.flex-col.font-bold(class="text-[1.8rem] lg:text-4xl lg:gap-y-3") Get in touch
                 span with us!
             button(class="bg-[#4E37E3] rounded-[8px] py-[16px] px-[24px]  w-auto text-white font-bold flex gap-x-2 items-center") 
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
