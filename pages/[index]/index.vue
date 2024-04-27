@@ -3,7 +3,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
     div(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[3rem] lg:py-[10rem]   ")
         nuxt-img.header-img(src="images/v2/headerV2.jpeg" provider="ipx" width="1000" height="500"  format="webp" class="w-full h-full object-cover absolute top-0 left-0 z-10  img-filters  ")
         div(class="w-full h-full z-20 absolute top-0 header-background ")
-        div(class="px-2 lg:px-0 2xl:w-[130rem] lg:h-[42.75rem]  flex flex-col items-center  z-20 gap-y-6 pb-[3rem] lg:pb-0 lg:py-[3rem]  ")
+        div(class="lg:px-0 2xl:w-[130rem] lg:h-[42.75rem]  flex flex-col items-center  z-20 gap-y-6 pb-[3rem] lg:pb-0 lg:py-[3rem]  ")
             //- div(class="flex border-white border-[1px] rounded-full w-auto h-10 text-white items-center justify-center gap-x-4 px-6 py-4")
             //-     p Search 
             //-     ArrowIcon(class="rotate-[180deg]")
@@ -20,9 +20,9 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
             V2HeaderFormV2-step3(@book="step = step+1" @goBack="step = step-1" v-show="step === 3")
             V2Inquiry(v-show="step === 4" @done="step = 1")
     <!-- Person, details -->
-    div(class="flex w-[95%] relative h-10 z-50")
+    div(class="flex w-[95%] relative h-10 z-20")
     
-        div(class="absolute  -top-16 right-[5rem] lg:-top-32 lg:right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-50") 
+        div(class="absolute  -top-16 right-[5rem] lg:-top-32 lg:right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-30") 
             p Hey, Let's talk about details!
         div(class="absolute right-4 -top-12  md:right-72 md:-top-24 w-auto")
             

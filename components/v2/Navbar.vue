@@ -45,10 +45,21 @@ nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between item
             GgProfile(class="w-6 h-6")
             p My Profile
 
-    div(class="flex  items-center w-full lg:hidden ")
+    div(class="flex  items-center w-full lg:hidden " )
         nuxtLink(to="/")
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="70" height="60")
-        PepiconsPrintMenuCircle(class="w-10 h-10 ml-auto")
+        button(class="w-10 h-10 ml-auto" @click="isMobileMenu = !isMobileMenu")
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6H21V8H3V6ZM3 11H21V13H3V11ZM3 16H21V18H3V16Z" fill="black"/>
+            </svg>
+
+    
+
+    div(class="fixed h-screen top-0 left-0 flex-col w-full bg-[rgba(255,255,255,0.9)]  items-center justify-center gap-y-4" v-if="isMobileMenu")
+        PepiconsPrintMenuCircle(class="w-10 h-10 ml-auto" @click="isMobileMenu = !isMobileMenu")
+
+
+    
 </template>
 
 <script setup lang="ts">
@@ -62,6 +73,7 @@ const userStore = useUserStore();
 
 const router = useRouter();
 
+const isMobileMenu = ref(false);
 const login = () => {
   router.push("/login");
 };

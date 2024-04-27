@@ -18,6 +18,19 @@ export const useBookFormStore = defineStore("BookForm", {
       companyName: "",
       email: "",
       phone: "",
+      serviceValidationConfig: {
+        car: ["carModel", "carYear", "HouseNumber", "startDay"],
+        house: ["HouseNumber", "startDay"],
+        garden: ["HouseNumber", "startDay"],
+        office: ["HouseNumber", "startDay"],
+        event: ["HouseNumber", "startDay"],
+        construction: ["HouseNumber", "startDay"],
+        industrial: ["HouseNumber", "startDay"],
+      },
+
+      /// cars
+      carModel: "",
+      carYear: "",
 
       termsAgreed: false as boolean,
     };
@@ -43,6 +56,22 @@ export const useBookFormStore = defineStore("BookForm", {
     },
     removeElement(selected: String) {
       this.selected = this.selected.filter((element) => element !== selected);
+    },
+    setSelected(selected: String[]) {
+      // allow only one selection
+      this.selected = selected;
+    },
+    validate2Step(service: String) {
+      service = service.toLowerCase();
+      let validationArray = this.serviceValidationConfig[service];
+      console.log(validationArray);
+      let valid = true;
+      validationArray.forEach((element) => {
+        if (this[element] == "") {
+          valid = false;
+        }
+      });
+      return valid;
     },
   },
   // persist: {

@@ -1,5 +1,5 @@
 <template lang="pug">
-button(:class="isSelected? 'buttonSelected' : ''" class="w-auto select-none gap-y-1 gap-x-2 border-[#181526]  border-[1px] rounded-[0.4375rem] items-center text-[#181526] justify-center flex  px-[1.5rem] py-[0.5rem] text-center text-semibold ")
+button(:class="isSelected? 'buttonSelected' : ''" class="disabled:bg-[rgba(0,0,0,0.25)] w-auto select-none gap-y-1 gap-x-2 border-[#181526]  border-[1px] rounded-[0.4375rem] items-center text-[#181526] justify-center flex px-[0.8rem]  lg:px-[1.5rem] py-[0.4rem] lg:py-[0.5rem] text-center text-semibold ")
     div(:class="isSelected? 'buttonSelected-icon' : ''")
       slot( name="icon")
     p(class=" font-bold text-[1rem]") {{ text }}
@@ -18,7 +18,7 @@ const props = defineProps({
   color: white;
 }
 
-.buttonSelected-icon {
-  filter: invert(100%);
-}
+// .buttonSelected-icon {
+//   filter: invert(100%);
+// }
 </style>
