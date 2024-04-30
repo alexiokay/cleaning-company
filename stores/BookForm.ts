@@ -9,6 +9,7 @@ export const useBookFormStore = defineStore("BookForm", {
     return {
       selected: [] as String[],
       zipCode: "",
+      addres_display: "",
       houseNumber: "",
       approxSqM: "",
       frequency: "once",

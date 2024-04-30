@@ -47,7 +47,7 @@ div(class="w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex fl
                     //-         </svg>
                 p(class="text[#181526] font-bold") What is your ZIP Code?
                 div(class="flex flex-col lg:flex-row gap-x-[0.5rem] gap-y-3")
-                    input(class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="Zip Code / Address")
+                    input(class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="Zip Code / Address" v-model="zipCode")
                     MainFormNext(@next="next")
                         
                     
@@ -71,16 +71,40 @@ import { storeToRefs } from "pinia";
 
 const emit = defineEmits(["next"]);
 
+const config = useRuntimeConfig();
+
 const BookFormStore = useBookFormStore();
-const { selected } = storeToRefs(useBookFormStore());
+const { selected, zipCode, addres_display } = storeToRefs(useBookFormStore());
 
 const next = () => {
-  if (selected.value.length === 0) {
+  if (selected.value.length === 0 || zipCode.value === "") {
     alert("Please select at least one option");
   } else {
+    get_city_name(zipCode.value);
     emit("next");
   }
+
+  // TODO: add validation for zip code
 };
+
+const get_city_name = async (zip: string) => {
+  const response = await fetch(
+    config.public.API_URL + `/api/v1/localizations/get-city-name`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ zip_code: zip }),
+    }
+  );
+  const data = await response.json().then((data) => {
+    addres_display.value = data;
+  });
+
+  console.log(data);
+};
+
 const select = (name: string) => {
   //   if (selected.value.includes(name)) {
   //     BookFormStore.removeElement(name);

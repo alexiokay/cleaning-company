@@ -19,7 +19,7 @@ div(class="w-[100vw] h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex
                 div(class="flex gap-x-2 w-full md:absolute top-3 items-center text-xs md:text-sm truncate	")
                     GoBackIcon(@click="$emit('goBack')" class="w-6 h-6 text-[#181526] hover:cursor-pointer")
                     p(class="truncate") Chosen: 
-                        span {{ bookFormStore.getSelectedString}}  Search in: 100DG, Amsterdam, Netherlands
+                        span {{ bookFormStore.getSelectedString}}  Search in: {{ addres_display }}, Amsterdam, Netherlands
                 slot(name="content")
                 slot(name="footer")
                         
@@ -34,8 +34,14 @@ import GoBackIcon from "~icons/iconamoon/arrow-left-2-bold";
 import { useBookFormStore } from "@/stores/BookForm";
 import { storeToRefs } from "pinia";
 
-const { startDay, additionalServices, houseNumber, frequency, approxSqM } =
-  storeToRefs(useBookFormStore());
+const {
+  startDay,
+  additionalServices,
+  houseNumber,
+  frequency,
+  approxSqM,
+  addres_display,
+} = storeToRefs(useBookFormStore());
 
 const bookFormStore = useBookFormStore();
 
