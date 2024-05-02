@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="w-[100vw] h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[7.5rem] gap-y-3 gap-x-[3.25rem] ")
+div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[7.5rem] gap-y-3 gap-x-[3.25rem] ")
     
     div(class="flex w-auto flex-col gap-y-3")
         
@@ -19,7 +19,7 @@ div(class="w-[100vw] h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex
                 div(class="flex gap-x-2 w-full md:absolute top-3 items-center text-xs md:text-sm truncate	")
                     GoBackIcon(@click="$emit('goBack')" class="w-6 h-6 text-[#181526] hover:cursor-pointer")
                     p(class="truncate") Chosen: 
-                        span {{ bookFormStore.getSelectedString}}  Search in: {{ addres_display }}, Amsterdam, Netherlands
+                        span {{ bookFormStore.getSelectedString}}  Search in: {{ addres_display }}s
                 slot(name="content")
                 slot(name="footer")
                         
