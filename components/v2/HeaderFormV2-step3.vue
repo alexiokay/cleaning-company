@@ -3,7 +3,7 @@ MainFormBase
   template(v-slot:content)
 
         
-        div(class="flex w-full h-full gap-x-4 md:p-[2.5rem] md:bg-white rounded-[1.5rem] relative")
+        div(class="flex w-full h-full gap-x-4  md:bg-white rounded-[1.5rem] relative")
             div(class="w-full h-full flex flex-col gap-y-3 ")
                
                 div(class="w-full flex flex-col md:flex-row  gap-x-4 md:mt-6")

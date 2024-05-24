@@ -47,8 +47,11 @@ div(class="w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex fl
                     //-         </svg>
                 p(class="text[#181526] font-bold") What is your ZIP Code?
                 div(class="flex flex-col lg:flex-row gap-x-[0.5rem] gap-y-3")
-                    input(class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="Zip Code / Address" v-model="zipCode")
+                    input#zipcode-input(class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="Zip Code / Address" v-model="zipCode")
                     MainFormNext(@next="next")
+                
+                p(class="text-red-500" v-if="incorrectZipCode === true") The zipcode you submitted is not Netherlands zipcode
+              
                         
                     
 
@@ -76,12 +79,15 @@ const config = useRuntimeConfig();
 const BookFormStore = useBookFormStore();
 const { selected, zipCode, addres_display } = storeToRefs(useBookFormStore());
 
-const next = () => {
+const incorrectZipCode = ref(false);
+
+const next = async () => {
   if (selected.value.length === 0 || zipCode.value === "") {
     alert("Please select at least one option");
   } else {
-    get_city_name(zipCode.value);
-    emit("next");
+    await get_city_name(zipCode.value);
+    if (incorrectZipCode.value === false) emit("next");
+    else incorrectZipCode.value = true;
   }
 
   // TODO: add validation for zip code
@@ -99,7 +105,8 @@ const get_city_name = async (zip: string) => {
     }
   );
   const data = await response.json().then((data) => {
-    addres_display.value = data;
+    addres_display.value = data.address_display;
+    incorrectZipCode.value = data.incorrect_zipcode;
   });
 
   console.log(data);
@@ -114,6 +121,18 @@ const select = (name: string) => {
   // allow only one selection
   BookFormStore.setSelected([name]);
 };
+
+onMounted(() => {
+  const zipcodeInput = document.getElementById(
+    "zipcode-input"
+  ) as HTMLInputElement;
+  // on enter press
+  zipcodeInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      next();
+    }
+  });
+});
 </script>
 
 <style lang="scss"></style>

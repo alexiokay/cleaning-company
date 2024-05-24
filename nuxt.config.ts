@@ -11,6 +11,7 @@ declare module "@nuxt/schema" {
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
+    "nuxt-icon",
     "nuxt-mail",
 
     "@nuxtjs/tailwindcss",

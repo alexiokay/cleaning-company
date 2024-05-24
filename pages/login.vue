@@ -80,6 +80,30 @@ const login = async () => {
       console.log(err);
     });
 };
+
+onMounted(() => {
+  const loginInput = document.querySelector(
+    "input[type='email']"
+  ) as HTMLInputElement;
+  const passwordInput = document.querySelector(
+    "input[type='password']"
+  ) as HTMLInputElement;
+
+  loginInput.focus();
+  // on enter press
+  loginInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      // focus password
+      passwordInput.focus();
+    }
+  });
+
+  passwordInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      login();
+    }
+  });
+});
 </script>
 
 <style lang="scss"></style>
