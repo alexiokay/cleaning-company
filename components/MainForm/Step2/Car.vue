@@ -32,14 +32,11 @@ div(class="w-full  flex flex-col md:flex-row gap-x-4 md:mt-6 gap-y-1 md:gap-y-3"
         //-     option(value="suv" ) SUV/Crossiver/MPV (VW Tiguan etc.)
         //-     option(value="van" ) Van (VW Transporter, etc.)
         //-     option(value="Medium Van" ) Medium Van (Ford Transit etc.)
-        CustomSelect(:options="carSizeOptions")
+        CustomSelect(:options="carSizeOptions" @choose="carSize = $event")
 div(class="w-full flex flex-col md:flex-row gap-x-4 gap-y-1 md:gap-y-3 ")
-    div(class="flex flex-col w-full md:w-[12rem] gap-y-2")
+    div(class="flex flex-col w-full md:w-[19rem] gap-y-2")
         p(class="text[#181526] font-bold") Package
-        select(v-model="carYear" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]")
-            option(value="" selected ) Choose here
-            option(value="2020" ) 2020
-            option(value="2021" ) 2021
+        CustomSelect(:options="cleaningPackages" @choose="carPackage = $event")
     div(class="flex flex-col w-full gap-y-2")
         p(class="text[#181526] font-bold") Additional Services
         input(v-model="additionalServices" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="e.g. Engine Cleaning and Refreshing")
@@ -67,34 +64,57 @@ const {
   selected,
   isMobile,
   carSize,
+  carPackage,
 } = storeToRefs(useBookFormStore());
+
+const cleaningPackages = [
+  {
+    title: "Interior",
+    value: "Interior",
+    icon: "icons/packages/icon1.png",
+  },
+  {
+    title: "Exterior",
+    value: "Exterior",
+    icon: "icons/packages/icon2.png",
+  },
+  {
+    title: "Interior/Exterior",
+    value: "Interior/Exterior",
+    icon: "icons/packages/icon3.png",
+  },
+];
 
 const carSizeOptions = [
   {
     title: "Small (VW up, Smart etc.)",
     value: "small",
-    icon: "fluent:vehicle-car-profile-20-regular",
+    icon: "icons/cars/car1.png",
   },
   {
     title: "Medium (VW Polo, Audi A3 etc.)",
     value: "medium",
-    icon: "PhVanLight",
+    icon: "icons/cars/car2.png",
   },
   {
     title: "Large (VW Passat, Audi A6 etc.)",
     value: "large",
-    icon: "PhVanLight",
+    icon: "icons/cars/car3.png",
   },
   {
     title: "SUV/Crossiver/MPV (VW Tiguan etc.)",
     value: "suv",
-    icon: "mdi:car-suv",
+    icon: "icons/cars/car4.png",
   },
-  { title: "Van (VW Transporter, etc.)", value: "van", icon: "ph:van-light" },
+  {
+    title: "Van (VW Transporter, etc.)",
+    value: "van",
+    icon: "icons/cars/van2.png",
+  },
   {
     title: "Medium Van (Ford Transit etc.)",
     value: "Medium Van",
-    icon: "PhVanLight",
+    icon: "icons/cars/van1.png",
   },
 ];
 </script>

@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[7.5rem] gap-y-3 gap-x-[3.25rem] ")
     
-    div(class="flex w-auto flex-col gap-y-3")
+    div(class="flex w-auto flex-col gap-y-3 ")
         div(class="flex border-black  border-[1px] rounded-full w-[1/3] lg:w-[22rem] h-10 font-bold text-black items-center justify-center gap-x-4 py-4")
                 p Search 
                 ArrowIcon(class="rotate-[180deg]")
@@ -95,7 +95,7 @@ const next = async () => {
 
 const get_city_name = async (zip: string) => {
   const response = await fetch(
-    config.public.API_URL + `/api/v1/localizations/get-city-name`,
+    config.public.API_URL + `api/v1/localizations/get-city-name`,
     {
       method: "POST",
       headers: {

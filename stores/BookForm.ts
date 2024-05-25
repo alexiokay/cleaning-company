@@ -21,8 +21,9 @@ export const useBookFormStore = defineStore("BookForm", {
       isMobile: false,
       carSize: "",
       phone: "",
+      carPackage: "",
       serviceValidationConfig: {
-        car: ["carModel", "carYear", "HouseNumber", "startDay"],
+        car: ["carSize", "carPackage", "HouseNumber", "startDay"],
         house: ["HouseNumber", "startDay"],
         garden: ["HouseNumber", "startDay"],
         office: ["HouseNumber", "startDay"],
