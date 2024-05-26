@@ -6,7 +6,8 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
     CookieBanner(v-if="!cookiesStore.isCookiesSet" class="fixed top-0 left-0 z-50" :isOpen="true")
 
 
-    Chat(class="fixed bottom-[1rem] right-[1rem] z-50")      
+    //- Chat(class="fixed bottom-[1rem] right-[1rem] z-50")    
+    buttonWhatsapp(class="fixed bottom-[1rem] right-[1rem] z-50 ")   
     
   
     .navigation(class="sticky lg:static top-0  z-50 w-full  ")
