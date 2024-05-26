@@ -15,6 +15,13 @@ const app = useAppConfig();
 const route = useRoute();
 
 const $gtm = useGtm();
+
+useSeoMeta({
+  image: "https://freshandtidy.nl/images/url_image.png",
+  ogImage: "https://freshandtidy.nl/images/url_image.png",
+  url: "https://freshandtidy.nl/images/url_image.png",
+  twitterImage: "https://freshandtidy.nl/images/url_image.png",
+});
 </script>
 
 <style lang="scss">
