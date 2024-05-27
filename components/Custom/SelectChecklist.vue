@@ -1,10 +1,10 @@
 <template lang="pug">
 .custom-select-container.h-full
-  button(ref="selectButton" class="custom-select-button w-full h-full overflow-hidden text-ellipsis flex items-center gap-x-4 bg-white border-[1px] border-[#181526] hover:border-gray-500 px-[1.5rem] py-[0.5rem] rounded-[0.4375rem] shadow leading-tight focus\:outline-none focus\:shadow-outline" type='button')
-    p(class="text-nowrap text-ellipsis overflow-hidden max-w-[20rem]") {{ selectedOptions.length > 0 ? selectedOptions.map(o => o.title).join(', ') : 'Choose here' }}
+  button(ref="selectButton" class="custom-select-button w-full h-full max-h-[3rem] overflow-hidden text-ellipsis flex items-center gap-x-4 bg-white border-[1px] border-[#181526] hover:border-gray-500 px-[1.5rem] py-[0.5rem] rounded-[0.4375rem] shadow leading-tight focus\:outline-none focus\:shadow-outline" type='button')
+    p(class="text-nowrap text-ellipsis overflow-hidden max-w-[18rem] ") {{ selectedOptions.length > 0 ? selectedOptions.map(o => o.title).join(', ') : 'Choose here' }}
   .custom-select-options(ref="selectOptions")
     div.custom-select-option(v-for="option in props.options" :key="option.value" @click.stop="toggleSelection(option)" class="gap-x-2")
-      input(type="checkbox" :checked="isSelected(option)" class="w-7 h-7" @click.stop)
+      input(type="checkbox" @input="toggleSelection(option)" :checked="isSelected(option)" class="w-7 h-7" @click.stop)
       span.font-semibold {{option.title}}
       span.price(v-if="option.price" class="ml-auto") {{option.price}}
 
@@ -19,7 +19,14 @@ const props = defineProps({
   },
 });
 
-const selectedOptions = ref([]);
+const selectedOptions = computed({
+  get: () => props.options.filter((o) => o.active),
+  set: (value) => {
+    props.options.forEach((o) => {
+      o.active = value.some((v) => v.value === o.value);
+    });
+  },
+});
 const selectButton = ref(null);
 const selectOptions = ref(null);
 
@@ -28,14 +35,8 @@ const emit = defineEmits(["update:options"]);
 const hasSpace = (title: string) => title.includes(" ");
 
 const toggleSelection = (option) => {
-  const index = selectedOptions.value.findIndex(
-    (o) => o.value === option.value
-  );
-  if (index > -1) {
-    selectedOptions.value.splice(index, 1); // Remove if already selected
-  } else {
-    selectedOptions.value.push(option); // Add if not already selected
-  }
+  option.active = !option.active;
+  selectedOptions.value = [...selectedOptions.value];
   emit("update:options", selectedOptions.value);
 };
 

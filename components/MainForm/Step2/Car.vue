@@ -40,7 +40,7 @@ div(class="w-full flex flex-col md:flex-row gap-x-4 gap-y-1 md:gap-y-3 ")
     div(class="flex flex-col w-full gap-y-2")
         p(class="text[#181526] font-bold") Additional Services
         //- input(v-model="additionalServices" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="e.g. Engine Cleaning and Refreshing")
-        CustomSelectChecklist(:options="additionalServicesList" @choose="carSize = $event")
+        CustomSelectChecklist(:options="additionalServicesList" @choose="$event => $event.active = !$event.active" )
 p(class="text[#181526] font-bold md:-mb-1") Service Date
   
 </template>
@@ -57,7 +57,7 @@ import { storeToRefs } from "pinia";
 const emit = defineEmits(["next"]);
 const {
   startDay,
-  additionalServices,
+  additionalServicesList,
   houseNumber,
   carYear,
   carModel,
@@ -67,54 +67,31 @@ const {
   carPackage,
 } = storeToRefs(useBookFormStore());
 
-const additionalServicesList = [
-  {
-    title: "Engine Cleaning and Refreshing",
-    value: "Engine Cleaning and Refreshing",
-    icon: "icons/services/engine.png",
-    price: "€ 20",
-  },
-  {
-    title: "Waxing",
-    value: "Waxing",
-    icon: "icons/services/waxing.png",
-    price: "€ 30",
-  },
-  {
-    title: "Polishing",
-    value: "Polishing",
-    icon: "icons/services/polishing.png",
-    price: "€ 40",
-  },
-  {
-    title: "Interior Polishing",
-    value: "Interior Polishing",
-    icon: "icons/services/interior.png",
-    price: "€ 50",
-  },
-  {
-    title: "Leather Renewal",
-    value: "Leather Renewal",
-    icon: "icons/services/leather.png",
-    price: "€ 60",
-  },
-];
-
 const cleaningPackages = [
   {
     title: "Interior",
-    value: "Interior",
+    value: "interior",
     icon: "icons/packages/icon1.png",
   },
   {
     title: "Exterior",
-    value: "Exterior",
+    value: "exterior",
     icon: "icons/packages/icon2.png",
   },
   {
     title: "Interior/Exterior",
-    value: "Interior/Exterior",
+    value: "interiorExterior",
     icon: "icons/packages/icon3.png",
+  },
+  {
+    title: "Premium",
+    value: "premium",
+    icon: "icons/packages/icon4.png",
+  },
+  {
+    title: "Deluxe",
+    value: "deluxe",
+    icon: "icons/packages/icon5.png",
   },
 ];
 
