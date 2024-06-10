@@ -1,6 +1,7 @@
 <template lang="pug">
 div(class="w-full h-full  flex flex-col justify-center items-center font-intern ")
-    div(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[3rem] lg:py-[10rem]   ")
+    div#main-form-component(class="w-full  h-auto overflow-hidden relative flex flex-col items-center py-[3rem] lg:py-[10rem]   ")
+        
         nuxt-img.header-img(src="images/v2/headerV2.jpeg" provider="ipx" width="1000" height="500"  format="webp" class="w-full h-full object-cover absolute top-0 left-0 z-10  img-filters  ")
         div(class="w-full h-full z-20 absolute top-0 header-background ")
         div(class="lg:px-0 2xl:w-[130rem] lg:h-[42.75rem]  flex flex-col items-center  z-30 gap-y-6 pb-[3rem] lg:pb-0 lg:py-[3rem]  ")
@@ -18,7 +19,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
             V2HeaderFormV2(@next="step = step+1" v-show="step === 1")
             V2HeaderFormV2-step2(@next="step = step+1" @goBack="step = step-1" v-show="step === 2")
             V2HeaderFormV2-step3(@book="step = step+1" @goBack="step = step-1" v-show="step === 3")
-            V2Inquiry(v-show="step === 4" @done="step = 1")
+            V2Inquiry(v-if="step === 4" @done="step = 1")
     <!-- Person, details -->
     div(class="flex w-[95%] relative h-10 z-20")
     

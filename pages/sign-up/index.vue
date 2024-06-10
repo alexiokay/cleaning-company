@@ -4,12 +4,15 @@ LoginBase
      
         h1(class="text-[3rem] text-[#181526] font-bold text-center -mt-4") Sign up
         div(class="flex flex-col gap-y-4 mt-10")
-            div(clas="flex flex-col  w-full h-full")
+            div(class="flex flex-col  w-full h-full")
                 p(class="mb-2 font-bold text-base") Name
-                input(v-model="name" type="name" placeholder="Your Name" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
+                input(v-model="username" type="fname" placeholder="Your Name" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
             div(clas="flex flex-col  w-full h-full")
-                p(class="mb-2 font-bold text-base") Email od Phone Number
+                p(class="mb-2 font-bold text-base") Email
                 input(v-model="email" type="email" placeholder="Email" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
+            div(clas="flex flex-col  w-full h-full")
+                p(class="mb-2 font-bold text-base") Phone Number
+                input(v-model="phoneNumber" type="phone" placeholder="Email" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
             div(clas="flex flex-col  w-full h-full")
                 p(class="mb-2 font-bold text-base") Password
                 input(v-model="password1" type="password" placeholder="Password" class="border-[1px] border-[#64626E] rounded-md py-2 px-4 w-full h-[2.75rem]")
@@ -32,6 +35,7 @@ LoginBase
 <script setup lang="ts">
 import MingcuteGoogleLine from "~icons/mingcute/google-line";
 import { useUserStore } from "@/stores/User";
+import Phone from "~/components/small/Phone.vue";
 
 definePageMeta({
   middleware: "redirect-if-logged",
@@ -41,27 +45,29 @@ const userStore = useUserStore();
 const router = useRouter();
 const config = useRuntimeConfig();
 
-const name = ref();
+const username = ref();
 const email = ref();
+const phoneNumber = ref();
 const password1 = ref();
-const userPhone = ref();
 
 const moveToLogin = () => {
   router.push("/login");
 };
 
 const signUp = async () => {
-  await fetch(`${config.public.API_URL}auth/registration`, {
+  await fetch(`${config.public.API_URL}auth/registration/customer`, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
       Host: `${config.FETCH_HOST}`,
     },
     body: JSON.stringify({
-      username: `${name.value}`,
+      username: `${username.value}`,
+      Phone: `${phoneNumber.value}`,
       email: `${email.value}`,
       password1: `${password1.value}`,
       password2: `${password1.value}`,
+
       //   Last_Name: `${lastName.value}`,
       //   First_Name: `${firstName.value}`,
       //   User_Phone: `${userPhone.value}`,

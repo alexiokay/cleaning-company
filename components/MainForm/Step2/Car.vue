@@ -69,6 +69,11 @@ const {
 
 const cleaningPackages = [
   {
+    title: "Custom",
+    value: "custom",
+    icon: "icons/packages/icon0.png",
+  },
+  {
     title: "Interior",
     value: "interior",
     icon: "icons/packages/icon1.png",

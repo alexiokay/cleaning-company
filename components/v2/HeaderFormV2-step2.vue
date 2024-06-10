@@ -10,7 +10,8 @@ MainFormBase
                
   template(v-slot:footer)
     div(class="flex flex-col md:flex-row gap-x-2 gap-y-3")
-      input(v-model="startDay" type="date" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="date")
+      //- input(v-model="startDay" type="date" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]" placeholder="date")
+      CustomSelectDate()
       MainFormNext(@next="next")
                         
                     

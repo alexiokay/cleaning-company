@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[auto] gap-y-3 gap-x-[3.25rem] ")
- 
+    
   
       div(class="flex w-auto flex-col gap-y-3 lg:py-[4.5rem]")
           
@@ -16,7 +16,7 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
             span(class="font-semibold") {{ computedPrice }}&#8364
       div(class="flex w-full lg:w-[39rem] flex-col gap-y-3 justify-center")
          
-          div(class="flex w-full h-auto gap-x-4 md:p-[2.5rem] md:bg-white rounded-[1.5rem] relative" )
+          div(class="flex w-full h-auto gap-x-4 md:p-[2.5rem] md:bg-white rounded-[1.5rem] relative"  )
               
           
               div(class="w-full h-full flex flex-col gap-y-1 md:gap-y-3 " )

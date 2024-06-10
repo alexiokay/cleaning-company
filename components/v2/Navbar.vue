@@ -3,6 +3,7 @@ nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between item
     div(class="hidden lg:flex w-3/4  gap-x-8 items-center font-semibold")
         nuxtLink(to="/")
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
+            //- nuxt-img(src="images/logov3.png" class="" alt="logo" width="70" height="70")
         
         div(class="flex gap-x-2 items-center ml-6")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +22,7 @@ nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between item
                 <path d="M20 6C20.58 6 21.05 6.2 21.42 6.59C21.8 7 22 7.45 22 8V19C22 19.55 21.8 20 21.42 20.41C21.05 20.8 20.58 21 20 21H4C3.42 21 2.95 20.8 2.58 20.41C2.2 20 2 19.55 2 19V8C2 7.45 2.2 7 2.58 6.59C2.95 6.2 3.42 6 4 6H8V4C8 3.42 8.2 2.95 8.58 2.58C8.95 2.2 9.42 2 10 2H14C14.58 2 15.05 2.2 15.42 2.58C15.8 2.95 16 3.42 16 4V6H20ZM4 8V19H20V8H4ZM14 6V4H10V6H14Z" fill="#181526"/>
             </svg>
             p Become A cleaner
-
+            
         div(class="flex gap-x-2 items-center")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 15H16V17H18M18 11H16V13H18M20 19H12V17H14V15H12V13H14V11H12V9H20M10 7H8V5H10M10 11H8V9H10M10 15H8V13H10M10 19H8V17H10M6 7H4V5H6M6 11H4V9H6M6 15H4V13H6M6 19H4V17H6M12 7V3H2V21H22V7H12Z" fill="#181526"/>

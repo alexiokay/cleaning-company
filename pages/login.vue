@@ -5,7 +5,7 @@ LoginBase
         h1(class="text-[3rem] text-[#181526] font-bold text-center -mt-4") Log in
         div(class="flex flex-col gap-y-4 mt-10")
             div(clas="flex flex-col  w-full h-full")
-                p(class="mb-2 font-bold text-base") Email od Phone Number
+                p(class="mb-2 font-bold text-base") Email or Phone Number
                 input(v-model="email" type="email" placeholder="Email" class="border-[1px] border-[#64626E]  rounded-md py-2 px-4 w-full h-[2.75rem]")
             div(clas="flex flex-col  w-full h-full")
                 p(class="mb-2 font-bold text-base") Password
