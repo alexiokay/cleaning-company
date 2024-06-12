@@ -6,7 +6,7 @@
   //-   Teleport(to="#teleportDateDropdownHere")
   //-     div(v-show="showCalendar", ref="calendarOverlay" class="absolute  top-0 left-0 inset-0 bg-black bg-opacity-50 z-50", @click="toggleCalendar")
 
-  .calendar(v-if="showCalendar", @click.stop, class="fixed md:absolute top-0 left-0 w-full h-[100vh] md:h-auto md:w-auto bg-white rounded-xl shadow-lg z-50 p-2 gap-y-2 flex flex-col")
+  .calendar(v-if="showCalendar", @click.stop, class="mt-[4rem] absolute top-0 left-0 w-full h-auto md:w-auto bg-white rounded-xl shadow-lg z-50 p-2 gap-y-2 flex flex-col")
     .header.flex.justify-between.items-center.px-3.py-2.text-black.rounded-t
       button(@click="changeMonth(-1)", class="bg-transparent border-none cursor-pointer text-black text-xl")
         | ‹
@@ -23,10 +23,10 @@
       
     div(class="w-full flex gap-x-3 ")
 
-      input(type="time" v-model="selectedTime" class="w-2/3 p-2 border border-gray-300 rounded text-base cursor-pointer")
+      input(type="time" v-model="startTime" class="w-2/3 p-2 border border-gray-300 rounded text-base cursor-pointer")
       div(class="w-1/3 flex flex-col")
         p {{ formattedDate }}
-        p {{ selectedTime }}
+        p {{ startTime }}
 
     div(class="w-full flex justify-between ")
       button(@click="showCalendar = false", class="border-[#4e37e3] border-[1px] text-[#4e37e3] py-2 px-4 rounded-md")
@@ -43,11 +43,11 @@ import { storeToRefs } from "pinia";
 const showCalendar = ref(false);
 const selectedDate = ref<Date | null>(null);
 const currentDate = ref(new Date());
-const selectedTime = ref("");
+
 const calendarOverlay = ref(null);
 const formattedDate = ref("");
 
-const { startDay } = storeToRefs(useBookFormStore());
+const { startDay, startTime } = storeToRefs(useBookFormStore());
 
 function toggleCalendar() {
   showCalendar.value = !showCalendar.value;
@@ -96,6 +96,10 @@ const daysOfMonth = computed(() => {
 });
 
 const selectDay = (day: number) => {
+  // check if is past
+  if (day < today.getDate()) {
+    return;
+  }
   selectedDate.value = new Date(
     currentDate.value.getFullYear(),
     currentDate.value.getMonth(),

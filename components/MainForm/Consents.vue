@@ -15,28 +15,31 @@ import { useBookFormStore } from "@/stores/BookForm";
 import { storeToRefs } from "pinia";
 
 const config = useRuntimeConfig();
-const { phone, fullName, companyName, email, termsAgreed } = storeToRefs(
-  useBookFormStore()
-);
+const { phone, fullName, companyName, email, termsAgreed, step } =
+  storeToRefs(useBookFormStore());
 
 const bookFormStore = useBookFormStore();
 
 const SendQuoteToApi = async () => {
   const data = {
-    service_type: bookFormStore.selected[0],
+    //service_type: bookFormStore.selected[0],
     full_name: fullName.value,
     company_name: companyName.value,
     email: email.value,
     phone: phone.value,
     frequency: bookFormStore.frequency,
-    start_day: bookFormStore.startDay,
+    car_size: bookFormStore.carSize,
+    car_package: bookFormStore.carPackage,
+    start_day: bookFormStore.startDay?.toISOString().substring(0, 10),
+    // add start_time to data if it is not null
+    ...(bookFormStore.startTime && { start_time: bookFormStore.startTime }),
     // termsAgreed: termsAgreed.value,
     approx_sqm: bookFormStore.approxSqM,
     zip_code: bookFormStore.zipCode,
     house_number: bookFormStore.houseNumber,
   };
   try {
-    const response = await fetch(config.public.API_URL + "api/v1/quotes/", {
+    const response = await fetch(config.public.API_URL + "api/v1/car-quotes/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,6 +49,7 @@ const SendQuoteToApi = async () => {
 
     if (response.status === 201) {
       console.log("Quote successfully sent");
+      step.value += 1;
       return true;
     } else {
       console.log("Failed to send quote, status code: ", response.status);
@@ -59,10 +63,22 @@ const SendQuoteToApi = async () => {
 const emit = defineEmits(["book"]);
 
 const book = async () => {
+  console.log(
+    "phone: ",
+    phone.value,
+    "fullName: ",
+    fullName.value,
+    "companyName: ",
+    companyName.value,
+    "email: ",
+    email.value,
+    "termsAgreed: ",
+    termsAgreed.value
+  );
   if (
     phone.value === "" ||
     fullName.value === "" ||
-    companyName.value === "" ||
+    // companyName.value === "" ||
     email.value === "" ||
     termsAgreed.value === false
   ) {

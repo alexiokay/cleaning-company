@@ -117,7 +117,7 @@ export const useBookFormStore = defineStore("BookForm", {
           "Odor Removal",
         ],
       },
-
+      step: 1,
       selected: [] as String[],
       zipCode: "",
       addres_display: "",
@@ -126,6 +126,7 @@ export const useBookFormStore = defineStore("BookForm", {
       frequency: "once",
 
       startDay: null as Date | null,
+      startTime: "" as string,
       fullName: "",
       companyName: "",
       email: "",

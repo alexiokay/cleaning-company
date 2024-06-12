@@ -136,8 +136,10 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 <script setup lang="ts">
 import ArrowIcon from "~icons/ion/arrow-back";
+import { useBookFormStore } from "@/stores/BookForm";
+import { storeToRefs } from "pinia";
 
-const step = ref(1);
+const { step } = storeToRefs(useBookFormStore());
 </script>
 
 <style lang="scss">
