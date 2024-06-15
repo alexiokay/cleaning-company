@@ -9,7 +9,7 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
                   p Book & Pay
                   ArrowIcon(class="rotate-[180deg]")
                   p Relax
-          h1(class="mt-[1rem] lg:mt-[3.94rem]  text-[1.7rem] lg:text-[3rem] font-bold") Find a cleaning service
+          h1(class="mt-[1rem] lg:mt-[3.94rem]  text-[1.7rem] lg:text-[3rem] font-bold") Book a cleaning service
               p(class="text-[#7863FA]") in your area
           //- p(class="mt-auto text-[1.7rem] ml-auto") Price: 
           //-   span(class="font-semibold") {{ computedPrice }}&#8364

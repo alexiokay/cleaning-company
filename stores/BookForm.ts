@@ -117,6 +117,30 @@ export const useBookFormStore = defineStore("BookForm", {
           "Odor Removal",
         ],
       },
+
+      HouseServiceList: [
+        {
+          title: "Full House Cleaning",
+          value: "full-house-cleaning",
+          icon: "icons/home/fhousei.jpg.png",
+          price: 50,
+          active: false,
+        },
+        {
+          title: "Carpet Cleaning",
+          value: "carpet-cleaning",
+          icon: "icons/home/fcarpeti.jpg",
+          price: 20,
+          active: false,
+        },
+        {
+          title: "Couch/Chair Washing",
+          value: "couch-chair-washing",
+          icon: "icons/home/fcouchi.jpg",
+          price: 20,
+          active: false,
+        },
+      ],
       step: 1,
       selected: [] as String[],
       zipCode: "",
@@ -131,18 +155,19 @@ export const useBookFormStore = defineStore("BookForm", {
       companyName: "",
       email: "",
       isMobile: false,
+      // isFullHouse: false,
       carSize: "",
       phone: "",
       carPackage: "",
       price: 0,
       serviceValidationConfig: {
-        car: ["carSize", "carPackage", "HouseNumber", "startDay"],
-        house: ["HouseNumber", "startDay"],
-        garden: ["HouseNumber", "startDay"],
-        office: ["HouseNumber", "startDay"],
-        event: ["HouseNumber", "startDay"],
-        construction: ["HouseNumber", "startDay"],
-        industrial: ["HouseNumber", "startDay"],
+        car: ["carSize", "carPackage", "houseNumber", "startDay"],
+        house: ["houseNumber", "startDay"],
+        garden: ["houseNumber", "startDay"],
+        office: ["houseNumber", "startDay"],
+        event: ["houseNumber", "startDay"],
+        construction: ["houseNumber", "startDay"],
+        industrial: ["houseNumber", "startDay"],
       },
 
       /// cars
@@ -206,7 +231,12 @@ export const useBookFormStore = defineStore("BookForm", {
       console.log(validationArray);
       let valid = true;
       validationArray.forEach((element) => {
-        if (this[element] == "") {
+        console.log("validating: " + element + " value: " + this[element]);
+        if (
+          this[element] == "" ||
+          this[element] == null ||
+          this[element] == undefined
+        ) {
           valid = false;
         }
       });
