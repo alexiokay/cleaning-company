@@ -27,7 +27,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
                             hr(class="w-full border-t-[1px] border-gray-300")
                         button(@click="login" class=" border-[1px] border-black rounded-md p-2 items-center flex justify-center gap-x-3 ") 
                             MingcuteGoogleLine(class="w-6 h-6")
-                            span.font-bold Login with google
+                            span.font-bold Sign up with Google
 
                         p(class="text-start font-semibold lg:w-[37.9375rem] lg:-mx-[4rem]") By signing up, I agree to Fresh and Tidy’s 
                             nuxt-link(to="/terms-and-conditions" class="underline font-bold") Terms&Conditions.
@@ -38,6 +38,8 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MingcuteGoogleLine from "~icons/mingcute/google-line";
+</script>
 
 <style lang="scss"></style>

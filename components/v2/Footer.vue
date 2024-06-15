@@ -2,7 +2,7 @@
 div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] text-white gap-y-10 flex flex-col")
     nuxtLink(to="/")
             nuxt-img(src="images/logoFT.png" class="" alt="logo" width="90" height="90")
-    div(class="flex w-auto gap-x-20")
+    div(class="flex flex-col md:flex-row gap-y-6 w-auto gap-x-20")
         div(class="flex flex-col w-auto gap-y-2")
             p(class="text-2xl font-semibold") Subscribe Our Newsletter
             p(class="flex flex-col text-[#95939B] text-lg font-medium") Enter your details to get business inspiration, trending
