@@ -4,8 +4,8 @@ div(class="w-full flex flex-col pb-12")
         nuxt-img(src="images/my-profile-header.jpeg" alt="my-profile-header" format="webp" class="  start-0 top-0 w-full h-full object-cover object-center" tabindex="-1")
         div(class="absolute top-0 left-0 griadent w-full h-full bg-black bg-opacity-50 flex items-center justify-center")
             h1(class="text-white text-5xl font-bold") My Profile
-    div(class="w-full flex flex-col px-[15%] ")
-        div(class="w-full z-50 h-auto flex justify-center items-start gap-x-[6rem] py-[5rem]")
+    div(class="w-full flex flex-col px-4 lg:px-[15%] ")
+        div(class="w-full z-40 h-auto flex justify-center items-start gap-x-4 lg:gap-x-[6rem] gap-y-5 py-[2rem] lg:py-[5rem] flex-wrap lg:flex-nowrap")
             V2MyProfileMenuItem(title1="Booking" title2="Schedules")
                 template(v-slot:icon)
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,8 +47,8 @@ div(class="w-full flex flex-col pb-12")
                         <path d="M53.3335 21.3333H10.6668V16H53.3335M53.3335 48H10.6668V32H53.3335M53.3335 10.6666H10.6668C7.70683 10.6666 5.3335 13.04 5.3335 16V48C5.3335 49.4144 5.8954 50.771 6.89559 51.7712C7.89579 52.7714 9.25234 53.3333 10.6668 53.3333H53.3335C54.748 53.3333 56.1045 52.7714 57.1047 51.7712C58.1049 50.771 58.6668 49.4144 58.6668 48V16C58.6668 13.04 56.2668 10.6666 53.3335 10.6666ZM18.6668 58.6666H24.0002V64H18.6668V58.6666ZM29.3335 58.6666H34.6668V64H29.3335V58.6666ZM40.0002 58.6666H45.3335V64H40.0002V58.6666Z" fill="black"/>
                     </svg>
 
-        div(class="w-[50rem] mx-auto shrink-0 h-auto py-[5rem]  text-center gap-y-2 flex flex-col items-center")
-            h2.text-4xl.font-bold Fresh and Tidy Support
+        div(class="lg:w-[50rem] mx-auto shrink-0 h-auto py-[5rem]  text-center gap-y-2 flex flex-col items-center")
+            h2.font-bold(class="text-3xl lg:text-4xl") Fresh and Tidy Support
             p.text-lg Do you have a problem or question about the service? Write to us!
             textarea(class="w-full h-[15rem] mt-4 p-4 border-2 border-[#64626E] rounded-[8px] resize-none")
             button(class="w-[15rem] h-[3.5rem] bg-[#4E37E3] text-white font-medium text-xl rounded-[8px] mt-4 items-center justify-center flex gap-x-3 px-6") 

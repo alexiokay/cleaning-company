@@ -10,7 +10,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cen
     
     
   
-    .navigation(class=" top-0 z-40 w-full  ")
+    .navigation(class=" top-0 z-50 w-full  ")
       div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
 
       Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
