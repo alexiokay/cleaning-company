@@ -2,7 +2,7 @@
 div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[2rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
     div(class="flex flex-col lg:w-auto h-full text-[#FAFAFA] items-start justify-center gap-y-[2rem]")
         h2(class="text-[1.8rem] lg:text-[2.5rem] font-bold") What you get with Fresh and Tidy
-        div(class="flex flex-col w-full pl-[2rem] gap-y-4")
+        div(class="flex flex-col w-full pl-[2rem] gap-y-5 text-lg")
           div(class="flex gap-x-3 ")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
             p.flex.flex-col XXX registered customers
@@ -57,12 +57,7 @@ import LineMdConfirmCircle from "~icons/line-md/confirm-circle";
 <style lang="scss" scoped>
 .main-component {
   background:
-    linear-gradient(
-      0deg,
-      rgba(36, 25, 105, 0.4) 0%,
-      rgba(36, 25, 105, 0.4) 100%
-    ),
-    url("/images/index-header-3.jpg"),
+    url("/images/become-cleaner/header3-background.png"),
     lightgray 50% / cover no-repeat;
 
   -webkit-background-size: cover;
@@ -71,9 +66,9 @@ import LineMdConfirmCircle from "~icons/line-md/confirm-circle";
   background-size: cover;
   background-attachment: fixed;
 
-  @media screen and (min-width: 1942px) {
-    background-position: center -250px;
-  }
+  // @media screen and (min-width: 1942px) {
+  //   background-position: center -250px;
+  // }
 }
 
 ::-webkit-input-placeholder {
