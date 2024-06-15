@@ -1,8 +1,8 @@
 <template lang="pug">
-div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[2rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
+div(class="main-component w-full h-auto lg:h-[61rem] flex px-6 xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[2rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
     div(class="flex flex-col lg:w-auto h-full text-[#FAFAFA] items-start justify-center gap-y-[2rem]")
         h2(class="text-[1.8rem] lg:text-[2.5rem] font-bold") What you get with Fresh and Tidy
-        div(class="flex flex-col w-full pl-[2rem] gap-y-5 text-lg")
+        div(class="flex flex-col w-full lg:pl-[2rem] gap-y-5 text-lg")
           div(class="flex gap-x-3 ")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
             p.flex.flex-col XXX registered customers
