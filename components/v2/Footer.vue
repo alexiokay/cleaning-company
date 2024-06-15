@@ -35,7 +35,7 @@ div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] 
             p(class="text-2xl font-semibold") Follow Us
             p(class="flex flex-col text-[#95939B] text-lg font-medium") Stay connected with us on social media
         div(class="flex gap-x-4")
-            NuxtLink(to="/")
+            a(href="https://www.facebook.com/profile.php?id=61550758577323" target="_blank")
                 RiFacebookFill(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
             NuxtLink(to="/")
                 IconoirInstagram(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
@@ -53,7 +53,7 @@ import MdiLinkedin from "~icons/mdi/linkedin";
 const email = ref<string>("");
 
 const subscribe = async () => {
-  //TODO: Send to api and use processing to stop spam and add captcha to stop bots. ask chat gpt fr best soliuton
+  //TODO: Send to api and use processing to stop spam and add captcha to stop bots. ask chat gpt fr best soliutong
 };
 </script>
 
