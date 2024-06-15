@@ -147,7 +147,7 @@ export const useBookFormStore = defineStore("BookForm", {
       addres_display: "",
       houseNumber: "",
       approxSqM: "",
-      frequency: "once",
+      frequency: "",
 
       startDay: null as Date | null,
       startTime: "" as string,

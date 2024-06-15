@@ -81,13 +81,24 @@ const { selected, zipCode, addres_display } = storeToRefs(useBookFormStore());
 
 const incorrectZipCode = ref(false);
 
+let isProcessing = false;
+
 const next = async () => {
-  if (selected.value.length === 0 || zipCode.value === "") {
-    alert("Please select at least one option");
-  } else {
-    await get_city_name(zipCode.value);
-    if (incorrectZipCode.value === false) emit("next");
-    else incorrectZipCode.value = true;
+  if (isProcessing) return;
+  isProcessing = true;
+
+  try {
+    if (selected.value.length === 0 || zipCode.value === "") {
+      alert("Please select at least one option");
+    } else {
+      await get_city_name(zipCode.value);
+      if (incorrectZipCode.value === false) emit("next");
+      else incorrectZipCode.value = true;
+    }
+  } catch (error) {
+    console.error("Error during next function execution:", error);
+  } finally {
+    isProcessing = false; // Reset the flag after completion or error
   }
 
   // TODO: add validation for zip code

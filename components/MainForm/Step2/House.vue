@@ -17,7 +17,8 @@ div(class="w-full  flex flex-col md:flex-row gap-x-4 md:mt-6 gap-y-1 md:gap-y-3"
 div(class="w-full flex flex-col md:flex-row gap-x-4 gap-y-1 md:gap-y-3")
     div(class="flex flex-col w-full md:w-[12rem] gap-y-2")
         p(class="text[#181526] font-bold") Frequency
-        select(v-model="frequency" class="w-full  border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]")
+        select(v-model="frequency" class="w-full   border-[1px] border-[#181526]  rounded-[0.4375rem] px-[1.5rem] py-[0.5rem]")
+            option(value="" disabled selected hidden) Choose here
             option(value="once" ) Once
             option(value="monthly" ) Monthly
     div(class="flex flex-col w-full gap-y-2")
@@ -42,4 +43,8 @@ const {
 } = storeToRefs(useBookFormStore());
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+option:first {
+  color: #999;
+}
+</style>
