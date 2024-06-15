@@ -57,16 +57,19 @@ nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between item
     
 
     div(class="fixed h-[100svh] top-0 left-0 flex-col w-full bg-[rgb(255,255,255)] flex items-center gap-y-4 z-50" v-if="isMobileMenu")
-        div(class="flex w-full justify-end py-4 px-4")
-            NuxtLink(class="flex gap-x-1 w-full items-center " to="/login" @click="isMobileMenu = !isMobileMenu" v-if="!userStore.getIsLogged")
+        div(class="flex w-full justify-end py-4 px-4 gap-x-4")
+            NuxtLink(class="flex gap-x-1 items-center " to="/login" @click="isMobileMenu = !isMobileMenu" v-if="!userStore.getIsLogged")
                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.5 3.5H5.5C4.39 3.5 3.5 4.39 3.5 5.5V9.5H5.5V5.5H19.5V19.5H5.5V15.5H3.5V19.5C3.5 20.0304 3.71071 20.5391 4.08579 20.9142C4.46086 21.2893 4.96957 21.5 5.5 21.5H19.5C20.0304 21.5 20.5391 21.2893 20.9142 20.9142C21.2893 20.5391 21.5 20.0304 21.5 19.5V5.5C21.5 4.39 20.6 3.5 19.5 3.5ZM10.58 16.08L12 17.5L17 12.5L12 7.5L10.58 8.91L13.17 11.5H3.5V13.5H13.17L10.58 16.08Z" fill="#161323"/>
                 </svg>
                 p.font-semibold Log in
 
-            NuxtLink(class="flex gap-x-1 " to='/sign-up'  v-if="userStore.getIsLogged" @click="isMobileMenu = !isMobileMenu")
+            NuxtLink(class="flex gap-x-1 items-center"  v-if="userStore.getIsLogged" @click="logOut")
                 SolarLogoutOutline(class="w-6 h-6")
                 p.font-semibold Logout
+
+            NuxtLink(class="flex px-3 py-2 w-auto  border-[#4E37E3] border-[1px] text-[#4E37E3] rounded-md font-semibold text-lg" to="/sign-up" @click="isMobileMenu = !isMobileMenu" v-if="!userStore.getIsLogged") Get Started
+            
             
             button(class="w-10 h-10 ml-auto " @click="isMobileMenu = !isMobileMenu")
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +81,9 @@ nav(class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between item
         div(class="flex flex-col items-center justify-center h-full gap-6 w-full text-xl pb-[4rem]")
 
       
-           
+            nuxtLink(@click="isMobileMenu = !isMobileMenu" to="/my-profile"  class="flex px-5 py-2 items-center gap-x-2  border-[#4E37E3] border-[1px] text-[#4E37E3] rounded-md font-semibold text-lg" v-if="userStore.getIsLogged" ) 
+                    GgProfile(class="w-6 h-6")
+                    p My Profile
             nuxtLink(to="/" @click="isMobileMenu = !isMobileMenu")
                 div(class="flex  gap-x-2 items-center ")
                     CarbonHome(class="w-6 h-6")
