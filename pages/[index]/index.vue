@@ -22,8 +22,8 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
             V2Inquiry(v-if="step === 4" @done="step = 1")
     <!-- Person, details -->
     div(class="flex w-[95%] relative h-10 z-20")
-    
-        div(class="absolute  -top-16 right-[5rem] lg:-top-32 lg:right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-10") 
+
+        a(href="https://wa.me/31657705530" target="_blank" class="absolute  -top-16 right-[5rem] lg:-top-32 lg:right-[21rem] w-auto rounded-full bg-white py-3 px-5 z-10") 
             p Hey, Let's talk about details!
         div(class="absolute right-4 -top-12  md:right-72 md:-top-24 w-auto")
             
