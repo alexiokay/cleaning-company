@@ -7,7 +7,9 @@ div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] 
             p(class="text-2xl font-semibold") Subscribe Our Newsletter
             p(class="flex flex-col text-[#95939B] text-lg font-medium") Enter your details to get business inspiration, trending
                 span solutions, and consulting tips delivered to your inbox
-        input(class="w-auto  h-[3rem] border-[1px] rounded-[7px]  bg-transparent border-[#7863FA] py-2 px-6 focus:outline-none text-white text-lg" placeholder="Enter your email address")
+        div(class="flex flex-col gap-y-2")
+            input(v-model="email" class="w-auto  h-[3rem] border-[1px] rounded-[7px]  bg-transparent border-[#7863FA] py-2 px-6 focus:outline-none text-white text-lg" placeholder="Enter your email address")
+            button(@click="subscribe" class="bg-[#4E37E3] text-white rounded-[7px] py-2 px-6 h-[3rem]  w-auto font-bold text-center") Subscribe
     hr(class="2xl:w-[60rem] h-[1px] border-[#E8E8E9] ")
     
     div(class="flex w-auto justify-start gap-x-[4rem] lg:gap-x-[7rem] items-start shrink-0")
@@ -47,6 +49,12 @@ import RiFacebookFill from "~icons/ri/facebook-fill";
 import IconoirInstagram from "~icons/iconoir/instagram";
 import RiTwitterXFill from "~icons/ri/twitter-x-fill";
 import MdiLinkedin from "~icons/mdi/linkedin";
+
+const email = ref<string>("");
+
+const subscribe = async () => {
+  //TODO: Send to api and use processing to stop spam and add captcha to stop bots. ask chat gpt fr best soliuton
+};
 </script>
 
 <style lang="scss" scoped>
