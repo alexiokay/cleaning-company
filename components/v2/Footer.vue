@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] text-white gap-y-10 flex flex-col")
     nuxtLink(to="/")
-            nuxt-img(src="images/logoFT.png" class="" alt="logo" width="90" height="90")
+            nuxt-img(src="images/logoFT.png" class="w-[5rem] h-[5rem]" alt="logo" width="90" height="90")
     div(class="flex flex-col md:flex-row gap-y-6 w-auto gap-x-20")
         div(class="flex flex-col w-auto gap-y-2")
             p(class="text-2xl font-semibold") Subscribe Our Newsletter
@@ -10,7 +10,7 @@ div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] 
         input(class="w-auto  h-[3rem] border-[1px] rounded-[7px]  bg-transparent border-[#7863FA] py-2 px-6 focus:outline-none text-white text-lg" placeholder="Enter your email address")
     hr(class="2xl:w-[60rem] h-[1px] border-[#E8E8E9] ")
     
-    div(class="flex w-auto justify-start gap-x-[7rem] items-start shrink-0")
+    div(class="flex w-auto justify-start gap-x-[4rem] lg:gap-x-[7rem] items-start shrink-0")
         div(class="flex flex-col w-auto gap-y-2")
             p(class="text-2xl font-semibold text-[#95939B]") Services
             p(class="flex flex-col text-[#E8E8E9] text-lg ") Residential Cleaning 
@@ -28,18 +28,18 @@ div(class="w-auto py-[4rem] px-[5%] 2xl:pl-[25vw] shrink-0  h-auto bg-[#181526] 
             p(class="flex flex-col text-[#E8E8E9] text-lg ") Privacy Policy
             p(class="flex flex-col text-[#E8E8E9] text-lg ") Terms & Conditions
     
-    div(class="flex w-auto justify-start items-center mt-2 gap-x-20")
+    div(class="flex flex-col lg:flex-row gap-y-6 w-auto justify-start items-center mt-2  gap-x-20")
         div(class="flex flex-col w-auto gap-y-2")
             p(class="text-2xl font-semibold") Follow Us
             p(class="flex flex-col text-[#95939B] text-lg font-medium") Stay connected with us on social media
         div(class="flex gap-x-4")
             NuxtLink(to="/")
-                RiFacebookFill(class="w-8 h-8 text-[#95939B]")
+                RiFacebookFill(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
             NuxtLink(to="/")
-                IconoirInstagram(class="w-8 h-8 text-[#95939B]")
+                IconoirInstagram(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
             NuxtLink(to="/")
-                RiTwitterXFill(class="w-8 h-8 text-[#95939B]")
-            MdiLinkedin(class="w-8 h-8 text-[#95939B]")
+                RiTwitterXFill(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
+            MdiLinkedin(class="w-6 md:w-8 h-6 md:h-8 text-[#95939B]")
 </template>
 
 <script setup lang="ts">

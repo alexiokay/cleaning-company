@@ -72,8 +72,9 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 
                     template(v-slot:title) 
-                        p(class="flex flex-row lg:flex-col gap-x-2") Free lifetime
-                            p Support
+                        p(class="flex flex-row lg:flex-col gap-x-2 items-center justify-center w-full mt-2") 
+                            p Free lifetime
+                            span Support
                     template(v-slot:subtitle) Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing 
                 
            
@@ -119,8 +120,8 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
                   
     V2Header3
     V2Header4
-    V2Header5.my-12
-    V2Header6
+    //- V2HeaderAIAssistants.my-12
+    V2Header6.mt-4
     V2Header7
     V2Blog.my-16
  
@@ -150,6 +151,15 @@ const { step } = storeToRefs(useBookFormStore());
     rgba(36, 25, 105, 0.4) 100%
   );
 }
+
+.header-background-dark {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(10, 4, 44, 0.766) 0%,
+    rgba(4, 0, 120, 0.748) 100%
+  );
+}
+
 .h2-gradient {
   background: linear-gradient(
     180deg,

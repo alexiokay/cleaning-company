@@ -23,8 +23,12 @@ div(class="main-component w-full lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:p
   background-size: cover;
   background-attachment: fixed;
 
-  @media screen and (min-width: 1942px) {
-    background-position: center -250px;
+  // @media screen and (min-width: 1942px) {
+  //   background-position: center -250px;
+  // }
+
+  @media screen and (max-width: 926px) {
+    background-position: center;
   }
 }
 </style>
