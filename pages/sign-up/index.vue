@@ -1,6 +1,7 @@
 <template lang="pug">
-LoginBase
-    template(v-slot:all)
+div(class="flex flex-col items-center justify-center  h-[48rem] lg:h-[83vh] relative px-2 lg:px-0 ")
+    nuxt-img(src="images/login-bg2.png" format="webp" alt="login-bg" class="absolute top-0 w-full h-full object-cover object-bottom z-20 scale-[1.05]")
+    div(class="w-full lg:w-[37.9375rem] h-auto bg-white bg-[rgba(255, 255, 255, 0.70)] rounded-xl z-50 flex flex-col px-[3rem] lg:px-[9.07rem] py-[3.5rem] lg:py-[4rem] backdrop-blur-[4px]")
      
         h1(class="text-[3rem] text-[#181526] font-bold text-center -mt-4") Sign up
         div(class="flex flex-col gap-y-4 mt-10")
