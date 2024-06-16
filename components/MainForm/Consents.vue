@@ -20,6 +20,20 @@ const { phone, fullName, companyName, email, termsAgreed, step } =
 
 const bookFormStore = useBookFormStore();
 
+const decideApiEndpoint = () => {
+  if (bookFormStore.selected[0] === "car") {
+    return "car-quotes";
+  } else if (bookFormStore.selected[0] === "house") {
+    return "house-quotes";
+  } else if (bookFormStore.selected[0] === "couch") {
+    return "couch-quotes";
+  } else if (bookFormStore.selected[0] === "carpet") {
+    return "carpet-quotes";
+  } else {
+    return "quotes";
+  }
+};
+
 const SendQuoteToApi = async () => {
   const data = {
     //service_type: bookFormStore.selected[0],
@@ -39,13 +53,16 @@ const SendQuoteToApi = async () => {
     house_number: bookFormStore.houseNumber,
   };
   try {
-    const response = await fetch(config.public.API_URL + "api/v1/car-quotes/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      config.public.API_URL + `api/v1/${decideApiEndpoint}/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (response.status === 201) {
       console.log("Quote successfully sent");

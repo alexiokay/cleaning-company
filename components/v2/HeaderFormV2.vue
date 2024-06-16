@@ -16,21 +16,30 @@ div(class="w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex fl
             div(class="w-full h-full flex flex-col gap-y-3")
                 p(class="text[#181526] font-bold") Select the service you are interested in
                 div(class="flex flex-wrap gap-x-2 gap-y-2 ")
-                    buttonCasual(@click="select('House')" text="House" :isSelected="selected.includes('House')" )
-                        template(v-slot:icon)
-                            MdiHouseCityOutline(class="w-5 h-5")
+                   
                     buttonCasual(@click="select('Car')" text="Car" :isSelected="selected.includes('Car')" )
                         template(v-slot:icon)
                             IcRoundLocalCarWash(class="w-5 h-5")
+                    buttonCasual(@click="select('Couch')" text="Couch" :isSelected="selected.includes('Couch')" )
+                        template(v-slot:icon)
+                            PhCouchFill(class="w-5 h-5")
+                    buttonCasual(@click="select('Carpet')" text="Carpet" :isSelected="selected.includes('Carpet')" )
+                        template(v-slot:icon)
+                            MdiCarpet(class="w-5 h-5")
+                    buttonCasual(@click="select('House')" text="House" :isSelected="selected.includes('House')" disabled)
+                        template(v-slot:icon)
+                            MdiHouseCityOutline(class="w-5 h-5")
+                   
+                    buttonCasual(@click="select('Office')" text="Office" :isSelected="selected.includes('Office')" disabled)
+                      template(v-slot:icon)
+                          GameIconsOfficeChair(class="w-5 h-5")
                     buttonCasual(@click="select('Garden')" text="Garden" :isSelected="selected.includes('Garden')" disabled )
                         template(v-slot:icon)
                             MdiFlowerTulipOutline(class="w-5 h-5")
                     buttonCasual(@click="select('Swimming Pool')" text="Swimming Pool" :isSelected="selected.includes('Swimming Pool')" disabled)
                         template(v-slot:icon)
                             MdiSwimmingPool(class="w-5 h-5")
-                    buttonCasual(@click="select('Office')" text="Office" :isSelected="selected.includes('Office')" disabled)
-                        template(v-slot:icon)
-                            GameIconsOfficeChair(class="w-5 h-5")
+                   
                     buttonCasual(@click="select('Event')" text="Event" :isSelected="selected.includes('Event')" disabled)
                         template(v-slot:icon)
                             MdiPeopleOutline(class="w-5 h-5")
@@ -67,6 +76,8 @@ import GameIconsOfficeChair from "~icons/game-icons/office-chair";
 import MdiPeopleOutline from "~icons/mdi/people-outline";
 import MdiConstructionOutline from "~icons/mdi/construction-outline";
 import FluentProduction20Regular from "~icons/fluent/production-20-regular";
+import MdiCarpet from "~icons/mdi/carpet";
+import PhCouchFill from "~icons/ph/couch-fill";
 
 import ArrowIcon from "~icons/ion/arrow-back";
 import { useBookFormStore } from "@/stores/BookForm";

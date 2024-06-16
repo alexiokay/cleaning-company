@@ -4,6 +4,8 @@ MainFormBase
       
     MainFormStep2Car(v-if="selected[0] === 'Car'" @next="next")
     MainFormStep2House(v-if="selected[0] === 'House'" @next="next")
+    MainFormStep2Couch(v-if="selected[0] === 'Couch'" @next="next")
+    MainFormStep2Carpet(v-if="selected[0] === 'Carpet'" @next="next")
                 
               
 
