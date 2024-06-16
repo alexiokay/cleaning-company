@@ -36,6 +36,12 @@ div(class="w-full flex flex-col lg:flex-row lg:pt-12")
 definePageMeta({
   NavbarColor: "#ffffff",
 });
+
+useSeoMeta({
+  title: "Contact | Fresh and Tidy",
+  description: "Contact Fresh and Tidy",
+  keywords: "Contact, Fresh and Tidy, Fresh&Tidy, cleaning services",
+});
 </script>
 
 <style lang="scss" scoped>

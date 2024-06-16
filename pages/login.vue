@@ -38,6 +38,12 @@ definePageMeta({
   middleware: "redirect-if-logged",
 });
 
+useSeoMeta({
+  title: "Login | Fresh and Tidy",
+  description: "Login to Fresh and Tidy",
+  keywords: "Login, Fresh and Tidy, Fresh&Tidy",
+});
+
 const config = useRuntimeConfig();
 
 const userStore = useUserStore();

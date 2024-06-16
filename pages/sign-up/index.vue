@@ -40,6 +40,13 @@ import Phone from "~/components/small/Phone.vue";
 definePageMeta({
   middleware: "redirect-if-logged",
 });
+
+useSeoMeta({
+  title: "Sign up | Fresh and Tidy",
+  description: "Sign up to Fresh and Tidy",
+  keywords: "Sign up, Registration, Register, Fresh and Tidy, Fresh&Tidy",
+});
+
 const userStore = useUserStore();
 
 const router = useRouter();

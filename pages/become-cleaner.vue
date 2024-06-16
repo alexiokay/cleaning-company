@@ -40,6 +40,13 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 <script setup lang="ts">
 import MingcuteGoogleLine from "~icons/mingcute/google-line";
+
+useSeoMeta({
+  title: "Become a Cleaner | Fresh and Tidy",
+  description:
+    "Become a cleaner at Fresh and Tidy cleaning services and earn money.",
+  keywords: "Become a cleaner, jobs, Fresh and Tidy, Fresh&Tidy",
+});
 </script>
 
 <style lang="scss"></style>
