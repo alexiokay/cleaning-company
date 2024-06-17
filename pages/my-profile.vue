@@ -58,9 +58,10 @@ div(class="w-full flex flex-col pb-12")
 
                 p Send
         
-        V2MyProfileBookingSchedules
+        V2MyProfileBookingSchedules(:orders="customerOrders")
         V2MyProfileFavouriuteServices(class="mt-[12rem]")
         V2MyProfileTransactionsHistory(class="mt-[8rem]")
+      
 
        
 
@@ -71,9 +72,42 @@ div(class="w-full flex flex-col pb-12")
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from "@/stores/User";
+
 definePageMeta({
   middleware: "redirect-if-not-logged",
 });
+
+const config = useRuntimeConfig();
+const userStore = useUserStore();
+
+const customerOrders = ref([]);
+
+const getCustomerOrders = async () => {
+  try {
+    const response = await fetch(
+      config.public.API_URL + `api/v1/get-customer-orders/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${userStore.getToken}`,
+        },
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      customerOrders.value = data;
+      console.log(data);
+    } else {
+      console.log("error");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getCustomerOrders();
 </script>
 
 <style lang="scss" scoped>

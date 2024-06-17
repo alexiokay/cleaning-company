@@ -12,22 +12,24 @@ div(class="flex flex-col md:flex-row gap-x-2 mt-6")
 
 <script setup lang="ts">
 import { useBookFormStore } from "@/stores/BookForm";
+import { useUserStore } from "@/stores/User";
 import { storeToRefs } from "pinia";
 
 const config = useRuntimeConfig();
 const { phone, fullName, companyName, email, termsAgreed, step } =
   storeToRefs(useBookFormStore());
 
+const userStore = useUserStore();
 const bookFormStore = useBookFormStore();
 
 const decideApiEndpoint = () => {
-  if (bookFormStore.selected[0] === "car") {
+  if (bookFormStore.selected[0] === "Car") {
     return "car-quotes";
-  } else if (bookFormStore.selected[0] === "house") {
+  } else if (bookFormStore.selected[0] === "Couse") {
     return "house-quotes";
-  } else if (bookFormStore.selected[0] === "couch") {
+  } else if (bookFormStore.selected[0] === "Couch") {
     return "couch-quotes";
-  } else if (bookFormStore.selected[0] === "carpet") {
+  } else if (bookFormStore.selected[0] === "Carpet") {
     return "carpet-quotes";
   } else {
     return "quotes";
@@ -53,13 +55,21 @@ const SendQuoteToApi = async () => {
     house_number: bookFormStore.houseNumber,
   };
   try {
+    const endpoint = decideApiEndpoint();
+
+    // create const headers but not incluide Authorization if userStore.getToken is null
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (userStore.getIsLogged) {
+      headers.Authorization = "Token " + userStore.getToken;
+    }
+
     const response = await fetch(
-      config.public.API_URL + `api/v1/${decideApiEndpoint}/`,
+      config.public.API_URL + `api/v1/${endpoint}/`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(data),
       }
     );

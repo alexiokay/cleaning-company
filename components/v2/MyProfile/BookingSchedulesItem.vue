@@ -5,18 +5,18 @@ div(class="w-full flex px-2 lg:px-8 py-2 lg:py-6 border-[1px]  border-[#8E7CFB] 
     </svg>
     div(class="flex flex-col gap-y-1")
         p(class="text-[#181526] opacity-[0.75]") Date
-        p(class="text-[#181526] font-bold") 24-06-23
+        p(class="text-[#181526] font-bold") {{ order.start_day }}
 
     hr(class="w-[1px] h-[2.5rem] bg-[#B7B6BC] ")
 
     div(class="flex gap-x-4 items-center")
         div(class="flex flex-col gap-y-1")
             p(class="text-[#181526] opacity-[0.75]") Start
-            p(class="text-[#181526] font-bold") 05:00 pm
+            p(class="text-[#181526] font-bold") {{ order.start_time }}
         hr(class="w-[1.1rem] h-[0.15rem] bg-[#181526]")
         div(class="flex flex-col gap-y-1")
             p(class="text-[#181526] opacity-[0.75]") End
-            p(class="text-[#181526] font-bold") 06:00 pm
+            p(class="text-[#181526] font-bold") {{ order.end_time }}
         
     
     hr(class="w-[1px] h-[2.5rem] bg-[#B7B6BC] ")
@@ -29,7 +29,7 @@ div(class="w-full flex px-2 lg:px-8 py-2 lg:py-6 border-[1px]  border-[#8E7CFB] 
 
         div(class="flex flex-col gap-y-1")
             p Person
-            p Anna Smith
+            p {{ order.full_name }}
     hr(class="w-[1px] h-[2.5rem] bg-[#B7B6BC] ")
     div(class="flex gap-y-1 items-center gap-x-4")
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,23 +38,16 @@ div(class="w-full flex px-2 lg:px-8 py-2 lg:py-6 border-[1px]  border-[#8E7CFB] 
 
         div(class="flex flex-col gap-y-1")
             p Service type
-            p Gardening
+            p {{ order.service_type }}
 
     
     button(class=" ml-auto w-auto  h-[3rem] border-[1px] rounded-[8px]  bg-transparent border-[#4E37E3] py-2 px-6 font-bold text-[#4E37E3] text-lg") Contact the Provider
 </template>
 
 <script setup lang="ts">
-defineProps({
-  provider: String,
-  providerIcon: String,
-  date: String,
-  start: String,
-  end: String,
-  person: String,
-  personIcon: String,
-  serviceType: String,
-});
+const props = defineProps<{
+  order: object;
+}>();
 </script>
 
 <style lang="scss"></style>
