@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="w-full flex flex-col gap-y-4 px-[5%] pt-[4.75rem] text-[#181526] ")
-    h2(class="text-center text-[1.8rem] lg:text-[2.5rem] font-semibold ") How it works?
+    h2(class="text-center text-[1.8rem] lg:text-[2.5rem] font-semibold ") How does it work?
     p.text-center.flex.flex-col Our inteligent matching algorithm will connect you with the best-suited
         span.text-center cleaning services in your area.
     div(class="flex flex-col md:flex-row flex-wrap gap-x-4 gap-y-4 mt-[2rem] justify-center w-full  lg:w-[80%] 4xl:px-[6rem] mx-auto")
@@ -15,20 +15,20 @@ div(class="w-full flex flex-col gap-y-4 px-[5%] pt-[4.75rem] text-[#181526] ")
                 </svg>
                 p Fill in The Form
         div(class="flex flex-col image-2 gap-y-[1rem]  w-full md:w-[45%] px-2 lg:px-[10.56rem] py-8 lg:pt-[4.56rem] lg:pb-[7.75rem]  text-center  rounded-[1rem] aspect-[16/14] " )
-            h3(class="text-[1.5rem] lg:text-[1.75rem] font-bold") Personalized list
-                span of service providers
+            h3(class="text-[1.5rem] lg:text-[1.75rem] font-bold flex flex-col") Personalized offer
+                span for your needs
             p.flex.flex-col After creating an account,
-                span your smart assistant will prepare
-                span a detailed list of cleaning teams for you.
+                span you'll get access to more seamless experience
+                span and funcionalities
         div(class="flex flex-col image-3 gap-y-[1rem]  w-full md:w-[45%] px-2 lg:px-[10.56rem] py-8 lg:pt-[4.56rem] lg:pb-[7.75rem]  text-center  rounded-[1rem] aspect-[16/14] " )
             h3(class="text-[1.5rem] lg:text-[1.75rem] font-bold") You can relax now
-            p.flex.flex-col Sit back and choose
-                span the right contractors.
+            p.flex.flex-col Sit back and wait for
+                span the service you requested
                 span AND THAT'S ALL!
         div(class="flex flex-col image-4 gap-y-[1rem]  w-full md:w-[45%] px-2 lg:px-[10.56rem] py-8 lg:pt-[4.56rem] lg:pb-[7.75rem]  text-center  rounded-[1rem] aspect-[16/14] " )
             h3(class="text-[1.5rem] lg:text-[1.75rem] font-bold") We'll let you know!
-            p.flex.flex-col The cleaning team will call you back
-                span with an attractive offer.
+            p.flex.flex-col The cleaning team will call you back to confirm your order
+                span and you will be notified before the service starts.
 </template>
 
 <script setup lang="ts"></script>
