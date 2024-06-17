@@ -17,9 +17,9 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
            
           
             V2HeaderFormV2(@next="step = step+1" v-show="step === 1")
-            V2HeaderFormV2-step2(@next="step = step+1" @goBack="step = step-1" v-show="step === 2")
-            V2HeaderFormV2-step3(@book="step = step+1" @goBack="step = step-1" v-show="step === 3")
-            V2Inquiry(v-if="step === 4" @done="step = 1")
+            LazyV2HeaderFormV2-step2(@next="step = step+1" @goBack="step = step-1" v-show="step === 2")
+            LazyV2HeaderFormV2-step3(@book="step = step+1" @goBack="step = step-1" v-show="step === 3")
+            LazyV2Inquiry(v-if="step === 4" @done="step = 1")
     <!-- Person, details -->
     div(class="flex w-[95%] relative h-10 z-20")
 

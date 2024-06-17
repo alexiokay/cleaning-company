@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] py-[3rem] lg:py-[auto] gap-y-3 gap-x-[3.25rem] ")
+div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[3rem] flex flex-col lg:flex-row  px-4 md:px-[4rem] pb-3 md:pb-0 pt-[2rem] md:pt-0 lg:py-[auto] gap-y-3 gap-x-[3.25rem] ")
     
   
       div(class="flex w-auto flex-col gap-y-3 lg:py-[4.5rem]")
@@ -70,9 +70,9 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
        
                   slot(name="content" ) //v-if="isBookNewService"
                   slot(name="footer")
-                  p(class="visible lg:hidden mt-6  lg:text-[1.7rem] ") Price: 
-                    span(class="font-semibold") {{ computedPrice }}&#8364
-                  div#tp(class="flex flex-col gap-y-3 mt-2")
+                  p(class="visible text-center lg:hidden mt-6 text-lg lg:text-[1.7rem] ") Price: 
+                    span(class="font-semibold") &#8364 {{ computedPrice }}
+                 
                   
                         
                       

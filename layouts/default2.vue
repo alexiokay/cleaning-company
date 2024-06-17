@@ -11,13 +11,13 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
       buttonWhatsapp(class="fixed bottom-[1rem] right-[1rem] z-50 ")   
     
   
-    .navigation(class="sticky lg:static top-0  z-50 w-full  ")
+    .navigation(:class="route.name ==='blog'? '': 'lg:static'" class="sticky  top-0  z-50 w-full  ")
    
 
-      V2Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
+      V2Navbar( class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
 
-      Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
-      
+      //- Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
+      //- BottomBar
           
     
     div(class=" w-full h-auto min-h-full  shrink-0 lg:mt-0   ")
