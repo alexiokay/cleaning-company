@@ -1,5 +1,5 @@
 <template lang="pug">
-nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full px-4 xl:px-[10%] py-4 bg-[#fafafa]  justify-between items-center h-[4.5rem] lg:h-[6rem]  shadow-md " )
+nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full px-4 2xl:px-[10%] py-4 bg-[#fafafa]  justify-between items-center h-[4.5rem] lg:h-[6rem]  shadow-md " )
     div(class="hidden lg:flex w-auto  gap-x-8 items-center font-semibold")
         nuxtLink(to="/")
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
@@ -14,6 +14,7 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
         NuxtLink(:class="routeNow=='shop'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center"  to="/shop")
             MdiShoppingOutline(class="w-6 h-6")
             p Shop
+        
 
         NuxtLink(:class="routeNow=='become-cleaner'? 'text-[#4e37e3] fill-[#4e37e3]':''" class="flex gap-x-2 items-center" to="/become-cleaner")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,6 +27,9 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
                 <path class="routeNow=='commercial-cleaning''? 'fill-[#4e37e3]':''" d="M18 15H16V17H18M18 11H16V13H18M20 19H12V17H14V15H12V13H14V11H12V9H20M10 7H8V5H10M10 11H8V9H10M10 15H8V13H10M10 19H8V17H10M6 7H4V5H6M6 11H4V9H6M6 15H4V13H6M6 19H4V17H6M12 7V3H2V21H22V7H12Z" fill="#181526"/>
             </svg>
             p Commercial Cleaning
+        NuxtLink(:class="routeNow=='blog'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center"  to="/blog")
+            FluentMdl2Blog(class="w-5 h-5 mt-1")
+            p Blog
     div(class="w-auto hidden lg:flex  gap-x-8 items-center justify-end" )
 
         
