@@ -18,16 +18,18 @@ div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafaf
         Swiper(
           @slideChange="onSlideChange"
           :modules="[]"
-          :loop="false"
+          :loop="true"
           :effect="'creative'"
-          :space-between="1"
-          :breakpoints="{ 1920: {slidesPerView: 2.8}, 1024: { slidesPerView: 2.8, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
+          :space-between="-15"
+          :centered-slides="false"
+          :loopedSlides ="2"
+          :breakpoints="{ 1920: {slidesPerView: 2.4}, 1024: { slidesPerView: 2.8, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
           :initialSlide="selectedSlide"
           :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
           <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
         
-          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 ml-[5rem] sm:px-4 w-full md:w-3/4 py-[4rem] ")
-              div(class="w-[100%] aspect-[16/13]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 py-[4rem] custom-slide ")
+              div(class="w-[100%] aspect-[16/12]  rounded-[24px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                   //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                   nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
                   div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-8 py-6 gap-y-4 justify-end" :style="{'background': step.griadent}")
@@ -179,4 +181,15 @@ onMounted(() => {
     #11139e7a 80.02%
   );
 }
+
+.custom-slide:first-of-type {
+  margin-left: calc(
+    (100% - (100% / 2.4)) / 7
+  ); /* Adjust this value to control the margin */
+}
+// .custom-slide:last-of-type {
+//   margin-right: calc(
+//     (100% - (100% / 2.8)) / 3.4
+//   ); /* Adjust this value to control the margin */
+// }
 </style>
