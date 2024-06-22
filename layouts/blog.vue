@@ -23,7 +23,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
     div(class=" w-full h-auto min-h-full  shrink-0 lg:mt-0   ")
         div(class=" w-full h-auto min-h-full  shrink-0 lg:mt-0   ")
 
-               div(class="w-full h-full  flex flex-col items-center  justify-start   bg-white  gap-y-8 ")
+               div(v-if="!isPathLongerThanBlog" class="w-full h-full  flex flex-col items-center  justify-start   bg-white  gap-y-8 ")
 
                     div#blog__header(class="w-full flex flex-col relative py-4 md:py-12 lg:px-24 h-[25rem] md:h-[20rem] text-xl lg:text-3xl xl:text-4xl px-4 md:text-center text-white rounded-3xl bg-[#F5f5f5] items-center justify-center")
                         nuxt-img(src="images/blog/header.webp" class="absolute z-10 top-0 left-0 w-full h-full object-cover object-center ")
@@ -32,9 +32,10 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
                         h2(class="flex gap-x-2 mt-6 flex-wrap items-center text-base 2xl:text-lg justify-center z-50") The latest industry news, interviews, technologies, and resources
 
 
-                    div(class="flex flex-col blx:flex-row min-h-[40vw] w-full xl:w-[78rem]  items-start justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  py-8 gap-x-[2rem] gap-y-6")
+                    div( class="flex flex-col blx:flex-row min-h-[40vw] w-full xl:w-[78rem]  items-start justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  py-8 gap-x-[2rem] gap-y-6")
                         V2BlogNav()
                         <slot class="" />
+        <slot class="" v-if="isPathLongerThanBlog"  />
         V2Footer(class="")
 div(class="cursor cursor--small")
 
@@ -58,6 +59,12 @@ const cookiesStore = useCookiesStore();
 const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
+
+const isPathLongerThanBlog = computed(() => {
+  const pathSegments = route.path.split("/");
+  // Check if the path has more than one segment after "blog"
+  return pathSegments.length > 2 && pathSegments[1] === "blog";
+});
 
 onMounted(() => {});
 </script>

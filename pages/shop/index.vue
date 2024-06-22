@@ -15,6 +15,26 @@ div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafaf
                 nuxt-img(:src="product.image" class="w-auto  object-cover   h-[4rem]")
                 p(class="w-full") {{product.name}}
 
+        Swiper(
+          @slideChange="onSlideChange"
+          :modules="[]"
+          :loop="false"
+          :effect="'creative'"
+          :space-between="1"
+          :breakpoints="{ 1920: {slidesPerView: 2.8}, 1024: { slidesPerView: 2.8, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
+          :initialSlide="selectedSlide"
+          :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
+          <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
+        
+          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 ml-[5rem] sm:px-4 w-full md:w-3/4 py-[4rem] ")
+              div(class="w-[100%] aspect-[16/13]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+                  //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
+                  nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
+                  div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-8 py-6 gap-y-4 justify-end" :style="{'background': step.griadent}")
+                      
+                      h4.text-xl.font-bold {{ step.title }}
+                      p {{ step.description}}
+                      button(class="bg-white rounded-[8px] py-[10px] lg:py-[16px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
 </template>
 
 <script setup lang="ts">
