@@ -124,7 +124,7 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
             //-     p Commercial Cleaning
                 
        
-LazyCartSidebar(v-if="isCartOpen===true && routeNow=='shop'" @close="isCartOpen = false")
+LazyCartSidebar(v-if="routeNow=='shop'" :isCartOpen="isCartOpen" @close="isCartOpen = false")
 
     
 </template>

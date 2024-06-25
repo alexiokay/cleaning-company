@@ -1,8 +1,8 @@
 <template lang="pug">
 div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafafa]   gap-y-8 ")
 
-    div(class="flex flex-col  min-h-[40vw] w-full xl:w-[88rem]  items-start justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  py-8 gap-x-[2rem] gap-y-8")
-        div#shop_header(class="w-full h-[18.85rem] relative flex flex-col items-center justify-center rounded-xl overflow-hidden")
+    div(class="flex flex-col  min-h-[40vw] w-full xl:w-[88rem]  items-center justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  py-8 gap-x-[2rem] gap-y-8")
+        div#shop_header(class="w-[100%] h-[18.85rem] relative flex flex-col items-center justify-center rounded-xl overflow-hidden")
             nuxt-img(src="images/shop/detailing-header.webp" class="w-full absolute z-10 top-0 left-0 h-full object-cover")
 
             div(class="w-full h-full z-20 absolute top-0 left-0 gardening-gradient ")
@@ -10,7 +10,7 @@ div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafaf
                 h1(class="text-xl lg:text-[1.7rem] text-center text-white") Shop
                 p(class="text-center  text-lg lg:text-lg text-white") Elevate your cleaning results.
                 button(class="w-[10rem] h-[2.5rem] bg-[#4E37E3] text-white font-bold rounded-[0.5rem] focus:outline-none") Shop Now
-        div#shop_distinguished-products(class="flex items-start lg:justify-center w-full h-auto overflow-x-auto")
+        div#shop_distinguished-products(class="flex items-start lg:justify-center w-full h-auto overflow-x-auto py-3")
             div(v-for="product in categories" class="flex flex-col px-4 lg:px-8 pt-6 pb-2 min-w-[12rem] max-w-[12rem]   text-center h-auto w-auto gap-y-3 justify-start items-center hover:shadow-md cursor-pointer")
                 nuxt-img(:src="product.image" class="w-auto  object-cover   h-[4rem]")
                 p(class="w-full") {{product.name}}
@@ -27,8 +27,9 @@ div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafaf
           :initialSlide="selectedSlide"
           :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
           <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
-        
-          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 py-[4rem] custom-slide ")
+
+          .swiper-edges
+          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 custom-slide ")
               div(class="w-[100%] aspect-[16/12]  rounded-[24px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                   //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                   nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
@@ -182,11 +183,30 @@ onMounted(() => {
   );
 }
 
-.custom-slide:first-of-type {
-  margin-left: calc(
-    (100% - (100% / 2.4)) / 7
-  ); /* Adjust this value to control the margin */
+@media screen and (min-width: 726px) {
+  .custom-slide:first-of-type {
+    margin-left: calc(
+      (100% - (100% / 2.4)) / 7
+    ); /* Adjust this value to control the margin */
+  }
+  .swiper-edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 40;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba(250, 250, 250, 0.7) 0%,
+      rgba(255, 255, 255, 0) 6%,
+      rgba(255, 255, 255, 0) 94%,
+      rgba(250, 250, 250, 0.7) 100%
+    );
+  }
 }
+
 // .custom-slide:last-of-type {
 //   margin-right: calc(
 //     (100% - (100% / 2.8)) / 3.4
