@@ -6,7 +6,7 @@ div(:class="PageMetaNavbarColor? `bg-[${PageMetaNavbarColor}]`: 'bg-[#fcf2ec]'" 
     
     div(class="nav hidden md:flex w-full h-[6rem]   justify-between ")
     
-        
+    
         
         
         div#navigation(class="flex w-full font-semibold justify-center items-center space-x-4 md:space-x-12  text-lg xl:text-xl text-gray-600 ")
@@ -41,7 +41,7 @@ div(:class="PageMetaNavbarColor? `bg-[${PageMetaNavbarColor}]`: 'bg-[#fcf2ec]'" 
 
         button(class=" min-w-[18rem] border-[#7e7b74] my-auto w-auto h-3/4 rounded-r-[1.5rem] rounded-bl-[1.5rem] py-2 px-6 border-[0.1rem] font-semibold text-xl text-[#7e7b74] ml-12 hover:bg-[#Fef2e8] shadow-lg") Free Consultation
         
-        
+     
 
 //- div#mobileNav(:class="isMobileMenu? '': 'hidden'" class="fixed flex flex-col h-screen w-full justify-start text-5xl items-center text-white space-y-3 z-50 ")
     

@@ -15,7 +15,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
    
 
       V2Navbar( class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
-
+       
       //- Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
       //- BottomBar
           

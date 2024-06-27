@@ -1,6 +1,7 @@
 <template lang="pug">
-nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full px-4 2xl:px-[10%] py-4 bg-[#fafafa]  justify-between items-center h-[4.5rem] lg:h-[6rem]  shadow-md " )
+nav(:class="routeNow=='shop'? '':'lg:shadow-lg'" class="flex  w-full px-4 2xl:px-[10%] py-4 bg-[#fafafa]  justify-between items-center h-[4.5rem] lg:h-[6rem]  z-50 " )
     div(class="hidden lg:flex w-auto  gap-x-8 items-center font-semibold")
+        
         nuxtLink(to="/")
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
             //- nuxt-img(src="images/logov3.png" class="" alt="logo" width="70" height="70")
@@ -48,8 +49,7 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
             GgProfile(class="w-6 h-6")
             p(v-if="routeNow!=='shop'") My Profile
         
-        div(@click="isCartOpen = !isCartOpen" v-if="routeNow=='shop'" class=" -ml-4 flex gap-x-2 items-center hover:cursor-pointer group hover:bg-[#4e37e396] border-[#4E37E3]  border-[1px] text-white rounded-md px-4  py-[0.55rem]")
-            IonCartOutline(class="w-6 h-6 text-[#4E37E3] group-hover:text-white ")
+       
 
     div(class="flex  items-center w-full lg:hidden " )
         nuxtLink(to="/")
@@ -59,8 +59,8 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
                 <path d="M3 6H21V8H3V6ZM3 11H21V13H3V11ZM3 16H21V18H3V16Z" fill="black"/>
             </svg>
 
-        
-
+      
+              
     
 
     div(class="fixed h-[100svh] top-0 left-0 flex-col w-full bg-[rgb(255,255,255)] flex items-center gap-y-4 z-50" v-if="isMobileMenu")
@@ -124,8 +124,8 @@ nav(:class="routeNow=='shop'? 'shadow-lg':'lg:shadow-none'" class="flex  w-full 
             //-     p Commercial Cleaning
                 
        
-LazyCartSidebar(v-if="routeNow=='shop'" :isCartOpen="isCartOpen" @close="isCartOpen = false")
-
+LazyCartSidebar(v-if="routeNow=='shop'" :isCartOpen="isCartOpen" @closeCart="isCartOpen = false")
+ShopNavbar(v-if="routeNow=='shop'" @openCart="isCartOpen = true")
     
 </template>
 

@@ -64,6 +64,10 @@ import RiTwitterXFill from "~icons/ri/twitter-x-fill";
 import { nextTick } from "vue";
 import servicesWindows from "@/utils/servicesWindows.json";
 
+definePageMeta({
+  type: "article",
+});
+
 const selectRandomServiceWindow = () => {
   const randomNumber = Math.floor(Math.random() * servicesWindows.length);
   return servicesWindows[Math.floor(Math.random() * servicesWindows.length)];

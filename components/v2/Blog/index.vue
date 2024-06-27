@@ -1,10 +1,10 @@
 <template lang="pug">
-div(class="flex flex-col items-center justify-center w-full lg:pl-[10%]  md:px-0 px-[1rem]")
+div(class="flex flex-col lg:items-center justify-center w-full lg:pl-[10%]  md:px-0 pl-4 lg:px-[1rem]")
  
   //- div(class="relative flex w-[7.5rem] h-[5.5rem] ")
   //-     nuxt-img(src="images/star1.png" width="70px" height="70px" class="absolute top-0 left-0 rotate-[210deg]")
   //-     nuxt-img(src="images/star2.png" width="50px" height="50px" class="absolute -top-4 right-0 rotate-[150deg]" )
-  h2.flex.flex-col.text-center.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3") Latest 
+  h2.flex.flex-col.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3 lg:text-center ml-2") Latest 
       span News & Articles
 
   Swiper(

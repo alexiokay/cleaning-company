@@ -41,6 +41,8 @@ div(class="w-full flex flex-col gap-y-4 px-[5%] pt-[4.75rem] text-[#181526] ")
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center -40px;
+  // add purple overlay
+  // background: ;
 }
 .image-2 {
   background:

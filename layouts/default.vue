@@ -14,7 +14,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#Ffffff] justify-cen
       div(class=" hidden w-full h-[4rem] bg-white shadow-sm fixed top-0 z-10")
 
       Navbar(class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")
-
+        
       Sidebar(class=" md:hidden" :is_sidebar_open="is_sidebar_open" :is_sidebar_clicked="is_sidebar_clicked" @toogleSidebar="is_sidebar_open = !is_sidebar_open")
       
           

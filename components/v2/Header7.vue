@@ -20,13 +20,13 @@ div(class="w-full lg:pl-[10%] px-4 lg:px-0")
                     h4.text-xl.font-bold {{ step.title }}
                     p {{ step.description}}
                     button(class="bg-white rounded-[8px] py-[10px] lg:py-[16px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
-    div(class="gap-y-1 text-[1.4rem] lg:text-2xl md:font-bold flex flex-col")
+    div(class="gap-y-1 text-[1.3rem] lg:text-2xl md:font-bold flex flex-col")
         p Explore and see our services.
         p Choose the offer most suitable for your home.
 
     div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white flex-col lg:flex-row gap-y-6")
         div(class="w-full lg:w-1/2 px-4 py-6 lg:py-0 lg:px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
-            p.flex.flex-col.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3") How can we
+            p.flex.flex-col.font-bold(class="text-[1.5rem] lg:text-4xl lg:gap-y-3") How can we
                 span take care of you?
             p.flex.flex-col(class="text-[#FFF]") Get a personalized list of the best market prices
                 span available without the need for an on-site
