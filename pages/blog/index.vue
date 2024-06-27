@@ -1,6 +1,6 @@
 <template lang="pug">
 
-div(class="w-full xl:w-[56.5rem] h-full flex flex-col items-start justify-start gap-y-6")
+div(class="w-full xl:w-[56.5rem] h-full flex flex-col items-start justify-start gap-y-2")
     h2(class="text-lg font-bold    ") Featured Posts
     //- div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[3rem] h-auto text-[#51535b]")
     //-     nuxt-img(format="webp" provider='ipx' alt="wood floot cleaner header" class="rounded-xl w-full md:w-1/2 max-h-[20rem] xs:h-[12rem] sm:h-[16rem] lg:min-h-[18rem] object-cover" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")

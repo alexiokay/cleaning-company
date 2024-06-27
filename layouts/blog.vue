@@ -24,18 +24,18 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
         div(class=" w-full h-auto min-h-full  shrink-0 lg:mt-0   ")
 
                div( class="w-full h-full  flex flex-col items-center  justify-start   bg-white  gap-y-8 ")
-
-                    div#blog__header(class="w-full flex flex-col relative py-4 md:py-12 lg:px-24 h-[25rem] md:h-[20rem] text-xl lg:text-3xl xl:text-4xl px-4 md:text-center text-white rounded-3xl bg-[#F5f5f5] items-center justify-center")
+                    
+                    div#blog__header(v-if="getCurrentPageMeta !== 'article'" class="w-full flex flex-col relative py-4 md:py-12 lg:px-24 h-[25rem] md:h-[20rem] text-xl lg:text-3xl xl:text-4xl px-4 md:text-center text-white rounded-3xl bg-[#F5f5f5] items-center justify-center")
                         nuxt-img(src="images/blog/header.webp" class="absolute z-10 top-0 left-0 w-full h-full object-cover object-center ")
                         div(class="w-full h-full z-20 absolute top-0 header-background ")
                         h1(class="tracking-[0.1rem]  text-5xl  leading-[4rem] md:leading-0 font-bold z-40") Fresh&Tidy Blog
                         h2(class="flex gap-x-2 mt-6 flex-wrap items-center text-base 2xl:text-lg justify-center z-40") The latest industry news, interviews, technologies, and resources
 
 
-                    div( class="flex flex-col blx:flex-row min-h-[40vw] w-full xl:w-[78rem]  items-start justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  py-8 gap-x-[2rem] gap-y-6")
-                        V2BlogNav()
-                        <slot class="" />
-        <slot class="" v-if="isPathLongerThanBlog"  />
+                    div(:class="getCurrentPageMeta === 'article'? 'items-center ': 'blx:flex-row items-start '" class="flex flex-col  min-h-[40vw] w-full xl:w-[78rem]  justify-start  px-[1rem] sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  pt-1 pb-8 gap-x-[2rem] gap-y-6")
+                        V2BlogNav( v-if="getCurrentPageMeta !== 'article'")
+                        <slot class=""  />
+       
         V2Footer(class="")
 div(class="cursor cursor--small")
 

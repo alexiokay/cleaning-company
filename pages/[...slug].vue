@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    StoryblokComponent(v-if="story" :blok="story.content")
+    StoryblokComponent(v-if="story" :blok="story.content" :blokinfo="story")
 
 </template>
 
@@ -13,6 +13,10 @@ const story = await useAsyncStoryblok(
     version: "draft",
   }
 );
+
+definePageMeta({
+  type: "article",
+});
 </script>
 
 <style lang="scss"></style>
