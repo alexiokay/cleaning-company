@@ -42,9 +42,9 @@ div(class="w-auto h-auto flex flex-col items-center justify-center ")
           p(class="text-xl font-bold") Popular Articles
           p(v-for="article in 7") {{ article }}
       div(class="w-full flex flex-col gap-y-6")
-        h1(class="text-2xl lg:text-3xl ") {{ blok.title }}
+       
         div(class="w-full flex gap-x-3")
-          h3(class="text-base lg:text-xl  mr-auto") DATE / 
+        
           p SHARE: 
           IcBaselineFacebook(class="w-6 h-6")
           IconoirInstagram(class="w-6 h-6")
