@@ -151,7 +151,7 @@ onMounted(() => {
 });
 
 const shareArticle = () => {
-  if (navigator.share) {
+  if (navigator.share !== undefined) {
     navigator
       .share({
         title: props.blok.title,
