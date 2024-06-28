@@ -46,8 +46,8 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           
 
           div#article_options( class="bg-[#f7f7f7] w-auto  px-3 h-full  flex gap-x-2 items-center hover:cursor-pointer hover-text-animation")
-            div#article-emojis(class="absolute w-auto h-auto pb-4 -top-[7.4rem] left-0")
-              div(class="bg-white shadow-md rounded-sm w-full h-[6.5rem] flex gap-x-6 px-4 py-3") 
+            div#article-emojis(class="absolute w-[100vw] -mx-4 md:-mx-0 md:w-auto h-auto pb-4 -top-[7.4rem] left-0 z-50 text-xs")
+              div(class="bg-white drop-shadow-md rounded-sm w-full h-[6.5rem] flex gap-x-2 px-4 py-3") 
                 div(class="flex flex-col gap-y-2 items-center group  relative w-[3rem]")
                   p(class="group-hover:text-blue-400 hover-text-animation") I like it
                   NotoThumbsUp(  class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7  hover-thumb-animation ")
@@ -78,7 +78,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
               MdiThumbUp(  class="w-5 h-5  ")
               p(class="group-hover:text-blue-400 ") I like this
             div(class="w-[1px] h-[1rem] bg-slate-400")
-            div(class="flex gap-x-2 items-center py-2 group ")
+            div#article_options__more(class="flex gap-x-2 items-center py-2 group ")
               div(class="flex h-full")
                 
                 div(class="relative flex items-center gap-x-2 ")
@@ -184,15 +184,28 @@ input::placeholder {
 
 #article_options {
   #article-emojis {
-    display: none;
+    transition:
+      visibility 0s,
+      opacity 0.1s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 #article_options:hover {
-  #article-emojis {
-    display: flex;
+  & #article-emojis {
+    opacity: 1;
+    visibility: visible;
     flex-direction: column;
   }
 }
+
+// #article_options__more:target {
+//   @include tag(article-emojis) {
+//     opacity: 1;
+//     visibility: visible;
+//     flex-direction: column;
+//   }
+// }
 
 .arrow-down {
   width: 0;
