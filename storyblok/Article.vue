@@ -5,7 +5,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
          
           p(class="container mx-auto  text-[1.4rem] lg:text-5xl z-30  font-semibold lg:font-bold leading-7 lg:leading-none") {{ blok.title }}
           div(class="flex  gap-x-2 w-full items-center")
-            nuxt-img(:src="'https:' + blok.author[0].avatar" class="rounded-full object-cover h-[3.5rem] w-[3.5rem]")
+            nuxt-img(:src="'https:' + blok.author[0].avatar" class="rounded-full object-cover h-[3.5rem] w-[3.5rem]" width="150" height="150" format="webp" alt="author avatar" )
             div(class="flex-col h-full flex justify-start items-start gap-y-1") 
               p(class="font-semibold") {{blok.author[0].name}}
               p(class="text-slate-500 lg:text-white text-sm") {{ blokinfo.published_at.split('T')[0] }} &#8226; {{ readTime() }} min read
