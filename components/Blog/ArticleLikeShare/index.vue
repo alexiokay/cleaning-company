@@ -59,7 +59,7 @@ div(class="flex gap-x-2 items-center text-sm font-semibold relative ")
                     div(class="rounded-full p-[0.2rem] absolute left-4 z-10")
                         NotoThumbsUp(class="w-5 h-5")
                     p.text-xs.text-slate-500.ml-4.font-normal {{ reactionsCount }}
-    div(@click="$emit('share')" class="bg-[#f7f7f7] w-auto h-full px-3 py-[0.7rem] items-center flex gap-x-2 hover:text-blue-400  hover-text-animation hover:cursor-pointer ")
+    div(@click="$emit('share')" class="bg-[#f7f7f7] w-auto h-full px-3 py-[0.7rem] items-center flex gap-x-2 md:hover:text-blue-400  hover-text-animation hover:cursor-pointer ")
         MdiShare(  class="w-5 h-5")
         p(class="hidden md:block ") Share
     
