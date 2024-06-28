@@ -44,7 +44,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
       div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
         
           
-        BlogArticleLikeShare(:isLiked="isLiked" @like="isLiked = !isLiked" )
+        LazyBlogArticleLikeShare(:reactions="reactions" @react="react" @resetOrLike="resetOrLike" )
           
        
         p(class="text-lg lg:text-5xl   font-semibold lg:font-bold lg:leading-none") {{ blok.description }}
@@ -80,7 +80,70 @@ const toggleEmojiOptions = () => {
   isEmojisOptions.value = !isEmojisOptions.value;
 };
 
-const isLiked = ref(false);
+const resetOrLike = () => {
+  // if any reaction is clicked, reset all reactions
+  if (
+    Object.values(reactions.value).some((reaction) => reaction.isUserClicked)
+  ) {
+    Object.values(reactions.value).forEach((reaction) => {
+      reaction.isUserClicked = false;
+    });
+  } else {
+    reactions.value.like.isUserClicked = true;
+  }
+};
+
+const react = (reaction) => {
+  const reactionTypes = ["like", "super", "laugh", "wow", "sad", "angry"];
+
+  if (reactionTypes.includes(reaction)) {
+    // Reset all reactions except the current one
+    reactionTypes.forEach((type) => {
+      if (type !== reaction) {
+        reactions.value[type].isUserClicked = false;
+        reactions.value[type].count =
+          reactions.value[type].count > 0 ? reactions.value[type].count - 1 : 0;
+      }
+    });
+
+    // Toggle the current reaction
+    const currentReaction = reactions.value[reaction];
+    if (currentReaction.isUserClicked) {
+      currentReaction.count -= 1;
+    } else {
+      currentReaction.count += 1;
+    }
+    currentReaction.isUserClicked = !currentReaction.isUserClicked;
+  }
+};
+
+const reactions = ref({
+  like: {
+    count: 0,
+    isUserClicked: false,
+  },
+  super: {
+    count: 0,
+    isUserClicked: false,
+  },
+  laugh: {
+    count: 0,
+    isUserClicked: false,
+  },
+  wow: {
+    count: 0,
+    isUserClicked: false,
+  },
+  sad: {
+    count: 0,
+    isUserClicked: false,
+  },
+  angry: {
+    count: 0,
+    isUserClicked: false,
+  },
+});
+
 const serviceWindow = ref();
 
 onMounted(() => {
