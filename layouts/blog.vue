@@ -32,7 +32,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
                         h2(class="flex gap-x-2 mt-6 flex-wrap items-center text-base 2xl:text-lg justify-center z-40") The latest industry news, interviews, technologies, and resources
 
 
-                    div(:class="getCurrentPageMeta === 'article'? 'items-center ': 'blx:flex-row items-start '" class="flex flex-col  min-h-[40vw] w-full xl:w-[78rem]  justify-start  px-0 sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  pt-1 pb-8 gap-x-[2rem] gap-y-6")
+                    div(:class="getCurrentPageMeta === 'article'? 'items-center ': 'blx:flex-row items-start '" class="flex flex-col  min-h-[40vw] w-full xl:w-[78rem]  justify-start  px-3 sm:px-[1.5rem] md:px-[3rem] lg:px-[7.4rem] xl:px-0  pt-1 pb-8 gap-x-[2rem] gap-y-6")
                         V2BlogNav( v-if="getCurrentPageMeta !== 'article'")
                         <slot class=""  />
        

@@ -5,16 +5,16 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
          
           p(class="container mx-auto  text-[1.4rem] lg:text-5xl z-30  font-semibold lg:font-bold leading-7 lg:leading-none") {{ blok.title }}
           div(class="flex  gap-x-2 w-full items-center")
-            nuxt-img(:src="'https:' + blok.author[0].avatar" class="rounded-full h-[3.5rem] w-[3.5rem]")
+            nuxt-img(:src="'https:' + blok.author[0].avatar" class="rounded-full object-cover h-[3.5rem] w-[3.5rem]")
             div(class="flex-col h-full flex justify-start items-start gap-y-1") 
               p(class="font-semibold") {{blok.author[0].name}}
-              p(class="text-slate-500 text-sm") {{ blokinfo.published_at.split('T')[0] }} &#8226; {{ readTime() }} min read
+              p(class="text-slate-500 lg:text-white text-sm") {{ blokinfo.published_at.split('T')[0] }} &#8226; {{ readTime() }} min read
          
           //- div(class="w-full h-full z-20 absolute top-0 header-background ")
           
         //- div(class="container mx-auto mb-12 text-3xl text-start leading-[2.9rem] w-4/5") {{ blok.description }}
     
-    div(class="flex flex-col-reverse lg:flex-row w-full justify-between gap-x-[2rem] px-4  gap-y-8  lg:mt-[5rem] ")
+    div(class="flex flex-col-reverse lg:flex-row w-full justify-between gap-x-[2rem] px-4 lg:px-0  gap-y-8  lg:mt-[5rem] ")
       div(class="w-full min-w-[16rem] xl:w-[17rem]  flex flex-col gap-y-6")
         div(class="flex flex-col gap-y-2")
           p See our services:
