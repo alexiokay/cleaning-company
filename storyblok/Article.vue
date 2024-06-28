@@ -14,7 +14,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           
         //- div(class="container mx-auto mb-12 text-3xl text-start leading-[2.9rem] w-4/5") {{ blok.description }}
     
-    div(class="flex flex-col-reverse lg:flex-row w-full justify-between gap-x-[2rem] px-4  gap-y-8 mt-8 lg:mt-[5rem] ")
+    div(class="flex flex-col-reverse lg:flex-row w-full justify-between gap-x-[2rem] px-4  gap-y-8  lg:mt-[5rem] ")
       div(class="w-full min-w-[16rem] xl:w-[17rem]  flex flex-col gap-y-6")
         div(class="flex flex-col gap-y-2")
           p See our services:
@@ -41,7 +41,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
         div(class="flex flex-col w-full gap-y-3")
           p(class="text-xl font-bold") Popular Articles
           p(v-for="article in 7") {{ article }}
-      div(class="w-full flex flex-col gap-y-6")
+      div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
         div(class="flex gap-x-2 items-center text-sm font-semibold relative ")
           
 
@@ -90,14 +90,10 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           div(@click="shareArticle()" class="bg-[#f7f7f7] w-auto h-full px-3 py-[0.7rem] items-center flex gap-x-2 hover:text-blue-400  hover-text-animation hover:cursor-pointer ")
             MdiShare(  class="w-5 h-5")
             p(class="hidden md:block ") Share
-        div(class="w-full flex gap-x-3")
-        
-          p SHARE: 
-          IcBaselineFacebook(class="w-6 h-6")
-          IconoirInstagram(class="w-6 h-6")
-          RiTwitterXFill(class="w-6 h-6")
-
-        nuxt-img(:src="'https:' + blok.image"  provider="storyblok" class=" mt-[1rem] top-0 left-0 object-cover h-[18rem] lg:h-[25rem] w-full" :alt="blok.image.alt" :title="blok.title" :width="blok.width" :height="blok.height" format="webp")
+       
+        p(class="text-lg lg:text-5xl   font-semibold lg:font-bold lg:leading-none") {{ blok.description }}
+        div(class="w-[100vw] -mx-4 lg:w-full")
+          nuxt-img(:src="'https:' + blok.image"  provider="storyblok" class=" mt-[1rem] top-0 left-0 object-cover h-[18rem] lg:h-[25rem] w-full" :alt="blok.image.alt" :title="blok.title" :width="blok.width" :height="blok.height" format="webp")
         div(v-html="resolvedRichText" class="lg:mt-[3rem]  mb-12 lg:text-2xl text-start leading-[1.9rem] w-full")
         
 
