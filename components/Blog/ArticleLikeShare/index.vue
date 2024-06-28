@@ -59,6 +59,10 @@ div(class="flex gap-x-2 items-center text-sm font-semibold relative ")
                     div(class="rounded-full p-[0.2rem] absolute left-4 z-10")
                         NotoThumbsUp(class="w-5 h-5")
                     p.text-xs.text-slate-500.ml-4.font-normal 27
+    div(@click="$emit('share')" class="bg-[#f7f7f7] w-auto h-full px-3 py-[0.7rem] items-center flex gap-x-2 hover:text-blue-400  hover-text-animation hover:cursor-pointer ")
+        MdiShare(  class="w-5 h-5")
+        p(class="hidden md:block ") Share
+    
 </template>
 
 <script setup lang="ts">
@@ -71,6 +75,7 @@ import NotoRedHeart from "~icons/noto/red-heart";
 import NotoThumbsUp from "~icons/noto/thumbs-up";
 import MdiThumbUp from "~icons/mdi/thumb-up";
 import NotoFaceSavoringFood from "~icons/noto/face-savoring-food";
+import MdiShare from "~icons/mdi/share";
 
 const isEmojisOptions = ref(false);
 const toggleEmojiOptions = () => {

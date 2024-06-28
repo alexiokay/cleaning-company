@@ -44,7 +44,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
       div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
         
           
-        LazyBlogArticleLikeShare(:reactions="reactions" @react="react" @resetOrLike="resetOrLike" )
+        LazyBlogArticleLikeShare(:reactions="reactions" @react="react" @resetOrLike="resetOrLike" @share="shareArticle")
           
        
         p(class="text-lg lg:text-5xl   font-semibold lg:font-bold lg:leading-none") {{ blok.description }}
@@ -151,11 +151,16 @@ onMounted(() => {
 });
 
 const shareArticle = () => {
-  navigator.share({
-    title: props.blok.title,
-    text: props.blok.description,
-    url: window.location.href,
-  });
+  if (navigator.share) {
+    navigator
+      .share({
+        title: props.blok.title,
+        text: props.blok.description,
+        url: window.location.href,
+      })
+      .then(() => console.log("Successful share"))
+      .catch((error) => console.log("Error sharing:", error));
+  }
 };
 
 const props = defineProps({
