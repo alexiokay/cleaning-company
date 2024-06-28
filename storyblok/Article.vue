@@ -92,7 +92,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
             p(class="hidden md:block ") Share
        
         p(class="text-lg lg:text-5xl   font-semibold lg:font-bold lg:leading-none") {{ blok.description }}
-        div(class="w-[100vw] -mx-4 lg:w-full")
+        div(class="w-[100vw] -mx-4 lg:-mx-0 lg:w-full")
           nuxt-img(:src="'https:' + blok.image"  provider="storyblok" class=" mt-[1rem] top-0 left-0 object-cover h-[18rem] lg:h-[25rem] w-full" :alt="blok.image.alt" :title="blok.title" :width="blok.width" :height="blok.height" format="webp")
         div(v-html="resolvedRichText" class="lg:mt-[3rem]  mb-12 lg:text-2xl text-start leading-[1.9rem] w-full")
         
