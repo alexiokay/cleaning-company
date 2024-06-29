@@ -4,7 +4,7 @@ div(class="min-w-[16rem] xl:w-[17rem] flex flex-col md:sticky md:top-[10rem] ")
             MdiSearch(class="w-6 h-6 text-gray-800")
             input(class="border-none focus:outline-none w-full text-[0.8rem] h-full  text-gray-800 px-2" placeholder="Search")
         div(class="relative flex flex-col mt-4 h-auto ")
-            #blog_nav__vr(class="absolute top-0 left-0 w-[1px] h-full bg-[#E5E5E5]")
+            #blog_nav__vr(class="absolute top-0 left-0 z-20 w-[1px] h-full bg-[#E5E5E5]")
 
             div(class="relative flex flex-col hover:cursor-pointer" v-for="nav in blogNav" :key="nav.name")
                 div.blog_nav__active(v-show="activeNav == nav.name.toLowerCase()" class="w-[2px] h-full absolute left-0 top-0 bg-[#7e54c0]")

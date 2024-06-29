@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const body = await readBody(event);
-  const { storyId, reaction } = body;
+  const { storyId, reaction, increment } = body;
 
   console.log("storyId", storyId);
   console.log("reaction", reaction);
@@ -25,7 +25,8 @@ export default defineEventHandler(async (event) => {
       // Modify the content object to update 'like' property
       let updatedContent = {
         ...data.story.content, // Preserve existing content
-        [reaction]: (Number(data.story.content[reaction]) || 0) + 1, // Increment the specified reaction count
+        [reaction]:
+          (Number(data.story.content[reaction]) || 0) + (increment ? 1 : -1), // Increment or decrement based on 'increment' boolean
       };
 
       // Prepare the payload to send for update

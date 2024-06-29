@@ -8,7 +8,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
             nuxt-img(:src=" blok.author[0].avatar" class="rounded-full object-cover h-[3.5rem] w-[3.5rem]" width="150" height="150" format="webp" alt="author avatar" )
             div(class="flex-col h-full flex justify-start items-start gap-y-1") 
               p(class="font-semibold") {{blok.author[0].name}}
-              p(class="text-slate-500 lg:text-white text-sm") {{ blokinfo.published_at.split('T')[0] }} &#8226; {{ readTime() }} min read
+              p(class="text-slate-500 lg:text-white text-sm") {{ blokinfo.published_at.split('T')[0] }} &#8226; {{ readTime }} min read
          
           //- div(class="w-full h-full z-20 absolute top-0 header-background ")
           
@@ -31,7 +31,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           p(class="text-xl font-bold") Subscribe Our Newsletter
           p Enter your details to get business inspiration, trending solutions, and consulting tips delivered to your inbox
           input(class="mt-4 w-auto  h-[3rem] border-[1px] rounded-[7px] text-center  bg-transparent border-black py-2 px-6 focus:outline-none text-white text-lg" placeholder="Enter your email address")
-          buton(class="bg-[#4E37E3] text-white rounded-[8px] py-[16px] px-[24px]  w-auto font-bold text-center") Subscribe
+          button(class="bg-[#4E37E3] text-white rounded-[8px] py-[16px] px-[24px]  w-auto font-bold text-center") Subscribe
           
         div(class="flex flex-col w-full gap-y-3")
           p(class="text-xl font-bold") Topics 
@@ -44,7 +44,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
       div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
         
           
-        LazyBlogArticleLikeShare(:reactions="reactions" @react="react" @resetOrLike="resetOrLike" @share="shareArticle")
+        LazyBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
           
        
         p(class="lg:text-xl   font-semibold lg:font-medium lg:leading-7") {{ blok.description }}
@@ -70,6 +70,9 @@ import IconoirInstagram from "~icons/iconoir/instagram";
 import RiTwitterXFill from "~icons/ri/twitter-x-fill";
 import { nextTick } from "vue";
 import servicesWindows from "@/utils/servicesWindows.json";
+import { useBlogReactionsStore } from "@/stores/BlogReactions";
+
+const blogStore = useBlogReactionsStore();
 
 const storyblokApi = useStoryblokApi();
 
@@ -94,43 +97,38 @@ const toggleEmojiOptions = () => {
   isEmojisOptions.value = !isEmojisOptions.value;
 };
 
-const resetOrLike = () => {
-  // if any reaction is clicked, reset all reactions
-  if (
-    Object.values(reactions.value).some((reaction) => reaction.isUserClicked)
-  ) {
-    Object.values(reactions.value).forEach((reaction) => {
-      reaction.isUserClicked = false;
-    });
-  } else {
-    reactions.value.like.isUserClicked = true;
-  }
-};
-
 const react = async (reaction) => {
-  const reactionTypes = ["like", "super", "laugh", "wow", "sad", "angry"];
+  // Retrieve the current reaction from the store or local state
+  const activeReaction = currentReaction.value;
 
-  if (reactionTypes.includes(reaction)) {
-    // Reset all reactions except the current one
-    reactionTypes.forEach((type) => {
-      if (type !== reaction) {
-        reactions.value[type].isUserClicked = false;
-        reactions.value[type].count =
-          reactions.value[type].count > 0 ? reactions.value[type].count - 1 : 0;
-      }
-    });
-
-    // Toggle the current reaction
-    const currentReaction = reactions.value[reaction];
-    if (currentReaction.isUserClicked) {
-      currentReaction.count -= 1;
-    } else {
-      currentReaction.count += 1;
+  // Check if the selected reaction is the same as the active one
+  if (activeReaction === reaction) {
+    // The reaction is already active, so toggle it off
+    reactions.value[reaction].isUserClicked = false;
+    reactions.value[reaction].count -= 1;
+    if (reactions.value[reaction].count < 0) {
+      reactions.value[reaction].count = 0; // Ensure count doesn't go negative
     }
-    currentReaction.isUserClicked = !currentReaction.isUserClicked;
+    fetchUpdateReaction(reaction, false);
+  } else {
+    // The selected reaction is different or there is no active reaction
+    // Reset the previously active reaction if there is one
+    if (typeof activeReaction === "string") {
+      reactions.value[activeReaction].isUserClicked = false;
+      reactions.value[activeReaction].count -= 1;
+      if (reactions.value[activeReaction].count < 0) {
+        reactions.value[activeReaction].count = 0; // Ensure count doesn't go negative
+      }
+      fetchUpdateReaction(activeReaction, false);
+    } else {
+      reactions.value[reaction].isUserClicked = true;
+      reactions.value[reaction].count += 1;
+      fetchUpdateReaction(reaction, true);
+    }
   }
 
-  fetchUpdateReaction(reaction);
+  // Update the current reaction in the store
+  blogStore.addOrUpdateArticle({ id: props.blokinfo.id, reaction: reaction });
 };
 
 const reactions = ref({
@@ -160,14 +158,55 @@ const reactions = ref({
   },
 });
 
+const currentReaction = computed(() => {
+  // Check if the article ID exists in the store
+  const storedReaction = blogStore.getArticleReaction(props.blokinfo.id);
+  console.log("stored reaction", storedReaction);
+
+  if (storedReaction) {
+    // Return the stored reaction from the store
+    console.log("reaction already stored", storedReaction.reaction);
+    return storedReaction.reaction || null;
+  } else {
+    // If not found in store, get the current reaction from local state
+    const reactionTypes = Object.keys(reactions.value);
+    const clickedReaction = reactionTypes.find(
+      (type) => reactions.value[type].isUserClicked
+    );
+    return clickedReaction || false; // Return null if no reaction is clicked
+  }
+});
+
+// Watch for changes in reactions.value and update blogStore
+watch(
+  () => reactions.value,
+  (newReaction, oldReaction) => {
+    // get the current article reaction
+    const clickedReaction = Object.keys(newReaction).find(
+      (type) => newReaction[type].isUserClicked
+    );
+
+    // console.log("current article reaction", clickedReaction);
+    blogStore.addOrUpdateArticle({
+      id: props.blokinfo.id,
+      reaction: clickedReaction as string,
+    });
+  },
+  { deep: true } // Ensure deep reactive watching for nested properties
+);
+
 const config = useRuntimeConfig();
 
-const fetchUpdateReaction = async (reaction) => {
-  const { data, error } = await useFetch("/api/update-story", {
+const fetchUpdateReaction = async (
+  reaction: string,
+  increment = true as boolean
+) => {
+  const data = await $fetch("/api/update-story", {
     method: "POST",
     body: {
       storyId: props.blokinfo.id,
       reaction: reaction,
+      increment: increment,
     },
   });
 };
@@ -191,17 +230,13 @@ const shareArticle = () => {
   }
 };
 
-const readTime = () => {
-  const wordsPerMinute = 200;
-  const textLength = resolvedRichText.value.split(" ").length;
-  return Math.ceil(textLength / wordsPerMinute);
-};
-
 // set text to UPPER CASE
 
 const resolvedRichText = computed(() => {
   return renderRichText(props.blok.content);
 });
+
+const readTime = ref(calcReadTime(resolvedRichText.value));
 </script>
 
 <style lang="scss" scoped>

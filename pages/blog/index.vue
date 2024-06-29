@@ -22,16 +22,19 @@ div(class="w-full xl:w-[56.5rem] h-full flex flex-col items-start justify-start 
             NuxtLink(:to="`/blog/${article.slug}`" class="w-full h-auto")
                 
                 nuxt-img(:src="'https:' + article.content.image" provider="storyblok" format="webp" width="600" h="400" class="w-full rounded-xl drop-shadow-lg max-h-[12rem] xs:h-[12rem] sm:h-[16rem] lg:min-h-[18rem]  object-cover " )
-            div(class="flex flex-col items-start justify-start  gap-y-2 h-full md:h-[12rem] w-full mt-1")
+            div(class="flex flex-col items-start justify-start  gap-y-2 h-full md:h-[9rem] w-full mt-1")
                 h4(class="text-lg font-bold  ") {{ article.content.title }}
-                div(class="rounded-xl w-auto bg-[#f8f6fc] text-[#20249b] px-3 py-[0.3rem] text-sm") {{ article.content.category }} Product Management
+                div(class="rounded-xl w-auto bg-[#f8f6fc] text-[#20249b] px-3 py-[0.3rem] text-sm") {{ article.content.category }}
                 p(class="line-clamp-3 ") {{ article.content.description }}
             div(class="flex gap-x-4 mt-4")
-                nuxt-img(format="webp" provider="ipx" alt="netflix logo"     class="rounded-full w-12 h-12" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="30px" height="30px")
+                nuxt-img(format="webp" provider="ipx" alt="author avatar"     class="rounded-full min-w-12 max-w-12  min-h-12 max-h-12 object-cover" :src="article.content.author[0].avatar" width="30px" height="30px")
                 div(class="flex flex-col text-sm justify-center gap-y-1")
-                    p(class="text-[#313337] font-bold") Author
-                    p date &#8226; 9 min read
-    ContentBreakerNearestServices
+                    p(class="text-[#313337] font-bold") {{article.content.author[0].name}}
+                    
+                    p {{ article.published_at.split('T')[0] }} &#8226; 
+                      LazyClientOnly
+                        span {{ calcReadTime(renderRichText(article.content.content)) }}  min read
+    ContentBreakerNearestServices.mt-6
 
         //- div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[4rem] h-auto text-[#51535b]")
         //-     nuxt-img(format="webp" provider='ipx' alt="wood floot cleaner header" class="rounded-xl w-full md:w-2/5" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
@@ -91,12 +94,20 @@ const activeNav = ref("blog");
 
 const articles = ref(null);
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories", {
-  version: useRoute().query._storyblok ? "draft" : "published",
-  starts_with: "blog",
-  is_startpage: false,
+const { data } = await storyblokApi
+  .get("cdn/stories", {
+    version: useRoute().query._storyblok ? "draft" : "published",
+    starts_with: "blog",
+    is_startpage: false,
+  })
+  .then((res) => {
+    articles.value = res.data.stories;
+    return res;
+  });
+
+onMounted(() => {
+  console.log("articles", articles.value);
 });
-articles.value = data.stories;
 </script>
 
 <style lang="scss"></style>
