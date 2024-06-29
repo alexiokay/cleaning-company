@@ -140,6 +140,8 @@ export default defineNuxtConfig({
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_SHORT_NAME: process.env.TWILIO_SHORT_NAME,
     TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
+    STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
+    STORYBLOK_MAPI_TOKEN: process.env.STORYBLOK_MAPI_TOKEN,
 
     public: {
       cwd: process.cwd(),
