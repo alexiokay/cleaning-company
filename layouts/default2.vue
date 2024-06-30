@@ -37,12 +37,6 @@ const is_sidebar_open = ref(false);
 const is_sidebar_clicked = ref(false);
 const isPageRendered = ref(false);
 
-const isCookiesSet = useState("cookiesStore").value;
-
-onMounted(() => {
-  alert(isCookiesSet);
-});
-
 import { useCookiesStore } from "~/stores/CookiesSettings";
 import { useUserStore } from "@/stores/User";
 

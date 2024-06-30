@@ -44,7 +44,7 @@
         div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
           
           div
-            template(v-if="currentReaction")
+            template(v-if="reactions")
                 Suspense
                     template(#default)
                       LazyBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
@@ -211,11 +211,9 @@ const reactions = ref({
   },
 });
 
-const { getArticleReactions } = useArticleReactions();
-
 const currentReaction = computed(() => {
   // Check if the article ID exists in the store
-  const storedReaction = getArticleReactions(props.blokinfo.id);
+  const storedReaction = blogStore.getArticleReaction(props.blokinfo.id);
   console.log("stored reaction", storedReaction);
 
   if (storedReaction) {
