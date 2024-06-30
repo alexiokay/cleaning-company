@@ -3,49 +3,49 @@ div(class="flex gap-x-2 items-center text-sm font-semibold relative select-none 
     div#article_options(class="bg-[#f7f7f7] w-auto px-3 h-full flex gap-x-2 items-center hover:cursor-pointer hover-text-animation")
         div#article-emojis(:class="isEmojisOptions? 'opacity-1 md:opacity-0 visible md:invisible ': 'opacity-0 md:opacity-1 invisible md:visible '" class="absolute w-[100vw] -mx-4 md:-mx-0 md:w-auto h-auto pb-4 -top-[7.4rem] left-0 z-50 text-xs")
             div(class="bg-white drop-shadow-md rounded-sm w-full h-[6.5rem] flex gap-x-2 px-4 py-3") 
-                div(:class="computedCurrentReaction === 'like'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('like')")
+                div(:class="currentReaction === 'like'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('like')")
                     p( class="group-hover:text-blue-400 hover-text-animation") I like it
-                    NotoThumbsUp(:class="computedCurrentReaction === 'like'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'like'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.like.count }}
-                div(:class="computedCurrentReaction === 'super'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('super')")
+                    NotoThumbsUp(:class="currentReaction === 'like'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'like'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.like.count }}
+                div(:class="currentReaction === 'super'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('super')")
                     p(class="group-hover:text-blue-400 hover-text-animation") Super
-                    NotoRedHeart(:class="computedCurrentReaction === 'super'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'super'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.super.count }}
-                div(:class="computedCurrentReaction === 'laugh'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('laugh')" )
+                    NotoRedHeart(:class="currentReaction === 'super'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'super'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.super.count }}
+                div(:class="currentReaction === 'laugh'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('laugh')" )
                     p(class="group-hover:text-blue-400 hover-text-animation") Hahaha
-                    NotoRollingOnTheFloorLaughing(:class="computedCurrentReaction === 'laugh'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'laugh'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.laugh.count }}
-                div(:class="computedCurrentReaction === 'wow'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]"  @click="toggleReact('wow')" )
+                    NotoRollingOnTheFloorLaughing(:class="currentReaction === 'laugh'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'laugh'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.laugh.count }}
+                div(:class="currentReaction === 'wow'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]"  @click="toggleReact('wow')" )
                     p(class="group-hover:text-blue-400 hover-text-animation") Wow
-                    NotoFaceWithOpenMouth(:class="computedCurrentReaction === 'wow'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'wow'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.wow.count }}
-                div(:class="computedCurrentReaction === 'sad'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('sad')"  )
+                    NotoFaceWithOpenMouth(:class="currentReaction === 'wow'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'wow'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.wow.count }}
+                div(:class="currentReaction === 'sad'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('sad')"  )
                     p(class="group-hover:text-blue-400 hover-text-animation") Sad
-                    NotoSadButRelievedFace( :class="computedCurrentReaction === 'sad'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'sad'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.sad.count }}
-                div(:class="computedCurrentReaction === 'angry'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('angry')"  )
+                    NotoSadButRelievedFace( :class="currentReaction === 'sad'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'sad'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.sad.count }}
+                div(:class="currentReaction === 'angry'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('angry')"  )
                     p(class="group-hover:text-blue-400 hover-text-animation") Angry
-                    NotoAngryFace(:class="computedCurrentReaction === 'angry'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
-                    p(:class="computedCurrentReaction === 'angry'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.angry.count }}
+                    NotoAngryFace(:class="currentReaction === 'angry'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
+                    p(:class="currentReaction === 'angry'? '':'text-slate-500'" class="absolute text-[0.6rem] bottom-0 ") {{ reactions.angry.count }}
             div(class="relative w-full h-auto")
                 div.arrow-down
-        div#like-content(:class="computedCurrentReaction? 'text-blue-400':''" class="flex  items-center group py-2 hover-text-animation")
-            div(@click="toggleReact('like')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'like' || !computedCurrentReaction")
+        div#like-content(:class="currentReaction? 'text-blue-400':''" class="flex  items-center group py-2 hover-text-animation")
+            div(@click="toggleReact('like')" class="flex h-full gap-x-2" v-show="currentReaction === 'like' || !currentReaction")
                 MdiThumbUp(class="w-5 h-5" ) 
                 p#like-text I like this
-            div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'super'")
+            div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-show="currentReaction === 'super'")
                 NotoRedHeart(class="w-5 h-5")
                 p#like-text i love it
-            div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'laugh'")
+            div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-show="currentReaction === 'laugh'")
                 NotoRollingOnTheFloorLaughing(class="w-5 h-5" )
                 p#like-text it's funny
-            div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'wow'")
+            div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-show="currentReaction === 'wow'")
                 NotoFaceWithOpenMouth(class="w-5 h-5")
                 p#like-text Wow
-            div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'sad'")
+            div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-show="currentReaction === 'sad'")
                 NotoSadButRelievedFace(class="w-5 h-5" )
                 p#like-text I don't like it
-            div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-if="computedCurrentReaction === 'angry'")
+            div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-show="currentReaction === 'angry'")
                 NotoAngryFace(class="w-5 h-5" )
                 p#like-text I hate it
           
@@ -91,10 +91,6 @@ const props = defineProps({
   currentReaction: {
     required: true,
   },
-});
-
-const computedCurrentReaction = computed(() => {
-  return props.currentReaction;
 });
 
 const reactionsCount = computed(() => {
