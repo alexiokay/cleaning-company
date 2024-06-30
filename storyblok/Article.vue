@@ -44,7 +44,7 @@
         div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
           
           div
-            template(v-if="reactions")
+            template(v-if="isFetchingReactions")
                 Suspense
                     template(#default)
                       LazyBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
