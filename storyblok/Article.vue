@@ -43,7 +43,7 @@
             p(v-for="article in 7") {{ article }}
         div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
           
-          div
+          ClientOnly
             template(v-if="isFetchingReactions")
                 Suspense
                     template(#default)
