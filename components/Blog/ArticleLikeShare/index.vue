@@ -33,19 +33,19 @@ div(class="flex gap-x-2 items-center text-sm font-semibold relative select-none 
             div(@click="toggleReact('like')" class="flex h-full gap-x-2" v-show="currentReaction === 'like' || !currentReaction")
                 MdiThumbUp(class="w-5 h-5" ) 
                 p#like-text I like this
-            div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-show="currentReaction === 'super'")
+            div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-if="currentReaction === 'super'")
                 NotoRedHeart(class="w-5 h-5")
                 p#like-text i love it
-            div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-show="currentReaction === 'laugh'")
+            div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-if="currentReaction === 'laugh'")
                 NotoRollingOnTheFloorLaughing(class="w-5 h-5" )
                 p#like-text it's funny
-            div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-show="currentReaction === 'wow'")
+            div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-if="currentReaction === 'wow'")
                 NotoFaceWithOpenMouth(class="w-5 h-5")
                 p#like-text Wow
-            div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-show="currentReaction === 'sad'")
+            div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-if="currentReaction === 'sad'")
                 NotoSadButRelievedFace(class="w-5 h-5" )
                 p#like-text I don't like it
-            div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-show="currentReaction === 'angry'")
+            div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-if="currentReaction === 'angry'")
                 NotoAngryFace(class="w-5 h-5" )
                 p#like-text I hate it
           

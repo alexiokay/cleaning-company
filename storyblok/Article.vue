@@ -211,9 +211,11 @@ const reactions = ref({
   },
 });
 
+const { getArticleReactions } = useArticleReactions();
+
 const currentReaction = computed(() => {
   // Check if the article ID exists in the store
-  const storedReaction = blogStore.getArticleReaction(props.blokinfo.id);
+  const storedReaction = getArticleReactions(props.blokinfo.id);
   console.log("stored reaction", storedReaction);
 
   if (storedReaction) {
