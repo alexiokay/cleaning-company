@@ -23,8 +23,7 @@ const createNewReactions = (id: number) => {
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  //   console.log("body", body);
-  const { storyId } = body;
+  const { storyId, reactions } = body;
 
   const config = useRuntimeConfig();
 
@@ -35,10 +34,17 @@ export default defineEventHandler(async (event) => {
 
   const key = `article:${storyId}:reactions`;
   const doesArticleExist = redis.exists(key);
-  console.log("doesArticleExist", doesArticleExist);
+
+  let currentReactions = {};
 
   if (!doesArticleExist) {
     const obj = createNewReactions(storyId);
     redis.hmset(key, obj);
+  } else {
+    currentReactions = await redis.hgetall(key);
   }
+
+  console.log("currentReactions", currentReactions);
+
+  return currentReactions;
 });

@@ -40,21 +40,34 @@ export default defineEventHandler(async (event) => {
   console.log("storyId", storyId);
 
   const key = `article:${storyId}:reactions`;
-  const doesArticleExist = redis.exists(key);
 
-  if (!doesArticleExist) {
+  let doesArticleExist = false;
+  await redis.exists(key).then((result) => {
+    console.log("result:", result);
+    if (result === 1) {
+      doesArticleExist = true;
+    } else {
+      doesArticleExist = false;
+    }
+  });
+
+  console.log("doesArticleExist:", doesArticleExist);
+
+  if (doesArticleExist === false) {
     const obj = createNewReactions(storyId);
     redis.hmset(key, obj);
 
     console.log("New article created in Redis");
   } else {
-    if (increment) {
+    if (increment === true) {
       redis.hincrby(key, reaction, 1);
       console.log("Incremented reaction in Redis");
     } else {
       redis.hincrby(key, reaction, -1);
-      console.log("Incremented reaction in Redis");
+      console.log("Decremented reaction in Redis");
     }
+
+    console.log(await redis.hgetall(key));
   }
 
   const story = redis.hgetall(key);

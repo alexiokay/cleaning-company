@@ -83,6 +83,9 @@ export default defineNuxtConfig({
       routes: ["/", "/sitemap.xml", "/robots.txt"],
       failOnError: false,
     },
+    experimental: {
+      websocket: true,
+    },
   },
 
   routeRules: {
@@ -147,6 +150,7 @@ export default defineNuxtConfig({
     TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
     STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
     STORYBLOK_MAPI_TOKEN: process.env.STORYBLOK_MAPI_TOKEN,
+    REDIS_FULL_URL: process.env.REDIS_FULL_URL,
 
     public: {
       cwd: process.cwd(),

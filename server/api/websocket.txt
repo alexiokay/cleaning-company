@@ -1,0 +1,91 @@
+import Redis from "ioredis";
+
+const room = "ROOM";
+
+const config = useRuntimeConfig();
+
+const redisSubscriber = new Redis(config.redis.url);
+
+let keyToMonitor = ``;
+let pattern = ``;
+
+async function initRedisMonitor() {
+  const monitor = await redisSubscriber.monitor().then(() => {
+    console.log("monitoring started");
+  });
+  console.log("Entering monitoring mode...");
+  monitor.on("monitor", (time, args, source, database) => {
+    console.log(
+      `Time: ${time} | Command: ${args.joiin("")} | source: ${source} | database: ${database}`
+    );
+  });
+}
+
+initRedisMonitor();
+// let redisSubscriber: any = null;
+
+let isFirstMessage = true;
+
+const socket = defineWebSocketHandler({
+  open(peer) {
+    console.log("open", peer.id);
+    peer.subscribe(room);
+    peer.publish(room, "Hello");
+    peer.send("open");
+  },
+  close(peer) {
+    console.log("close", peer.id);
+
+    if (redisSubscriber !== null) {
+      redisSubscriber.punsubscribe(pattern, (error, count) => {
+        if (error) {
+          console.log("error", error);
+        } else {
+          console.log("unsubscribed from pattern", pattern);
+        }
+      });
+    }
+  },
+  error(peer, error) {
+    console.log("error", peer.id, error);
+  },
+  message(peer, message) {
+    const messsageX = JSON.parse(message);
+
+    pattern = `__keyspace@0__:*${keyToMonitor}`;
+
+    if (isFirstMessage) {
+      keyToMonitor = `article:${messsageX["storyId"]}:reactions`;
+      console.log("keyToMonitor", keyToMonitor);
+
+      redisSubscriber
+        .psubscribe(pattern, (error, count) => {
+          if (error) {
+            console.log("error", error);
+          } else {
+            console.log("subscribed to pattern", pattern);
+          }
+          console.log("count", count);
+        })
+        .then(() => {
+          console.log("subscribed");
+        });
+
+      initRedisMonitor;
+
+      //   redisSubscriber.on("pmessage", (pattern, channel, message) => {
+      //     console.log("pmessage", pattern, channel, message);
+
+      //     if (channel === keyToMonitor) {
+      //       peer.send(message);
+      //     }
+      //   });
+
+      //   isFirstMessage = false;
+    }
+
+    peer.publish(room, message.text());
+  },
+});
+
+export default socket;
