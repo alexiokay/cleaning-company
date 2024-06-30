@@ -3,8 +3,12 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { storyId, reaction, increment } = body;
 
+  // use redis plugin to store the reaction
+  useStorage("redis").setItem("foo", "bar");
   console.log("storyId", storyId);
   console.log("reaction", reaction);
+
+  console.log("increment", increment);
 
   const headers = {
     Authorization: config.STORYBLOK_MAPI_TOKEN,
@@ -26,7 +30,8 @@ export default defineEventHandler(async (event) => {
       let updatedContent = {
         ...data.story.content, // Preserve existing content
         [reaction]:
-          (Number(data.story.content[reaction]) || 0) + (increment ? 1 : -1), // Increment or decrement based on 'increment' boolean
+          (Number(data.story.content[reaction]) || 0) +
+          (increment === true ? 1 : -1), // Increment or decrement based on 'increment' boolean
       };
 
       // Prepare the payload to send for update
@@ -58,7 +63,14 @@ export default defineEventHandler(async (event) => {
       return response.json();
     })
     .then((data) => {
-      console.log("Updated story:", data);
+      console.log("Updated story:", {
+        like: data.story.content.like,
+        super: data.story.content.super,
+        laugh: data.story.content.laugh,
+        wow: data.story.content.wow,
+        angry: data.story.content.angry,
+        sad: data.story.content.sad,
+      });
     })
     .catch((error) => {
       console.error("Error updating story:", error);

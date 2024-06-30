@@ -53,6 +53,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
         div(v-html="resolvedRichText" class="lg:mt-[3rem] mb-12 lg:text-lg text-start leading-[1.9rem] w-full")
         
         
+        button(@click="redisUpdateReaction('laugh', true)") updatee reaction
 
     
         ContentBreakerNearestServices
@@ -87,6 +88,26 @@ const props = defineProps({
   },
 });
 
+const redisUpdateReaction = async (reaction: string, increment: boolean) => {
+  const data = await $fetch("/api/update-reactions", {
+    method: "POST",
+    body: {
+      storyId: props.blokinfo.id,
+      reaction: reaction,
+      increment: increment,
+    },
+  }).catch((error) => {
+    console.error("Error updating reaction:", error);
+  });
+
+  console.log("data", data);
+};
+
+const testRedisGet = async () => {
+  const data = await $fetch("/api/redis/get");
+
+  console.log("data", data);
+};
 const selectRandomServiceWindow = () => {
   const randomNumber = Math.floor(Math.random() * servicesWindows.length);
   return servicesWindows[Math.floor(Math.random() * servicesWindows.length)];
@@ -97,7 +118,10 @@ const toggleEmojiOptions = () => {
   isEmojisOptions.value = !isEmojisOptions.value;
 };
 
+const isFetching = ref(false);
+
 const react = async (reaction) => {
+  if (isFetching.value) return;
   // Retrieve the current reaction from the store or local state
   const activeReaction = currentReaction.value;
 
@@ -111,6 +135,7 @@ const react = async (reaction) => {
     }
     fetchUpdateReaction(reaction, false);
   } else {
+    console.log("typeof activeReaction", typeof activeReaction);
     // The selected reaction is different or there is no active reaction
     // Reset the previously active reaction if there is one
     if (typeof activeReaction === "string") {
@@ -119,8 +144,15 @@ const react = async (reaction) => {
       if (reactions.value[activeReaction].count < 0) {
         reactions.value[activeReaction].count = 0; // Ensure count doesn't go negative
       }
-      fetchUpdateReaction(activeReaction, false);
+      await fetchUpdateReaction(activeReaction, false).then(async () => {
+        console.log("removed old reaction");
+        reactions.value[reaction].isUserClicked = true;
+        reactions.value[reaction].count += 1;
+        await fetchUpdateReaction(reaction, true);
+        console.log("added new one");
+      });
     } else {
+      console.log("no active reaction");
       reactions.value[reaction].isUserClicked = true;
       reactions.value[reaction].count += 1;
       fetchUpdateReaction(reaction, true);
@@ -166,14 +198,14 @@ const currentReaction = computed(() => {
   if (storedReaction) {
     // Return the stored reaction from the store
     console.log("reaction already stored", storedReaction.reaction);
-    return storedReaction.reaction || null;
+    return storedReaction.reaction;
   } else {
     // If not found in store, get the current reaction from local state
     const reactionTypes = Object.keys(reactions.value);
     const clickedReaction = reactionTypes.find(
       (type) => reactions.value[type].isUserClicked
     );
-    return clickedReaction || false; // Return null if no reaction is clicked
+    return clickedReaction || null; // Return null if no reaction is clicked
   }
 });
 
@@ -201,14 +233,22 @@ const fetchUpdateReaction = async (
   reaction: string,
   increment = true as boolean
 ) => {
-  const data = await $fetch("/api/update-story", {
-    method: "POST",
-    body: {
-      storyId: props.blokinfo.id,
-      reaction: reaction,
-      increment: increment,
-    },
-  });
+  isFetching.value = true;
+  try {
+    const data = await $fetch("/api/update-story", {
+      method: "POST",
+      body: {
+        storyId: props.blokinfo.id,
+        reaction: reaction,
+        increment: increment,
+      },
+    }).then((res) => {
+      isFetching.value = false;
+    });
+  } catch (error) {
+    console.error("Error updating reaction:", error);
+    isFetching.value = false;
+  }
 };
 
 const serviceWindow = ref();

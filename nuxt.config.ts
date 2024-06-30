@@ -136,6 +136,11 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    redis: {
+      url: process.env.REDIS_URL,
+      token: process.env.REDIS_TOKEN,
+    },
+
     TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_SHORT_NAME: process.env.TWILIO_SHORT_NAME,
