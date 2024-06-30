@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="flex gap-x-2 items-center text-sm font-semibold relative select-none animate-pulse ")
-    div#article_options(class="bg-[#f7f7f7] w-[186.22px] h-[42.38px] px-3 h-full flex gap-x-2 items-center hover:cursor-pointer hover-text-animation")
+    div#article_options(class="bg-[#f7f7f7] w-[186.22px] h-[42.38px] px-3  flex gap-x-2 items-center hover:cursor-pointer hover-text-animation")
      
            
             
