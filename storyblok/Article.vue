@@ -43,8 +43,18 @@
             p(v-for="article in 7") {{ article }}
         div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
           
+          div
+            template(v-if="isFetchingReactions")
+                Suspense
+                    template(#default)
+                      LazyBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
+                    template(#fallback)
+                        p(class="suspense-loading-animation  text-[#6e5353] blur-[50%] hover:cursor-pointer gap-x-2  bottom-0 margin-y-0 bg-[#d7d7d7] px-3 py-2 rounded-lg flex justify-start items-center text-base gap-y-2")
+                            | Sorry we couldn't find any results
+            template(v-else)
+                p(class="suspense-loading-animation  text-[#6e5353] blur-[50%] hover:cursor-pointer  gap-x-2  bottom-0 margin-y-0 bg-[#d7d7d7] px-3 py-2 rounded-lg flex justify-start items-center text-base gap-y-2")
+                    | Loading results...
             
-          LazyBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
             
          
           p(class="lg:text-xl   font-semibold lg:font-medium lg:leading-7") {{ blok.description }}
@@ -72,6 +82,7 @@ import RiTwitterXFill from "~icons/ri/twitter-x-fill";
 import { nextTick } from "vue";
 import servicesWindows from "@/utils/servicesWindows.json";
 import { useBlogReactionsStore } from "@/stores/BlogReactions";
+import { tryOnUnmounted } from "@vueuse/core";
 
 const blogStore = useBlogReactionsStore();
 
@@ -160,6 +171,7 @@ const react = async (reaction: string) => {
     isFetching.value = false;
   }
 };
+const isFetchingReactions = ref(true);
 
 const redisReactions = await $fetch("/api/storyblok/reactions-get", {
   method: "POST",
@@ -169,6 +181,7 @@ const redisReactions = await $fetch("/api/storyblok/reactions-get", {
 }).then((res) => {
   console.log("reactions", res);
   return res;
+  isFetchingReactions.value = false;
 });
 
 const reactions = ref({
