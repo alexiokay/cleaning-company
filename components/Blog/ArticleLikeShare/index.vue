@@ -1,8 +1,8 @@
 <template lang="pug">
 div(class="flex gap-x-2 items-center text-sm font-semibold relative select-none ")
     div#article_options(class="bg-[#f7f7f7] w-auto px-3 h-full flex gap-x-2 items-center hover:cursor-pointer hover-text-animation")
-        div#article-emojis(:class="isEmojisOptions? 'opacity-1 md:opacity-0 visible md:invisible ': 'opacity-0 md:opacity-1 invisible md:visible '" class="absolute w-[100vw] -mx-4 md:-mx-0 md:w-auto h-auto pb-4 -top-[7.4rem] left-0 z-50 text-xs")
-            div(class="bg-white drop-shadow-md rounded-sm w-full h-[6.5rem] flex gap-x-2 px-4 py-3") 
+        div#article-emojis(:class="isEmojisOptions? 'opacity-1 md:opacity-0 visible md:invisible ': 'opacity-0 md:opacity-1 invisible md:visible '" class="absolute w-[100vw]  -mx-4 md:-mx-0 md:w-auto h-auto pb-4 -top-[7.4rem] left-0 z-50 text-xs")
+            div(class="bg-white drop-shadow-md rounded-sm w-full h-[6.5rem] flex gap-x-2 px-4 py-3 justify-center md:justify-start") 
                 div(:class="currentReaction === 'like'? 'text-blue-400 ':''" class="flex flex-col gap-y-2 items-center group relative w-[3rem]" @click="toggleReact('like')")
                     p( class="group-hover:text-blue-400 hover-text-animation") I like it
                     NotoThumbsUp(:class="currentReaction === 'like'? 'h-7 w-7':''" class="w-6 h-6 absolute top-1/2 -translate-y-1/2 group-hover:w-7 group-hover:h-7 hover-thumb-animation")
@@ -111,6 +111,21 @@ const emit = defineEmits(["react"]);
 const toggleReact = (reaction) => {
   emit("react", reaction);
 };
+
+onMounted(() => {
+  window.addEventListener("click", (e) => {
+    if (
+      !document.getElementById("article-emojis").contains(e.target) &&
+      !document.getElementById("article_options__more").contains(e.target)
+    ) {
+      isEmojisOptions.value = false;
+    }
+  });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("click", () => {});
+});
 </script>
 
 <style lang="scss">

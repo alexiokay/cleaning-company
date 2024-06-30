@@ -1,3 +1,5 @@
+const x = require("uniqid");
+
 module.exports = {
   darkMode: "class", // or 'media' or 'false'
   content: [
@@ -65,6 +67,7 @@ module.exports = {
       mulish: ["Mulish", "regular"],
     },
     screens: {
+      xs: "320px",
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 
