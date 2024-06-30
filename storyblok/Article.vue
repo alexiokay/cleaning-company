@@ -45,7 +45,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
         
         Suspense(timeout="0")
           Transition(name="fade" mode="out-in")
-            BlogArticleLikeShare(v-if="isPageLoaded" :reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
+            BlogArticleLikeShare(v-if="isPageLoaded && !isFetchingReactions" :reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
             BlogArticleLikeShareSkeleton(v-else)
           template(#fallback)
             BlogArticleLikeShareSkeleton
@@ -155,14 +155,14 @@ const react = async (reaction: string) => {
   try {
     if (isSameReaction) {
       // Toggle off the active reaction
-      await updateReaction(reaction, false);
+      updateReaction(reaction, false); // await
     } else {
       // Remove old reaction if any
       if (activeReaction) {
-        await updateReaction(activeReaction, false);
+        updateReaction(activeReaction, false); // await
       }
       // Add new reaction
-      await updateReaction(reaction, true);
+      updateReaction(reaction, true); // await
     }
     blogStore.addOrUpdateArticle({
       id: props.blokinfo.id,
@@ -174,7 +174,7 @@ const react = async (reaction: string) => {
     isFetching.value = false;
   }
 };
-
+const isFetchingReactions = ref(true);
 const redisReactions = await $fetch("/api/storyblok/reactions-get", {
   method: "POST",
   body: {
@@ -182,7 +182,7 @@ const redisReactions = await $fetch("/api/storyblok/reactions-get", {
   },
 }).then((res) => {
   console.log("reactions", res);
-
+  isFetchingReactions.value = false;
   return res;
 });
 

@@ -30,24 +30,25 @@ div(class="flex gap-x-2 items-center text-sm font-semibold relative select-none 
             div(class="relative w-full h-auto")
                 div.arrow-down
         div#like-content(:class="currentReaction? 'text-blue-400':''" class="flex  items-center group py-2 hover-text-animation")
-            div(@click="toggleReact('like')" class="flex h-full gap-x-2" v-show="currentReaction === 'like' || !currentReaction")
-                MdiThumbUp(class="w-5 h-5" ) 
-                p#like-text I like this
-            div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-if="currentReaction === 'super'")
-                NotoRedHeart(class="w-5 h-5")
-                p#like-text i love it
-            div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-if="currentReaction === 'laugh'")
-                NotoRollingOnTheFloorLaughing(class="w-5 h-5" )
-                p#like-text it's funny
-            div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-if="currentReaction === 'wow'")
-                NotoFaceWithOpenMouth(class="w-5 h-5")
-                p#like-text Wow
-            div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-if="currentReaction === 'sad'")
-                NotoSadButRelievedFace(class="w-5 h-5" )
-                p#like-text I don't like it
-            div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-if="currentReaction === 'angry'")
-                NotoAngryFace(class="w-5 h-5" )
-                p#like-text I hate it
+            Transition(name="fade" mode="out-in")
+              div(@click="toggleReact('like')" class="flex h-full gap-x-2" v-if="currentReaction === 'like' || !currentReaction")
+                  MdiThumbUp(class="w-5 h-5" ) 
+                  p#like-text I like this
+              div(@click="toggleReact('super')" class="flex h-full gap-x-2" v-else-if="currentReaction === 'super'")
+                  NotoRedHeart(class="w-5 h-5")
+                  p#like-text i love it
+              div(@click="toggleReact('laugh')" class="flex h-full gap-x-2" v-else-if="currentReaction === 'laugh'")
+                  NotoRollingOnTheFloorLaughing(class="w-5 h-5" )
+                  p#like-text it's funny
+              div(@click="toggleReact('wow')" class="flex h-full gap-x-2" v-else-if="currentReaction === 'wow'")
+                  NotoFaceWithOpenMouth(class="w-5 h-5")
+                  p#like-text Wow
+              div(@click="toggleReact('sad')" class="flex h-full gap-x-2" v-else-if="currentReaction === 'sad'")
+                  NotoSadButRelievedFace(class="w-5 h-5" )
+                  p#like-text I don't like it
+              div(@click="toggleReact('angry')" class="flex h-full gap-x-2" v-else-if="currentReaction === 'angry'")
+                  NotoAngryFace(class="w-5 h-5" )
+                  p#like-text I hate it
           
            
         div(class="w-[1px] h-[1rem] bg-slate-400")
