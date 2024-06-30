@@ -83,9 +83,9 @@ export default defineNuxtConfig({
       routes: ["/", "/sitemap.xml", "/robots.txt"],
       failOnError: false,
     },
-    experimental: {
-      websocket: true,
-    },
+    // experimental: {
+    //   websocket: true,
+    // },
   },
 
   routeRules: {

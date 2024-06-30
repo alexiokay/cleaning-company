@@ -161,7 +161,7 @@ const react = async (reaction: string) => {
   }
 };
 
-const redisReaction: any = await $fetch("/api/storyblok/reactions-get", {
+const redisReaction = await $fetch("/api/storyblok/reactions-get", {
   method: "POST",
   body: {
     storyId: props.blokinfo.id,

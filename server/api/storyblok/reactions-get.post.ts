@@ -27,21 +27,35 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig();
 
-  const redis = new Redis({
+  const client = new Redis({
     url: config.redis.url,
     token: config.redis.token,
   });
 
   const key = `article:${storyId}:reactions`;
-  const doesArticleExist = redis.exists(key);
 
-  let currentReactions = {};
+  console.log("key", key);
+
+  let doesArticleExist = false;
+  await client.exists(key).then((result) => {
+    console.log("result:", result);
+    if (result === 1) {
+      doesArticleExist = true;
+    } else {
+      doesArticleExist = false;
+    }
+  });
+  console.log("doesArticleExist", doesArticleExist);
+
+  let currentReactions: any = {};
 
   if (!doesArticleExist) {
     const obj = createNewReactions(storyId);
-    redis.hmset(key, obj);
+    client.hmset(key, obj);
   } else {
-    currentReactions = await redis.hgetall(key);
+    await client.hgetall(key).then((result) => {
+      currentReactions = result;
+    });
   }
 
   console.log("currentReactions", currentReactions);
