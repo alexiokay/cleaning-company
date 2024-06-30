@@ -43,12 +43,12 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           p(v-for="article in 7") {{ article }}
       div(class="w-full flex flex-col gap-y-4 lg:gap-y-6")
         
-        Suspense()
-          Transition(mode="out-in")
-            AsyncBlogArticleLikeShare(:reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
-      
+        Suspense(timeout="0")
+          Transition(name="fade" mode="out-in")
+            BlogArticleLikeShare(v-if="isPageLoaded" :reactions="reactions" :currentReaction="currentReaction" @react="react"  @share="shareArticle")
+            BlogArticleLikeShareSkeleton(v-else)
           template(#fallback)
-            p laoding
+            BlogArticleLikeShareSkeleton
             
         
         p(class="lg:text-xl   font-semibold lg:font-medium lg:leading-7") {{ blok.description }}
