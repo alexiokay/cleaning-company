@@ -161,7 +161,7 @@ const react = async (reaction: string) => {
   }
 };
 
-const redisReaction = await $fetch("/api/storyblok/reactions-get", {
+const redisReactions = await $fetch("/api/storyblok/reactions-get", {
   method: "POST",
   body: {
     storyId: props.blokinfo.id,
@@ -173,27 +173,27 @@ const redisReaction = await $fetch("/api/storyblok/reactions-get", {
 
 const reactions = ref({
   like: {
-    count: Number(redisReaction.like),
+    count: Number(redisReactions.like),
     isUserClicked: false,
   },
   super: {
-    count: Number(redisReaction.super),
+    count: Number(redisReactions.super),
     isUserClicked: false,
   },
   laugh: {
-    count: Number(redisReaction.laugh),
+    count: Number(redisReactions.laugh),
     isUserClicked: false,
   },
   wow: {
-    count: Number(redisReaction.wow),
+    count: Number(redisReactions.wow),
     isUserClicked: false,
   },
   sad: {
-    count: Number(redisReaction.sad),
+    count: Number(redisReactions.sad),
     isUserClicked: false,
   },
   angry: {
-    count: Number(redisReaction.angry),
+    count: Number(redisReactions.angry),
     isUserClicked: false,
   },
 });
