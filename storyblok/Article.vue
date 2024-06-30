@@ -229,27 +229,27 @@ watch(
 
 const config = useRuntimeConfig();
 
-const fetchUpdateReaction = async (
-  reaction: string,
-  increment = true as boolean
-) => {
-  isFetching.value = true;
-  try {
-    const data = await $fetch("/api/update-story", {
-      method: "POST",
-      body: {
-        storyId: props.blokinfo.id,
-        reaction: reaction,
-        increment: increment,
-      },
-    }).then((res) => {
-      isFetching.value = false;
-    });
-  } catch (error) {
-    console.error("Error updating reaction:", error);
-    isFetching.value = false;
-  }
-};
+// const fetchUpdateReaction = async (
+//   reaction: string,
+//   increment = true as boolean
+// ) => {
+//   isFetching.value = true;
+//   try {
+//     const data = await $fetch("/api/update-story", {
+//       method: "POST",
+//       body: {
+//         storyId: props.blokinfo.id,
+//         reaction: reaction,
+//         increment: increment,
+//       },
+//     }).then((res) => {
+//       isFetching.value = false;
+//     });
+//   } catch (error) {
+//     console.error("Error updating reaction:", error);
+//     isFetching.value = false;
+//   }
+// };
 
 const serviceWindow = ref();
 
