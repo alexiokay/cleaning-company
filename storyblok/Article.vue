@@ -27,10 +27,10 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
           //-           p {{ serviceWindow?.description}}
           //-           button(class="bg-white rounded-[8px] py-[10px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
 
-          div(class=" w-full sm:w-[20rem] lg:w-full  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+          div(class=" w-full sm:w-[20rem] lg:w-full  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black ")
               //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
-              div(class="rounded-b-[20px] w-full h-1/2 lg:h-[50%] overflow-hidden relative")
-                nuxt-img(:src="serviceWindow?.image" width="500" height="500" format="webp" alt="logo" class=" w object-cover  ")                div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-4 py-6 gap-y-4 justify-end" :style="{'background': serviceWindow?.griadent}")
+              div(class="rounded-b-[20px] w-full h-1/2 lg:h-[50%] overflow-hidden")
+                nuxt-img(:src="serviceWindow?.image" width="500" height="500" format="webp" alt="logo" class="w-full h-full object-cover  ")                div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-4 py-6 gap-y-4 justify-end" :style="{'background': serviceWindow?.griadent}")
               div(class="w-full h-1/2 lg:h-[50%] shrink-0  flex flex-col px-4 lg:px-5 py-3 gap-y-2 3xl:gap-y-3 justify-start")
 
                   h4.text-xl.font-bold {{ serviceWindow?.title }}
