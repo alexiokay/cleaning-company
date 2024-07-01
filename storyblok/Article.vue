@@ -16,16 +16,26 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
     
     div(class="flex flex-col-reverse lg:flex-row w-full justify-between gap-x-[2rem] px-4 lg:px-0  gap-y-8  lg:mt-[5rem] ")
       div(class="w-full min-w-[20rem] xl:w-[20rem]  flex flex-col gap-y-6")
-        div(class="flex flex-col gap-y-2")
+        div(class="flex flex-col gap-y-2 md:px-2  ")
           p See our services:
-          div(class="w-[100%] aspect-[13/16]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': serviceWindow?.color}")
-                //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
-                nuxt-img(:src="serviceWindow?.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
-                div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-4 py-6 gap-y-4 justify-end" :style="{'background': serviceWindow?.griadent}")
+          //- div(class="w-[100%] aspect-[13/16]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': serviceWindow?.color}")
+          //-       //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
+          //-       nuxt-img(:src="serviceWindow?.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
+          //-       div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-4 py-6 gap-y-4 justify-end" :style="{'background': serviceWindow?.griadent}")
                     
-                    h4.text-xl.font-bold {{ serviceWindow?.title }}
-                    p {{ serviceWindow?.description}}
-                    button(class="bg-white rounded-[8px] py-[10px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
+          //-           h4.text-xl.font-bold {{ serviceWindow?.title }}
+          //-           p {{ serviceWindow?.description}}
+          //-           button(class="bg-white rounded-[8px] py-[10px] px-[24px]  ml-auto w-auto text-[#4E37E3] font-bold") GET
+
+          div(class=" w-full sm:w-[20rem] lg:w-full  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+              //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
+              div(class="rounded-b-[20px] w-full h-1/2 lg:h-[50%] overflow-hidden relative")
+                nuxt-img(:src="serviceWindow?.image" width="500" height="500" format="webp" alt="logo" class=" w object-cover  ")                div(class="w-full h-full  shrink-0 absolute top-0 left-0 flex flex-col px-4 py-6 gap-y-4 justify-end" :style="{'background': serviceWindow?.griadent}")
+              div(class="w-full h-1/2 lg:h-[50%] shrink-0  flex flex-col px-4 lg:px-5 py-3 gap-y-2 3xl:gap-y-3 justify-start")
+
+                  h4.text-xl.font-bold {{ serviceWindow?.title }}
+                  p {{ serviceWindow?.description}}
+                  button(class="bg-[#7763fa] rounded-[8px] py-[10px] lg:py-2 px-[3rem]  ml-auto w-auto text-white font-bold mt-auto") GET
 
         div(class="flex flex-col w-full gap-y-3")
           p(class="text-xl font-bold") Subscribe Our Newsletter
