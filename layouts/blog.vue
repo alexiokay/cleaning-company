@@ -25,8 +25,8 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
 
                div( class="w-full h-full  flex flex-col items-center  justify-start   bg-white  gap-y-8 ")
                     
-                    div#blog__header(v-if="getCurrentPageMeta !== 'article'" class="w-full flex flex-col relative py-4 md:py-12 lg:px-24 h-[25rem] md:h-[20rem] text-xl lg:text-3xl xl:text-4xl px-4 md:text-center text-white rounded-3xl bg-[#F5f5f5] items-center justify-center")
-                        nuxt-img(src="images/blog/header.webp" class="absolute z-10 top-0 left-0 w-full h-full object-cover object-center ")
+                    div#blog__header(v-if="getCurrentPageMeta !== 'article'" class="w-full flex flex-col relative py-4 md:py-12 lg:px-24 h-[20rem] text-xl lg:text-3xl xl:text-4xl px-4 md:text-center text-white rounded-3xl bg-[#F5f5f5] items-center justify-center")
+                        nuxt-img(src="images/blog/header.webp" format="webp" width="1300" height="500" class="absolute z-10 top-0 left-0 w-full h-full object-cover object-center ")
                         div(class="w-full h-full z-20 absolute top-0 header-background ")
                         h1(class="tracking-[0.1rem]  text-5xl  leading-[4rem] md:leading-0 font-bold z-40") Fresh&Tidy Blog
                         h2(class="flex gap-x-2 mt-6 flex-wrap items-center text-base 2xl:text-lg justify-center z-40") The latest industry news, interviews, technologies, and resources
