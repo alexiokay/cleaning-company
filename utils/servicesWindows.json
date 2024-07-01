@@ -4,7 +4,7 @@
     "active": true,
     "color": "#8E7CFB",
     "title": "Home Cleaning",
-    "description": "We know every home is different, so we allow you to give us special requests for those hard to reach places.",
+    "description": "We allow you to give us special requests for those hard to reach places.",
     "image": "images/header7-steps/slider-item1.jpeg",
     "griadent": "linear-gradient(180deg, rgba(142, 124, 251, 0) 0%, #8E7CFB 70.02%)"
   },
@@ -13,7 +13,7 @@
     "active": false,
     "color": "#D74A7F",
     "title": "Gardening",
-    "description": "With skilled hands and a passion for perfection, we transform your yard into a stunning retreat, leaving you to revel in nature's splendor.",
+    "description": "We transform your yard into a stunning retreat, leaving you to revel in nature's splendor.",
     "image": "images/header7-steps/slider-item2.jpeg",
     "griadent": "linear-gradient(180deg, rgba(215, 74, 127, 0.00) 0%, #D74A7F 70.02%)"
   },
@@ -22,7 +22,7 @@
     "active": false,
     "color": "#3F6F21",
     "title": "Car Cleaning",
-    "description": "Our car cleaning experts will make your vehicle shine, so you can enjoy a smooth ride in a spotless car.",
+    "description": "Our experts will make your vehicle shine for a smooth ride in a spotless car.",
     "image": "images/header7-steps/slider-item3.jpeg",
     "griadent": "linear-gradient(180deg, rgba(165, 248, 206, 0.00) 0%, rgba(63, 111, 33, 0.00) 0.01%, #3F6F21 70.02%)"
   },
@@ -31,7 +31,7 @@
     "active": false,
     "color": "#263986",
     "title": "Office Cleaning",
-    "description": "Our team of professionals will keep your office clean and organized, so you can focus on growing your business.",
+    "description": "Our professionals keep your office clean and organized, so you can focus on business.",
     "image": "images/header7-steps/slider-item4.jpeg",
     "griadent": "linear-gradient(180deg, rgba(38, 57, 134, 0.00) 0%, #263986 70.02%)"
   },
@@ -40,7 +40,7 @@
     "active": false,
     "color": "#F2A03D",
     "title": "Other",
-    "description": "We offer a wide range of cleaning services to meet your needs, so you can enjoy a clean and healthy environment.",
+    "description": "We offer various cleaning services to meet your needs for a clean environment.",
     "image": "images/header7-steps/slider-item1.jpeg"
   }
 ]

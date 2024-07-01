@@ -31,7 +31,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 
     <!-- header 3 -->
-    div(class="flex flex-col w-full   items-center px-4 lg:px-0 pt-[1rem] pb-6 lg:pb-[12rem]")
+    div(class="flex flex-col w-full   items-center px-4 xl:px-0 pt-[1rem] pb-6 lg:pb-[12rem]")
             div(class="flex  w-auto relative flex-col  text-[1.7rem]  lg:text-[3rem] items-center font-bold")
                 //- nuxt-img(src="images/v2/star.png" width="60px" class=" absolute -top-[2rem] -right-[2rem]")
                 //- nuxt-img(src="images/v2/star1.png" width="50px" class=" absolute top-[0rem] -right-[6rem]")
@@ -44,7 +44,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
             p(class="mt-8 lg:w-[38rem] font-[0.8125rem] md:text-center leading-[150%]") For over 1 year, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
 
-            div(class="flex flex-col lg:flex-row gap-y-6 mt-12 lg:mt-28 gap-x-[8.5rem] lg:w-3/5")
+            div(class="flex flex-col lg:flex-row justify-center gap-y-6 mt-12 lg:mt-28 gap-x-[2rem] sm:w-[40rem] xl:px-8 3xl:px-0 3xl:gap-x-[5.5rem] lg:w-full 2xl:w-[100rem]")
                 V2Header2Item
                     template(v-slot:icon)
                         <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,10 +71,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
 
 
-                    template(v-slot:title) 
-                        p(class="flex flex-row lg:flex-col gap-x-2 items-center justify-center w-full mt-2") 
-                            p Free lifetime
-                            span Support
+                    template(v-slot:title) Free lifetime  Support
                     template(v-slot:subtitle) Trought Our Connected Content Approach, We Unite Communications, Digital Experiences, And Performance Marketing 
                 
            
