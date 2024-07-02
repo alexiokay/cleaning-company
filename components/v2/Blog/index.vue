@@ -1,10 +1,10 @@
 <template lang="pug">
-div(class="flex flex-col lg:items-center justify-center w-full lg:pl-[10%]  md:px-0 pl-4 md:pl-8 ")
+div(class="flex flex-col lg:items-center justify-center w-full lg:pl-[10%]  md:px-0 pl-4 md:pl-8  ")
  
   //- div(class="relative flex w-[7.5rem] h-[5.5rem] ")
   //-     nuxt-img(src="images/star1.png" width="70px" height="70px" class="absolute top-0 left-0 rotate-[210deg]")
   //-     nuxt-img(src="images/star2.png" width="50px" height="50px" class="absolute -top-4 right-0 rotate-[150deg]" )
-  h2.flex.flex-col.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3 lg:text-center ml-2") Latest 
+  h2.flex.flex-col.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3 text-center ml-2") Latest 
       span News & Articles
 
   Swiper(
@@ -19,7 +19,7 @@ div(class="flex flex-col lg:items-center justify-center w-full lg:pl-[10%]  md:p
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="article in articles" :key="article.uuid" class="px-1 sm:px-2 xl:px-4 w-full md:w-3/4 lg:py-[4rem] pb-4 ")
+        SwiperSlide(v-for="article in articles" :key="article.uuid" class="px-1 sm:px-6 md:px-2 xl:px-4 w-full md:w-3/4 py-4 lg:py-[2rem] ")
           div(class="flex flex-col lg:flex-row w-full justify-start h-auto items-start  gap-y-12 gap-x-[2.5rem]  ")
         
             V2BlogItem(:article="article")

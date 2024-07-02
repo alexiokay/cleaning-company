@@ -40,16 +40,16 @@ div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
         p Choose the offer most suitable for your home.
 
     div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white flex-col lg:flex-row gap-y-6")
-        div(class="w-full lg:w-1/2 px-4 py-6 lg:py-0 lg:px-[10rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
-            p.flex.flex-col.font-bold(class="text-[1.5rem] lg:text-4xl lg:gap-y-3") How can we
+        div(class="w-full lg:w-1/2 py-6 lg:py-12 px-8 lg:px-[4rem] 3xl:px-[8rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
+            p.flex.flex-col.font-bold(class="text-[1.5rem] sm:text-4xl lg:gap-y-3") How can we
                 span take care of you?
             p.flex.flex-col(class="text-[#FFF]") Get a personalized list of the best market prices
                 span available without the need for an on-site
                 span consultation—tailored specifically for you.
-        div(class="relative w-full lg:w-1/2 px-4 py-6 lg:px-[10rem] aspect-[16/10] overflow-hidden rounded-[24px] justify-center items-center flex flex-col  bg-[#B1A5FC] gap-y-[1.5rem]")
+        div(class="relative w-full lg:w-1/2 py-6 px-8 xl:px-[8rem] aspect-[16/10] overflow-hidden rounded-[24px] justify-center items-center flex flex-col  bg-[#B1A5FC] gap-y-[1.5rem]")
             nuxt-img(src="images/get-in-touch2.webp" class="absolute z-10 top-0 left-0 object-cover h-full w-full "  format="webp")
             div(class="w-full h-full z-20 absolute top-0 griadent ")
-            p.flex.flex-col.font-bold(class="text-[1.6rem] lg:text-4xl lg:gap-y-3 z-20 text-center") Get in touch
+            p.flex.flex-col.font-bold(class="text-[1.6rem]  sm:text-4xl lg:gap-y-3 z-20 text-center") Get in touch
                 span with us!
             button(class="z-20 bg-[#4E37E3] rounded-[8px] py-[16px] px-[24px]  w-auto text-white font-bold flex gap-x-2 items-center") 
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">

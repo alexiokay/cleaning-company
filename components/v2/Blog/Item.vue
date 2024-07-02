@@ -15,7 +15,7 @@ div(class="relative flex flex-col  lg:text-start items-center lg:items-start bg-
     
         p(class='lg:text-xl  text-[#64626E] text-start line-clamp-5') {{ article.content.description }}
 
-        NuxtLink(:to="'/blog/' + article.slug" class='text-[#241969] text-lg font-bold flex mr-auto md:mr-0') Read More
+        NuxtLink(:to="'/blog/' + article.slug" class='text-[#241969] text-lg font-bold flex mt-2 mr-auto md:mr-0') Read More
         
 </template>
 
