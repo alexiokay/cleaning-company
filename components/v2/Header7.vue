@@ -39,7 +39,7 @@ div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
         p Explore and see our services.
         p Choose the offer most suitable for your home.
 
-    div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white flex-col lg:flex-row gap-y-6")
+    div(class="flex gap-x-4 lg:pr-[10%] mt-[6rem] text-white flex-col lg:flex-row gap-y-6 pr-4")
         div(class="w-full lg:w-1/2 py-6 lg:py-12 px-8 lg:px-[4rem] 3xl:px-[8rem] aspect-[16/10] rounded-[24px] justify-center items-start flex flex-col bg-[#241969] gap-y-[1.5rem]")
             p.flex.flex-col.font-bold(class="text-[1.5rem] sm:text-4xl lg:gap-y-3") How can we
                 span take care of you?
