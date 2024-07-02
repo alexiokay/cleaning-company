@@ -120,7 +120,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
     //- V2HeaderAIAssistants.my-12
     V2Header6.mt-4
     V2Header7
-    V2Blog(class="mt-16 lg:my-16")
+    V2Blog(class="mt-16 mb-8 lg:my-16")
  
                 
 

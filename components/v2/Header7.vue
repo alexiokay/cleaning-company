@@ -1,12 +1,12 @@
 <template lang="pug">
-div(class="w-full lg:pl-[10%] px-4 lg:px-0")
+div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
     Swiper(
         @slideChange="onSlideChange"
         :modules="[]"
         :loop="false"
         :effect="'creative'"
         :space-between="2"
-        :breakpoints="{ 1920: {slidesPerView: 4.5}, 1280: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
+        :breakpoints="{2200: {slidesPerView: 5.5}, 1720: {slidesPerView: 4.5}, 1280: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
         :initialSlide="selectedSlide"
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
