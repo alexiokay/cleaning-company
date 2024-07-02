@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="main-component w-full lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[3rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
+div(class="main-component w-full lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[6rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
     div(class="flex flex-col w-auto h-full text-[#FAFAFA] items-start justify-start gap-y-[1rem]")
         h2(class="text-[1.8rem] lg:text-[2.5rem] font-bold lg:flex flex-col") How Fresh and Tidy 
             span keeps you safe.

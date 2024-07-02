@@ -116,7 +116,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
     //-                 p.w-auto Find offers today
                   
     V2Header3
-    V2Header4
+    V2Header4.mb-12
     //- V2HeaderAIAssistants.my-12
     V2Header6.mt-4
     V2Header7
