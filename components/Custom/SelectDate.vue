@@ -1,6 +1,6 @@
 <template lang="pug">
 .calendar-box.w-full
-  input#dateInput(type="text", placeholder="Select a date", @click="toggleCalendar", v-model="formattedDate", class="w-full p-2 border border-gray-300 rounded text-base cursor-pointer")
+  input#dateInput(type="text", inputmode="none" placeholder="Select a date", @click="toggleCalendar", v-model="formattedDate", class="w-full p-2 border border-gray-300 rounded text-base cursor-pointer")
   //- Overlay
   //- ClientOnly
   //-   Teleport(to="#teleportDateDropdownHere")
