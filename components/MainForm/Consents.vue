@@ -36,24 +36,50 @@ const decideApiEndpoint = () => {
   }
 };
 
-const SendQuoteToApi = async () => {
-  const data = {
-    //service_type: bookFormStore.selected[0],
+const getDataForSelectedService = () => {
+  const commonData = {
     full_name: fullName.value,
     company_name: companyName.value,
     email: email.value,
     phone: phone.value,
     frequency: bookFormStore.frequency,
-    car_size: bookFormStore.carSize,
-    car_package: bookFormStore.carPackage,
     start_day: bookFormStore.startDay?.toISOString().substring(0, 10),
-    // add start_time to data if it is not null
-    ...(bookFormStore.startTime && { start_time: bookFormStore.startTime }),
-    // termsAgreed: termsAgreed.value,
-    approx_sqm: bookFormStore.approxSqM,
     zip_code: bookFormStore.zipCode,
     house_number: bookFormStore.houseNumber,
+    // add start_time to data if it is not null
+    ...(bookFormStore.startTime && { start_time: bookFormStore.startTime }),
   };
+
+  if (bookFormStore.selected[0] === "Car") {
+    return {
+      ...commonData,
+      car_size: bookFormStore.carSize,
+      car_package: bookFormStore.carPackage,
+    };
+  } else if (bookFormStore.selected[0] === "House") {
+    return {
+      ...commonData,
+      approx_sqm: bookFormStore.approxSqM,
+    };
+  } else if (bookFormStore.selected[0] === "Couch") {
+    return {
+      ...commonData,
+      couch_size: bookFormStore.couchSize,
+      couch_material: bookFormStore.couchMaterial,
+    };
+  } else if (bookFormStore.selected[0] === "Carpet") {
+    return {
+      ...commonData,
+      approx_sqm: bookFormStore.approxSqM,
+    };
+  } else {
+    return commonData;
+  }
+};
+
+const SendQuoteToApi = async () => {
+  const data = getDataForSelectedService();
+
   try {
     const endpoint = decideApiEndpoint();
 
