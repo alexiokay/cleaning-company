@@ -11,20 +11,20 @@
   .calendar(v-if="showCalendar", @click.stop, class="mt-[4rem] absolute top-0 left-0 w-full h-auto md:w-auto bg-white rounded-xl drop-shadow-lg z-50 px-2 pb-2 select-none")
     div(class="gap-y-0 flex flex-col")
       .header.flex.justify-between.items-center.px-3.py-2.text-black.rounded-t.gap-x-2
-        button(@click="changeMonth(-1)", class="bg-transparent border-none cursor-pointer text-black text-xl hover:bg-[#f5f5f5] px-3 py-1 rounded-sm")
+        button(@click="changeMonth(-1)", class="bg-transparent border-none cursor-pointer text-black text-xl md:hover:bg-[#f5f5f5] px-3 py-1 rounded-sm")
           | ‹
-        div(class="hover:cursor-pointer hover:bg-[#f5f5f5] w-full text-center py-1 rounded-sm")
+        div(class=" w-full text-center py-1 rounded-sm")
           h2.text-xl.font-bold {{ monthYear }}
-        button(@click="changeMonth(1)", class="bg-transparent border-none cursor-pointer text-black text-xl hover:bg-[#f5f5f5] px-3 py-1 rounded-sm")
+        button(@click="changeMonth(1)", class="bg-transparent border-none cursor-pointer text-black text-xl md:hover:bg-[#f5f5f5] px-3 py-1 rounded-sm")
           | ›
       .days-names-wrapper(class="bg-[#f5f5f5] mb-2")
         .days-names.flex.flex-wrap
           .day-name(v-for="dayName in dayNames", :key="dayName", class="flex-1 py-3 text-center text-xs uppercase text-black")
             | {{ dayName }}
       .days.grid.grid-cols-7.gap-1.px-2(class="")
-        .day(v-for="item in daysOfMonth", :key="item.day || item.placeholder", )
-          p(v-if="!item.placeholder" :class="{'bg-[#4e37e3] text-white': isSelectedDay(item.day), 'text-gray-500 cursor-not-allowed  ': item.isPast, 'hover:bg-gray-100 cursor-pointer': !item.isPast && !isSelectedDay(item.day)}", @click="selectDay(item.day)", class="p-2 text-center  rounded transition-colors") {{ item.day || '' }}
-          p(v-else class="hover:cursor-default") &nbsp;
+        .day(v-for="item in daysOfMonth", :key="item.day", )
+          p(v-if="!item.isPlaceholder" :class="{'bg-[#4e37e3] text-white': isSelectedDay(item.day), 'text-gray-500 cursor-not-allowed  ': item.isPast, 'hover:bg-gray-100 cursor-pointer': !item.isPast && !isSelectedDay(item.day)}", @click="selectDay(item)", class="p-2 text-center  rounded transition-colors") {{ item.day || '' }}
+          p(v-else class="hover:cursor-default h-auto p-2")  &nbsp;
       div(class="w-full flex gap-x-3 items-center mt-2")
         input(type="time" v-model="startTime" class="w-2/3 p-2 border border-gray-300 rounded text-base cursor-pointer")
         div(class="w-1/3 flex flex-col")
@@ -84,12 +84,17 @@ function isSelectedDay(day: number) {
 }
 
 const daysOfMonth = computed(() => {
+  const days = [];
   const start = new Date(
     currentDate.value.getFullYear(),
     currentDate.value.getMonth(),
     1
   );
-  const days = [];
+  const end = new Date(
+    currentDate.value.getFullYear(),
+    currentDate.value.getMonth() + 1,
+    0
+  );
 
   // Get the day of the week the month starts on, adjusted for Monday start
   let firstDayOfWeek = start.getDay();
@@ -97,31 +102,46 @@ const daysOfMonth = computed(() => {
 
   // Add placeholders for the days before the first day of the month
   for (let i = 0; i < firstDayOfWeek; i++) {
-    days.push({ placeholder: true });
+    days.push({ isPlaceholder: true });
   }
 
   // Add actual days of the month
-  while (start.getMonth() === currentDate.value.getMonth()) {
-    const dayDate = new Date(start);
+  for (let day = 1; day <= end.getDate(); day++) {
+    const dayDate = new Date(
+      currentDate.value.getFullYear(),
+      currentDate.value.getMonth(),
+      day
+    );
     days.push({
+      date: dayDate,
       day: dayDate.getDate(),
       isPast: dayDate < today,
+      isPlaceholder: false,
     });
-    start.setDate(start.getDate() + 1);
+  }
+
+  // Calculate the total number of cells
+  const totalCells = days.length;
+
+  // Add placeholders for the days after the last day of the month to make 6 rows
+  if (totalCells < 42) {
+    const remainingCells = 42 - totalCells;
+    for (let i = 0; i < remainingCells; i++) {
+      days.push({ isPlaceholder: true });
+    }
   }
 
   return days;
 });
-
 const selectDay = (day: number) => {
   // check if is past
-  if (day < today.getDate()) {
+  if (day.isPast || day.isPlaceholder) {
     return;
   }
   selectedDate.value = new Date(
     currentDate.value.getFullYear(),
     currentDate.value.getMonth(),
-    day
+    day.day
   );
   startDay.value = selectedDate.value;
   formattedDate.value = selectedDate.value.toLocaleDateString("en-NL");
