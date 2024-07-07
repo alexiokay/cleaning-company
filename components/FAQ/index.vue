@@ -1,12 +1,12 @@
 <template lang="pug">
-div(class="flex flex-col w-full bg-white")
-    div(class="flex flex-col text-center gap-y-4 py-12   top-gradient")
+div(class="flex flex-col w-full bg-white ")
+    div(class="flex flex-col text-center gap-y-4 py-12   top-gradient px-[2rem] lg:px-0")
         p(class="font-bold text-[1.6rem] lg:text-4xl") FREQUENTLY ASKED QUESTIONS
         p if you need any further assistance, please don't hestitate to contact us.
     div(class="flex flex-col gap-y-3 py-14 items-center hover:cursor-pointer mb-16 px-8 lg:px-0")
-        div(class="relative gap-y-4 flex flex-col  items-center w-full lg:w-[50rem] pb-3 pt-2" v-for="(question, index) in questions" :key="index" @click="question.isOpen = !question.isOpen" )
+        div(class="relative gap-y-4 flex flex-col  items-center w-full lg:w-[50rem] pb-3 pt-2" v-for="(question, index) in questions" :key="index" @click="toggleQuestion(question)" )
             div(class="w-full justify-between pb-3 flex h-auto"  )
-                p(class="font-medium") {{ question.question }}
+                p(class="font-medium pr-4") {{ question.question }}
                 transition(name="rotate" @enter="enterRotate2" @leave="leaveRotate2")
                     PhPlusLight(v-if="!question.isOpen" class="w-4 h-4 right-0 absolute")
                 transition(name="rotate" @enter="enterRotate" @leave="leaveRotate")
@@ -23,37 +23,47 @@ import PhMinusLight from "~icons/ph/minus-light";
 
 const questions = ref([
   {
-    question: "How do I track my order?",
+    question: "How do I book a cleaning service?",
     answer:
-      "You can track your order by visiting the 'Track Your Order' page and entering your order number and email address.",
+      "You can book a cleaning service by visiting our website and navigating to the 'Book Now' section. Fill in your details, choose your desired services, and select a convenient date and time.",
     isOpen: false,
   },
   {
-    question: "How do I return an item?",
+    question: "What cleaning products do you use?",
     answer:
-      "You can return an item by visiting the 'Returns' page and following the instructions provided.",
+      "We use high-quality, eco-friendly cleaning products that are safe for children and pets. Our products are effective in removing stains and dirt while being gentle on your upholstery and carpets.",
     isOpen: false,
   },
   {
-    question: "How do I cancel an order?",
+    question: "How can I reschedule my cleaning appointment?",
     answer:
-      "You can cancel an order by visiting the 'Orders' page and selecting the order you wish to cancel.",
+      "To reschedule your cleaning appointment, log into your account on our website, go to 'My Bookings', and select 'Reschedule'. Choose a new date and time that works for you.",
     isOpen: false,
   },
   {
-    question: "How do I contact customer service?",
+    question: "Do you offer any discounts for multiple services?",
     answer:
-      "You can contact customer service by visiting the 'Contact Us' page and filling out the contact form.",
+      "Yes, we offer discounts for booking multiple services. You can receive an additional discount when you select three or more services during the booking process.",
     isOpen: false,
   },
   {
-    question: "How do I change my account details?",
+    question: "What areas do you service?",
     answer:
-      "You can change your account details by visiting the 'Account Settings' page and updating your information.",
+      "We provide our cleaning services across the Netherlands. You can check specific service availability by entering your postal code on our website or contacting our customer service team.",
     isOpen: false,
   },
 ]);
 
+const toggleQuestion = (question) => {
+  // close all except the one clicked
+  questions.value.forEach((q) => {
+    if (q !== question) {
+      q.isOpen = false;
+    }
+  });
+  // toggle the clicked question
+  question.isOpen = !question.isOpen;
+};
 function enterRotate(el, done) {
   // Transition in
 
@@ -112,7 +122,7 @@ function enter(el, done) {
   requestAnimationFrame(() => {
     el.style.transition = "opacity 0.2s, height 0.2s";
     el.style.opacity = "1";
-    el.style.height = "1.6rem"; // Adjust the height you want the submenu to expand to
+    el.style.height = "3rem"; // Adjust the height you want the submenu to expand to
 
     // Wait for the transition to finish
     el.addEventListener("transitionend", done);
