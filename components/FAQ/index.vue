@@ -122,7 +122,7 @@ function enter(el, done) {
   requestAnimationFrame(() => {
     el.style.transition = "opacity 0.2s, height 0.2s";
     el.style.opacity = "1";
-    el.style.height = "3rem"; // Adjust the height you want the submenu to expand to
+    el.style.height = "4rem"; // Adjust the height you want the submenu to expand to
 
     // Wait for the transition to finish
     el.addEventListener("transitionend", done);

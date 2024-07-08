@@ -11,7 +11,7 @@ div(id="default"  style="" class=" h-auto flex flex-col bg-[#fafafa] justify-cen
       buttonWhatsapp(class="fixed bottom-[1rem] right-[1rem] z-50 ")   
     
   
-    .navigation(:class="route.name ==='blog'? '': 'lg:static'" class="sticky  top-0  z-50 w-full  ")
+    .navigation(:class="route.name ==='blog' || route.name ==='blog-category-slug' ? '': 'lg:static'" class="sticky  top-0  z-50 w-full  ")
    
 
       V2Navbar( class="" @toogleSidebar="is_sidebar_open = !is_sidebar_open, is_sidebar_clicked = true")

@@ -3,7 +3,7 @@
         button(ref="selectButton" class="custom-select-button w-full h-full overflow-hidden text-ellipsis flex items-center gap-x-3 bg-white border-[1px] border-[#181526] hover:border-gray-500 px-[1.5rem] py-[0.5rem] rounded-[0.4375rem] shadow leading-tight focus\:outline-none focus\:shadow-outline " type='button')
             nuxt-img(:src="choosed? choosed.icon : ''" class="w-auto h-6 object-contain" v-if="choosed")
             GgSelect(class="w-6 h-6" v-if="!choosed")
-            p {{ choosed? choosed.title.split(' ')[0] : 'Choose here' }}
+            p(:class="!choosed? 'text-gray-500 font-light': ''" ) {{ choosed? choosed.title.split(' ')[0] : 'Choose here' }}
         .custom-select-options(ref="selectOptions")
           div.custom-select-option(@click="choose(option)" data-value='option1' v-for="option in props.options" :key="option" class="gap-x-4")
             //- Icon(:name="option.icon" class="w-7 h-7")

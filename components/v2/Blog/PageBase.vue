@@ -1,8 +1,41 @@
 <template lang="pug">
-div
-  V2BlogPageBase(:articles="articles")
-  Pagination(:pages="10" :page="1" @change="changePage"  class="flex justify-center mt-[3rem]" )
 
+div(class="w-full xl:w-[56.5rem] h-full flex flex-col items-start justify-start gap-y-2")
+    h2(class="text-lg font-bold    ") Featured Posts
+    //- div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[3rem] h-auto text-[#51535b]")
+    //-     nuxt-img(format="webp" provider='ipx' alt="wood floot cleaner header" class="rounded-xl w-full md:w-1/2 max-h-[20rem] xs:h-[12rem] sm:h-[16rem] lg:min-h-[18rem] object-cover" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
+    //-     div(class="flex flex-col w-full gap-y-6  my-4")
+    //-         div.article__info(class="flex w-full gap-x-2 items-center")
+    //-             nuxt-img(format="webp" alt="netflix"  provider='ipx' class="rounded-full" src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456" width="40px" height="40px")
+    //-             p Netflix
+    //-             p .
+    //-             p 12 minutes ago
+    //-         .article__title(class="text-3xl 3xl:text-xl font-semibold  text-[#22252f]") 5 Reasons Why You Should Hire Professional Cleaning Services While Moving Out
+    //-         .article__description(class="") Lorem ipsum dolor sit amet cons ectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+    //-         .article__footer(class="flex gap-x-2")
+    //-             p(class="text-red-500 font-semibold") Movies
+    //-             p .
+    //-             p  5 min read
+    
+    div(class="grid grid-cols-1 sm:grid-cols-2 gap-[2rem] 2xl:gap-x-[4rem] gap-y-[5rem] w-full mt-12")
+        div(class="bg-white w-full   overflow-hidden  flex flex-col items-start justify-start gap-y-2 " v-for="article in articles")
+            NuxtLink(:to="`/blog/${article.slug}`" class="w-full h-auto")
+                
+                nuxt-img(:src="'https:' + article.content.image" provider="storyblok" format="webp" width="600" h="400" class="w-full rounded-xl drop-shadow-lg max-h-[12rem] xs:h-[12rem] sm:h-[16rem] lg:min-h-[18rem]  object-cover " )
+            div(class="flex flex-col items-start justify-start  gap-y-2 h-full md:h-[9rem] w-full mt-1")
+                h4(class="text-lg font-bold  ") {{ article.content.title }}
+                div(class="rounded-xl w-auto bg-[#f8f6fc] text-[#20249b] px-3 py-[0.3rem] text-sm") {{ article.content.category_name }}
+                p(class="line-clamp-3 ") {{ article.content.description }}
+            div(class="flex gap-x-4 mt-4")
+                nuxt-img(format="webp" provider="ipx" alt="author avatar"     class="rounded-full min-w-12 max-w-12  min-h-12 max-h-12 object-cover" :src="article.content.author[0].avatar" width="30px" height="30px")
+                div(class="flex flex-col text-sm justify-center gap-y-1")
+                    p(class="text-[#313337] font-bold") {{article.content.author[0].name}}
+                    
+                    p {{ article.published_at.split('T')[0] }} &#8226; 
+                      LazyClientOnly
+                        span {{ calcReadTime(renderRichText(article.content.content)) }}  min read
+    ContentBreakerNearestServices.mt-6
+    
 
         //- div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[4rem] h-auto text-[#51535b]")
         //-     nuxt-img(format="webp" provider='ipx' alt="wood floot cleaner header" class="rounded-xl w-full md:w-2/5" src="https://www.expertreviews.co.uk/sites/expertreviews/files/2022/04/best_wood_floor_cleaner_-_hero.jpg")
@@ -47,39 +80,9 @@ import CinoEmoji from "~icons/noto/cinema";
 import BulbEmoji from "~icons/noto/light-bulb";
 
 import MdiSearch from "~icons/mdi/search";
-definePageMeta({
-  NavbarColor: "#ffffff",
-});
 
 defineProps({
-  blok: {
-    type: Object,
-    required: true,
-  },
-});
-const page = ref(1);
-const pages = ref(1);
-const changePage = (page) => {
-  alert("changePage:" + page);
-};
-const activeNav = ref("blog");
-
-const articles = ref(null);
-const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi
-  .get("cdn/stories", {
-    version: useRoute().query._storyblok ? "draft" : "published",
-    starts_with: "blog",
-    is_startpage: false,
-    per_page: 12,
-  })
-  .then((res) => {
-    articles.value = res.data.stories;
-    return res;
-  });
-
-onMounted(() => {
-  console.log("articles", articles.value);
+  articles: Array,
 });
 </script>
 

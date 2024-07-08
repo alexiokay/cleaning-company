@@ -1,7 +1,7 @@
 <template lang="pug">
 .calendar-box.w-full
-  div#dateInput(type="text", placeholder="Select a date", @click="toggleCalendar", class="w-full p-2 border border-gray-300 rounded text-base cursor-pointer select-none")
-    p(v-if="!formattedDate") Select a date
+  div#dateInput(type="text", placeholder="Select a date", @click="toggleCalendar", class="w-full p-2 border border-[#181526] rounded text-base cursor-pointer select-none")
+    p(v-if="!formattedDate" class="text-gray-500 font-light  px-[1.5rem] ") Select a date 
     p(v-else) {{ formattedDate }}
   //- Overlay
   //- ClientOnly

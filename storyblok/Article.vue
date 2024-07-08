@@ -40,7 +40,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
         div(class="flex flex-col w-full gap-y-3")
           p(class="text-xl font-bold") Subscribe Our Newsletter
           p Enter your details to get business inspiration, trending solutions, and consulting tips delivered to your inbox
-          input(class="mt-4 w-auto  h-[3rem] border-[1px] rounded-[7px] text-center  bg-transparent border-black py-2 px-6 focus:outline-none text-white text-lg" placeholder="Enter your email address")
+          input(class="mt-4 w-auto  h-[3rem] border-[1px] rounded-[7px] text-start  bg-transparent border-black py-2 px-6 focus:outline-nonetext-lg" placeholder="Enter your email address")
           button(class="bg-[#4E37E3] text-white rounded-[8px] py-[16px] px-[24px]  w-auto font-bold text-center") Subscribe
           
         div(class="flex flex-col w-full gap-y-3")
@@ -71,6 +71,7 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
 
     
         ContentBreakerNearestServices
+      p {{ blok.category }}
 
     
     hr(class="w-4/5 h-[2px] bg-slate-200 my-12")

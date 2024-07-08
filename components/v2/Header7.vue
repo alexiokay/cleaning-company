@@ -117,25 +117,10 @@ const activeService = computed(() => {
   return steps[0];
 });
 
-const setServiceActive = (service) => {
-  props.customization.general.forEach((service) => (service.active = false));
-  service.active = true;
-};
-
 const onStepClick = (index: any) => {
   const swiperContainer = document.querySelector(".swiper-container");
   const swiper = swiperContainer.swiper as Swiper;
   swiper.slideTo(index);
-};
-
-const onSlideChange = (swiper: Swiper) => {
-  props.steps.forEach((step, index) => {
-    if (index === swiper.activeIndex) {
-      step.active = true;
-    } else {
-      step.active = false;
-    }
-  });
 };
 
 const selectedSlide = computed(() => {
