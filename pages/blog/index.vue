@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   V2BlogPageBase(:articles="articles")
-  Pagination(:pages="10" :page="page" @change="changePage"  class="flex justify-center mt-[3rem]" )
+  Pagination(:pages="pages" :page="page"  class="flex justify-center mt-[3rem]" )
   
   
           //- div.article-horizontal(class="flex-col flex md:flex-row w-full  gap-x-[3rem] 3xl:gap-x-[4rem] h-auto text-[#51535b]")
@@ -62,14 +62,13 @@ const route = useRoute();
 const router = useRouter();
 const perPage = 12;
 const page = computed(() => {
-  return route.query.page ? parseInt(route.query.page) : 1;
+  console.log(route.query.page);
+  return route.query.page > 1 ? Number(route.query.page) : 1;
 });
 const pages = ref(0);
 
 console.log(page);
-const changePage = (nextPage) => {
-  router.push({ query: { page: nextPage } });
-};
+
 const activeNav = ref("blog");
 
 const storyblokApi = useStoryblokApi();
@@ -98,6 +97,8 @@ const fetchArticles = async () => {
       return res;
     });
 };
+
+await fetchArticles();
 
 onMounted(() => {
   console.log("articles", articles.value);
