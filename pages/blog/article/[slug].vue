@@ -2,13 +2,16 @@
 div
     StoryblokComponent(v-if="story" :blok="story.content" :blokinfo="story")
 
+    
+
 </template>
 
 <script setup lang="ts">
 const { slug } = useRoute().params;
 
+console.log(slug);
 const story = await useAsyncStoryblok(
-  slug && slug.length > 0 ? slug.join("/") : "home",
+  slug && slug.length > 0 ? "/blog/" + slug : "home",
   {
     version: "draft",
   }

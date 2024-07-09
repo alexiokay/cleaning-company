@@ -71,7 +71,6 @@ div(class="w-auto h-auto flex flex-col items-center justify-center lg:pt-[2rem]"
 
     
         ContentBreakerNearestServices
-      p {{ blok.category }}
 
     
     hr(class="w-4/5 h-[2px] bg-slate-200 my-12")
