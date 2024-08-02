@@ -6,7 +6,7 @@ nav(:class="routeNow=='shop'? '':'lg:shadow-lg'" class="flex  w-full px-4 2xl:px
             nuxt-img(src="images/logoFTTextCrop.png" class="" alt="logo" width="90" height="80")
             //- nuxt-img(src="images/logov3.png" class="" alt="logo" width="70" height="70")
         
-        div(:class="routeNow=='services'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center ml-6")
+        div(:class="routeNow=='services'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center ml-6 hover:cursor-pointer  line-through text-gray-500")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="routeNow=='services''? 'fill-[#4e37e3]':''" d="M20.66 20L13.87 3.81C13.5 2.97 12.93 2.29 12.16 1.77C11.4 1.26 10.55 1 9.61 1C8.77 1 8 1.21 7.3 1.63C6.6 2.05 6.04 2.62 5.63 3.32C5.22 4.02 5 4.8 5 5.64L5.03 9H2.03V14.45C2.65 14.17 3.31 14.03 4 14.03V11.03H9C9.57 11.03 10.04 11.23 10.43 11.62C10.82 12 11 12.47 11 13V20.03H8.91C8.76 20.75 8.44 21.41 7.97 22H13V13C13 12.28 12.8 11.62 12.45 11C12.1 10.38 11.61 9.91 11 9.56C10.42 9.2 9.75 9 9 9H7V5.64C7 4.92 7.25 4.31 7.76 3.79C8.27 3.27 8.89 3 9.61 3C10.14 3 10.63 3.16 11.06 3.46C11.49 3.76 11.81 4.14 12 4.61L18.46 20L16 20.03V22H23V20.03L20.66 20ZM4 18C4.55 18 5 18.45 5 19C5 19.55 4.55 20 4 20C3.45 20 3 19.55 3 19C3 18.45 3.45 18 4 18ZM4 16C2.34 16 1 17.34 1 19C1 20.66 2.34 22 4 22C5.66 22 7 20.66 7 19C7 17.34 5.66 16 4 16Z" fill="#181526"/>
             </svg>
@@ -23,7 +23,7 @@ nav(:class="routeNow=='shop'? '':'lg:shadow-lg'" class="flex  w-full px-4 2xl:px
             </svg>
             p Become A cleaner
             
-        div(:class="routeNow=='commercial-cleaning'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center")
+        div(:class="routeNow=='commercial-cleaning'? 'text-[#4e37e3]':''" class="flex gap-x-2 items-center hover:cursor-pointer line-through text-gray-500")
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="routeNow=='commercial-cleaning''? 'fill-[#4e37e3]':''" d="M18 15H16V17H18M18 11H16V13H18M20 19H12V17H14V15H12V13H14V11H12V9H20M10 7H8V5H10M10 11H8V9H10M10 15H8V13H10M10 19H8V17H10M6 7H4V5H6M6 11H4V9H6M6 15H4V13H6M6 19H4V17H6M12 7V3H2V21H22V7H12Z" fill="#181526"/>
             </svg>
