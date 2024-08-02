@@ -4,7 +4,7 @@ div(class="w-full flex flex-col gap-y-4 px-2 lg:px-0 pt-[4.75rem] text-[#181526]
     p.text-center.flex.flex-col Our inteligent matching algorithm will connect you with the best-suited
         span.text-center cleaning services in your area.
     div(class="flex flex-col md:flex-row flex-wrap gap-x-4 gap-y-4 mt-[2rem] justify-center w-full  2xl:w-[100rem] px-2 4xl:px-[6rem] mx-auto")
-        div(class="flex flex-col image-1  gap-y-[1rem]  w-full shrink-0 md:w-[45%] px-2 xs:px-[2rem] lg:px-[4rem] 3xl:px-[10.56rem] py-8 lg:pt-[4.56rem] lg:pb-[7.75rem]  text-center  rounded-[1rem] aspect-[16/14] " )
+        div(class="flex flex-col image-1  gap-y-[1rem]  w-full shrink-0 md:w-[45%] px-2 xs:px-[2rem] lg:px-[4rem] 3xl:px-[10.56rem] py-8 lg:pt-[4.56rem] lg:pb-[7.75rem]  text-center  rounded-[1rem] aspect-[16/14] "  )
             h3(class="text-[1.5rem] lg:text-[1.75rem] font-bold") We will find the best 
                 span cleaning team for you.
             p.flex.flex-col First, tell us what service 

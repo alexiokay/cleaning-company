@@ -44,7 +44,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
 
             p(class="mt-8 lg:w-[38rem] font-[0.8125rem] md:text-center leading-[150%]") For over 1 year, customers have welcomed the trusted cleaning proffesionals from locally owned and operated businesses into their homes.
 
-            div(class="flex flex-col lg:flex-row justify-center gap-y-6 mt-12 lg:mt-28 gap-x-[2rem] sm:w-[40rem] xl:px-8 3xl:px-0 3xl:gap-x-[5.5rem] lg:w-full 2xl:w-[100rem]")
+            div(class="flex flex-col lg:flex-row justify-center gap-y-6 mt-12 lg:mt-28 gap-x-[2rem] sm:w-[40rem] xl:px-8 3xl:px-0 3xl:gap-x-[5.5rem] lg:w-full 2xl:w-[100rem]" )
                 V2Header2Item
                     template(v-slot:icon)
                         <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,12 +115,13 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
     //-             div(class="absolute top-[5rem] -right-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#FAFAFA] text-[#3D2BB1] font-bold text-[1.1875rem] tracking-wide")
     //-                 p.w-auto Find offers today
                   
-    V2Header3
+    V2Header3(data-aos="fade" data-aos-easing="ease-in-cubic" data-aos-offset="100"
+    data-aos-duration="150" data-aos-delay="0" data-aos-once="true")
     V2Header4.mb-12
     //- V2HeaderAIAssistants.my-12
     V2Header6.mt-4
     V2Header7
-    V2Blog(class="mt-16 mb-8 lg:mt-16")
+    V2Blog(class="mt-16 mb-8 lg:mt-16" )
     FAQ
  
                 

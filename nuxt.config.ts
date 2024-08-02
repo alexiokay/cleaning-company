@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@samk-dev/nuxt-vcalendar",
     "nuxt-vue3-google-signin",
+    "nuxt-aos",
   ],
 
   googleSignIn: {
@@ -164,6 +165,8 @@ export default defineNuxtConfig({
       gtm_id: process.env.GOOGLE_TAG_MANAGER_ID,
       gtm_enabled: process.env.GOOGLE_TAG_MANAGER_ENABLED,
       gtm_debug: process.env.GOOGLE_TAG_MANAGER_DEBUG,
+
+      DEBUG: process.env.DEBUG?.toLowerCase(),
     },
   },
 });

@@ -18,7 +18,8 @@ div(class="w-full xl:w-[56.5rem] h-full flex flex-col items-start justify-start 
     //-             p  5 min read
     
     div(class="grid grid-cols-1 sm:grid-cols-2 gap-[2rem] 2xl:gap-x-[4rem] gap-y-[5rem] w-full mt-12")
-        div(class="bg-white w-full   overflow-hidden  flex flex-col items-start justify-start gap-y-2 " v-for="article in articles")
+        div(class="bg-white w-full   overflow-hidden  flex flex-col items-start justify-start gap-y-2 " v-for="article in articles" data-aos="fade" data-aos-easing="ease-in-cubic" data-aos-offset="100"
+        data-aos-duration="100" data-aos-delay="0" data-aos-once="true")
             NuxtLink(:to="`/blog/article/${article.slug}`" class="w-full h-auto")
                 
                 nuxt-img(:src="'https:' + article.content.image" provider="storyblok" format="webp" width="600" h="400" class="w-full rounded-xl drop-shadow-lg max-h-[12rem] xs:h-[12rem] sm:h-[16rem] lg:min-h-[18rem]  object-cover " )

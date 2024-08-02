@@ -3,8 +3,9 @@ div(class="flex flex-col w-full bg-white ")
     div(class="flex flex-col text-center gap-y-4 py-12   top-gradient px-[2rem] lg:px-0")
         p(class="font-bold text-[1.6rem] lg:text-4xl") FREQUENTLY ASKED QUESTIONS
         p if you need any further assistance, please don't hestitate to contact us.
-    div(class="flex flex-col gap-y-3 py-14 items-center hover:cursor-pointer mb-16 px-8 lg:px-0")
-        div(class="relative gap-y-4 flex flex-col  items-center w-full lg:w-[50rem] pb-3 pt-2" v-for="(question, index) in questions" :key="index" @click="toggleQuestion(question)" )
+    div(class="flex flex-col gap-y-3 py-14 items-center hover:cursor-pointer mb-16 px-8 lg:px-0 " )
+        div( data-aos="fade-down"  data-aos-offset="0"
+        data-aos-duration="350" data-aos-delay="100" data-aos-once="true" class="relative gap-y-4 flex flex-col  items-center w-full lg:w-[50rem] pb-3 pt-2" v-for="(question, index) in questions" :key="index" @click="toggleQuestion(question)" )
             div(class="w-full justify-between pb-3 flex h-auto"  )
                 p(class="font-medium pr-4") {{ question.question }}
                 transition(name="rotate" @enter="enterRotate2" @leave="leaveRotate2")

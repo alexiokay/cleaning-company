@@ -19,7 +19,7 @@ div(class="flex flex-col lg:items-center justify-center w-full lg:pl-[10%]  md:p
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="article in articles" :key="article.uuid" class="px-1 sm:px-6 md:px-2 xl:px-4 w-full md:w-3/4 py-4 lg:py-[2rem] ")
+        SwiperSlide(v-for="article in articles" :key="article.uuid" class="px-1 sm:px-6 md:px-2 xl:px-4 w-full md:w-3/4 py-4 lg:py-[2rem] " data-aos="fade-left" )
           div(class="flex flex-col lg:flex-row w-full justify-start h-auto items-start  gap-y-12 gap-x-[2.5rem]  ")
         
             V2BlogItem(:article="article")

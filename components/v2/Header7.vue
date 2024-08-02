@@ -25,7 +25,7 @@ div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
             
             //*- New Version
 
-            div(class="w-[100%]  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+            div( data-aos="fade-left" class="w-[100%]  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                 //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                 div(class="rounded-b-[20px] w-full h-1/2 lg:h-[55%] overflow-hidden relative")
                   nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w object-cover  ")

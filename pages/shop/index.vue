@@ -163,6 +163,10 @@ onMounted(() => {
   isSwiperLoaded.value = true;
   console.log("swiper loaded");
 });
+
+definePageMeta({
+  middleware: "404",
+});
 </script>
 
 <style lang="scss" scoped>
