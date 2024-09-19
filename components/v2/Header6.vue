@@ -21,14 +21,15 @@ div(class="main-component w-full lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:p
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: initial;
 
   // @media screen and (min-width: 1942px) {
   //   background-position: center -250px;
   // }
 
-  @media screen and (max-width: 926px) {
+  @media screen and (min-width: 1942px) {
     background-position: center;
+    background-attachment: fixed;
   }
 }
 </style>

@@ -57,6 +57,11 @@ onMounted(() => {});
 body
     overflow-x: hidden
 
+html, body
+  height: 100vh
+  height: 100dvh
+
+
 
 .app-container
 

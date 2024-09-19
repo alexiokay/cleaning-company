@@ -1,7 +1,7 @@
 <template lang="pug">
 
 div(class="flex flex-col gap-y-4 items-center w-full  text-center " data-aos="fade-down"  data-aos-offset="150"
-data-aos-duration="350" data-aos-delay="100" data-aos-once="true")
+ data-aos-once="true")
         
     div(class="min-h-[4rem]")    
         slot(name="icon")
