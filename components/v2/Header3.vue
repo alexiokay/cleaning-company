@@ -36,8 +36,6 @@ div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem
 
 <style lang="scss" scoped>
 .main-component {
-  height: 100dvh;
-  position: relative;
   background:
     linear-gradient(
       0deg,
@@ -53,6 +51,15 @@ div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem
   background-size: cover;
   background-attachment: initial; //initial
   background-position: center 0px;
+
+  @media screen and (min-width: 1240px) {
+    background-attachment: fixed;
+  }
+
+  @media screen and (min-width: 2320px) {
+    background-position: center -250px;
+    background-attachment: fixed;
+  }
 }
 
 ::-webkit-input-placeholder {
