@@ -1,7 +1,7 @@
 <template>
   <Html :lang="locale">
+    <NuxtLoadingIndicator :height="5" :duration="3000" :throttle="400" />
     <NuxtLayout>
-      <NuxtLoadingIndicator :height="5" :duration="3000" :throttle="400" />
       <NuxtPage class="overflow-clip" />
     </NuxtLayout>
   </Html>
