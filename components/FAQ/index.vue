@@ -42,13 +42,13 @@ const questions = ref([
     isOpen: false,
   },
   {
-    question: "Do you offer any discounts for multiple services?",
+    question: "Do you offer any discounts for bulk orders?",
     answer:
       "Yes, we offer discounts for booking multiple services. You can receive an additional discount when you select three or more services during the booking process.",
     isOpen: false,
   },
   {
-    question: "What areas do you service?",
+    question: "Where do u provide your services?",
     answer:
       "We provide our cleaning services across the Netherlands. You can check specific service availability by entering your postal code on our website or contacting our customer service team.",
     isOpen: false,
