@@ -35,7 +35,7 @@ div
                         div(class="flex flex-col text-[0.6rem] md:text-xs")
                             p(class=" text-black font-roboto font-bold" font-display: swap) WE USE COOKIES TO ENHANCE YOUR BROWSING EXPERIENCE, SERVE PERSONALIZED ADS OR CONTENT, AND ANALYZE OUR TRAFFIC. BY CLICKING "ACCEPT ALL", YOU CONSENT TO OUR USE OF COOKIES. VISIT OUR COOKIE POLICY FOR MORE INFO.
                             <!-- body description -->
-                            p(class=" text-black font-roboto font-bold" font-display: swap) THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
+                            span(class=" text-black font-roboto font-bold" font-display: swap) THE COOKIES THAT ARE CATEGORIZED AS "NECESSARY" ARE STORED ON YOUR BROWSER AS THEY ARE ESSENTIAL FOR ENABLING THE BASIC FUNCTIONALITIES OF THE SITE.
                                 p(v-show="isShowMore") WE ALSO USE THIRD-PARTY COOKIES THAT HELP US ANALYZE HOW YOU USE THIS WEBSITE, STORE YOUR PREFERENCES, AND PROVIDE THE CONTENT AND ADVERTISEMENTS THAT ARE RELEVANT TO YOU. THESE COOKIES WILL ONLY BE STORED IN YOUR BROWSER WITH YOUR PRIOR CONSENT. YOU CAN CHOOSE TO ENABLE OR DISABLE SOME OR ALL OF THESE COOKIES BUT DISABLING SOME OF THEM MAY AFFECT YOUR BROWSING EXPERIENCE.
 
                                 p(v-if="!isShowMore" class="text-xs font-bold my-2") ... 

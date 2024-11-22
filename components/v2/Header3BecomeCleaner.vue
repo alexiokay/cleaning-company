@@ -8,23 +8,23 @@ div(class="main-component w-full h-auto lg:h-[61rem] flex px-6 xl:px-[10rem] 2xl
             p.flex.flex-col XXX registered customers
           div(class="flex gap-x-3")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
-            p.flex.flex-col Access to a database of over
+            span.flex.flex-col Access to a database of over
               p XXX customers looking for services
           div(class="flex gap-x-3")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
-            p.flex.flex-col You decide yourself who and
+            span.flex.flex-col You decide yourself who and
               p how many offers you will send
           div(class="flex gap-x-3")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
-            p.flex.flex-col You can work in your area
+            span.flex.flex-col You can work in your area
               p and at the time that suits you best
           div(class="flex gap-x-3")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
-            p.flex.flex-col Possibility to collect opinions from
+            span.flex.flex-col Possibility to collect opinions from
               p all your customers in one place
           div(class="flex gap-x-3")
             LineMdConfirmCircle(class="text-[#e1ff01] w-6 h-6")
-            p.flex.flex-col You receive orders consistent
+            span.flex.flex-col You receive orders consistent
               p with the scope of your services
            
          
@@ -56,8 +56,7 @@ import LineMdConfirmCircle from "~icons/line-md/confirm-circle";
 
 <style lang="scss" scoped>
 .main-component {
-  background:
-    url("/images/become-cleaner/header3-background.png"),
+  background: url("/images/become-cleaner/header3-background.png"),
     lightgray 50% / cover no-repeat;
 
   -webkit-background-size: cover;
