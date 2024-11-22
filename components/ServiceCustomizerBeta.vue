@@ -2,7 +2,8 @@
 div(class="flex flex-col ")
     LazyProcess(:steps="props.steps" @slideTo="onStepClick")
     
-    Swiper(
+    Swiper-Container(
+        ref="swiperContainerRef"
         @slideChange="onSlideChange"
         :modules="[]"
         :slides-per-view="1"
@@ -12,7 +13,7 @@ div(class="flex flex-col ")
         :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full md:w-3/5  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
+        Swiper-Slide(v-for="step in steps" :key="step" class="px-4 md:w-full ")
             // category  
             div(v-show="step.name === 'category'" class=" w-full h-auto  py-4 md:py-12 flex flex-wrap gap-y-4  mt-2")
               
@@ -45,8 +46,21 @@ div(class="flex flex-col ")
 </template>
 
 <script setup lang="ts">
-import type { Swiper } from "swiper";
 import LoadingIcon from "~icons/eos-icons/loading";
+
+let swiperContainerRef = ref(null);
+const selectedSlide = computed(() => {
+  return props.steps.findIndex((step) => step.active);
+});
+
+let swiper = useSwiper(swiperContainerRef, {
+  loop: false,
+  modules: [],
+  slidesPerView: 1,
+  effect: "creative",
+  initialSlide: selectedSlide.value,
+  autoplay: { delay: 8000, disableOnInteraction: true },
+});
 
 const props = defineProps({
   customization: {
@@ -71,9 +85,9 @@ const setServiceActive = (service) => {
 };
 
 const onStepClick = (index: any) => {
-  const swiperContainer = document.querySelector(".swiper-container");
-  const swiper = swiperContainer.swiper as Swiper;
-  swiper.slideTo(index);
+  swiperContainerRef = ref(null);
+  swiper = useSwiper(swiperContainerRef);
+  swiper.to(index);
 };
 
 const onSlideChange = (swiper: Swiper) => {
@@ -85,10 +99,6 @@ const onSlideChange = (swiper: Swiper) => {
     }
   });
 };
-
-const selectedSlide = computed(() => {
-  return props.steps.findIndex((step) => step.active);
-});
 
 onMounted(() => {
   isSwiperLoaded.value = true;

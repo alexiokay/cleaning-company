@@ -1,13 +1,13 @@
 <template lang="pug">
 div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem] 2xl:px-[16rem] 3xl:px-[20.8rem] py-[6rem] lg:py-[20rem] tracking-wide gap-x-[17rem]")
-      div(class="flex flex-col lg:w-auto h-full text-[#FAFAFA] items-start justify-center gap-y-[2rem]")
+      div(class="flex flex-col lg:w-auto h-full text-[#FAFAFA] items-start justify-center gap-y-[2rem]"  data-aos="fade" data-aos-easing="ease-in-cubic"  data-aos-once="true")
           h2(class="text-[1.8rem] lg:text-[2.5rem] font-bold") Commercial Cleaning
           p.flex.flex-col Our commercial cleaning services
               span create happier empleyees and customers.
           p.flex.flex-col  We specialize in maintaining pristine office spaces,
               span retail establishments, medical facilities, and more.
           ButtonLearnMore2
-      div(class="hidden lg:flex w-1/2 h-full items-center justify-end  ")
+      div(class="hidden lg:flex w-1/2 h-full items-center justify-end  "  data-aos="fade" data-aos-easing="ease-in-cubic"  data-aos-once="true")
           div.relative
               <svg width="467" height="399" viewBox="0 0 367 299" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M287.25 148.402C287.474 145.465 285.274 142.903 282.337 142.68C279.4 142.456 276.838 144.656 276.614 147.593C276.391 150.53 278.59 153.092 281.527 153.316C284.464 153.539 287.027 151.339 287.25 148.402ZM11.318 127.405C11.5415 124.468 9.34172 121.906 6.40469 121.682C3.46765 121.459 0.905568 123.658 0.68207 126.595C0.458571 129.532 2.65829 132.094 5.59533 132.318C8.53236 132.541 11.0945 130.342 11.318 127.405ZM282.008 147L6.07588 126.003L5.92413 127.997L281.856 148.995L282.008 147Z" fill="#CBC3FD"/>
@@ -36,14 +36,12 @@ div(class="main-component w-full h-auto lg:h-[61rem] flex px-[4rem] xl:px-[10rem
 
 <style lang="scss" scoped>
 .main-component {
-  background:
-    linear-gradient(
+  background: linear-gradient(
       0deg,
       rgba(36, 25, 105, 0.4) 0%,
       rgba(36, 25, 105, 0.4) 100%
     ),
-    url("/images/index-header-3.jpg"),
-    lightgray 50% / cover no-repeat;
+    url("/images/index-header-3.jpg"), lightgray 50% / cover no-repeat;
 
   -webkit-background-size: cover;
   -moz-background-size: cover;

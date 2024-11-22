@@ -2,7 +2,8 @@
 div(class="w-[100vw] -mx-[21.3%] flex flex-col py-16   items-center justify-center")
     h2.text-4xl.font-bold  Your Favourite Services
     div(class="pl-[15%] w-full")
-        Swiper(
+        Swiper-Container(
+            ref="swiperContainerRef"
             :modules="[]"
             :loop="false"
             :effect="'creative'"
@@ -12,15 +13,15 @@ div(class="w-[100vw] -mx-[21.3%] flex flex-col py-16   items-center justify-cent
             :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
             //- <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
         
-            SwiperSlide(v-for="item in favServices" :key="item" class="pr-4 w-full  pt-[4rem] pb-[3rem]  ")
+            Swiper-Slide(v-for="item in favServices" :key="item" class="pr-4 w-full  pt-[4rem] pb-[3rem]  ")
                 V2MyProfileFavouriuteServicesItem(:service="item")
         p.underline.mr-auto See more providers in your area
 </template>
 
 <script setup lang="ts">
-import type { Swiper } from "swiper";
-
 const isSwiperLoaded = ref(false);
+const swiperContainerRef = ref(null);
+const swiper = useSwiper(swiperContainerRef);
 
 const favServices = [
   {

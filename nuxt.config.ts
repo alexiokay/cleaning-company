@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from "nuxt/config";
 import Icons from "unplugin-icons/vite";
 import { IntlifyModuleOptions } from "@intlify/nuxt3";
 import svgLoader from "vite-svg-loader";
@@ -14,6 +13,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
 
     "@nuxtjs/tailwindcss",
+
     "@nuxt/content",
     [
       "@pinia/nuxt",
@@ -21,7 +21,7 @@ export default defineNuxtConfig({
         autoImports: ["defineStore", "acceptHMRUpdate", "useStore"],
       },
     ],
-    "@pinia-plugin-persistedstate/nuxt",
+    "pinia-plugin-persistedstate/nuxt",
 
     "@nuxt/image",
     "unplugin-icons/nuxt",
@@ -97,6 +97,7 @@ export default defineNuxtConfig({
 
     // Render these routes on the client (SPA) { ssr: false },
   },
+
   intlify: {
     localeDir: "locales",
     vueI18n: {
@@ -137,6 +138,13 @@ export default defineNuxtConfig({
         autoInstall: true,
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern-compiler", // or "modern"
+        },
+      },
+    },
   },
 
   runtimeConfig: {
@@ -169,4 +177,6 @@ export default defineNuxtConfig({
       DEBUG: process.env.DEBUG?.toLowerCase(),
     },
   },
+
+  compatibilityDate: "2024-11-22",
 });

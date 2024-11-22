@@ -3,7 +3,8 @@ div(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14 
     p(class="font-bold text-3xl") What People Are Saying
     div.swiper-button-prev(class="absolute xl:ml-[16%] ml-0")
     div.swiper-button-next(class="absolute xl:mr-[16%] mr-0")
-    Swiper(
+    Swiper-Container(
+            ref="swiperContainerRef"
             @slideChange=""
             :modules="[SwiperAutoplay, SwiperPagination, SwiperNavigation]"
      
@@ -19,7 +20,7 @@ div(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14 
             
             <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
         
-            SwiperSlide(v-for="step in images" :key="step" class="px-4 md:w-full  py-2")
+            Swiper-Slide(v-for="step in images" :key="step" class="px-4 md:w-full  py-2")
 
                     
                 div(:src="step" provider="ipx" class="h-[30rem] rounded-xl bg-white flex flex-col text-center py-10 px-10 justif-center items-center gap-y-6 shadow-lg")
@@ -35,10 +36,11 @@ div(class="w-full relative h-auto flex flex-col text-center gap-y-6 pt-10 pb-14 
 </template>
 
 <script setup lang="ts">
-import type { Swiper } from "swiper";
 import LoadingIcon from "~icons/eos-icons/loading";
 
 const isSwiperLoaded = ref(false);
+let swiperContainerRef = ref(null);
+let swiper = useSwiper(swiperContainerRef);
 
 onMounted(() => {
   isSwiperLoaded.value = true;

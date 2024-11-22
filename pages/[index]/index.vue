@@ -115,7 +115,7 @@ div(class="w-full h-full  flex flex-col justify-center items-center font-intern 
     //-             div(class="absolute top-[5rem] -right-[5rem] rounded-3xl px-6 py-5 flex flex-col bg-[#FAFAFA] text-[#3D2BB1] font-bold text-[1.1875rem] tracking-wide")
     //-                 p.w-auto Find offers today
                   
-    V2Header3(data-aos="fade" data-aos-easing="ease-in-cubic"  data-aos-once="true")
+    V2Header3
     V2Header4.mb-12
     //- V2HeaderAIAssistants.my-12
     V2Header6.mt-4

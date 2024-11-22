@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="relative flex flex-col  lg:text-start items-center lg:items-start bg-white  rounded-[20px]  shadow-lg  mt-6 md:mt-0 overflow-hidden border-[6px] border-white")
+div(class="relative flex flex-col  lg:text-start items-center lg:items-start bg-white  rounded-[20px]  shadow-lg w-full mt-6 md:mt-0 overflow-hidden border-[6px] border-white")
     
     NuxtLink( :to="'/blog/article/' + article.slug" class="w-full 2xl:h-[17.5rem]  xs:h-[13rem] h-[14rem] ") 
         slot(name="image")

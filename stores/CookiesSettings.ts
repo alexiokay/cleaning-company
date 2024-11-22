@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 
 import { createPinia } from "pinia";
-import uniqid from "uniqid";
-import { useStorage } from "@vueuse/core";
 
 type Layout = "default" | "accounts";
 const pinia = createPinia();
@@ -48,7 +46,7 @@ export const useCookiesStore = defineStore("cookiesStore", {
     },
   },
   persist: {
-    storage: persistedState.cookies,
+    storage: piniaPluginPersistedstate.cookies(),
     // only save isCookiesSet as cookie
   },
   // other options...

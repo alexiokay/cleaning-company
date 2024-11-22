@@ -38,7 +38,7 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
                   //-       :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
                   //-       <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
                   
-                  //-       SwiperSlide(v-for="step in steps" :key="step" class="px-1 w-auto  ")
+                  //-       Swiper-Slide(v-for="step in steps" :key="step" class="px-1 w-auto  ")
                   //-           div(class="w-full h-[3rem] hover:cursor-pointer hover:bg-blue-200 justify-center items-center text-center rounded-md relative overflow-hidden bg-white border-2 text-black px-2 py-1 "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                   //-               //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                   //-               p VW Golf 4
@@ -63,7 +63,7 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
                   //-       :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
                   //-       <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
                   
-                  //-       SwiperSlide(v-for="option in options" :key="step" class="px-1 w-auto  ")
+                  //-       Swiper-Slide(v-for="option in options" :key="step" class="px-1 w-auto  ")
                   //-           div(:class="option.active? 'bg-[#563CF9] text-white': ' bg-white'" class="w-full h-auto hover:cursor-pointer hover:bg-blue-200 justify-center items-center text-center rounded-md relative overflow-hidden border-[1px] border-[#181526] text-black px-2 py-1 "  @click="setOptionActive(option)")
                   //-               //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                   //-               p {{ option.title }}
@@ -81,8 +81,6 @@ div(class="w-[100vw] lg:w-auto h-full bg-[#FAFAFA] rounded-[1.4rem] lg:rounded-[
 </template>
 
 <script setup lang="ts">
-import type { Swiper } from "swiper";
-
 import ArrowIcon from "~icons/ion/arrow-back";
 import GoBackIcon from "~icons/iconamoon/arrow-left-2-bold";
 

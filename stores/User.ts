@@ -1,5 +1,3 @@
-import { CookieOption } from "./../node_modules/next-auth/core/types.d";
-import { defineStore } from "pinia";
 import { createPinia } from "pinia";
 
 const pinia = createPinia();
@@ -106,7 +104,7 @@ export const useUserStore = defineStore("User", {
 
   persist: [
     {
-      storage: persistedState.cookies,
+      storage: piniaPluginPersistedstate.cookies(),
       CookieOptions: {
         expires: 7,
       },

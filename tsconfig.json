@@ -18,6 +18,8 @@
     "plugins": ["@volar/vue-language-plugin-pug", "@vue/language-plugin-pug"]
   },
   "compilerOptions": {
+    "module": "ESNext", // or "ES2020"
+
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -31,7 +33,8 @@
       "@intlify/nuxt3",
       "@pinia/nuxt",
       "@nuxt/image",
-      "vue-select"
+      "vue-select",
+      "nuxt-swiper"
     ]
   },
   "exclude": ["node_modules"]

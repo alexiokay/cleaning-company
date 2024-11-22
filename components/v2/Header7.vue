@@ -1,17 +1,12 @@
 <template lang="pug">
 div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
-    Swiper(
+    Swiper-Container(
+        ref="swiperContainerRef"
         @slideChange="onSlideChange"
-        :modules="[]"
-        :loop="false"
-        :effect="'creative'"
-        :space-between="2"
-        :breakpoints="{2200: {slidesPerView: 5.5}, 1720: {slidesPerView: 4.5}, 1280: { slidesPerView: 3.5, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
-        :initialSlide="selectedSlide"
-        :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
+        class="w-full  swiper-container" v-if="isSwiperLoaded")
         <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
       
-        SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 py-[4rem] ")
+        Swiper-Slide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 py-[4rem] ")
             //?- Old Version
             
             //- div(class="w-[100%] aspect-[13/16]  rounded-[24px] border-[9px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
@@ -25,7 +20,7 @@ div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
             
             //*- New Version
 
-            div( data-aos="fade-left" class="w-[100%]  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
+            div( data-aos="fade-right" class="w-[100%]  aspect-[13/19] md:aspect-[13/21] lg:aspect-[13/18] gap-y-4 rounded-[2rem] border-[9px] border-white bg-white shadow-lg relative overflow-hidden text-black "  @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                 //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                 div(class="rounded-b-[20px] w-full h-1/2 lg:h-[55%] overflow-hidden relative")
                   nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w object-cover  ")
@@ -61,7 +56,6 @@ div(class="w-full lg:pl-[10%] pl-4 lg:px-0")
 </template>
 
 <script setup lang="ts">
-import type { Swiper } from "swiper";
 import LoadingIcon from "~icons/eos-icons/loading";
 import servicesWindows from "@/utils/servicesWindows.json";
 
@@ -111,6 +105,28 @@ const steps = [
   },
 ];
 
+const selectedSlide = computed(() => {
+  return steps.findIndex((step) => step.active);
+});
+
+let swiperContainerRef = ref(null);
+let swiper = useSwiper(swiperContainerRef, {
+  modules: [],
+  loop: false,
+  effect: "creative",
+  spaceBetween: 2,
+  breakpoints: {
+    2200: { slidesPerView: 5.5 },
+    1720: { slidesPerView: 4.5 },
+    1280: { slidesPerView: 3.5, spaceBetween: 2 },
+    768: { slidesPerView: 2.5, spaceBetween: 2 },
+    470: { slidesPerView: 1.5, spaceBetween: 2 },
+    100: { slidesPerView: 1.1, spaceBetween: 1 },
+  },
+  initialSlide: selectedSlide.value,
+  autoplay: { delay: 8000, disableOnInteraction: true },
+});
+
 const isSwiperLoaded = ref(false);
 
 const activeService = computed(() => {
@@ -119,13 +135,9 @@ const activeService = computed(() => {
 
 const onStepClick = (index: any) => {
   const swiperContainer = document.querySelector(".swiper-container");
-  const swiper = swiperContainer.swiper as Swiper;
-  swiper.slideTo(index);
-};
 
-const selectedSlide = computed(() => {
-  return steps.findIndex((step) => step.active);
-});
+  swiper.to(index);
+};
 
 onMounted(() => {
   isSwiperLoaded.value = true;

@@ -1,4 +1,3 @@
-import { defineStore } from "pinia";
 import { createPinia } from "pinia";
 
 const pinia = createPinia();
@@ -31,7 +30,7 @@ export const useBlogReactionsStore = defineStore("BlogReactions", {
     },
   },
   persist: {
-    storage: persistedState.cookies,
+    storage: piniaPluginPersistedstate.cookies(),
     // only save isCookiesSet as cookie
   },
 });

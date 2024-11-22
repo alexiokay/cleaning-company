@@ -15,21 +15,15 @@ div(class="w-full h-full  flex flex-col items-center  justify-start   bg-[#fafaf
                 nuxt-img(:src="product.image" class="w-auto  object-cover   h-[4rem]")
                 p(class="w-full") {{product.name}}
 
-        Swiper(
+        Swiper-Container(
+          ref="swiperContainerRef"
           @slideChange="onSlideChange"
-          :modules="[]"
-          :loop="true"
-          :effect="'creative'"
-          :space-between="-15"
-          :centered-slides="false"
           :loopedSlides ="2"
-          :breakpoints="{ 1920: {slidesPerView: 2.4}, 1024: { slidesPerView: 2.8, spaceBetween: 2, }, 768: { slidesPerView: 2.5, spaceBetween: 2, }, 470: { slidesPerView: 1.5, spaceBetween: 2, }, 100: { slidesPerView: 1.1, spaceBetween: 1, }, }"
-          :initialSlide="selectedSlide"
-          :autoplay="{delay: 8000, disableOnInteraction: true, }" class="w-full  swiper-container" v-if="isSwiperLoaded")
+          class="w-full  swiper-container" v-if="isSwiperLoaded")
           <!-- :creative-effect="{ prev: {shadow: false, translate: ['-20%', 0, -1],}, next: {translate: ['100%', 0, 0],},}" -->
 
           .swiper-edges
-          SwiperSlide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 custom-slide ")
+          Swiper-Slide(v-for="step in servicesWindows" :key="step" class="px-1 sm:px-4 w-full md:w-3/4 custom-slide ")
               div(class="w-[100%] aspect-[16/12]  rounded-[24px] relative overflow-hidden text-white " :style="{'border-color': step.color}" @click="setServiceActive(step); onStepClick(steps.indexOf(step))")
                   //- nuxt-img( class="w-full h-full object-cover" alt="step.title" title="step.title" format="webp")
                   nuxt-img(:src="step.image" width="500" height="500" format="webp" alt="logo" class=" w-full h-full object-cover")
@@ -47,6 +41,25 @@ import { on } from "events";
 const isSwiperLoaded = ref(false);
 
 const selectedSlide = ref(1);
+
+const swiperContainerRef = ref(null);
+const swiper = useSwiper(swiperContainerRef, {
+  loop: true,
+  modules: [],
+  effect: "creative",
+  spaceBetween: -15,
+  centeredSlides: false,
+  // loopedSlides: 2,
+  breakpoints: {
+    1920: { slidesPerView: 2.4 },
+    1024: { slidesPerView: 2.8, spaceBetween: 2 },
+    768: { slidesPerView: 2.5, spaceBetween: 2 },
+    470: { slidesPerView: 1.5, spaceBetween: 2 },
+    100: { slidesPerView: 1.1, spaceBetween: 1 },
+  },
+  initialSlide: selectedSlide.value,
+  autoplay: { delay: 8000, disableOnInteraction: true },
+});
 
 const categories = ref([
   {
